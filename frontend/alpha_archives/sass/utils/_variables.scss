@@ -1,0 +1,25 @@
+
+// RESPONSIVE
+$breakpoints : (
+    mobile: 590px,
+    tablet: 1280px,
+    wide-screen: 1400px,
+);
+
+// COLOR
+$COLOR-PALETTE :( 
+    prim:#585858, 
+    sec:#fafafa, 
+    ter:#2046f2, 
+
+    bg: rgb(240, 240, 240),
+    bg2: rgb(255, 255, 255),
+
+    font: rgb(39, 39, 39),
+    font2: rgb(90, 90, 206),
+
+    shadow: rgba(58, 58, 58, 0.226),
+
+    error: #d06767,
+    success: rgb(61, 180, 61),
+);

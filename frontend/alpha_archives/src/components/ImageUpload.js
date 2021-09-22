@@ -10,9 +10,10 @@ export default class ImageUpload extends Component {
         super(props)
         this.state = {
             file: [null],
-            fileResponse: ["X","X","X","X","X","X","X","X","X","X","X"],
+            fileResponse: ["In Archive","X","X","X","X","X","X","X","X","X","X"],
             displayImageBox : false,
-            imageInBox : null
+            imageInBox : null,
+            uploaded: false
         }
         this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
         this.uploadFiles = this.uploadFiles.bind(this)
@@ -35,6 +36,13 @@ export default class ImageUpload extends Component {
         this.setState({displayImageBox: !this.state.displayImageBox})
     }
 
+    handleReset = () => {
+        this.fileArray = []
+        this.fileObj = []
+        this.setState({file: [], fileResponse: []})
+
+    }
+
     render() {
         return (
             <form className="main-image-upload">
@@ -50,17 +58,39 @@ export default class ImageUpload extends Component {
                 </div>
 
                 <div className="main-image-upload__previews">
+                    <label className="main-image-upload__previews__title">Previews</label>
                     <div className="main-image-upload__previews__box">
                         {(this.fileArray || []).map((url, index) => (
                             <div className="main-image-upload__previews__box__element">
                                 <img src={url} alt="..." onClick={() => this.setState({displayImageBox: true,
                                                                                        imageInBox: url})}/>
-                                <label>{this.state.fileResponse[index]}</label>
+                                {this.state.fileResponse[index] == "Not in" ? 
+                                    <label className="main-image-upload__previews__box__element__response error"><i className="fa fa-2x fa-exclamation-triangle"></i></label> 
+                                    :
+                                    <label className="main-image-upload__previews__box__element__response success"><i className="fa fa-2x fa-check-circle"></i></label> 
+                                                                            }
+
                             </div>
                         ))}
                     </div>
                 </div>
-                <button type="button" onClick={this.uploadFiles}>Upload</button>
+                <button className="main-image-upload__button" 
+                        type="button" 
+                        onClick={this.uploadFiles}>Upload
+                </button>
+
+                <button className="main-image-upload__button__reset" 
+                        type="button" 
+                        onClick={() => this.handleReset()}>
+                        Reset
+                </button>
+                {!this.state.uploaded &&
+                    <p>
+                        <span className="error">Red symbols are already in archive</span> | 
+                        <span className="success"> Green symbols has been uploaded !</span> 
+                    </p>
+                }
+                    
             </form >
         )
     }

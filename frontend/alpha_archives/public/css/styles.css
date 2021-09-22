@@ -5,8 +5,49 @@
   cursor: pointer;
 }
 
+.error {
+  color: #e93b3b;
+}
+
+.success {
+  color: #3db43d;
+}
+
 .main-image-upload {
   margin: 2%;
+}
+.main-image-upload__button {
+  margin: 2%;
+  background-color: #3db43d;
+  color: #f0f0f0;
+  width: 20%;
+  height: 100px;
+  border-radius: 30px;
+  font-size: 2em;
+  cursor: pointer;
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: 200ms;
+  box-shadow: 0px 10px 30px 0px rgba(58, 58, 58, 0.226);
+}
+.main-image-upload__button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+.main-image-upload__button__reset {
+  width: 5%;
+  height: 50px;
+  background-color: #e93b3b;
+  color: #f0f0f0;
+  border-radius: 15px;
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+.main-image-upload__button__reset:hover {
+  transform: scale(1.15);
+  opacity: 0.9;
 }
 .main-image-upload__previews {
   margin: 2%;
@@ -15,6 +56,9 @@
   height: 500px;
   margin: 0 auto;
   overflow-y: scroll;
+}
+.main-image-upload__previews__title {
+  color: #585858;
 }
 .main-image-upload__previews__box {
   margin: 1%;
@@ -25,6 +69,17 @@
 .main-image-upload__previews__box__element {
   flex-basis: 20%;
   overflow-y: hidden;
+  position: relative;
+}
+.main-image-upload__previews__box__element__response {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 50px;
+  /* Need a specific value to work */
 }
 .main-image-upload__previews__box__element img {
   width: 50%;
@@ -74,29 +129,12 @@
   opacity: 0;
   cursor: pointer;
 }
-.main-image-upload button {
-  margin: 2%;
-  background-color: #3db43d;
-  width: 20%;
-  height: 100px;
-  border-radius: 30px;
-  font-size: 2em;
-  cursor: pointer;
-  transform: scale(1);
-  transition-property: transform;
-  transition-duration: 200ms;
-  box-shadow: 0px 10px 30px 0px rgba(58, 58, 58, 0.226);
-}
-.main-image-upload button:hover {
-  transform: scale(1.02);
-  opacity: 0.9;
-}
 
 .main-image-box {
   display: flex;
   justify-content: center;
-  width: 80%;
-  max-height: 80%;
+  width: 90%;
+  max-height: 90%;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -107,7 +145,7 @@
 }
 @media screen and (max-width: 1280px) {
   .main-image-box {
-    display: none;
+    top: 40%;
   }
 }
 .main-image-box img {

@@ -7,6 +7,7 @@ from FingerprintManager import FingerprintManager
 from rest_framework import status
 import copy
 from alpha_archives.settings import MEDIA_URL
+from django.core.exceptions import MultipleObjectsReturned
 
 class ImageViewSet(viewsets.ModelViewSet):
 
@@ -15,21 +16,23 @@ class ImageViewSet(viewsets.ModelViewSet):
     fpm = FingerprintManager()
 
     def create(self, request):
-
+        
         image = copy.deepcopy(request.data["image"])
         image_hash = self.fpm.create_image_hash(image)
 
         try:
             hash_img = Hash_Image.objects.get(image_hash=image_hash)
-            return Response({"detail":"Already in Archive",
-                             "path": hash_img.image_path}, 
-                            status=status.HTTP_208_ALREADY_REPORTED)
+        except MultipleObjectsReturned:
+            pass
         except:
+            print(image_hash)
             path= MEDIA_URL + str(request.FILES["image"])
             Hash_Image.objects.create(image_hash=image_hash, image_path=path)
             return  super().create(request)
 
 
+        return Response({"detail":"Already in Archive"}, 
+                        status=status.HTTP_208_ALREADY_REPORTED)
 
 
 class HashViewSet(viewsets.ModelViewSet):

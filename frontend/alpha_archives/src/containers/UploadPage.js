@@ -7,7 +7,7 @@ class UploadPage extends Component {
     render() {
         return(
             <div className="page-top-margin main-upload-page">
-                <h3>Upload Files</h3>
+                <h3 className="page-title">Upload Screenshots</h3>
                 <UploadDescription/>
                 <ImageUpload/>
 

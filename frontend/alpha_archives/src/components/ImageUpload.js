@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { fetchUploadFile } from '../fetch/UploadFiles';
 import ImageBox from './ImageBox';
 
 export default class ImageUpload extends Component {
@@ -9,7 +10,7 @@ export default class ImageUpload extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            file: [null],
+            files: [null],
             fileResponse: ["In Archive","X","X","X","X","X","X","X","X","X","X"],
             displayImageBox : false,
             imageInBox : null,
@@ -24,14 +25,29 @@ export default class ImageUpload extends Component {
         for (let i = 0; i < this.fileObj[0].length; i++) {
             this.fileArray.push(URL.createObjectURL(this.fileObj[0][i]))
         }
-        this.setState({ file: this.fileArray })
+        this.setState({ files: this.fileArray, fileResponse:[], uploaded: false })
     }
 
-    uploadFiles(e) {
+    async uploadFiles(e) {
         e.preventDefault()
-        console.log("STATE FILE", this.state.file)
-        console.log("FileObj", this.fileObj)
-        console.log("fileArray", this.fileArray)
+
+        console.log(this.fileObj)
+        if (!this.fileObj.length) {
+            return
+        }
+
+        let responseList = []
+        console.log(this.state.files)
+        for (let i=0 ; i<this.fileObj[0].length ; i++ ) {
+            console.log("ININ")
+            let fdata = new FormData()
+            fdata.append("image", this.fileObj[0][i], this.fileObj[0][i].name)
+            responseList.push(await fetchUploadFile(fdata))
+
+        }
+
+        this.setState({fileResponse:responseList, uploaded:true})
+        console.log("RESPONSELIST", responseList)
     }
 
     handleImageBoxClick = () => {
@@ -41,13 +57,14 @@ export default class ImageUpload extends Component {
     handleReset = () => {
         this.fileArray = []
         this.fileObj = []
-        this.setState({file: [], fileResponse: []})
+        this.setState({files: [], fileResponse: [], uploaded:false})
 
     }
 
     render() {
         return (
-            <form className="main-image-upload">
+            <form className="main-image-upload"
+                  onSubmit={e=> this.uploadFiles(e)}>
                 {this.state.displayImageBox && <ImageBox image={this.state.imageInBox}
                                                             handleImageBoxClick={this.handleImageBoxClick}/>} 
                 <div className="main-image-upload__form-group">
@@ -55,7 +72,13 @@ export default class ImageUpload extends Component {
                         <i className="fa fa-2x fa-download"></i>
                         Drop files or Click to open explorer
                     </label>
-                    <input id="file-upload" type="file" className="main-image-upload__form-group__form-control" onChange={this.uploadMultipleFiles} multiple />
+                    <input id="file-upload" 
+                           type="file" 
+                           className="main-image-upload__form-group__form-control" 
+                           onChange={this.uploadMultipleFiles} 
+                           accept=".jpg, .gif, .png"
+                           multiple
+                    />
                 </div>
 
                 <div className="main-image-upload__previews">
@@ -65,34 +88,35 @@ export default class ImageUpload extends Component {
                             <div className="main-image-upload__previews__box__element">
                                 <img src={url} alt="..." onClick={() => this.setState({displayImageBox: true,
                                                                                        imageInBox: url})}/>
-                                {this.state.fileResponse[index] == "Not in" ? 
-                                    <label className="main-image-upload__previews__box__element__response error"><i className="fa fa-2x fa-exclamation-triangle"></i></label> 
-                                    :
-                                    <label className="main-image-upload__previews__box__element__response success"><i className="fa fa-2x fa-check-circle"></i></label> 
-                                                                            }
+                                {this.state.uploaded ?
+                                    this.state.fileResponse[index] == 208 ? 
+                                        <label className="main-image-upload__previews__box__element__response error"><i className="fa fa-2x fa-exclamation-triangle"></i></label> 
+                                                                            :
+                                        <label className="main-image-upload__previews__box__element__response success"><i className="fa fa-2x fa-check-circle"></i></label> 
+                                                    :
+                                <label></label>}
                             </div>
                         ))}
                     </div>
                 </div>
+                
+                {this.state.uploaded &&
+                    <p>
+                        <span className="error">Images with Red symbols are already in archive</span> | 
+                        <span className="success"> Green symbols have been uploaded !</span> 
+                    </p>
+                }
+                
                 <button className="button-base button-upload" 
-                        type="button" 
-                        onClick={this.uploadFiles}>
+                        type="submit">
                         Upload
                 </button>
-                
-
 
                 <button className="button-base button-reset" 
                         type="button" 
                         onClick={() => this.handleReset()}>
                         Reset
                 </button>
-                {!this.state.uploaded &&
-                    <p>
-                        <span className="error">Red symbols are already in archive</span> | 
-                        <span className="success"> Green symbols have been uploaded !</span> 
-                    </p>
-                }
                     
             </form >
         )

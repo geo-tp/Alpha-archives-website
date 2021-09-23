@@ -1,0 +1,29 @@
+
+.main-home-informations {
+    width: 50%;
+    margin: 0 auto;
+
+    &__info-box {
+        margin: 40px;
+        padding: 5%;
+        border-radius: 20px;
+        border: 1px solid map-get($COLOR_PALETTE, bg);
+        @include small-shadow;
+
+        & img {
+            border-radius: 10px;
+        }
+
+        & h2 {
+            color: map-get($COLOR_PALETTE, font3 )
+        }
+
+        & a {
+            color: map-get($COLOR_PALETTE, font3 );
+        }
+    }
+
+    &__link {
+
+    }
+}

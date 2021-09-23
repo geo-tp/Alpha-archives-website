@@ -1,7 +1,16 @@
 
 @import "./utils/variables";
 @import "./utils/mixin";
+
+@import "./base/buttons";
+@import "./base/positionning.scss";
+
 @import "./components/nav-bar";
 @import "./components/close-menu-cross";
 @import "./components/image-upload";
 @import "./components/image-box";
+@import "./components/home-informtations";
+
+
+
+@import "./pages/upload-page";

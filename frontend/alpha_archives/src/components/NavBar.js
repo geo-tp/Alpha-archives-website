@@ -27,69 +27,24 @@ class NavBar extends Component {
 
     render() {
 
-        let linkList = (navBarType) => {
-            return (
-                <div className={navBarType}>
-                <i onClick={() => this.setState({menuIsOpen: false})}  
-                   className=" fa fa-close fa-2x close-menu-cross"></i>
-                <ul className="nav-bar__menu__link-list">
-                    <li id={id++}>
-                        <NavLink className="no-underline" 
-                                 to="/choice/popular">
-                            <button>Populaires</button>
-                        </NavLink>
-                    </li>
-                    <li id={id++}>
-                        <NavLink className="no-underline" 
-                                    to="/choice/new">
-                                <button>Nouveautés</button>
-                        </NavLink>
-                    </li>
-                    <li id={id++}>
-                        <NavLink className="no-underline" 
-                                    to="/choice/cheap">
-                                <button>Prix Mini</button>
-                        </NavLink>
-                    </li>
-                    <li id={id++}>
-                        <NavLink className="no-underline" 
-                            to="/help">
-                            <button>Aide</button>
-                        </NavLink>
-                    </li>
-                </ul>
-
-            </div>
-            )
-        }
-
         let path = this.state.query ? "/search/"+this.state.query : '/search'
 
         return(
-
-
             <div className="nav-bar">
 
-                <div className="nav-bar__nav-site" >
-                    <span className="nav-bar__nav-site__nav-burger">
-
-                        <i className="fas fa fa-2x fa-bars" 
-                           onClick={() => this.setState({menuIsOpen: !this.state.menuIsOpen,
-                           accountMenuIsOpen: false})}></i>
-
-                    </span>
-                    <NavLink className="no-underline" to="/home/">
-                        <h2><img className="nav-bar__logo" alt="logo" src={logo}/> EBAZAR</h2>
-                    </NavLink>
+                <div className="nav-bar__logo-box">
+                    <Link className="nav-bar__logo-link" to="/home/">
+                        <img className="nav-bar__logo" alt="logo" src={logo}/>
+                    </Link>
                 </div>
 
-                <div>
+                <div className="nav-bar__button-box">
                     <NavLink className="no-underline" to="/home/">
-                        <button>Upload</button>
+                        <button className="nav-button-base">Upload</button>
                     </NavLink>
 
                     <NavLink className="no-underline" to="/home/">
-                        <button>Browse Archive</button>
+                        <button className="nav-button-base">Browse Archive</button>
                     </NavLink>
                 </div>
                 

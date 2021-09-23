@@ -10,52 +10,12 @@
 
 .main-image-upload {
     margin:2%;
-    
-    &__button {
-        margin: 2%;
-        background-color: map-get($COLOR_PALETTE, success);
-        color: map-get($COLOR_PALETTE, bg);
-        width: 20%;
-        height:100px;
-        border-radius: 30px;
-        font-size: 2em;
-        cursor: pointer;
-        transform: scale(1);
-        transition-property: transform;
-        transition-duration: 200ms;
-        
-        &:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
-
-        &__reset {
-            width: 5%;
-            height:50px;
-            background-color: map-get($COLOR-PALETTE, error);
-            color: map-get($COLOR_PALETTE, bg);
-            border-radius: 15px;
-            transform: scale(1);
-            transition-property: transform;
-            transition-duration: 200ms;
-            cursor: pointer;
-
-            &:hover {
-                transform: scale(1.15);
-                opacity: 0.9;
-            }
-        }
-
-        @include small-bottom-shadow;
-
-
-    }
  
     &__previews {
         margin: 2%;
         background-color: map-get($COLOR_PALETTE, bg);
         width: 80%;
-        height: 500px;
+        height: 400px;
         margin: 0 auto;
         overflow-y: scroll;
 
@@ -121,7 +81,7 @@
             border: 5px dashed map-get($COLOR_PALETTE, font);
             background-color: map-get($COLOR_PALETTE, bg);
             width:80%;
-            height:200px;
+            height:180px;
             display:block;
             margin: 0 auto;
             display: flex;

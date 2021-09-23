@@ -29,7 +29,9 @@ export default class ImageUpload extends Component {
 
     uploadFiles(e) {
         e.preventDefault()
-        console.log(this.state.file)
+        console.log("STATE FILE", this.state.file)
+        console.log("FileObj", this.fileObj)
+        console.log("fileArray", this.fileArray)
     }
 
     handleImageBoxClick = () => {
@@ -53,7 +55,6 @@ export default class ImageUpload extends Component {
                         <i className="fa fa-2x fa-download"></i>
                         Drop files or Click to open explorer
                     </label>
-
                     <input id="file-upload" type="file" className="main-image-upload__form-group__form-control" onChange={this.uploadMultipleFiles} multiple />
                 </div>
 
@@ -69,17 +70,19 @@ export default class ImageUpload extends Component {
                                     :
                                     <label className="main-image-upload__previews__box__element__response success"><i className="fa fa-2x fa-check-circle"></i></label> 
                                                                             }
-
                             </div>
                         ))}
                     </div>
                 </div>
-                <button className="main-image-upload__button" 
+                <button className="button-base button-upload" 
                         type="button" 
-                        onClick={this.uploadFiles}>Upload
+                        onClick={this.uploadFiles}>
+                        Upload
                 </button>
+                
 
-                <button className="main-image-upload__button__reset" 
+
+                <button className="button-base button-reset" 
                         type="button" 
                         onClick={() => this.handleReset()}>
                         Reset
@@ -87,7 +90,7 @@ export default class ImageUpload extends Component {
                 {!this.state.uploaded &&
                     <p>
                         <span className="error">Red symbols are already in archive</span> | 
-                        <span className="success"> Green symbols has been uploaded !</span> 
+                        <span className="success"> Green symbols have been uploaded !</span> 
                     </p>
                 }
                     

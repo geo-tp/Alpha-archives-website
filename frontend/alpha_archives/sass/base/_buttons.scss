@@ -1,0 +1,49 @@
+
+.button-base {
+    transform: scale(1);
+    transition-property: transform;
+    transition-duration: 200ms;
+    cursor: pointer;
+    
+    &:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+.nav-button-base {
+    border: 4px solid map-get($COLOR_PALETTE, font3);
+    color: darken(map-get($COLOR_PALETTE, font3), 10%);
+    font-weight: bold;
+    border-radius: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.button-upload {
+    margin: 2%;
+    background-color: map-get($COLOR_PALETTE, success);
+    color: map-get($COLOR_PALETTE, bg);
+    width: 20%;
+    height:100px;
+    border-radius: 30px;
+    font-size: 2em;
+}
+
+.button-reset {
+    width: 5%;
+    height:50px;
+    background-color: map-get($COLOR-PALETTE, error);
+    color: map-get($COLOR_PALETTE, bg);
+    border-radius: 15px;
+}
+
+.button-home {
+    margin: 2%;
+    border: 5px solid map-get($COLOR_PALETTE, font4);
+    color: map-get($COLOR_PALETTE, font4);
+    width: 50%;
+    height:100px;
+    border-radius: 30px;
+    font-size: 2em;
+}

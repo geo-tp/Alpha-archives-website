@@ -3,7 +3,6 @@
      position: fixed;
      top: 0;
      left:0;
-    //  height:$navigation-default-height;
      display: flex;
      justify-content: space-between;
      align-items: center;
@@ -26,263 +25,21 @@
 
      @include border-bottom-default;
 
+    &__logo-box {
+        width: 140px;
+        margin-left: 2%;
+    }
      
-     &__nav-site {
-        // max-width: $max-width-screen;
-         margin-left: 20px;
-         display: flex;
-         align-items: center;
-         cursor: pointer;
-
-         
-         
-         &__nav-burger {
-             display: none;
-            //  margin-right: $medium;
-             
-             &:hover {
-                 opacity: .8;
-             }
-         }
-
-         @include tablet-design {
-
-            &__nav-burger {
-                display: flex;
-            }  
-         }
-     }
-
      &__logo {
          color: map-get($COLOR-PALETTE, font );
          text-decoration: none;
-         width:12%;
-
-         & img {
-         }
-
-         @include tablet-design {
-            display: none;
-         }
-     }
-
-
-     &__search {
-
-         display: flex;
-         align-items: center;     
-         
-         &-bar {
-            // margin-right: $medium;
-            height: 2em;
-    
-            @include mobile-design {
-                display: none;
-            }
-        }
-
-     }
-
-     
-     &__account {
-        margin-right: 20px;
-
-         text-align: center;
-         cursor: pointer;
-        
-        &:hover {
-            opacity: .7;
-        }
-        
-         &-menu {
-
-        }
-        
-        &-angle {
-            // margin-left: $small;
-        }
-
-        &-pseudo {
-            font-size:.8em;
-            margin: 0;
-        }
-    }
-
-    &__menu {
-
-        width:40%;
-        
-        &__link-list {
-            display: flex;
-            justify-content: space-evenly;
-            text-decoration: none;
-            padding: 0%;
-            text-align: center;
-            // padding-top: 7%;
-            
-            & button {
-                border-color: map-get($COLOR-PALETTE, bg2 );
-            }
-            & li {
-                cursor: pointer;
-                border-radius: 50px;
-
-            }
-            
-        }
-
-        & i {
-            display:none;
-        }
-
-        &--large {
-            // padding:6%;
-
-        }
-
-        // &__link-list {
-        //     & li {
-        //         background-color: map-get($COLOR_PALETTE,sec );
-                
-        //         margin: .5em;
-
-        //         &
-        //         &:hover {
-        //             // opacity: .7;
-        //                 border-color: lighten(map-get($COLOR_PALETTE, ter), 35%);
-        //         }
-        //     }
-        // }
-
-        @include tablet-design  {
-            
-            width: 30%;
-
-            position: absolute;
-            // top: $navigation-default-height+5px;
-            left: 1%;
-        //  height:100%;
-            z-index: 10;
-            color: map-get($COLOR_PALETTE,font);
-            background-color: map-get($COLOR_PALETTE,sec );
-            border-radius: 20px;
-
-            // @include small-border-default;
-            @include small-shadow;
-
-
-            & li {
-                // margin: $small;
-                // padding: $small;
-            }
-            & li:hover {
-                color: map-get($COLOR_PALETTE, ter);
-                border-bottom: 0;
-            }
-
-            &__link-list {
-                display: block;
-                justify-content: space-evenly;
-                // background-color: red;
-                // padding-left: 10%;
-                padding-top: 7%;
-
-
-                & button {
-                    text-align: center;
-                    width:90%;
-                    border-radius: 5px;
-                    border-color: lighten(map-get($COLOR_PALETTE, ter), 15%);
-                    font-size: 1em;
-                    text-align: center;
-                    &:hover {
-                        border-color: lighten(map-get($COLOR_PALETTE, ter), 35%);
-                    }
-                }
-            }
-    
-            & i {
-                display: block;
-            }
-
-            &--large {
-                display:none;
-                margin: 0;
-            }
-
-        }
-
-        @include mobile-design {
-            width: 50%;
-        }
+         width:100%;
     }
     
-     &__user {
-        position: absolute;
-        // top: $navigation-default-height+5px;
-        right: 0%;
-        width: 13%;
-        z-index: 10;
-        color: map-get($COLOR_PALETTE,font);
-        background-color: map-get($COLOR_PALETTE,sec );
-        border-radius: 20px;
+    &__button-box {
+        margin:20px;
+        display: flex;
         
-        // @include small-border-default;
-        @include small-shadow;
-        & ul {
-            // margin: 1em auto;
-            width:100%;
-            padding:0;
-            padding-top: 15%;
-        }
-        & li {
-            // margin: $medium;
-            // padding: $small;
-            cursor:pointer;
-            // margin-top: 7%;
-            
-            & button {
-                text-align: center;
-                border-color: lighten(map-get($COLOR_PALETTE, ter), 15%);
-                width:90%;
-                border-radius: 5px;
-                font-size: 1em;
-                text-align: center;
+    }
 
-                &:hover {
-                    border-color: lighten(map-get($COLOR_PALETTE, ter), 35%);
-                }
-            }
-
-        }
-
-        &-button {
-            // width: 20%;
-            margin: 0 auto;
-            & button {
-                // margin: $medium;
-                border-color: map-get($COLOR-PALETTE, bg2 );
-                &:hover {
-                    border-color: lighten(map-get($COLOR_PALETTE, ter), 35%);
-                }
-            
-            }
-            
-
-            @include tablet-design {
-                // width: 30%;
-                text-align: center;
-            }
-        }
-
-        @include tablet-design  {
-            
-            width: 25%;
-            right: 3%;
-        }
-
-        @include mobile-design {
-            width: 40%;
-        }
-     }
 }

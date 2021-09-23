@@ -9,7 +9,6 @@ from django.conf import settings
 router = routers.DefaultRouter()
 router.register(r'images', element.views.ImageViewSet)
 router.register(r'image-hash', element.views.HashImageViewSet)
-router.register(r'hash', element.views.HashViewSet)
 router.register(r'elements', element.views.ElementViewSet)
 
 urlpatterns = [

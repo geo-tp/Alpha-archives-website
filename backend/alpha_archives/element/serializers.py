@@ -6,10 +6,6 @@ class ImageSerializer(serializers.HyperlinkedModelSerializer):
         model = Image
         fields = "__all__"
 
-class HashSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Hash
-        fields = "__all__"
 
 class HashImageSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

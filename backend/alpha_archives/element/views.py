@@ -3,25 +3,33 @@ from rest_framework import viewsets
 from .serializers import *
 from .models import *
 from rest_framework.response import Response
-from FingerprintManager import FingerprintManager
+# from utils.ParserManager import ParserManager
 from rest_framework import status
 import copy
 from alpha_archives.settings import MEDIA_URL
 from django.core.exceptions import MultipleObjectsReturned
+import imagehash
+from PIL import Image as Img
+import django_filters
+
+
 
 class ImageViewSet(viewsets.ModelViewSet):
 
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
-    fpm = FingerprintManager()
+
+
+    def generate_image_hash(self, image_path):
+        return imagehash.average_hash(Img.open(image_path))
 
     def create(self, request):
         
         image = copy.deepcopy(request.data["image"])
-        image_hash = self.fpm.create_image_hash(image)
+        image_hash = self.generate_image_hash(image)
 
         try:
-            hash_img = Hash_Image.objects.get(image_hash=image_hash)
+            Hash_Image.objects.get(image_hash=image_hash)
         except MultipleObjectsReturned:
             pass
         except:
@@ -35,11 +43,6 @@ class ImageViewSet(viewsets.ModelViewSet):
                         status=status.HTTP_208_ALREADY_REPORTED)
 
 
-class HashViewSet(viewsets.ModelViewSet):
-
-    queryset = Hash.objects.all()
-    serializer_class = HashSerializer
-
 class HashImageViewSet(viewsets.ModelViewSet):
 
     queryset = Hash_Image.objects.all()
@@ -49,3 +52,6 @@ class ElementViewSet(viewsets.ModelViewSet):
 
     queryset = Element.objects.all()
     serializer_class = ElementSerializer
+
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ["parent", "image", "name"]

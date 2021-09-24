@@ -1,9 +1,9 @@
 
  .close-menu-cross {
-    color: map-get($COLOR_PALETTE, prem );
+    color: map-get($COLOR_PALETTE, font4 );
     position: absolute;
     top: 2%;
-    right:5%;
+    right:2%;
     cursor: pointer;
 
 }

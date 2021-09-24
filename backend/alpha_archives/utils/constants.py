@@ -10,5 +10,4 @@ IMAGE_TABLE_NAME = "element_image"
 HASH_TABLE_NAME = "element_hash"
 HASH_IMAGE_TABLE_NAME= "element_hash_image"
 ELEMENT_TABLE_NAME = "element_element"
-
-print(ROOT_PATH)
+IGNORED_DIRECTORIES = ["Videos", "Text", ".git"]

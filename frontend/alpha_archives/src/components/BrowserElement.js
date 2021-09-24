@@ -11,14 +11,12 @@ class BrowseElement extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            icon: this.determinateIconToUse(props.element.name),
             imageBoxIsOpen: false,
             imageInBoxUrl : null
         }
     }
 
     determinateIconToUse(element) {
-
         console.log(this.props.element.is_file)
         if (!this.props.element.is_file) {
             return folder
@@ -41,27 +39,31 @@ class BrowseElement extends Component {
 
     handleClick() {
         if (this.props.element.is_file) {
-            this.setState({
-                imageBoxIsOpen: true,
-                imageInBoxUrl: this.props.element.image.image_url
-            })
+            // this.setState({
+            //     imageBoxIsOpen: true,
+            //     imageInBoxUrl: this.props.element.image.image_url,
+            // })
+
+            this.props.handleFileClick(this.props.element)
 
         }
         else {
-            this.props.handleElementClick(this.props.element.name)
+            this.props.handleFolderClick(this.props.element.name)
         }
     }
 
-    handleImageBoxClick = () => {
-        this.setState({imageBoxIsOpen: !false})
-    }
+    // handleImageBoxClick = () => {
+    //     this.setState({imageBoxIsOpen: !false})
+    // }
 
     render() {
+
+        let icon = this.determinateIconToUse(this.props.element)
         return(
             <div className="main-browser-element" onClick={() => this.handleClick()}>
-                {this.state.imageBoxIsOpen && <ImageBox image={this.state.imageInBoxUrl}
-                                                        handleFullResolutionDisplay={this.handleImageBoxClick}/>}
-                <img src={this.state.icon}/>
+                {/* {this.state.imageBoxIsOpen && <ImageBox image={this.state.imageInBoxUrl}
+                                                        handleFullResolutionDisplay={this.handleImageBoxClick}/>} */}
+                <img src={icon}/>
                 <p>{this.props.element.name}</p>
             </div>
         )

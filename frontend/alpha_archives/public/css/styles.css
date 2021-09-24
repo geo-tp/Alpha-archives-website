@@ -3,6 +3,7 @@
   transition-property: transform;
   transition-duration: 200ms;
   cursor: pointer;
+  border: 0;
 }
 .button-base:hover {
   transform: scale(1.05);
@@ -20,11 +21,13 @@
   cursor: pointer;
 }
 .nav-button-base:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .button-upload {
   margin: 2%;
+  margin-top: 20px;
+  margin-bottom: 0;
   background-color: #42be42;
   color: #f0f0f0;
   width: 20%;
@@ -45,14 +48,27 @@
   margin: 2%;
   background-color: #98ca3e;
   color: white;
-  width: 50%;
+  width: 400px;
   height: 100px;
   border-radius: 30px;
   font-size: 2em;
+  border: 0;
+}
+
+.image-box-arrow {
+  color: #98ca3e;
+  cursor: pointer;
+}
+.image-box-arrow:hover {
+  opacity: 0.8;
 }
 
 .page-top-margin {
   margin-top: 130px;
+}
+
+.image-box-top-margin {
+  margin-top: 150px;
 }
 
 .nav-bar-height {
@@ -104,9 +120,10 @@
 }
 
 .close-menu-cross {
+  color: #98ca3e;
   position: absolute;
   top: 2%;
-  right: 5%;
+  right: 2%;
   cursor: pointer;
 }
 
@@ -125,7 +142,7 @@
   margin: 2%;
   background-color: #f0f0f0;
   width: 80%;
-  height: 400px;
+  height: 300px;
   margin: 0 auto;
   overflow-y: scroll;
 }
@@ -201,19 +218,24 @@
   opacity: 0;
   cursor: pointer;
 }
+.main-image-upload__feedback {
+  margin: 0;
+}
 
 .main-image-box {
   display: flex;
   justify-content: center;
   width: 90%;
-  max-height: 90%;
+  max-height: 810px;
+  min-height: 810px;
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 40%;
   transform: translate(-50%, -50%);
   z-index: 30;
   background-color: white;
-  box-shadow: 0px 10px 30px 0px rgba(58, 58, 58, 0.144);
+  align-items: center;
+  box-shadow: 0px 10px 20px 5px rgba(58, 58, 58, 0.144);
 }
 @media screen and (max-width: 1280px) {
   .main-image-box {
@@ -221,7 +243,8 @@
   }
 }
 .main-image-box img {
-  width: 70%;
+  max-width: 100%;
+  max-height: 780px;
   margin: 2%;
 }
 
@@ -245,16 +268,36 @@
 .main-home-informations__info-box a {
   color: #ffc231;
 }
+.main-home-informations__button-box {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .main-browser {
+  position: relative;
   display: flex;
   width: 80%;
-  height: 400px;
+  height: 700px;
   background-color: #f0f0f0;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
   overflow-y: scroll;
   flex-wrap: wrap;
+  padding-top: 2%;
+}
+.main-browser__directory_path {
+  position: absolute;
+  top: 1%;
+  width: 100%;
+}
+.main-browser__directory_path i {
+  margin-right: 2%;
+  color: #98ca3e;
+  cursor: pointer;
+}
+.main-browser__directory_path i:hover {
+  opacity: 0.6;
 }
 
 .main-browser-element {

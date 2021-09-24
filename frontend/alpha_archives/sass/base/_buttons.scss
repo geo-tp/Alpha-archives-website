@@ -4,7 +4,8 @@
     transition-property: transform;
     transition-duration: 200ms;
     cursor: pointer;
-    
+    border: 0;
+
     &:hover {
         transform: scale(1.05);
         opacity: 0.9;
@@ -22,12 +23,14 @@
     cursor: pointer;
 
     &:hover {
-        opacity: 0.5;
+        opacity: 0.7;
     }
 }
 
 .button-upload {
     margin: 2%;
+    margin-top:20px;
+    margin-bottom:0;
     background-color: map-get($COLOR_PALETTE, success);
     color: map-get($COLOR_PALETTE, bg);
     width: 20%;
@@ -48,8 +51,18 @@
     margin: 2%;
     background-color: map-get($COLOR_PALETTE, font4);
     color: white;
-    width: 50%;
+    width: 400px;
     height:100px;
     border-radius: 30px;
     font-size: 2em;
+    border: 0;
+}
+
+.image-box-arrow {
+    color: map-get($COLOR_PALETTE, font4);
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }

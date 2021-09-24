@@ -3,14 +3,15 @@
     display: flex;
     justify-content:center;
     width:90%;
-    max-height: 90%;
+    max-height: 810px;
+    min-height: 810px;
     position: fixed;
     left: 50%;
-    top: 50%;
+    top: 40%;
     transform: translate(-50%, -50%);
     z-index: 30;
     background-color: rgb(255, 255, 255);
-    
+    align-items: center;
     
     @include tablet-design {
         top: 40%;
@@ -18,10 +19,11 @@
         
     }
     
-    @include small-bottom-shadow;
+    @include small-shadow;
     
     & img {
-        width:70%;
+        max-width:100%;
+        max-height: 780px;
         margin: 2%;
 
         // margin: 0 auto;

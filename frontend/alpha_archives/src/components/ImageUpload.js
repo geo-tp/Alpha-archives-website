@@ -11,9 +11,10 @@ export default class ImageUpload extends Component {
         super(props)
         this.state = {
             files: [null],
-            fileResponse: ["In Archive","X","X","X","X","X","X","X","X","X","X"],
+            fileResponse: [],
             displayImageBox : false,
-            imageInBox : null,
+            imagesInBox : null,
+            indexInBox: null,
             uploaded: false
         }
         this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
@@ -65,8 +66,10 @@ export default class ImageUpload extends Component {
         return (
             <form className="main-image-upload"
                   onSubmit={e=> this.uploadFiles(e)}>
-                {this.state.displayImageBox && <ImageBox image={this.state.imageInBox}
-                                                            handleImageBoxClick={this.handleImageBoxClick}/>} 
+                {this.state.displayImageBox && <ImageBox imagesInBox={this.fileArray}
+                                                         indexInBox={this.state.indexInBox}
+                                                         handleImageBoxClick={this.handleImageBoxClick}
+                                                         />} 
                 <div className="main-image-upload__form-group">
                     <label for="file-upload">
                         <i className="fa fa-2x fa-download"></i>
@@ -87,7 +90,7 @@ export default class ImageUpload extends Component {
                         {(this.fileArray || []).map((url, index) => (
                             <div className="main-image-upload__previews__box__element">
                                 <img src={url} alt="..." onClick={() => this.setState({displayImageBox: true,
-                                                                                       imageInBox: url})}/>
+                                                                                       indexInBox: index})}/>
                                 {this.state.uploaded ?
                                     this.state.fileResponse[index] == 208 ? 
                                         <label className="main-image-upload__previews__box__element__response error"><i className="fa fa-2x fa-exclamation-triangle"></i></label> 
@@ -101,7 +104,7 @@ export default class ImageUpload extends Component {
                 </div>
                 
                 {this.state.uploaded &&
-                    <p>
+                    <p className="main-image-upload__feedback">
                         <span className="error">Images with Red symbols are already in archive</span> | 
                         <span className="success"> Green symbols have been uploaded !</span> 
                     </p>

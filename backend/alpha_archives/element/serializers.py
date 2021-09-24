@@ -13,6 +13,9 @@ class HashImageSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['image_path', 'image_hash']
 
 class ElementSerializer(serializers.HyperlinkedModelSerializer):
+
+    image = HashImageSerializer()
+
     class Meta:
         model = Element
         fields = "__all__"

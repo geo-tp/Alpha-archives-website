@@ -15,7 +15,7 @@
         margin: 2%;
         background-color: map-get($COLOR_PALETTE, bg);
         width: 80%;
-        height: 400px;
+        height: 300px;
         margin: 0 auto;
         overflow-y: scroll;
 
@@ -106,5 +106,9 @@
             opacity: 0;
             cursor: pointer;
         }
+    }
+
+    &__feedback {
+        margin: 0;
     }
 }

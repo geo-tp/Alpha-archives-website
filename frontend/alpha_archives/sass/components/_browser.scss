@@ -1,13 +1,30 @@
 
 .main-browser {
+    position: relative;
     display: flex;
     width: 80%;
-    height: 400px;
+    height: 700px;
     background-color: map-get($COLOR_PALETTE, bg);
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
     flex-wrap: wrap;
+    padding-top: 2%;
 
+    &__directory_path {
+        position: absolute;
+        top: 1%;
+        width:100%;
+
+        & i {
+            margin-right: 2%;
+            color: map-get($COLOR_PALETTE, font4);
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
 }

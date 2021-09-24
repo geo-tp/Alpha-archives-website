@@ -35,7 +35,8 @@ class ParserManager:
         
         root_directories = [[directory, self.truncate_path(path), "root", 0]\
                                      for directory in os.listdir(path[0:-1])\
-                                          if os.path.isdir(path+directory)]
+                                          if os.path.isdir(path+directory) \
+                                              and directory not in constants.IGNORED_DIRECTORIES]
 
         subdirectories = self.find_all_subdirectories(path, [])
 

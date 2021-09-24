@@ -9,7 +9,8 @@ class ImageBox extends Component {
             <div className="main-image-box">
                 <img src={this.props.image}/>
                 <a  onClick={() => this.props.handleImageBoxClick()}
-                    className="fa fa-close fa-2x close-menu-cross"></a>
+                    className="fa fa-close fa-2x close-menu-cross">
+                </a>
             </div>
         )
     }

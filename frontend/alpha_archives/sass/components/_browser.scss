@@ -1,0 +1,13 @@
+
+.main-browser {
+    display: flex;
+    width: 80%;
+    height: 400px;
+    background-color: map-get($COLOR_PALETTE, bg);
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+
+}

@@ -1,0 +1,19 @@
+
+.main-browser-element {
+    margin: 2%;
+    display: block;
+    cursor: pointer;
+    flex-basis: 20%;
+
+    transition-property: transform;
+    transition-duration: 200ms;
+    
+    &:hover {
+        transform: scale(1.03);
+        opacity: 0.9;
+    }
+
+    & p {
+        margin-top: 0;
+    }
+}

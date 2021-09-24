@@ -19,8 +19,8 @@ class HomeInformations extends Component {
                 </div>
 
                 <div className="main-home-informations__button-box">
-                    <Link to="/upload"><button className="button-base button-home">Upload screenshots</button></Link>
-                    <button className="button-base button-home">Browse Archive</button>
+                    <Link to="/upload/"><button className="button-base button-home">Upload screenshots</button></Link>
+                    <Link to="/browse/"><button className="button-base button-home">Browse Archive</button></Link>
                 </div>
             </div>
         )

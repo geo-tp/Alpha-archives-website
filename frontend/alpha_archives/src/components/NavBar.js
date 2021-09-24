@@ -39,11 +39,11 @@ class NavBar extends Component {
                 </div>
 
                 <div className="nav-bar__button-box">
-                    <NavLink className="no-underline" to="/home/">
+                    <NavLink className="no-underline" to="/upload/">
                         <button className="nav-button-base">Upload</button>
                     </NavLink>
 
-                    <NavLink className="no-underline" to="/home/">
+                    <NavLink className="no-underline" to="/browse/">
                         <button className="nav-button-base">Browse Archive</button>
                     </NavLink>
                 </div>

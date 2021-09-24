@@ -14,14 +14,27 @@ class Browser extends Component {
             elementsImages: null,
             displayImageBox: false,
             indexInBox: null,
-            actualDirectory: "",
+            actualDirectory: [],
         }
 
         this.getElements("parent")
     }
 
     goBackDirectory = () => {
-        this.getElements("parent", this.state.elements[0].parent)
+
+        let directory = this.state.actualDirectory
+        console.log(this.state.actualDirectory)
+        directory.pop()
+        // console.log(this.state.actualDirectory)
+        
+        this.getElements("parent", this.state.actualDirectory[this.state.actualDirectory.length-1])
+        
+        // cause func getElements will add again, we delete actual dir too
+        directory.pop()
+
+        this.setState({
+            actualDirectory: directory
+        })
     }
 
     async getElements(filter_field, filter_value="root") {
@@ -36,10 +49,14 @@ class Browser extends Component {
             }
         }
 
+        let directory  = this.state.actualDirectory
+        if (elements ){
+            directory.push(elements[0].parent)
+        }
+
         this.setState({elements: elements,
                        elementsImages: elementsImages,
-                       actualDirectory: 
-                            this.state.actualDirectory + "/" + elements[0].parent})
+                       actualDirectory:  directory})
     }
 
 
@@ -63,11 +80,12 @@ class Browser extends Component {
                 <span className="main-browser__directory_path"
                       onClick={this.goBackDirectory}>
                     <i className="fa fa-2x fa-arrow-left"></i>
-                    {this.state.actualDirectory}</span>
+                    {this.state.actualDirectory.join("/")}</span>
                 {this.state.displayImageBox && 
                     <ImageBox imagesInBox={this.state.elementsImages}
                               indexInBox={this.state.indexInView}
-                              handleImageBoxClick={this.handleImageBoxClick}/>}
+                              handleImageBoxClick={this.handleImageBoxClick}
+                              autofocus={true}/>}
 
                 {this.state.elements && this.state.elements.map(element => {
                     return <BrowseElement element={element}

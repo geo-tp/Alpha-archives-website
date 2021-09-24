@@ -1,6 +1,6 @@
 import { Component } from "react";
 import PropTypes from "prop-types"
-
+import React from 'react';
 
 class ImageBox extends Component {
 
@@ -10,6 +10,23 @@ class ImageBox extends Component {
             images: props.imagesInBox,
             index: props.indexInBox,
             inView: props.imagesInBox[props.index]
+        }
+        this.componentRef = React.createRef()
+
+    }
+
+    componentDidMount() {
+        this.componentRef.current.focus()
+    }
+
+    handleKeyDown = (e) => {
+
+        if (e.keyCode == 39) {
+            this.nextImage()
+        }
+
+        else if (e.keyCode == 37) {
+            this.previousImage()
         }
     }
 
@@ -44,10 +61,22 @@ class ImageBox extends Component {
     render() {
 
         return(
-            <div className="main-image-box image-box-top-margin">
-                <a className="image-box-arrow" onClick={this.previousImage}><i className="fa fa-3x fa-arrow-circle-left"></i></a>
+            <div className="main-image-box image-box-top-margin"
+                 onKeyDown ={this.handleKeyDown}
+                 tabIndex={0}
+                 ref={this.componentRef}>
+                <span className="main-image-box__images-count">
+                    {this.state.index+1}/{this.state.images.length}
+                </span>
+                <a className="image-box-arrow" 
+                   onClick={this.previousImage}>
+                    <i className="fa fa-3x fa-arrow-circle-left"></i>
+                </a>
                 <img src={this.state.images[this.state.index]}/>
-                <a className="image-box-arrow" onClick={this.nextImage}><i className="fa fa-3x fa-arrow-circle-right"></i></a>
+                <a className="image-box-arrow" 
+                    onClick={this.nextImage}>
+                        <i className="fa fa-3x fa-arrow-circle-right"></i>
+                </a>
                 <a onClick={() => this.props.handleImageBoxClick()}
                     className="fa fa-close fa-2x close-menu-cross">
                 </a>
@@ -59,7 +88,7 @@ class ImageBox extends Component {
 ImageBox.propTypes = {
     imagesInBox: PropTypes.object.isRequired,
     indexInBox: PropTypes.number.isRequired,
-    handleFullResolutionDisplay: PropTypes.func.isRequired,
+    handleImageBoxClick: PropTypes.func.isRequired,
 }
 
 export default ImageBox

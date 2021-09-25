@@ -68,12 +68,12 @@ class ImageBox extends Component {
                 <span className="main-image-box__images-count">
                     {this.state.index+1}/{this.state.images.length}
                 </span>
-                <a className="image-box-arrow" 
+                <a className="image-box-arrow--left image-box-arrow" 
                    onClick={this.previousImage}>
                     <i className="fa fa-3x fa-arrow-circle-left"></i>
                 </a>
                 <img src={this.state.images[this.state.index]}/>
-                <a className="image-box-arrow" 
+                <a className="image-box-arrow  image-box-arrow--right" 
                     onClick={this.nextImage}>
                         <i className="fa fa-3x fa-arrow-circle-right"></i>
                 </a>

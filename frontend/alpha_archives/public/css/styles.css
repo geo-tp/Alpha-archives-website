@@ -61,6 +61,7 @@
 }
 
 .button-home {
+  position: relative;
   margin: 2%;
   background-color: #98ca3e;
   color: white;
@@ -72,11 +73,18 @@
 }
 
 .image-box-arrow {
+  position: absolute;
   color: #98ca3e;
   cursor: pointer;
 }
 .image-box-arrow:hover {
   opacity: 0.8;
+}
+.image-box-arrow--left {
+  left: 2%;
+}
+.image-box-arrow--right {
+  right: 2%;
 }
 
 .page-top-margin {
@@ -253,6 +261,7 @@
   display: flex;
   justify-content: center;
   width: 90%;
+  max-width: 1600px;
   max-height: 815px;
   min-height: 815px;
   position: fixed;

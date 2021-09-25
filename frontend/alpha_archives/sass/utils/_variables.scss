@@ -1,10 +1,12 @@
 
 // RESPONSIVE
 $breakpoints : (
-    mobile: 590px,
-    tablet: 1280px,
+    mobile: 768px,
+    tablet: 991px,
     wide-screen: 1400px,
 );
+
+$max-screen-resolution: 1600px;
 
 // COLOR
 $COLOR-PALETTE :( 

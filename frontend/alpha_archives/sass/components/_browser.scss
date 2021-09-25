@@ -12,6 +12,14 @@
     flex-wrap: wrap;
     padding-top: 2%;
 
+    @include tablet-design {
+       padding-top: 4%
+    }
+
+    @include tablet-design {
+        padding-top: 7%
+     }
+
     &__directory_path {
         position: absolute;
         top: 1%;

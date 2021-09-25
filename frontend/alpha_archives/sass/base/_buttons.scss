@@ -22,6 +22,10 @@
     font-size: 1em;
     cursor: pointer;
 
+    @include mobile-design {
+        height: 100%;
+     }
+
     &:hover {
         opacity: 0.7;
     }
@@ -37,6 +41,11 @@
     height:100px;
     border-radius: 30px;
     font-size: 2em;
+
+    @include mobile-design {
+        font-size: 1em;
+        width: 25%;
+    }
 }
 
 .button-reset {
@@ -45,13 +54,17 @@
     background-color: map-get($COLOR-PALETTE, error);
     color: map-get($COLOR_PALETTE, bg);
     border-radius: 15px;
+
+    @include tablet-design {
+        width: 10%;
+    }
 }
 
 .button-home {
     margin: 2%;
     background-color: map-get($COLOR_PALETTE, font4);
     color: white;
-    width: 400px;
+    width: 350px;
     height:100px;
     border-radius: 30px;
     font-size: 2em;

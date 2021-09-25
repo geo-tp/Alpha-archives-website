@@ -1,4 +1,3 @@
-import './App.css';
 import ImageUpload from "./components/ImageUpload"
 import NavBar from './components/NavBar';
 import {
@@ -16,24 +15,24 @@ import BrowserPage from './containers/BrowsePage';
 function App() {
   return (
     <Router>
-    <div className="App">
-
-      <Switch>
-        <Route path="/upload">
-          <UploadPage/>
-        </Route>
-
-        <Route path="/browse">
-          <BrowserPage/>
-        </Route>
-
-        <Route path={["/home", ""]}>
-          <HomePage/>
-        </Route>
-      </Switch>
-
       <NavBar/>
-    </div>
+      <div className="App">
+
+        <Switch>
+          <Route path="/upload">
+            <UploadPage/>
+          </Route>
+
+          <Route path="/browse">
+            <BrowserPage/>
+          </Route>
+
+          <Route path={["/home", ""]}>
+            <HomePage/>
+          </Route>
+        </Switch>
+
+      </div>
     </Router>
   );
 }

@@ -26,10 +26,20 @@
     }
 
     & img {
-        max-width:100%;
+        max-width:90%;
         max-height: 770px;
         margin: 2%;
 
+        @include tablet-design {
+            max-width: 80%;
+            max-height: 550px;
+        }
+
+        @include mobile-design {
+            max-width: 70%;
+
+            max-height: 350px;
+        }
         // margin: 0 auto;
         // height:50%;
     }

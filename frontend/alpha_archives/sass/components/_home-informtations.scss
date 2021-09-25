@@ -2,13 +2,18 @@
 .main-home-informations {
     width: 50%;
     margin: 0 auto;
-
+    
+    @include tablet-design {
+        width: 90%;
+    }
+    
     &__info-box {
         margin: 40px;
         padding: 5%;
         border-radius: 20px;
         border: 1px solid map-get($COLOR_PALETTE, bg);
         @include small-shadow;
+
 
         & img {
             border-radius: 10px;
@@ -26,5 +31,9 @@
     &__button-box {
         display: flex;
         justify-content: space-evenly;
+
+        @include tablet-design {
+            display:block;
+        }
     }
 }

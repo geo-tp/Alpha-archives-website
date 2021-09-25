@@ -7,7 +7,15 @@
 
     transition-property: transform;
     transition-duration: 200ms;
+
+    @include tablet-design {
+        flex-basis: 40%;
+    }
     
+    @include tablet-design {
+        flex-basis: 90%;
+    }
+
     &:hover {
         transform: scale(1.03);
         opacity: 0.9;

@@ -50,7 +50,7 @@ class Browser extends Component {
         }
 
         let directory  = this.state.actualDirectory
-        if (elements ){
+        if (elements[0]){
             directory.push(elements[0].parent)
         }
 

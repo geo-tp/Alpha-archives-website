@@ -28,6 +28,7 @@ class ImageBox extends Component {
         else if (e.keyCode == 37) {
             this.previousImage()
         }
+
     }
 
     nextImage = () => {

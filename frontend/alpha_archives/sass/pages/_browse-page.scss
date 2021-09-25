@@ -1,0 +1,10 @@
+
+.main-browse-page {
+    @include small-shadow;
+    padding-top:1px;
+    padding-bottom: 1px;
+
+    @include mobile-design {
+        padding-bottom: 3%;
+    }
+}

@@ -24,6 +24,7 @@
 
     @include mobile-design {
         height: 100%;
+        font-size: 0.8em;
      }
 
     &:hover {
@@ -39,7 +40,7 @@
     background-color: map-get($COLOR_PALETTE, success);
     color: map-get($COLOR_PALETTE, bg);
     width: 20%;
-    height:100px;
+    height:80px;
     border-radius: 30px;
     font-size: 2em;
 

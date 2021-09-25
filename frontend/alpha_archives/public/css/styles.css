@@ -23,6 +23,7 @@
 @media screen and (max-width: 768px) {
   .nav-button-base {
     height: 100%;
+    font-size: 0.8em;
   }
 }
 .nav-button-base:hover {
@@ -36,7 +37,7 @@
   background-color: #42be42;
   color: #f0f0f0;
   width: 20%;
-  height: 100px;
+  height: 80px;
   border-radius: 30px;
   font-size: 2em;
 }
@@ -88,11 +89,16 @@
 }
 
 .page-top-margin {
-  margin-top: 130px;
+  margin-top: 110px;
 }
 
 .image-box-top-margin {
-  margin-top: 150px;
+  margin-top: 135px;
+}
+@media screen and (max-width: 768px) {
+  .image-box-top-margin {
+    margin-top: 150px;
+  }
 }
 
 .nav-bar-height {
@@ -172,7 +178,7 @@
   margin: 2%;
   background-color: #f0f0f0;
   width: 80%;
-  height: 300px;
+  height: 290px;
   margin: 0 auto;
   overflow-y: scroll;
 }
@@ -260,10 +266,10 @@
 .main-image-box {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 80%;
   max-width: 1600px;
-  max-height: 815px;
-  min-height: 815px;
+  max-height: 80%;
+  min-height: 80%;
   position: fixed;
   left: 50%;
   top: 40%;
@@ -271,11 +277,13 @@
   z-index: 30;
   background-color: white;
   align-items: center;
+  border: 1px solid lightgrey;
   box-shadow: 0px 10px 20px 5px rgba(58, 58, 58, 0.144);
 }
 @media screen and (max-width: 991px) {
   .main-image-box {
     top: 40%;
+    width: 95%;
   }
 }
 .main-image-box__images-count {
@@ -339,24 +347,25 @@
 .main-browser {
   position: relative;
   display: flex;
-  width: 80%;
-  height: 700px;
+  width: 90%;
+  height: 670px;
   background-color: #f0f0f0;
-  margin: 0 auto;
+  margin: 1% auto;
   align-items: center;
   justify-content: center;
   overflow-y: scroll;
   flex-wrap: wrap;
   padding-top: 2%;
+  margin-bottom: 2%;
 }
 @media screen and (max-width: 991px) {
   .main-browser {
     padding-top: 4%;
   }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .main-browser {
-    padding-top: 7%;
+    padding-top: 8%;
   }
 }
 .main-browser__directory_path {
@@ -397,6 +406,23 @@
 }
 .main-browser-element p {
   margin-top: 0;
+}
+
+.main-browse-page {
+  box-shadow: 0px 10px 20px 5px rgba(58, 58, 58, 0.144);
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+@media screen and (max-width: 768px) {
+  .main-browse-page {
+    padding-bottom: 3%;
+  }
+}
+
+.main-upload-page {
+  box-shadow: 0px 10px 20px 5px rgba(58, 58, 58, 0.144);
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 /*# sourceMappingURL=styles.css.map */

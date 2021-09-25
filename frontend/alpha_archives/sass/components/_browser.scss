@@ -2,22 +2,24 @@
 .main-browser {
     position: relative;
     display: flex;
-    width: 80%;
-    height: 700px;
+    width: 90%;
+    height:670px;
     background-color: map-get($COLOR_PALETTE, bg);
-    margin: 0 auto;
+    margin: 1% auto;
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
     flex-wrap: wrap;
     padding-top: 2%;
+    margin-bottom: 2%;
+  
 
     @include tablet-design {
        padding-top: 4%
     }
 
-    @include tablet-design {
-        padding-top: 7%
+    @include mobile-design {
+        padding-top: 8%;
      }
 
     &__directory_path {

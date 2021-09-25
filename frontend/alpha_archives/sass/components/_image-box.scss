@@ -2,10 +2,10 @@
 .main-image-box {
     display: flex;
     justify-content:center;
-    width:90%;
+    width:80%;
     max-width: $max-screen-resolution;
-    max-height: 815px;
-    min-height: 815px;
+    max-height: 80%;
+    min-height: 80%;
     position: fixed;
     left: 50%;
     top: 40%;
@@ -13,9 +13,11 @@
     z-index: 30;
     background-color: rgb(255, 255, 255);
     align-items: center;
+    border: 1px solid lightgrey;
     
     @include tablet-design {
         top: 40%;
+        width: 95%;
     }
 
     @include small-shadow;

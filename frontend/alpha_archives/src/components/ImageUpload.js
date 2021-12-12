@@ -17,6 +17,7 @@ export default class ImageUpload extends Component {
             indexInBox: null,
             uploaded: false,
             loading: false,
+            loadingCount: 0,
         }
         this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
         this.uploadFiles = this.uploadFiles.bind(this)
@@ -43,10 +44,14 @@ export default class ImageUpload extends Component {
             let fdata = new FormData()
             fdata.append("image", this.fileObj[0][i], this.fileObj[0][i].name)
             responseList.push(await fetchUploadFile(fdata))
+            this.setState({loadingCount: this.state.loadingCount+1})
 
         }
 
-        this.setState({fileResponse:responseList, uploaded:true, loading:false})
+        this.setState({fileResponse:responseList, 
+                      uploaded:true, 
+                      loading:false,
+                      loadingCount: 0})
     }
 
     handleImageBoxClick = () => {
@@ -110,7 +115,7 @@ export default class ImageUpload extends Component {
                 
                 <button className="button-base button-upload" 
                         type="submit">
-                        {this.state.loading ? 'Loading' : 'Upload' }
+                        {this.state.loading ? 'Loading ' + this.state.loadingCount+"/"+this.fileArray.length : 'Upload' }
                 </button>
 
                 <button className="button-base button-reset" 

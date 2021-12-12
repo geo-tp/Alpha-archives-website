@@ -5,12 +5,14 @@
     transition-duration: 200ms;
     cursor: pointer;
     border: 0;
+    
 
     &:hover {
-        transform: scale(1.05);
+        transform: scale(1.01);
         opacity: 0.9;
     }
 }
+
 
 .nav-button-base {
     border: 3px solid map-get($COLOR_PALETTE, font3);
@@ -32,6 +34,8 @@
 
     }
 }
+
+
 
 .button-upload {
     margin: 2%;
@@ -91,3 +95,4 @@
         right: 2%
     }
 }
+

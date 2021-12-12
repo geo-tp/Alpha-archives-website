@@ -4,6 +4,7 @@ import glob
 from PIL import Image
 import imagehash
 from DatabaseManager import DatabaseManager
+from ImageManager import make_thumbnail, save_thumbnail
 import constants
 
 class ParserManager:
@@ -73,11 +74,16 @@ class ParserManager:
                     parent = self.extract_parent_folder_from_path(path)
                     is_file = True
                     image_id = self.DATABASE.get_last_inserted_id()
+                    thumbnail = make_thumbnail(path)
+                    django_path = save_thumbnail(thumbnail)
+                    
+                    print("DJANGO PATH", django_path)
 
                     #Element (only files, not dir)
-                    self.save_element(filename, path, parent, is_file, image_id)
-
+                    self.save_element(filename, django_path, parent, is_file, image_id)
+                
                 except OSError:
+                    print("IN ERROR OSERROR")
                     pass
 
                 count +=1

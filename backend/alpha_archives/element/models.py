@@ -9,7 +9,7 @@ class Hash_Image(models.Model):
 
 class Element(models.Model):
     name = models.CharField(max_length=300)
-    path = models.CharField(max_length=500)
+    thumbnail_path = models.ImageField()
     parent = models.CharField(max_length=300)
     is_file = models.BooleanField()
     image = models.ForeignKey(Hash_Image, on_delete=models.CASCADE, null=True, blank=True)

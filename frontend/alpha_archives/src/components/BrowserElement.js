@@ -17,7 +17,7 @@ class BrowseElement extends Component {
     }
 
     determinateIconToUse(element) {
-        console.log(this.props.element.is_file)
+        console.log(this.props.element)
         if (!this.props.element.is_file) {
             return folder
         }
@@ -27,9 +27,9 @@ class BrowseElement extends Component {
 
         switch (ext) {
             case "gif":
-                return gif
+                return element.thumbnail_path
             case "jpg":
-                return jpg
+                return element.thumbnail_path
             case "png":
                 return png
             default:

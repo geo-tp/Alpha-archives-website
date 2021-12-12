@@ -2,10 +2,12 @@
 .main-image-box {
     display: flex;
     justify-content:center;
-    width:80%;
+    width:90%;
     max-width: $max-screen-resolution;
-    max-height: 80%;
+    margin-top: 11vh;
+    // max-height: 80%;
     min-height: 80%;
+    height: 82vh;
     position: fixed;
     left: 50%;
     top: 40%;
@@ -13,7 +15,7 @@
     z-index: 30;
     background-color: rgb(255, 255, 255);
     align-items: center;
-    border: 1px solid lightgrey;
+    border: 1px solid map-get($COLOR-PALETTE, font3);
     
     @include tablet-design {
         top: 40%;
@@ -25,12 +27,13 @@
     &__images-count {
         position: absolute;
         background-color: map-get($COLOR_PALETTE, font3);
-        top:0%;
+        top:1%;
+        border-radius: 5px;
     }
 
     & img {
         max-width:90%;
-        max-height: 770px;
+        max-height: 80vh;
         margin: 2%;
 
         @include tablet-design {

@@ -1,9 +1,12 @@
 
 .main-browse-page {
-    @include small-shadow;
-    padding-top:1px;
-    padding-bottom: 1px;
+    // padding-top:1%;
+    // padding-bottom: 1px;
+    // height: 8vh;
+    width:98%;
 
+
+    @include small-shadow;
     @include mobile-design {
         padding-bottom: 3%;
     }

@@ -76,22 +76,27 @@ class Browser extends Component {
 
     render() {
         return(
-            <div className="main-browser">
-                <span className="main-browser__directory_path"
+            <div className="main-browse-page page-top-margin">
+                <div className="main-browser__directory-path"
                       onClick={this.goBackDirectory}>
-                    <i className="fa fa-2x fa-arrow-left"></i>
-                    {this.state.actualDirectory.join("/")}</span>
-                {this.state.displayImageBox && 
-                    <ImageBox imagesInBox={this.state.elementsImages}
-                              indexInBox={this.state.indexInView}
-                              handleImageBoxClick={this.handleImageBoxClick}
-                              autofocus={true}/>}
+                    <button><i className="fa fa-2x fa-arrow-left"></i></button>
+                    <button><i className="fa fa-2x fa-home"></i></button>
+                    <span>{this.state.actualDirectory.join("/")}</span>
+                </div>
+                <div className="main-browser">
+                    {this.state.displayImageBox && 
+                        <ImageBox imagesInBox={this.state.elementsImages}
+                                indexInBox={this.state.indexInView}
+                                handleImageBoxClick={this.handleImageBoxClick}
+                                autofocus={true}/>}
 
-                {this.state.elements && this.state.elements.map(element => {
-                    return <BrowseElement element={element}
-                                          handleFolderClick={this.handleFolderClick}
-                                          handleFileClick={this.handleFileClick}/>
-                })}
+                    {this.state.elements && this.state.elements.map(element => {
+                        return <BrowseElement element={element}
+                                            handleFolderClick={this.handleFolderClick}
+                                            handleFileClick={this.handleFileClick}/>
+                    })}
+                    {!this.state.elements == null && <p>No elements</p>}
+                </div>
             </div>
         )
     }

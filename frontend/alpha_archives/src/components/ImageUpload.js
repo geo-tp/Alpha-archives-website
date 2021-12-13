@@ -114,7 +114,7 @@ export default class ImageUpload extends Component {
                 }
                 
                 <button className="button-base button-upload" 
-                        type="submit">
+                        type="submit" disabled={this.fileArray.length ? false : true}>
                         {this.state.loading ? 'Loading ' + this.state.loadingCount+"/"+this.fileArray.length : 'Upload' }
                 </button>
 

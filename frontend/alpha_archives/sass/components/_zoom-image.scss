@@ -1,0 +1,24 @@
+
+ .zoom {
+    background-color: map-get($COLOR_PALETTE, font4 );
+    color: white;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 40px;
+    width:3%;
+    &:hover {
+        opacity: 0.6;
+    }
+
+    &--in {
+        top: 0.5%;
+        left:5%;
+    } 
+
+    &--out {
+        top: 0.5%;
+        left:1%;
+    }
+ }
+ 

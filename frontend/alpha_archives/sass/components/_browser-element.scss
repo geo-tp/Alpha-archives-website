@@ -6,13 +6,16 @@
     flex-basis: 20%;
     transition-property: transform;
     transition-duration: 200ms;
+    max-width: 20%;;
 
     @include tablet-design {
         flex-basis: 20%;
     }
     
     @include mobile-design {
-        flex-basis: 40%;
+        flex-basis: 80%;
+        max-width: 80%;;
+
     }
 
     &:hover {
@@ -22,5 +25,6 @@
 
     & p {
         margin-top: 0;
+        overflow: hidden;
     }
 }

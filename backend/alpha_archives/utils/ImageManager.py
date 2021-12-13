@@ -6,67 +6,93 @@ from django.http import HttpResponse
 import sys
 from constants import THUMBNAIL_PATH, THUMBNAIL_FOLDER, THUMBNAIL_WIDTH
 from random import choice
+from shutil import rmtree
+from os import mkdir
 
-ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-salt_list = []
+class ImageManager:
 
-def make_thumbnail(image):
-    """Makes thumbnails of given size from given image"""
-    
-    ext = image.split(".")[-1].upper()
+    counter = 1
 
-    im = Image.open(image)
 
-    width, height = im.size
+    @classmethod
+    def make_thumbnail(cls, image) -> object:
+        """Makes thumbnails of given size from given image"""
+        
+        ext = image.split(".")[-1].upper()
 
-    w_ratio = width / THUMBNAIL_WIDTH
-    h_ratio = height / THUMBNAIL_WIDTH
+        im = Image.open(image)
 
-    final_height = int(THUMBNAIL_WIDTH*h_ratio/w_ratio)
+        width, height = im.size
 
-    if ext in ["JPG", "JPEG"]:
-        im.convert("RGB")
-        ext = "JPEG"
+        w_ratio = width / THUMBNAIL_WIDTH
+        h_ratio = height / THUMBNAIL_WIDTH
 
-    im.thumbnail((THUMBNAIL_WIDTH, final_height)) # resize image
+        final_height = int(THUMBNAIL_WIDTH*h_ratio/w_ratio)
 
-    thumb_io = BytesIO() # create a BytesIO object
+        if ext in ["JPG", "JPEG"]:
+            im.convert("RGB")
+            ext = "JPEG"
 
-    im.save(thumb_io, ext, quality=75, optimize=True) # save image to BytesIO object
+        im.thumbnail((THUMBNAIL_WIDTH, final_height)) # resize image
 
-    # thumbnail = File(thumb_io, name=im.name) # create a django friendly File object
+        thumb_io = BytesIO() # create a BytesIO object
 
-    return im
+        im.save(thumb_io, ext, quality=75, optimize=True) # save image to BytesIO object
 
-def open_image(path):
-    img = Image.open(path) 
+        # thumbnail = File(thumb_io, name=im.name) # create a django friendly File object
 
-    return img
+        return im
 
-def get_salt():
-    
-    while 1:
-        salt = ''
-        for i in range(16):
-            salt += choice(ALPHABET)
-        if salt not in salt_list:
-            salt_list.append(salt)
-            break
+    @classmethod
+    def open_image(cls, path) -> object:
+        img = Image.open(path) 
 
-    return salt
+        return img
 
-def get_image_name(path):
-    return path.split('/')[-1]
+    # @classmethod
+    # def get_salt(cls):
+        
+    #     while 1:
+    #         salt = ''
+    #         for i in range(16):
+    #             salt += choice(cls.ALPHABET)
+    #         if salt not in salt_list:
+    #             salt_list.append(salt)
+    #             break
 
-def get_image_ext(filename):
-    return "."+filename.split(".")[-1]
+    #     return salt
 
-def save_thumbnail(thumbnail):
-    salt = get_salt()
-    image_name = get_image_name(thumbnail.filename)
-    ext = get_image_ext(image_name)
-    path = THUMBNAIL_PATH+salt+ext
-    django_path = THUMBNAIL_FOLDER+salt+ext
-    thumbnail.save(path)
+    @classmethod
+    def get_image_name(cls, path) -> str:
+        return path.split('/')[-1]
 
-    return django_path 
+    @classmethod
+    def get_image_ext(cls, filename) -> str:
+        return "."+filename.split(".")[-1]
+
+
+    @classmethod
+    def save_thumbnail(cls, thumbnail) -> str:
+        number = str(cls.counter)
+        image_name = cls.get_image_name(thumbnail.filename)
+        ext = cls.get_image_ext(image_name)
+        path = THUMBNAIL_PATH+number+ext
+        django_path = THUMBNAIL_FOLDER+number+ext
+        thumbnail.save(path)
+
+        cls.counter +=1
+
+        return django_path 
+
+    @classmethod
+    def delete_all_thumbnail_files(cls) -> None:
+        try:
+            rmtree(THUMBNAIL_PATH)
+        except FileNotFoundError:
+            pass
+        
+        mkdir(THUMBNAIL_PATH)
+
+# if __name__ == "__main__":
+
+#     delete_all_thumbnail_files()

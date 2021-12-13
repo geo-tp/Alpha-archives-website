@@ -6,6 +6,7 @@
 @import "./base/positionning.scss";
 @import "./base/titles";
 
+@import "./base/container";
 @import "./components/app";
 @import "./components/nav-bar";
 @import "./components/close-menu-cross";
@@ -14,6 +15,8 @@
 @import "./components/home-informtations";
 @import "./components/browser";
 @import "./components/browser-element";
+@import "./components/loading";
+@import "./components/zoom-image";
 
 
 @import "./pages/browse-page";

@@ -1,0 +1,25 @@
+.main-container {
+    @include small-shadow;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    padding-top:1px;
+    padding-bottom: 1px;
+    height:89vh;
+    width: 95%;
+    // height: 88vh;
+    position: fixed;
+    left: 50%;
+    top: 41%;
+    max-width: $max-screen-resolution;
+    transform: translate(-50%, -50%);
+
+    @include tablet-design {
+        width: 95%;
+    }
+}
+
+.sub-container {
+    // display: block;
+    width: 100%;
+}

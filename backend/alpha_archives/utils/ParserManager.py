@@ -4,8 +4,9 @@ import glob
 from PIL import Image
 import imagehash
 from DatabaseManager import DatabaseManager
-from ImageManager import make_thumbnail, save_thumbnail
+from ImageManager import ImageManager
 import constants
+
 
 class ParserManager:
 
@@ -31,6 +32,9 @@ class ParserManager:
 
     def extract_parent_folder_from_path(self, path):
         return path.split("/")[-2]
+
+    def replace_white_space(self, filename):
+        return filename.replace(" ", "_")
 
     def find_all_directories(self, path):
         
@@ -59,6 +63,11 @@ class ParserManager:
 
 
     def build_archives_database(self):
+
+        self.DATABASE.remove_table_rows(constants.ELEMENT_TABLE_NAME)
+        self.DATABASE.remove_table_rows(constants.HASH_IMAGE_TABLE_NAME)
+        ImageManager.delete_all_thumbnail_files()
+
         parents_and_directories = self.find_all_directories(constants.FULL_PATH)
         items_count = self.count_elements() + len(parents_and_directories)
         count = 0
@@ -74,8 +83,8 @@ class ParserManager:
                     parent = self.extract_parent_folder_from_path(path)
                     is_file = True
                     image_id = self.DATABASE.get_last_inserted_id()
-                    thumbnail = make_thumbnail(path)
-                    django_path = save_thumbnail(thumbnail)
+                    thumbnail = ImageManager.make_thumbnail(path)
+                    django_path = ImageManager.save_thumbnail(thumbnail)
                     
                     print("DJANGO PATH", django_path)
 
@@ -92,7 +101,8 @@ class ParserManager:
         # CREATE ELEMENT DIRECTORIES
         for parent_and_directory in parents_and_directories:
             name = parent_and_directory[0]
-            path = self.truncate_path(parent_and_directory[1])
+            # path = self.truncate_path(parent_and_directory[1])
+            path = self.truncate_path(constants.ICONS_PATH)
             parent = parent_and_directory[2]
 
             self.save_element(name, path, parent, 0)

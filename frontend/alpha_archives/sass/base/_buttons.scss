@@ -25,8 +25,8 @@
     cursor: pointer;
 
     @include mobile-design {
-        height: 100%;
-        font-size: 0.8em;
+        // height: 100%;
+        font-size: 0.7em;
      }
 
     &:hover {
@@ -51,6 +51,8 @@
     @include mobile-design {
         font-size: 1em;
         width: 25%;
+        height:50px;
+
     }
 }
 
@@ -62,7 +64,9 @@
     border-radius: 15px;
 
     @include tablet-design {
-        width: 10%;
+        width: 15%;
+        height:35px;
+
     }
 }
 
@@ -76,6 +80,19 @@
     border-radius: 30px;
     font-size: 2em;
     border: 0;
+
+    @include mobile-design {
+        height: 4vh;
+        font-size: 1em;
+    }
+}
+
+.button-browser {
+    width: 4%;
+
+    @include mobile-design{
+        width: 10%;   
+    }
 }
 
 .image-box-arrow {
@@ -88,11 +105,12 @@
     }
 
     &--left {
-        left: 2%
+        left: 1%
     }
 
     &--right {
-        right: 2%
+        right: 1%
     }
 }
+
 

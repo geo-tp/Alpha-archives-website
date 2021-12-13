@@ -27,11 +27,12 @@ class BrowseElement extends Component {
 
         switch (ext) {
             case "gif":
-                return element.thumbnail_path
             case "jpg":
-                return element.thumbnail_path
             case "png":
-                return png
+            case "bmp":
+            case "jpeg":
+                return element.thumbnail_path
+
             default:
                 return divers
         }

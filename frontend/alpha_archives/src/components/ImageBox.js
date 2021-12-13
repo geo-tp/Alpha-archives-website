@@ -9,7 +9,9 @@ class ImageBox extends Component {
         this.state = {
             images: props.imagesInBox,
             index: props.indexInBox,
-            inView: props.imagesInBox[props.index]
+            inView: props.imagesInBox[props.index],
+
+            imageScale: null,
         }
         this.componentRef = React.createRef()
 
@@ -59,8 +61,24 @@ class ImageBox extends Component {
 
     }
 
-    render() {
+    zoomOut = () => {
+        // if (this.state.imageScale > 20) {
+            console.log(this.state.imageScale)
+            this.setState({imageScale: null})
+        // }
+    }
 
+
+    zoomIn = () => {
+        if (this.state.imageScale < 100) {
+            console.log(this.state.imageScale)
+
+            this.setState({imageScale:this.state.imageScale+100})
+        }
+    }
+
+    render() {
+        console.log(this.state.imageScale)
         return(
             <div className="main-image-box image-box-top-margin"
                  onKeyDown ={this.handleKeyDown}
@@ -73,7 +91,18 @@ class ImageBox extends Component {
                    onClick={this.previousImage}>
                     <i className="fa fa-3x fa-arrow-circle-left"></i>
                 </a>
-                <img src={this.state.images[this.state.index]}/>
+                <div className="main-image-box__image-container">
+                    <img src={this.state.images[this.state.index]}
+                        style={this.state.imageScale ? {width: `${this.state.imageScale}%`} : null}/>
+                </div>
+                <button className="zoom zoom--out" 
+                    onClick={this.zoomOut}>
+                        <i className="fa fa-2x fa-search-minus"></i>
+                </button>
+                <button className="zoom zoom--in" 
+                    onClick={this.zoomIn}>
+                        <i className="fa fa-2x fa-search-plus"></i>
+                </button>
                 <a className="image-box-arrow  image-box-arrow--right" 
                     onClick={this.nextImage}>
                         <i className="fa fa-3x fa-arrow-circle-right"></i>
@@ -81,6 +110,7 @@ class ImageBox extends Component {
                 <a onClick={() => this.props.handleImageBoxClick()}
                     className="fa fa-close fa-2x close-menu-cross">
                 </a>
+                <p className="main-image-box__filename"><strong>{this.props.imagesName[this.state.index].name}</strong></p>
             </div>
         )
     }

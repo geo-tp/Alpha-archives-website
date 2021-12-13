@@ -1,18 +1,18 @@
 
 .page-top-margin {
     margin: 0 auto;
-    margin-top: 10vh;
+    margin-top: 12vh;
 
 }
 
 .image-box-top-margin {
-    margin-top: 135px;
+    // margin-top: 12vh;
 
-    @include mobile-design {
-        margin-top: 150px;
+    @include tablet-design {
+        margin-top: 12vh;
     }
 }
 
 .nav-bar-height {
-    height: 70px;
+    height: 10vh;
 }

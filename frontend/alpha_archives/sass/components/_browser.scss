@@ -3,13 +3,14 @@
     position: relative;
     display: flex;
     // width: 90%;
-    height:73vh;
+    height:81vh;
     background-color:  rgba(226, 226, 226, 0.363);
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
     flex-wrap: wrap;
+    border: 1px solid rgba(211, 211, 211, 0.637);
     // padding-top: 2%;
     // margin-bottom: 2%;
  
@@ -22,6 +23,7 @@
         // padding: 1%;
         // width:90%;
         border-radius: 7px 7px 0px 0px;
+        border: 2px solid rgba(211, 211, 211, 0.637);
         margin: 0 auto;
         
         & button {

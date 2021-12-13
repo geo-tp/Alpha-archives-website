@@ -44,7 +44,7 @@ class NavBar extends Component {
                     </NavLink>
 
                     <NavLink className="no-underline" to="/browse/">
-                        <button className="nav-button-base">Browse Archive</button>
+                        <button className="nav-button-base">Browse</button>
                     </NavLink>
                 </div>
                 

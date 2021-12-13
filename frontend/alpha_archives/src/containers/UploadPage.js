@@ -6,11 +6,12 @@ class UploadPage extends Component {
 
     render() {
         return(
-            <div className="page-top-margin main-upload-page">
-                <h3 className="page-title">Upload Screenshots</h3>
-                <UploadDescription/>
-                <ImageUpload/>
-
+            <div className="page-top-margin main-container">
+                <div className="sub-container">
+                    <h3 className="page-title">Upload Screenshots</h3>
+                    <UploadDescription/>
+                    <ImageUpload/>
+                </div>
             </div>
         )
     }

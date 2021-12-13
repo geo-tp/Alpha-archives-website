@@ -23,10 +23,40 @@ export default class ImageUpload extends Component {
         this.uploadFiles = this.uploadFiles.bind(this)
     }
 
+    fileIsAlreadyIn(file1, file2) {
+
+        if (file1.name == file2.name && 
+            file1.size == file2.size) {
+            return true
+        }
+
+        return false
+    }
+
+    addFileIfNotAlreadyIn(file) {
+        for (let f of this.fileObj) {
+            if (this.fileIsAlreadyIn(file, f)) {
+                return
+            }
+        }
+
+        this.fileObj.push(file)
+    }
+
     uploadMultipleFiles(e) {
-        this.fileObj.push(e.target.files)
-        for (let i = 0; i < this.fileObj[0].length; i++) {
-            this.fileArray.push(URL.createObjectURL(this.fileObj[0][i]))
+        console.log("target", e.target.files)
+
+        for (let newFile of e.target.files) {
+            this.addFileIfNotAlreadyIn(newFile)
+        }
+        
+        console.log("fileObj", this.fileObj)
+        this.fileArray = []
+        for (let i = 0; i < this.fileObj.length; i++) {
+            let url = URL.createObjectURL(this.fileObj[i])
+            console.log(url)
+            this.fileArray.push(url)
+            
         }
         this.setState({ files: this.fileArray, fileResponse:[], uploaded: false })
     }
@@ -40,9 +70,9 @@ export default class ImageUpload extends Component {
         }
 
         let responseList = []
-        for (let i=0 ; i<this.fileObj[0].length ; i++ ) {
+        for (let i=0 ; i<this.fileObj.length ; i++ ) {
             let fdata = new FormData()
-            fdata.append("image", this.fileObj[0][i], this.fileObj[0][i].name)
+            fdata.append("image", this.fileObj[i], this.fileObj[i].name)
             responseList.push(await fetchUploadFile(fdata))
             this.setState({loadingCount: this.state.loadingCount+1})
 
@@ -70,6 +100,7 @@ export default class ImageUpload extends Component {
             <form className="main-image-upload"
                   onSubmit={e=> this.uploadFiles(e)}>
                 {this.state.displayImageBox && <ImageBox imagesInBox={this.fileArray}
+                                                         imagesName={this.fileObj}
                                                          indexInBox={this.state.indexInBox}
                                                          handleImageBoxClick={this.handleImageBoxClick}
                                                          />} 

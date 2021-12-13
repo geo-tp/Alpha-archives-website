@@ -129,9 +129,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 1px;
   padding-bottom: 1px;
-  height: 89vh;
+  height: 87vh;
   width: 95%;
   position: fixed;
   left: 50%;
@@ -334,6 +333,7 @@
   top: 1%;
   border-radius: 5px;
   z-index: 10;
+  padding: 2px;
 }
 .main-image-box__filename {
   position: fixed;
@@ -348,6 +348,7 @@
 }
 .main-image-box__image-container img {
   object-fit: contain;
+  max-width: 100%;
   max-height: 100%;
   transition: transform 0.5s;
   z-index: 0;
@@ -403,7 +404,7 @@
 .main-browser {
   position: relative;
   display: flex;
-  height: 81vh;
+  height: 80vh;
   background-color: rgba(226, 226, 226, 0.363);
   margin: 0 auto;
   align-items: center;
@@ -524,20 +525,30 @@
   color: white;
   position: absolute;
   cursor: pointer;
-  border-radius: 10px;
-  height: 40px;
+  border-radius: 5px;
+  height: 35px;
   width: 3%;
+}
+@media screen and (max-width: 991px) {
+  .zoom {
+    width: 10%;
+  }
 }
 .zoom:hover {
   opacity: 0.6;
 }
 .zoom--in {
-  top: 0.5%;
-  left: 5%;
+  top: 1%;
+  left: 7%;
+}
+@media screen and (max-width: 991px) {
+  .zoom--in {
+    left: 15%;
+  }
 }
 .zoom--out {
-  top: 0.5%;
-  left: 1%;
+  top: 1%;
+  left: 2%;
 }
 
 .main-browse-page {

@@ -4,21 +4,29 @@
     color: white;
     position: absolute;
     cursor: pointer;
-    border-radius: 10px;
-    height: 40px;
+    border-radius: 5px;
+    height: 35px;
     width:3%;
+
+    @include tablet-design {
+        width:10%;
+    }
+
     &:hover {
         opacity: 0.6;
     }
 
     &--in {
-        top: 0.5%;
-        left:5%;
+        top: 1%;
+        left:7%;
+        @include tablet-design {
+            left:15%;
+        }
     } 
 
     &--out {
-        top: 0.5%;
-        left:1%;
+        top: 1%;
+        left:2%;
     }
  }
  

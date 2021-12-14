@@ -1,31 +1,45 @@
 
  .zoom {
-    background-color: map-get($COLOR_PALETTE, font4 );
-    color: white;
-    position: absolute;
-    cursor: pointer;
-    border-radius: 5px;
-    height: 35px;
-    width:3%;
+     background-color: map-get($COLOR_PALETTE, font4 );
+     color: white;
+     position: absolute;
+     cursor: pointer;
+     border-radius: 5px;
+     height: 31px;
+    font-weight: bold;
+    width:10%;
+    opacity: 1;
 
     @include tablet-design {
-        width:10%;
+        width:20%;
+    }
+
+    @include mobile-design {
+        display:none;
     }
 
     &:hover {
         opacity: 0.6;
     }
+    
+    &:disabled {
+        background-color: map-get($COLOR_PALETTE, font3 );
+        opacity: 1;
+        cursor: default;
+
+
+    }
 
     &--in {
-        top: 1%;
-        left:7%;
+        top: 0.7%;
+        left: 15%;
         @include tablet-design {
-            left:15%;
+            left: 24%;
         }
     } 
 
     &--out {
-        top: 1%;
+        top: 0.7%;
         left:2%;
     }
  }

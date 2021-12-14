@@ -11,6 +11,7 @@ from django.core.exceptions import MultipleObjectsReturned
 import imagehash
 from PIL import Image as Img
 import django_filters
+from security.utils import is_hdd_full
 
 
 
@@ -24,7 +25,7 @@ class ImageViewSet(viewsets.ModelViewSet):
         return imagehash.average_hash(Img.open(image_path))
 
     def create(self, request):
-        
+
         image = copy.deepcopy(request.data["image"])
         image_hash = self.generate_image_hash(image)
 
@@ -55,3 +56,11 @@ class ElementViewSet(viewsets.ModelViewSet):
 
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ["parent", "image", "name"]
+
+    def create(self, request):
+
+        if is_hdd_full():
+            return Response({"error":"HDD is full"}, 
+                   status=status.HTTP_403_FORBIDDEN)
+        
+        return super().create(request)

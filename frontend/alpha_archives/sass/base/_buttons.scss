@@ -75,15 +75,14 @@
     margin: 2%;
     background-color: map-get($COLOR_PALETTE, font4);
     color: white;
-    width: 350px;
-    height:100px;
+    width: 300px;
+    height:80px;
     border-radius: 30px;
-    font-size: 2em;
+    font-size: 1.5EM;
     border: 0;
 
-    @include mobile-design {
-        height: 4vh;
-        font-size: 1em;
+    @include tablet-design {
+        display:none;
     }
 }
 

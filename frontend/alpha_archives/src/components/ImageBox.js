@@ -11,7 +11,8 @@ class ImageBox extends Component {
             index: props.indexInBox,
             inView: props.imagesInBox[props.index],
 
-            imageScale: null,
+            imageScale: 100,
+            stretched: true,
         }
         this.componentRef = React.createRef()
 
@@ -62,10 +63,11 @@ class ImageBox extends Component {
     }
 
     zoomOut = () => {
-        // if (this.state.imageScale > 20) {
-            console.log(this.state.imageScale)
-            this.setState({imageScale: null})
-        // }
+        console.log(this.state.imageScale)
+        this.setState({imageScale: null,
+            stretched: false})
+        this.componentRef.current.focus()
+
     }
 
 
@@ -73,8 +75,11 @@ class ImageBox extends Component {
         if (this.state.imageScale < 100) {
             console.log(this.state.imageScale)
 
-            this.setState({imageScale:this.state.imageScale+100})
+            this.setState({imageScale:this.state.imageScale+100,
+                           stretched: true})
         }
+        this.componentRef.current.focus()
+
     }
 
     render() {
@@ -96,12 +101,16 @@ class ImageBox extends Component {
                         style={this.state.imageScale ? {width: `${this.state.imageScale}%`} : null}/>
                 </div>
                 <button className="zoom zoom--out" 
-                    onClick={this.zoomOut}>
-                        <i className="fa fa-2x fa-search-minus"></i>
+                    onClick={this.zoomOut}
+                    disabled={!this.state.stretched}>
+                        <i className="fa fa-1x fa-search-minus"></i>
+                        Original
                 </button>
                 <button className="zoom zoom--in" 
-                    onClick={this.zoomIn}>
-                        <i className="fa fa-2x fa-search-plus"></i>
+                    onClick={this.zoomIn}
+                    disabled={this.state.stretched}>
+                        <i className="fa fa-1x fa-search-plus"></i>
+                        Stretch
                 </button>
                 <a className="image-box-arrow  image-box-arrow--right" 
                     onClick={this.nextImage}>

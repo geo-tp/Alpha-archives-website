@@ -67,16 +67,15 @@
   margin: 2%;
   background-color: #98ca3e;
   color: white;
-  width: 350px;
-  height: 100px;
+  width: 300px;
+  height: 80px;
   border-radius: 30px;
-  font-size: 2em;
+  font-size: 1.5EM;
   border: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   .button-home {
-    height: 4vh;
-    font-size: 1em;
+    display: none;
   }
 }
 
@@ -146,6 +145,77 @@
 
 .sub-container {
   width: 100%;
+}
+
+.modal-container {
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #fffdfd;
+  /* Black w/ opacity */
+  opacity: 0.9;
+}
+
+.popup-container {
+  position: fixed;
+  /* Stay in place */
+  z-index: 1000;
+  /* Sit on top */
+  left: 50%;
+  top: 50%;
+  width: 60%;
+  /* Full width */
+  height: 45%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: white;
+  /* Black w/ opacity */
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  border: 7px solid #c53333;
+  box-shadow: 5px 5px 15px 5px black;
+}
+.popup-container div {
+  display: relative;
+  position: fixed;
+  /* Stay in place */
+  z-index: 1000;
+  /* Sit on top */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 95%;
+}
+.popup-container div i {
+  padding: 4%;
+  color: #c53333;
+}
+.popup-container div p {
+  padding-left: 1%;
+  padding-right: 1%;
+  font-size: 1.5em;
+}
+@media screen and (max-width: 991px) {
+  .popup-container div p {
+    font-size: 1.2em;
+  }
+}
+.popup-container div p:first-child {
+  color: #c53333;
 }
 
 .App {
@@ -526,28 +596,40 @@
   position: absolute;
   cursor: pointer;
   border-radius: 5px;
-  height: 35px;
-  width: 3%;
+  height: 31px;
+  font-weight: bold;
+  width: 10%;
+  opacity: 1;
 }
 @media screen and (max-width: 991px) {
   .zoom {
-    width: 10%;
+    width: 20%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .zoom {
+    display: none;
   }
 }
 .zoom:hover {
   opacity: 0.6;
 }
+.zoom:disabled {
+  background-color: #ffc231;
+  opacity: 1;
+  cursor: default;
+}
 .zoom--in {
-  top: 1%;
-  left: 7%;
+  top: 0.7%;
+  left: 15%;
 }
 @media screen and (max-width: 991px) {
   .zoom--in {
-    left: 15%;
+    left: 24%;
   }
 }
 .zoom--out {
-  top: 1%;
+  top: 0.7%;
   left: 2%;
 }
 

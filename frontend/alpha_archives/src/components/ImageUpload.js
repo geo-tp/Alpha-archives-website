@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { fetchUploadFile } from '../fetch/UploadFiles';
 import ImageBox from './ImageBox';
+import {ACCEPTED_MIME_TYPES} from './../utils/mimeTypes'
+import { UploadStatus } from '../fetch/UploadStatus';
+import { ENABLE_UPLOAD } from '../utils/constants';
 
 export default class ImageUpload extends Component {
 
@@ -9,6 +12,7 @@ export default class ImageUpload extends Component {
 
     constructor(props) {
         super(props)
+
         this.state = {
             files: [null],
             fileResponse: [],
@@ -18,15 +22,29 @@ export default class ImageUpload extends Component {
             uploaded: false,
             loading: false,
             loadingCount: 0,
+            uploadStatus: ENABLE_UPLOAD,
         }
+
         this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
         this.uploadFiles = this.uploadFiles.bind(this)
+    }
+    
+    componentDidMount() {
+        this.uploadStatus()
     }
 
     fileIsAlreadyIn(file1, file2) {
 
         if (file1.name == file2.name && 
             file1.size == file2.size) {
+            return true
+        }
+
+        return false
+    }
+
+    mimeTypeIsValid(file) {
+        if (ACCEPTED_MIME_TYPES.includes(file.type)) {
             return true
         }
 
@@ -40,13 +58,20 @@ export default class ImageUpload extends Component {
             }
         }
 
-        this.fileObj.push(file)
+        if (this.mimeTypeIsValid(file)) {
+            this.fileObj.push(file)
+        }
+
     }
 
     uploadMultipleFiles(e) {
         console.log("target", e.target.files)
 
+        
         for (let newFile of e.target.files) {
+            if (this.fileObj.length >= 200) {
+                break;
+            }
             this.addFileIfNotAlreadyIn(newFile)
         }
         
@@ -61,8 +86,19 @@ export default class ImageUpload extends Component {
         this.setState({ files: this.fileArray, fileResponse:[], uploaded: false })
     }
 
+    async uploadStatus() {
+
+        let uploadStatus = await UploadStatus()
+            
+        if (uploadStatus.hasOwnProperty("error")) {
+            this.setState({uploadStatus:false})
+        }
+    }
+
     async uploadFiles(e) {
         e.preventDefault()
+
+        await this.uploadStatus()
 
         this.setState({loading: true})
         if (!this.fileObj.length) {
@@ -107,19 +143,19 @@ export default class ImageUpload extends Component {
                 <div className="main-image-upload__form-group">
                     <label for="file-upload">
                         <i className="fa fa-2x fa-download"></i>
-                        Drop files or Click to open explorer
+                        Drop files or Click to open explorer (up to 200 images)
                     </label>
                     <input id="file-upload" 
                            type="file" 
                            className="main-image-upload__form-group__form-control" 
                            onChange={this.uploadMultipleFiles} 
-                           accept=".jpg, .gif, .png"
+                           accept=".jpg, .gif, .png, .bmp"
                            multiple
                     />
                 </div>
 
                 <div className="main-image-upload__previews">
-                    <label className="main-image-upload__previews__title">Previews</label>
+                    <label className="main-image-upload__previews__title">Previews ({this.fileObj.length} images)</label>
                     <div className="main-image-upload__previews__box">
                         {(this.fileArray || []).map((url, index) => (
                             <div className="main-image-upload__previews__box__element">
@@ -154,6 +190,20 @@ export default class ImageUpload extends Component {
                         onClick={() => this.handleReset()}>
                         Reset
                 </button>
+
+                {!this.state.uploadStatus && 
+                    <div className="modal-container">
+                        <div className="popup-container">
+                            <div>
+                                    <h2>NOT AVAILABLE</h2>
+                                    <p><strong>Not enough space, you can't upload now</strong></p>
+                                    <i className="fa fa-5x fa-hdd-o"></i>
+                                    <p>All requests will be rejected</p>
+                                    <p><strong>Please try later</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                }
                     
             </form >
         )

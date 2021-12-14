@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-VALID_EXT = ["jpg", 'gif', "png" "jpeg", "bmp"]
+VALID_EXT = ["jpg", 'gif', "png" "jpeg", "bmp", "JPG", 'GIF', "PNG" "JPEG", "BMP"]
 THUMBNAIL_WIDTH = 80
 MEDIA_FOLDER = "/media"
 THUMBNAIL_FOLDER = "/thumbnail/"

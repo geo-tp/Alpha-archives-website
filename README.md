@@ -1,3 +1,21 @@
+INFORMATIONS
+-----------
+
+Website to browse and upload screenshots for Alpha Project.
+
+- Backend folder contains Django Rest API and scripts
+    - alpha-archives -> Main Django Project
+    - automated_update -> Script to automate git update and rebuild DB
+    - database_builder -> Script to build elements and create thumbnail from Alpha Project Archives
+    - element -> Django App
+    - media -> contains Alpha Project Archives, thumbnail and uploaded images
+    - security -> Django App
+
+- Frontend folder containes React App
+
+INSTALLATION
+------------
+
 BACKEND
 -------
 

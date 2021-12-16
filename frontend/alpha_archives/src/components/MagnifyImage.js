@@ -6,7 +6,7 @@ function MagnifyImage({
   height,
   magnifierHeight = 250,
   magnifieWidth = 400,
-  zoomLevel = 4.5
+  zoomLevel = 3
 }){
   const [[x, y], setXY] = useState([0, 0]);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
@@ -49,6 +49,7 @@ function MagnifyImage({
         style={{
           display: showMagnifier ? "" : "none",
           position: "absolute",
+          zIndex: 1000,
 
           // prevent maginier blocks the mousemove event of img
           pointerEvents: "none",

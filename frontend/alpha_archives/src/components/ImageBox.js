@@ -66,7 +66,7 @@ class ImageBox extends Component {
 
     zoomOut = () => {
         this.setState({imageScale: null,
-            stretched: false})
+            stretched: false, magnify:false})
         this.componentRef.current.focus()
 
     }
@@ -149,6 +149,7 @@ class ImageBox extends Component {
 }
 
 ImageBox.propTypes = {
+    imagesName: PropTypes.object.isRequired,
     imagesInBox: PropTypes.object.isRequired,
     indexInBox: PropTypes.number.isRequired,
     handleImageBoxClick: PropTypes.func.isRequired,

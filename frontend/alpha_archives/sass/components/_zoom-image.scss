@@ -1,20 +1,17 @@
 
+
+ 
  .zoom {
      background-color: map-get($COLOR_PALETTE, font4 );
      color: white;
-     position: absolute;
      cursor: pointer;
      border-radius: 5px;
      height: 31px;
     font-weight: bold;
-    width:10%;
+    width: 30%;
     opacity: 1;
 
     @include tablet-design {
-        width:20%;
-    }
-
-    @include mobile-design {
         display:none;
     }
 
@@ -29,18 +26,24 @@
 
 
     }
-
     &--in {
-        top: 0.7%;
-        left: 15%;
+        // top: 0.7%;
+        // left: 15%;
         @include tablet-design {
-            left: 24%;
+            // left: 24%;
         }
     } 
 
     &--out {
-        top: 0.7%;
-        left:2%;
+        // top: 0.7%;
+        // left:2%;
     }
- }
- 
+
+    &-magnify-glass {
+        padding-left:2%;
+
+        &--active {
+            background-color: map-get($COLOR_PALETTE, font3 );
+        }
+     }
+}

@@ -11,7 +11,7 @@ class HomeInformations extends Component {
 
                 <div className="main-home-informations__info-box">
                     <h2>Alpha-Project-Archive</h2>
-                    <img src={logoLarge}></img>
+                    <img src={logoLarge} alt="logo"></img>
                     <p>Alpha-core is an experimental emulator written in Python for the client WoW 0.5.3</p>
                     <p>In order to retrieve informations about this version, we need screenshots from pre-release</p>
                     <p>This website helps people to upload screenshots and browe archive without knowledge with GitHub</p>

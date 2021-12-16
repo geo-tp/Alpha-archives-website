@@ -89,3 +89,13 @@
         }
     }
 }
+
+.button-group {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0.7%;
+    left: 2%;
+    width: 30%;
+}

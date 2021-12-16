@@ -1,10 +1,7 @@
 import { Component } from "react"
-import png from "../assets/file_icones/png.png"
-import jpg from "../assets/file_icones/jpg.png"
-import gif from "../assets/file_icones/gif.png"
+
 import divers from "../assets/file_icones/divers.png"
 import folder from "../assets/file_icones/folder.png"
-import ImageBox from "./ImageBox"
 
 class BrowseElement extends Component {
 
@@ -17,13 +14,12 @@ class BrowseElement extends Component {
     }
 
     determinateIconToUse(element) {
-        console.log(this.props.element)
         if (!this.props.element.is_file) {
             return folder
         }
 
         let elementNameList = this.props.element.name.split(".")
-        let ext = elementNameList[elementNameList.length - 1]
+        let ext = elementNameList[elementNameList.length - 1].toLowerCase()
 
         switch (ext) {
             case "gif":
@@ -64,7 +60,7 @@ class BrowseElement extends Component {
             <div className="main-browser-element" onClick={() => this.handleClick()}>
                 {/* {this.state.imageBoxIsOpen && <ImageBox image={this.state.imageInBoxUrl}
                                                         handleFullResolutionDisplay={this.handleImageBoxClick}/>} */}
-                <img src={icon}/>
+                <img src={icon} alt="thumbnail"/>
                 <p>{this.props.element.name}</p>
             </div>
         )

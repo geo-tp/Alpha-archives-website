@@ -1,6 +1,6 @@
 
 
-export const API_URL = "http://localhost:8000/"
+export const API_URL = "https://django-france.fr/"
 
 
 export const BASIC_HEADER = new Headers({

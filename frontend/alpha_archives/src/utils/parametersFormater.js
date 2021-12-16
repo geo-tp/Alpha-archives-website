@@ -31,8 +31,6 @@ export const parametersFormater = (method, body=null) => {
         case "PUT":
         case "PATCH":
         case "POST":
-
-
             return {method: method, headers:BASIC_HEADER, body:JSON.stringify(body)}
 
             

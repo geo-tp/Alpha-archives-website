@@ -3,8 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png"
 import PropTypes from 'prop-types'
 
-let id = 0
-
 class NavBar extends Component {
 
     constructor(props) {
@@ -26,8 +24,6 @@ class NavBar extends Component {
     }
 
     render() {
-
-        let path = this.state.query ? "/search/"+this.state.query : '/search'
 
         return(
             <div className="nav-bar">

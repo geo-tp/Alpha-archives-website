@@ -1,6 +1,7 @@
 import { Component } from "react";
 import PropTypes from "prop-types"
 import React from 'react';
+import MagnifyImage from "./MagnifyImage";
 
 class ImageBox extends Component {
 
@@ -13,6 +14,7 @@ class ImageBox extends Component {
 
             imageScale: 100,
             stretched: true,
+            magnify: false,
         }
         this.componentRef = React.createRef()
 
@@ -63,7 +65,6 @@ class ImageBox extends Component {
     }
 
     zoomOut = () => {
-        console.log(this.state.imageScale)
         this.setState({imageScale: null,
             stretched: false})
         this.componentRef.current.focus()
@@ -73,7 +74,6 @@ class ImageBox extends Component {
 
     zoomIn = () => {
         if (this.state.imageScale < 100) {
-            console.log(this.state.imageScale)
 
             this.setState({imageScale:this.state.imageScale+100,
                            stretched: true})
@@ -82,8 +82,13 @@ class ImageBox extends Component {
 
     }
 
+    magnifyGlass = () => {
+        this.zoomIn()
+        this.setState({magnify:!this.state.magnify})
+    }
+
+
     render() {
-        console.log(this.state.imageScale)
         return(
             <div className="main-image-box image-box-top-margin"
                  onKeyDown ={this.handleKeyDown}
@@ -97,21 +102,39 @@ class ImageBox extends Component {
                     <i className="fa fa-3x fa-arrow-circle-left"></i>
                 </a>
                 <div className="main-image-box__image-container">
-                    <img src={this.state.images[this.state.index]}
-                        style={this.state.imageScale ? {width: `${this.state.imageScale}%`} : null}/>
+                    {this.state.magnify  ?
+                         <MagnifyImage src={this.state.images[this.state.index]} 
+                                        width={this.state.imageScale} 
+                                        height=""
+                         />
+                         :
+                         <img src={this.state.images[this.state.index]}
+                              style={this.state.imageScale ? {width: `${this.state.imageScale}%`} : null}/>
+                    }
                 </div>
-                <button className="zoom zoom--out" 
-                    onClick={this.zoomOut}
-                    disabled={!this.state.stretched}>
-                        <i className="fa fa-1x fa-search-minus"></i>
-                        Original
-                </button>
-                <button className="zoom zoom--in" 
-                    onClick={this.zoomIn}
-                    disabled={this.state.stretched}>
-                        <i className="fa fa-1x fa-search-plus"></i>
-                        Stretch
-                </button>
+
+                <div className="button-group">
+                    <button className="zoom zoom--out" 
+                        onClick={this.zoomOut}
+                        disabled={!this.state.stretched}
+                        title={"Original image size"}>
+                            <i className="fa fa-1x fa-search-minus"></i>
+                            Original
+                    </button>
+                    <button className="zoom zoom--in" 
+                        onClick={this.zoomIn}
+                        disabled={this.state.stretched}
+                        title={"Stretched image size"}>
+                            <i className="fa fa-1x fa-search-plus"></i>
+                            Stretch
+                    </button>
+                    <button className={this.state.magnify ? "zoom zoom-magnify-glass--active zoom-magnify-glass--active" : "zoom zoom-magnify-glass"}
+                        onClick={this.magnifyGlass}
+                        title="Magnify Glass to zoom hover image">
+                            <i className="fa fa-1x fa-search"></i>
+                            Magnify
+                    </button>
+                </div>
                 <a className="image-box-arrow  image-box-arrow--right" 
                     onClick={this.nextImage}>
                         <i className="fa fa-3x fa-arrow-circle-right"></i>

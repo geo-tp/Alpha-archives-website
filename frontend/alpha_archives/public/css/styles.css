@@ -218,6 +218,16 @@
   color: #c53333;
 }
 
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0.7%;
+  left: 2%;
+  width: 30%;
+}
+
 .App {
   max-width: 1600px;
   margin: 0 auto;
@@ -593,20 +603,14 @@
 .zoom {
   background-color: #98ca3e;
   color: white;
-  position: absolute;
   cursor: pointer;
   border-radius: 5px;
   height: 31px;
   font-weight: bold;
-  width: 10%;
+  width: 30%;
   opacity: 1;
 }
 @media screen and (max-width: 991px) {
-  .zoom {
-    width: 20%;
-  }
-}
-@media screen and (max-width: 768px) {
   .zoom {
     display: none;
   }
@@ -619,18 +623,11 @@
   opacity: 1;
   cursor: default;
 }
-.zoom--in {
-  top: 0.7%;
-  left: 15%;
+.zoom-magnify-glass {
+  padding-left: 2%;
 }
-@media screen and (max-width: 991px) {
-  .zoom--in {
-    left: 24%;
-  }
-}
-.zoom--out {
-  top: 0.7%;
-  left: 2%;
+.zoom-magnify-glass--active {
+  background-color: #ffc231;
 }
 
 .main-browse-page {

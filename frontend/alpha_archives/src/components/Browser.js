@@ -32,9 +32,7 @@ class Browser extends Component {
     goBackDirectory = () => {
 
         let directory = this.state.actualDirectory
-        console.log(this.state.actualDirectory)
         directory.pop()
-        // console.log(this.state.actualDirectory)
 
         this.getElements("parent", this.state.actualDirectory[this.state.actualDirectory.length - 1])
 
@@ -70,8 +68,6 @@ class Browser extends Component {
             actualDirectory: directory,
             loading: false
         })
-
-        console.log("ELEMENT", this.state.elements)
     }
 
 

@@ -3,7 +3,6 @@ import { fetchUploadFile } from '../fetch/UploadFiles';
 import ImageBox from './ImageBox';
 import {ACCEPTED_MIME_TYPES} from './../utils/mimeTypes'
 import { UploadStatus } from '../fetch/UploadStatus';
-import { ENABLE_UPLOAD } from '../utils/constants';
 
 export default class ImageUpload extends Component {
 
@@ -22,7 +21,7 @@ export default class ImageUpload extends Component {
             uploaded: false,
             loading: false,
             loadingCount: 0,
-            uploadStatus: ENABLE_UPLOAD,
+            uploadStatus: true,
         }
 
         this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
@@ -65,8 +64,6 @@ export default class ImageUpload extends Component {
     }
 
     uploadMultipleFiles(e) {
-        console.log("target", e.target.files)
-
         
         for (let newFile of e.target.files) {
             if (this.fileObj.length >= 200) {
@@ -75,11 +72,9 @@ export default class ImageUpload extends Component {
             this.addFileIfNotAlreadyIn(newFile)
         }
         
-        console.log("fileObj", this.fileObj)
         this.fileArray = []
         for (let i = 0; i < this.fileObj.length; i++) {
             let url = URL.createObjectURL(this.fileObj[i])
-            console.log(url)
             this.fileArray.push(url)
             
         }

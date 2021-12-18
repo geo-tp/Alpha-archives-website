@@ -30,6 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880 # 5 MB
+DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT = 5 #disable upload if server hdd space < 5GB
 
 CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ALLOW_CREDENTIALS = False
@@ -39,8 +40,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',

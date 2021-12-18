@@ -6,7 +6,8 @@ export const fetchElements = (filter_field, folderName) => {
     let url = urlFormater({
         model: API_ELEMENT,
         filter_field: filter_field,
-        filter_value: folderName
+        filter_value: folderName,
+        ordering: "name"
     })
     
     return fetch(url)

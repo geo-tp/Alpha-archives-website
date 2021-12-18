@@ -11,6 +11,7 @@ from django.core.exceptions import MultipleObjectsReturned
 import imagehash
 from PIL import Image as Img
 import django_filters
+from rest_framework import filters
 from security.utils import is_hdd_full
 
 
@@ -58,7 +59,7 @@ class ElementViewSet(viewsets.ModelViewSet):
     queryset = Element.objects.all()
     serializer_class = ElementSerializer
 
-    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend, filters.OrderingFilter]
     filterset_fields = ["parent", "image", "name"]
 
     def create(self, request):

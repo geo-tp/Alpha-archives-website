@@ -29,6 +29,11 @@
         font-size: 0.7em;
      }
 
+    &--home {
+        margin-left: 0;
+        margin: 2%;
+    }
+
     &:hover {
         opacity: 0.7;
 
@@ -65,7 +70,7 @@
 
     @include tablet-design {
         width: 15%;
-        height:35px;
+        height:45px;
 
     }
 }

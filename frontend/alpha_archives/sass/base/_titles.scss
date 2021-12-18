@@ -1,10 +1,15 @@
 
 .page-title {
     // border: 3px solid map-get($COLOR_PALETTE, font3);
-    color: map-get($COLOR_PALETTE, font4);
-    font-size: 2em;
+    color: white;
+    font-size: 1.6em;
+    padding-left: 3%;
     // width: 30%;
     // margin: 0 auto;
     // @include small-shadow;
     // margin-bottom: 2%;
+
+    @include tablet-design {
+        font-size:1em;
+    }
 }

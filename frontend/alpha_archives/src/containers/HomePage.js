@@ -5,7 +5,7 @@ class HomePage extends Component {
 
     render() {
         return(
-            <div className="main-container page-top-margin">
+            <div className="main-home-page main-container page-top-margin">
                 <HomeInformations/>
             </div>
         )

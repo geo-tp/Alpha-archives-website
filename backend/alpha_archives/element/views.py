@@ -26,18 +26,22 @@ class ImageViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
 
-        image = copy.deepcopy(request.data["image"])
-        image_hash = self.generate_image_hash(image)
+        error = False
 
         try:
-            Hash_Image.objects.get(image_hash=image_hash)
-        except MultipleObjectsReturned:
-            pass
+            image = copy.deepcopy(request.data["image"])
+            image_hash = self.generate_image_hash(image)
+
+            try:
+                Hash_Image.objects.get(image_hash=image_hash)
+            except MultipleObjectsReturned:
+                pass
+            except:
+                path= MEDIA_URL + str(request.FILES["image"])
+                Hash_Image.objects.create(image_hash=image_hash, image_path=path)
+                return  super().create(request)
         except:
-            print(image_hash)
-            path= MEDIA_URL + str(request.FILES["image"])
-            Hash_Image.objects.create(image_hash=image_hash, image_path=path)
-            return  super().create(request)
+            error = True
 
 
         return Response({"detail":"Already in Archive"}, 

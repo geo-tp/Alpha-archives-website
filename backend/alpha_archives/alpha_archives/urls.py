@@ -13,9 +13,9 @@ router.register(r'image-hash', element.views.HashImageViewSet)
 router.register(r'elements', element.views.ElementViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
-    path("upload-status/", security.views.upload_status)
+    path("api/upload-status/", security.views.upload_status)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

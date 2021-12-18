@@ -77,13 +77,10 @@ class ParserManager:
                     thumbnail = ImageManager.make_thumbnail(path)
                     django_path = ImageManager.save_thumbnail(thumbnail)
                     
-                    print("DJANGO PATH", django_path)
-
                     #Element (only files, not dir)
                     self.save_element(filename, django_path, parent, is_file, image_id)
                 
                 except OSError:
-                    print("IN ERROR OSERROR")
                     pass
 
                 self.loading_logger(items_count)
@@ -126,7 +123,3 @@ class ParserManager:
 
         self.DATABASE.commit_change()
         self.DATABASE.close_database()
-
-if __name__ == "__main__":
-    fpm = ParserManager()
-    fpm.build_archives_database()

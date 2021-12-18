@@ -72,7 +72,3 @@ class ImageManager:
             pass
         
         mkdir(THUMBNAIL_PATH)
-
-# if __name__ == "__main__":
-
-#     delete_all_thumbnail_files()

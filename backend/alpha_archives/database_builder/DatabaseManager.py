@@ -42,10 +42,3 @@ class DatabaseManager:
 
     def close_database(self):
         self.database.close()
-
-
-if __name__ == "__main__":
-    pass
-    db = DatabaseManager()
-    db.remove_table_rows(constants.HASH_IMAGE_TABLE_NAME)
-    # db.close_database()

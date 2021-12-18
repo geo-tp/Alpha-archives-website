@@ -20,6 +20,7 @@ BACKEND
 
 - Create Python virtual env and run ```pip install -r requirements.txt```
 - Create a mysql database named ```alpha_archives```
+- Create database tables with ```python manage.py makemigrations``` and ```python manage.py migrate```
 - You need to clone Alpha-Project-Archives in ```/media/``` folder
 - Go to ```database_builder``` folder and run ```python main.py``` to build elements and create thumbnails
 - To run server ```python manage.py runserver```

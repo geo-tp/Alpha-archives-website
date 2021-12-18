@@ -30,3 +30,34 @@ FRONTEND
 - Run ```npm install``` to install dependencies
 - Change ```API_URL``` in ```/src/utils/APIConfig.js``` with you API url like ```http://localhost:8000/```
 - Run ```npm start```
+
+
+DEPLOY
+
+- Serve Django API with gunicorn
+- Make react build with ```npm run build```
+- Configure Nginx like this : 
+
+```
+server {
+    server_name DOMAIN.COM www.DOMAIN.COM;
+    root /home/YourPath/Alpha-archives-website/frontend/build;
+    index index.html index.htm index.nginx-debian.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /api {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:8000;
+
+    }
+
+    location /media {
+        autoindex on;
+        alias /home/YouPath/Alpha-archives-website/backend/media;
+    }
+
+}
+```

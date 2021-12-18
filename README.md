@@ -11,7 +11,7 @@ Website to browse and upload screenshots for Alpha Project.
     - media -> contains Alpha Project Archives, thumbnail and uploaded images
     - security -> Django App
 
-- Frontend folder containes React App
+- Frontend folder contains React App
 
 INSTALLATION
 ------------
@@ -28,7 +28,7 @@ BACKEND
 FRONTEND
 
 - Run ```npm install``` to install dependencies
-- Change ```API_URL``` in ```/src/utils/APIConfig.js``` with you API url like ```http://localhost:8000/```
+- Change ```API_URL``` in ```/src/utils/APIConfig.js``` with your API url like ```http://localhost:8000/```
 - Run ```npm start```
 
 
@@ -41,7 +41,7 @@ DEPLOY
 ```
 server {
     server_name DOMAIN.COM www.DOMAIN.COM;
-    root /home/YourPath/Alpha-archives-website/frontend/build;
+    root /YourPath/Alpha-archives-website/frontend/build;
     index index.html index.htm index.nginx-debian.html;
 
     location / {
@@ -56,7 +56,7 @@ server {
 
     location /media {
         autoindex on;
-        alias /home/YouPath/Alpha-archives-website/backend/media;
+        alias /YouPath/Alpha-archives-website/backend/media;
     }
 
 }

@@ -13,8 +13,13 @@ class HomeInformations extends Component {
                     <h2>Alpha-Project-Archive</h2>
                     <img src={logoLarge} alt="logo"></img>
                     <div>
-                    <button className="nav-button-base nav-button-base--home" href="https://github.com/The-Alpha-Project">Github</button>
-                    <button className="nav-button-base nav-button-base--home" href="https://discord.com/invite/RzBMAKU">Discord</button>
+                        <form action="https://github.com/The-Alpha-Project">
+                            <input className="nav-button-base nav-button-base--home" type="submit" value="Github" />
+                        </form>
+                        
+                        <form action="https://discord.com/invite/RzBMAKU">
+                            <input className="nav-button-base nav-button-base--home" type="submit" value="Discord" />
+                        </form>
                     </div>
                     <p>Alpha-core is an experimental emulator written in Python for the client WoW 0.5.3</p>
                     <p>To retrieve informations about 0.5.3 version, we need screenshots from pre-release</p>

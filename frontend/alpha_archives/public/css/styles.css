@@ -27,7 +27,8 @@
 }
 .nav-button-base--home {
   margin-left: 0;
-  margin: 2%;
+  border-radius: 7px;
+  padding: 5%;
 }
 .nav-button-base:hover {
   opacity: 0.7;
@@ -474,6 +475,14 @@
   border-radius: 20px;
   border: 1px solid #f0f0f0;
   box-shadow: 0px 10px 20px 5px rgba(58, 58, 58, 0.144);
+}
+.main-home-informations__info-box div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-home-informations__info-box div form {
+  margin: 1%;
 }
 .main-home-informations__info-box img {
   border-radius: 10px;

@@ -28,4 +28,5 @@ BACKEND
 FRONTEND
 
 - Run ```npm install``` to install dependencies
+- Change ```API_URL``` in ```/src/utils/APIConfig.js``` with you API url like ```http://localhost:8000/```
 - Run ```npm start```

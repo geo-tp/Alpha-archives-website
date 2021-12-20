@@ -36,6 +36,7 @@ FRONTEND
 DEPLOY
 
 - Serve Django API with gunicorn
+- Dont forget to add your domain name in ```/backend/alpha_archives/settings.py```  ```ALLOWED_HOSTS=["yourDomain.com"]```
 - Make react build with ```npm run build```
 - Configure Nginx like this : 
 

@@ -1,7 +1,7 @@
 
 
-// export const API_URL = "https://django-france.fr/"
-export const API_URL = "http://localhost:8000/"
+export const API_URL = "https://archive.thealphaproject.eu/"
+// export const API_URL = "http://localhost:8000/"
 
 
 export const BASIC_HEADER = new Headers({

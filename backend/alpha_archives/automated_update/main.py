@@ -1,12 +1,13 @@
 import subprocess
+import os
 
 ALPHA_PROJECT_ARCHIVES_DIR = "media/Alpha-Project-Archive/"
 DATABASE_BUILDER = "database_builder/main.py"
 GIT_UP_TO_DATE = ["Already up to date.\n", "Déjà à jour.\n"]
 
 def get_main_working_dir():
-    working_dir_list = __file__.split("/")
-    working_dir_list = working_dir_list[1:-2]
+    working_dir_list = os.getcwd().split("/")
+    working_dir_list = working_dir_list[1:-1]
 
     return "/" + "/".join(working_dir_list) + "/"
 
@@ -39,3 +40,8 @@ if __name__ == "__main__":
 
     if not up_to_date:
         update_database_elements()
+
+    else:
+        print("Archive is up to date")
+
+    # get_main_working_dir()

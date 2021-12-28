@@ -21,9 +21,9 @@ class HomeInformations extends Component {
                             <input className="nav-button-base nav-button-base--home" type="submit" value="Discord" />
                         </form>
                     </div>
-                    <p>Alpha-core is an experimental emulator written in Python for the client WoW 0.5.3</p>
-                    <p>To retrieve informations about 0.5.3 version, we need screenshots from pre-release</p>
-                    <p>This website helps people to upload screenshots and browe archive without knowledge with GitHub</p>
+                    <p><a href="https://github.com/The-Alpha-Project/alpha-core">Alpha Core</a> is an experimental Python emulator for the 0.5.3.3368 version of World of Warcraft.</p>
+                    <p>In order to build the contents of the emulator, hundreds of original alpha and beta screenshots have been found and archived.</p>
+                    <p>This website helps people interact with these screenshots that are <a href="https://github.com/The-Alpha-Project/Alpha-Project-Archive">stored on GitHub</a> without the need to use it.</p>
 
                 </div>
 

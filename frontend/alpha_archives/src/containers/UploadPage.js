@@ -11,7 +11,7 @@ class UploadPage extends Component {
                         <h3 className="page-title">Upload Screenshots</h3>
                     </div>
                     <div className="main-upload-description">
-                        <p>Alpha-project looking for <strong>pre release</strong> screenshots of WoW from 0.5.3 to 0.12 clients. <strong>Screenshots already presents in archives will be ignored.</strong></p>
+                        <p>The Alpha Project is looking for <strong>original pre-release screenshots</strong> of WoW from alpha and beta clients. <strong>Screenshots already present in the archives will be ignored.</strong></p>
                     </div>
                     <ImageUpload/>
                 </div>

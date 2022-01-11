@@ -136,7 +136,7 @@ export default class ImageUpload extends Component {
                                                          handleImageBoxClick={this.handleImageBoxClick}
                                                          />} 
                 <div className="main-image-upload__form-group">
-                    <label for="file-upload">
+                    <label htmlFor="file-upload">
                         <i className="fa fa-2x fa-download"></i>
                         Drop files or Click to open explorer (up to 200 images)
                     </label>

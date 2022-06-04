@@ -14,7 +14,7 @@ router.register(r'elements', element.views.ElementViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path("api/upload-status/", security.views.upload_status)
 ]
 

@@ -1,18 +1,19 @@
 .main-container {
-    @include small-shadow;
+
     display: flex;
     align-items: center;
     justify-content:center;
     // padding-top:1px;
     padding-bottom: 1px;
-    height:87vh;
+    // height:87vh;
     width: 95%;
     // height: 88vh;
-    position: fixed;
-    left: 50%;
-    top: 41%;
+    // position: fixed;
+    // left: 50%;
+    // top: 41%;
+    // overflow-y: scroll;
     max-width: $max-screen-resolution;
-    transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
 
     @include tablet-design {
         width: 95%;
@@ -25,9 +26,13 @@
 }
 
 .sub-container2 {
-    height:90vh;
+    // height:90vh;
     width: 100%;
     margin: 0 auto;
+    // background-color: map-get($COLOR-PALETTE, bg);
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+
 
 }
 

@@ -23,6 +23,7 @@
     padding: 10px;
     font-size: 1em;
     cursor: pointer;
+    z-index: 10;
 
     @include mobile-design {
         // height: 100%;
@@ -46,11 +47,11 @@
 .button-upload {
     margin: 2%;
     margin-top:20px;
-    margin-bottom:0;
+    margin-bottom: 10px;
     background-color: map-get($COLOR_PALETTE, success);
     color: map-get($COLOR_PALETTE, bg);
     width: 20%;
-    height:80px;
+    height:70px;
     border-radius: 30px;
     font-size: 2em;
 
@@ -64,9 +65,11 @@
 
 .button-reset {
     width: 5%;
-    height:50px;
-    background-color: map-get($COLOR-PALETTE, error);
-    color: map-get($COLOR_PALETTE, bg);
+    height:30px;
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    color: map-get($COLOR-PALETTE, error);
     border-radius: 15px;
 
     @include tablet-design {
@@ -78,13 +81,13 @@
 
 .button-home {
     position: relative;
-    margin: 2%;
+    margin: 10px;
     background-color: map-get($COLOR_PALETTE, font4);
     color: white;
-    width: 300px;
+    width: 250px;
     height:80px;
     border-radius: 30px;
-    font-size: 1.5EM;
+    font-size: 1.3EM;
     border: 0;
 
     @include tablet-design {

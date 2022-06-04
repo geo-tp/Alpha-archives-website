@@ -16,9 +16,11 @@
     background-color: rgb(255, 255, 255);
     align-items: center;
     border: 1px solid map-get($COLOR-PALETTE, font3);
+    animation: appear-slowly 200ms linear;
+
     
     @include tablet-design {
-        top: 36%;
+        height: 50vh; 
         // width: 95%;
     }
 

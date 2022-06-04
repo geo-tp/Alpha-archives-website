@@ -13,6 +13,9 @@ from PIL import Image as Img
 import django_filters
 from rest_framework import filters
 from security.utils import is_hdd_full
+import random
+from rest_framework.decorators import action
+
 
 
 
@@ -20,10 +23,6 @@ class ImageViewSet(viewsets.ModelViewSet):
 
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
-
-
-    def generate_image_hash(self, image_path):
-        return imagehash.average_hash(Img.open(image_path))
 
     def create(self, request):
 
@@ -69,3 +68,31 @@ class ElementViewSet(viewsets.ModelViewSet):
                    status=status.HTTP_403_FORBIDDEN)
         
         return super().create(request)
+
+    @action(methods=['get'], detail=False)
+    def random(self, request, *args, **kwargs):
+        first_element_id = int(Element.objects.first().id)
+        last_element_id = int(Element.objects.last().id)
+
+        random_num = random.randrange(first_element_id, last_element_id)
+        random_element = Element.objects.get(id=random_num)
+
+        while(not random_element.is_file):
+            print("in boucle")
+            random_num = random.randrange(first_element_id, last_element_id)
+            random_element = Element.objects.get(id=random_num)
+
+
+        serializer = self.get_serializer(random_element)
+        
+        random_num -= first_element_id if first_element_id != 1 else 0
+        total_num = last_element_id - (first_element_id if first_element_id != 1 else 0)
+        data = {"random_number": random_num, "total_number": total_num} 
+        data.update(serializer.data)
+
+        return Response(status=status.HTTP_200_OK, data=data)
+
+    def generate_image_hash(self, image_path):
+        return imagehash.average_hash(Img.open(image_path))
+
+

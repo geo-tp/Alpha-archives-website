@@ -14,8 +14,9 @@
     &__previews {
         margin: 2%;
         background-color: map-get($COLOR_PALETTE, bg);
+        position: relative;
         width: 80%;
-        height: 30vh;
+        height: 40vh;
         margin: 0 auto;
         overflow-y: scroll;
 

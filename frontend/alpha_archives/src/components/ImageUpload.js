@@ -151,6 +151,11 @@ export default class ImageUpload extends Component {
 
                 <div className="main-image-upload__previews">
                     <label className="main-image-upload__previews__title">Previews ({this.fileObj.length} images)</label>
+                <button className="button-base button-reset" 
+                        type="button" 
+                        onClick={() => this.handleReset()}>
+                        <i className='fa fa-close fa-2x'></i>
+                </button>
                     <div className="main-image-upload__previews__box">
                         {(this.fileArray || []).map((url, index) => (
                             <div className="main-image-upload__previews__box__element">
@@ -178,12 +183,6 @@ export default class ImageUpload extends Component {
                 <button className="button-base button-upload" 
                         type="submit" disabled={this.fileArray.length ? false : true}>
                         {this.state.loading ? 'Loading ' + this.state.loadingCount+"/"+this.fileArray.length : 'Upload' }
-                </button>
-
-                <button className="button-base button-reset" 
-                        type="button" 
-                        onClick={() => this.handleReset()}>
-                        Reset
                 </button>
 
                 {!this.state.uploadStatus && 

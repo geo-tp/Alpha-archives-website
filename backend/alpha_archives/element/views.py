@@ -24,6 +24,9 @@ class ImageViewSet(viewsets.ModelViewSet):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
 
+    def generate_image_hash(self, image_path):
+        return imagehash.average_hash(Img.open(image_path))
+
     def create(self, request):
 
         error = False
@@ -91,8 +94,5 @@ class ElementViewSet(viewsets.ModelViewSet):
         data.update(serializer.data)
 
         return Response(status=status.HTTP_200_OK, data=data)
-
-    def generate_image_hash(self, image_path):
-        return imagehash.average_hash(Img.open(image_path))
 
 

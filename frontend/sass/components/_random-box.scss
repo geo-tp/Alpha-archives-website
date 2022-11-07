@@ -1,0 +1,107 @@
+.random-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  //   background-color: white;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  // max-height: 80vh;
+  // min-height:  80vh;
+  //   border-radius: 10px 10px;
+  //   max-width: $max-screen-resolution;
+  background-color: map-get($COLOR_PALETTE, ter);
+
+  &__title {
+    color: map-get($COLOR-PALETTE, font);
+    background-color: map-get($COLOR_PALETTE, ter);
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom: 30px;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+  }
+
+  &__image {
+    width: 95%;
+    height: 90vh;
+
+    margin: 0 auto;
+    margin-bottom: 80px;
+    position: relative;
+    border-radius: 20px;
+    // height: 700px;
+    // height: 56vh;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    transform: none;
+
+    @include tablet-design {
+      height: 500px;
+    }
+  }
+
+  &__roll-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // flex-direction: column;
+    align-items: center;
+    // position: relative;
+    // left: 1%;
+    // right: 1%;
+    background-color: rgba(0, 0, 0, 0.489);
+    width: 600px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    // padding: 2%;
+    // box-shadow: 0px 4px 40px 10px rgba(134, 134, 134, 0.25);
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+
+    @include mobile-design {
+      background-color: #ffffff;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  &__roll {
+    background-color: black;
+    color: rgb(184, 95, 51);
+    font-weight: bold;
+    padding: 10px;
+    // left: 50%;
+    opacity: 0.85;
+    border-radius: 10px;
+    border: 1px solid white;
+    min-width: 150px;
+  }
+
+  &__button {
+    // left: 50%;
+    min-width: 220px;
+
+    font-weight: bold;
+    color: map-get($COLOR-PALETTE, font);
+    background-color: map-get($COLOR-PALETTE, ter);
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+    margin: 0 auto;
+    font-size: 1.1em;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    @include mobile-design {
+      min-width: auto;
+    }
+  }
+}

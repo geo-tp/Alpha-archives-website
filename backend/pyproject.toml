@@ -1,0 +1,4 @@
+[project]
+name = "Django API"
+authors = [{name = "Geo", email = "example@mail.com"}]
+dynamic = ["version", "description"]

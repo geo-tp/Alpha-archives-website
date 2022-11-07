@@ -1,0 +1,62 @@
+.main-browser {
+  position: relative;
+  display: flex;
+  // width: 90%;
+  height: 80vh;
+  background-color: map-get($COLOR-PALETTE, ter);
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  border: 1px solid map-get($COLOR-PALETTE, prim);
+
+  // padding-top: 2%;
+  // margin-bottom: 2%;
+
+  &__directory-path {
+    // position: absolute;
+    // top: 1%;
+    // width:100%;
+    display: flex;
+    background-color: map-get($COLOR-PALETTE, ter);
+    color: map-get($COLOR-PALETTE, font);
+    // padding: 1%;
+    // width:90%;
+    border-radius: 7px 7px 0px 0px;
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+
+    margin: 0 auto;
+
+    & button {
+      margin: 1%;
+      margin-right: 2%;
+      color: white;
+      border: none;
+      //   background-color: map-get($COLOR_PALETTE, font4);
+      cursor: pointer;
+      border-radius: 5px;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    & span {
+      margin: 1%;
+      background-color: map-get($COLOR-PALETTE, prim);
+      padding: 1%;
+      width: 70%;
+      text-align: left;
+      overflow: hidden;
+    }
+  }
+
+  @include tablet-design {
+    padding-top: 4%;
+  }
+
+  @include mobile-design {
+    padding-top: 8%;
+  }
+}

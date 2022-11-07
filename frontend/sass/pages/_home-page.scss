@@ -1,0 +1,7 @@
+.main-home-page {
+  width: 100%;
+  background-color: map-get($COLOR-PALETTE, ter);
+  @include tablet-design {
+    width: 100%;
+  }
+}

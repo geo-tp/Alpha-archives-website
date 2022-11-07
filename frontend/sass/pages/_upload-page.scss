@@ -1,0 +1,19 @@
+.main-upload-page {
+  @include small-shadow;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.main-upload-description {
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+
+  & p {
+    padding: 0;
+    margin: 0;
+    padding: 20px;
+    background-color: map-get($COLOR_PALETTE, font3);
+    color: map-get($COLOR_PALETTE, font);
+  }
+}

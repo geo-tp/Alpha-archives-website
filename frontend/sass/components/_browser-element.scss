@@ -1,0 +1,33 @@
+.main-browser-element {
+  margin: 2%;
+  display: block;
+  cursor: pointer;
+  flex-basis: 20%;
+  transition-property: transform;
+  transition-duration: 200ms;
+  max-width: 20%;
+  color: map-get($COLOR-PALETTE, font);
+
+  @include tablet-design {
+    flex-basis: 20%;
+  }
+
+  @include mobile-design {
+    flex-basis: 80%;
+    max-width: 80%;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
+
+  & img {
+    width: 80%;
+  }
+
+  & p {
+    margin-top: 0;
+    overflow: hidden;
+  }
+}

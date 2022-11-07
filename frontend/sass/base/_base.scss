@@ -1,0 +1,8 @@
+body {
+  overflow-y: scroll;
+}
+
+html {
+  background-color: map-get($COLOR-PALETTE, bg);
+  font-family: "Roboto", sans-serif;
+}

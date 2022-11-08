@@ -112,8 +112,14 @@
     margin-right: 10px;
   }
 
-  @include tablet-design {
-    display: none;
+  // @include tablet-design {
+  //   min-width: 100px;
+  //   font-size: 0.85em;
+  // }
+
+  @include mobile-design {
+    min-width: 100px;
+    font-size: 0.75em;
   }
 }
 

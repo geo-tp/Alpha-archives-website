@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 100%;
+  // width: 100%;
   //   background-color: white;
   margin: 0 auto;
   margin-bottom: 20px;
@@ -48,8 +48,9 @@
   }
 
   &__roll-box {
-    width: 100%;
+    // width: 100%;
     display: flex;
+    padding-left: 20px;
     justify-content: center;
     // flex-direction: column;
     align-items: center;
@@ -57,9 +58,9 @@
     // left: 1%;
     // right: 1%;
     background-color: rgba(0, 0, 0, 0.489);
-    width: 600px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    // width: 600px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 20px;
     // padding: 2%;
     // box-shadow: 0px 4px 40px 10px rgba(134, 134, 134, 0.25);
@@ -79,26 +80,28 @@
     background-color: black;
     color: rgb(184, 95, 51);
     font-weight: bold;
-    padding: 10px;
+    padding: 8px 4px;
     // left: 50%;
-    opacity: 0.85;
+    opacity: 0.55;
     border-radius: 10px;
-    border: 1px solid white;
-    min-width: 150px;
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+    min-width: 220px;
+    font-size: 0.8em;
   }
 
   &__button {
     // left: 50%;
-    min-width: 220px;
+    min-width: 100px;
 
     font-weight: bold;
     color: map-get($COLOR-PALETTE, font);
-    background-color: map-get($COLOR-PALETTE, ter);
+    background-color: map-get($COLOR-PALETTE, font4);
     border: 1px solid map-get($COLOR-PALETTE, prim);
     margin: 0 auto;
-    font-size: 1.1em;
-    margin-left: 20px;
+    font-size: 0.9em;
+    margin-left: 10px;
     margin-right: 20px;
+    opacity: 0.75;
 
     @include mobile-design {
       min-width: auto;

@@ -6,6 +6,8 @@ from tag.serializers import TagSerializer, AppliedTagSerializer
 from generic.response import format_api_response
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.decorators import action
+from tag.serializers import SearchFilesByTagsSerializer
 
 
 class TagViewSet(viewsets.ModelViewSet):

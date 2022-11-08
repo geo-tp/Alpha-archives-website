@@ -2,6 +2,7 @@ import imagehash
 from PIL import Image as Img
 from copy import deepcopy
 from django.shortcuts import render
+from django.db.models import Q
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 import django_filters.rest_framework
@@ -15,6 +16,11 @@ from main.settings import INCOMING_ROOT, INCOMING_URL
 from generic.response import format_api_response
 from file.messages import ALREADY_IN_ARCHIVE, UPLOAD_SUCCESS
 from rest_framework import filters
+from rest_framework.decorators import action
+from rest_framework import status, viewsets
+from tag.serializers import SearchFilesByTagsSerializer
+from tag.models import AppliedTag, Tag
+from file.serializers import FileSerializer
 
 
 class FileViewSet(viewsets.ModelViewSet):
@@ -29,8 +35,12 @@ class FileViewSet(viewsets.ModelViewSet):
     search_fields = ["parent", "filename"]
 
     def get_serializer(self, *args, **kwargs):
+        print(self.action)
         if self.action == "create":
             return UploadFileSerializer(*args, **kwargs)
+
+        elif self.action == "search_by_tags":
+            return SearchFilesByTagsSerializer(*args, **kwargs)
         else:
             return FileSerializer(*args, **kwargs)
 
@@ -73,3 +83,46 @@ class FileViewSet(viewsets.ModelViewSet):
             message=UPLOAD_SUCCESS,
         )
         return Response(api_response, status=status.HTTP_201_CREATED)
+
+    @action(methods=["get"], detail=False)
+    def random(self, request, *args, **kwargs):
+        first_element_id = int(Element.objects.first().id)
+        last_element_id = int(Element.objects.last().id)
+
+        random_num = random.randrange(first_element_id, last_element_id)
+        random_element = Element.objects.get(id=random_num)
+
+        while not random_element.is_file:
+            random_num = random.randrange(first_element_id, last_element_id)
+            random_element = Element.objects.get(id=random_num)
+
+        serializer = self.get_serializer(random_element)
+
+        random_num -= first_element_id if first_element_id != 1 else 0
+        total_num = last_element_id - (first_element_id if first_element_id != 1 else 0)
+        data = {"random_number": random_num, "total_number": total_num}
+        data.update(serializer.data)
+
+        api_response = format_api_response(status=status.HTTP_200_OK, content=data)
+
+        return Response(status=status.HTTP_200_OK, data=data)
+
+    @action(
+        methods=["post"],
+        detail=False,
+    )
+    def search_by_tags(self, request):
+
+        serializer = self.get_serializer(data=request.data, many=True)
+        serializer.is_valid(raise_exception=True)
+
+        tags = [data["name"] for data in serializer.data]
+        applied_tags = AppliedTag.objects.filter(tag_id__in=tags)
+        images_hash = [data.file_hash for data in applied_tags]
+        files = File.objects.filter(image_hash__in=images_hash)
+        serialized_files = FileSerializer(files, many=True)
+        api_response = format_api_response(
+            status=status.HTTP_200_OK,
+            content=serialized_files.data,
+        )
+        return Response(api_response, status=status.HTTP_200_OK)

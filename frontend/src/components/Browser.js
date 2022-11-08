@@ -1,13 +1,10 @@
 import { Component } from "react";
-import { useParams } from "react-router-dom";
 import { fetchElements } from "../api/FetchElements";
 import { API_URL } from "../api/utils/config";
 import BrowseElement from "./BrowserElement";
 import ImageBox from "./ImageBox";
 import Loading from "./Loading";
-import { SelectedTags } from "./SelectedTags";
 import { TagSearch } from "./TagSearch";
-import { TagSelector } from "./TagSelector";
 
 class Browser extends Component {
   constructor(props) {

@@ -12,3 +12,7 @@ class AppliedTagSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppliedTag
         fields = "__all__"
+
+
+class SearchFilesByTagsSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=255)

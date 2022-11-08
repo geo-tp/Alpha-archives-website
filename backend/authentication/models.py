@@ -12,7 +12,7 @@ class AbstractCustomToken(models.Model):
     The default abstract token model
     """
 
-    key = models.CharField(_("Key"), max_length=20, primary_key=True)
+    key = models.CharField(_("Key"), max_length=40, primary_key=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created = models.DateTimeField(_("Created"), auto_now_add=True)
 

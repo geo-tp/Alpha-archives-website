@@ -91,6 +91,7 @@ class HomeInformations extends Component {
       <div className="main-home-informations">
         <div className="main-home-informations__home-banner">
           <i className="main-home-informations__home-banner__angle fa fa-angle-down"></i>
+
           <div class="main-home-informations__home-banner__version">
             <img
               className="main-home-informations__home-banner__icon fa fa-image"
@@ -143,6 +144,7 @@ class HomeInformations extends Component {
               </button>
             </Link>
           </div>
+
           <p className="main-home-informations__check-sentence">
             <i className="fa fa-check"></i>
             More than 18 000 screenshots to browse

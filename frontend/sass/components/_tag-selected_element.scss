@@ -1,2 +1,26 @@
 .tag-selected-element {
+  background-color: map-get($COLOR-PALETTE, prim);
+  padding-left: 10px;
+  box-sizing: border-box;
+  border: 1px solid map-get($COLOR-PALETTE, bg);
+
+  border-radius: 7px;
+  margin: 2px;
+
+  font-size: 0.7em;
+  // height: 20px;
+  // min-width: 200px;
+  // flex-basis: 100%;
+  // width: 150px;
+  & i {
+    padding: 4px;
+    color: map-get($COLOR-PALETTE, font);
+    background-color: map-get($COLOR-PALETTE, error);
+    border-radius: 0px 5px 5px 0px;
+    margin-left: 5px;
+  }
+
+  &--green {
+    background-color: map-get($COLOR-PALETTE, font5);
+  }
 }

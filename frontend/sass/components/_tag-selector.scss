@@ -1,30 +1,52 @@
 .tag-selector {
-  width: 40%;
+  // flex-basis: 20%;
   position: relative;
 
-  & form {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+  // &__search {
+  //   position: relative;
+  //   display: flex;
+
+  //   & input {
+  //     outline: map-get($COLOR-PALETTE, font4);
+  //     width: 350px;
+  //   }
+  // }
 
   &__icon {
-    position: absolute;
-    right: 10px;
+    // position: absolute;
+    // right: 10px;
+    display: flex;
+    align-items: center;
     color: map-get($COLOR-PALETTE, font4);
     font-weight: bold;
+    background-color: map-get($COLOR-PALETTE, prim);
+    padding-left: 15px;
   }
   &__search {
-    width: 100%;
     margin: 10px;
     margin-right: 0px;
-    background-color: map-get($COLOR-PALETTE, prim);
-    padding: 10px;
-    padding-left: 10px;
-    color: map-get($COLOR-PALETTE, font);
+    display: flex;
+    align-items: center;
 
     text-align: left;
     overflow: hidden;
-    border: None;
+
+    & form {
+      display: flex;
+    }
+
+    &__bar {
+      padding-left: 10px;
+      padding: 10px;
+      border: None;
+      color: map-get($COLOR-PALETTE, font);
+      background-color: map-get($COLOR-PALETTE, prim);
+      width: 100%;
+      outline: map-get($COLOR-PALETTE, font4);
+      width: 200px;
+    }
   }
 
   &__angle {

@@ -7,11 +7,11 @@
   width: 100%;
   //   background-color: white;
   margin: 0 auto;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   // max-height: 80vh;
   // min-height:  80vh;
   //   border-radius: 10px 10px;
-  //   max-width: $max-screen-resolution;
+  max-width: 1400px;
   background-color: map-get($COLOR_PALETTE, ter);
 
   &__title {
@@ -26,7 +26,7 @@
 
   &__image {
     width: 95%;
-    height: 90vh;
+    height: 85vh;
 
     margin: 0 auto;
     margin-bottom: 80px;
@@ -68,11 +68,11 @@
     bottom: 10%;
     transform: translateX(-50%);
 
-    @include mobile-design {
-      background-color: #ffffff;
-      border: none;
-      box-shadow: none;
-    }
+    // @include mobile-design {
+    //   background-color: #ffffff;
+    //   border: none;
+    //   box-shadow: none;
+    // }
   }
 
   &__roll {

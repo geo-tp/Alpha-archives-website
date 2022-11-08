@@ -1,0 +1,14 @@
+.selected-tags {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  // flex-basis: 60%;
+  // position: absolute;
+  // left: 400px;
+  // top: 50%;
+  margin-left: 20px;
+  max-height: 40px;
+  // transform: translateY(-50%);
+}

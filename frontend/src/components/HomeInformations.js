@@ -4,7 +4,54 @@ import { Link } from "react-router-dom";
 import { randomScreenshot } from "../api/RandomScreenshot";
 import { API_URL } from "../api/utils/config";
 import wowIcon from "../assets/wow-icon-64.webp";
-import { HomeCities } from "./HomeCities";
+import { HomeCards } from "./HomeCards";
+import { CityCard } from "./LinkCard";
+import sw from "../assets/sw.webp";
+import og from "../assets/og.webp";
+import tb from "../assets/tb.webp";
+import ds from "../assets/ds.webp";
+import if_ from "../assets/if.webp";
+import uc from "../assets/uc.webp";
+import alphacore from "../assets/alphacore.webp";
+import db from "../assets/database.webp";
+import discord from "../assets/discord.jpeg";
+import geo from "../assets/napoleon.webp";
+
+const cityCards = [
+  { name: "Stormwind", image: sw, alt: "Stormwind screenshots" },
+  { name: "Ironforge", image: if_, alt: "Ironforge screenshots" },
+  { name: "Darnassus", image: ds, alt: "Darnassus screenshots" },
+  { name: "Orgrimmar", image: og, alt: "Orgrimmar screenshots" },
+  { name: "Thunderbluff", image: tb, alt: "Thunderbluff screenshots" },
+  { name: "Undercity", image: uc, alt: "Undercity  screenshots" },
+];
+
+const usefullCards = [
+  {
+    name: "Alpha Core",
+    image: alphacore,
+    alt: "Alpha core project",
+    link: "https://github.com/The-Alpha-Project/alpha-core",
+  },
+  {
+    name: "Discord",
+    image: discord,
+    alt: "Discord invitation",
+    link: "https://discord.gg/RzBMAKU",
+  },
+  {
+    name: "Database",
+    image: db,
+    alt: "Wow Database 0.5.3",
+    link: "https://db.thealphaproject.eu/",
+  },
+  {
+    name: "Geo GitHub",
+    image: geo,
+    alt: "Geo profile github",
+    link: "https://github.com/geo-tp",
+  },
+];
 
 class HomeInformations extends Component {
   constructor(props) {
@@ -43,6 +90,7 @@ class HomeInformations extends Component {
     return (
       <div className="main-home-informations">
         <div className="main-home-informations__home-banner">
+          <i className="main-home-informations__home-banner__angle fa fa-angle-down"></i>
           <div class="main-home-informations__home-banner__version">
             <img
               className="main-home-informations__home-banner__icon fa fa-image"
@@ -100,7 +148,7 @@ class HomeInformations extends Component {
             More than 18 000 screenshots to browse
           </p>
         </div>
-        <HomeCities />)
+        <HomeCards cards={cityCards} title="Explore cities screenshots" />)
         {this.state.screenshot && (
           <div className="random-box">
             <div className="random-box__title">
@@ -128,6 +176,7 @@ class HomeInformations extends Component {
             </div>
           </div>
         )}
+        <HomeCards cards={usefullCards} title="Related links" />
       </div>
     );
   }

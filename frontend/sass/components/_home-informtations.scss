@@ -135,6 +135,14 @@
       margin-right: 10px;
     }
 
+    &__angle {
+      position: absolute;
+      bottom: 7%;
+      left: 48%;
+      font-size: 5em;
+      animation: levitate 2s alternate-reverse infinite;
+    }
+
     &__cover {
       position: absolute;
       width: 100%;

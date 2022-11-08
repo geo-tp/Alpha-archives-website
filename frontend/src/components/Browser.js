@@ -5,6 +5,8 @@ import { API_URL } from "../api/utils/config";
 import BrowseElement from "./BrowserElement";
 import ImageBox from "./ImageBox";
 import Loading from "./Loading";
+import { SelectedTags } from "./SelectedTags";
+import { TagSearch } from "./TagSearch";
 import { TagSelector } from "./TagSelector";
 
 class Browser extends Component {
@@ -111,7 +113,7 @@ class Browser extends Component {
               <i className="fa fa-2x fa-search"></i>
             </button>
             {this.state.displaySearchBar ? (
-              <TagSelector />
+              <TagSearch />
             ) : (
               <span>{this.state.actualDirectory.join("/")}</span>
             )}

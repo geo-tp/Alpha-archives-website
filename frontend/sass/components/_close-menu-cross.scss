@@ -1,9 +1,11 @@
 .close-menu-cross {
   color: map-get($COLOR_PALETTE, font);
   position: absolute;
-  top: 1%;
-  right: 2%;
+  top: 10px;
+  right: 20px;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 
   &:hover {
     opacity: 0.6;

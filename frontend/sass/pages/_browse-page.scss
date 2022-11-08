@@ -1,14 +1,12 @@
-
 .main-browse-page {
-    // padding-top:1%;
-    // padding-bottom: 1px;
-    // height: 8vh;
-    width:98%;
-    margin-top: 70px;
+  // padding-top:1%;
+  // padding-bottom: 1px;
+  // height: 8vh;
+  width: 98%;
+  margin-top: 70px;
 
-
-    @include small-shadow;
-    @include mobile-design {
-        padding-bottom: 3%;
-    }
+  @include small-shadow;
+  @include mobile-design {
+    padding-bottom: 3%;
+  }
 }

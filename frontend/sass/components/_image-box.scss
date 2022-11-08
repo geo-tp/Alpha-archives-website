@@ -26,25 +26,30 @@
 
   &__images-count {
     position: fixed;
-    background-color: map-get($COLOR_PALETTE, font3);
-    top: 1%;
+    background-color: map-get($COLOR_PALETTE, prim);
+    color: map-get($COLOR-PALETTE, font);
+    left: 10px;
+    bottom: 9%;
     border-radius: 5px;
     z-index: 10;
-    padding: 2px;
+    padding: 5px;
+    font-weight: bold;
   }
 
   &__filename {
-    position: fixed;
-    // left: 50%;
+    position: absolute;
+    right: 10px;
+    bottom: 7%;
+    height: 20px;
     // transform: translate(0, -50%);
-    bottom: 8%;
+    // bottom: 8%;
     z-index: 50;
     // color: map-get($COLOR-PALETTE, font);
     border: 1px solid map-get($COLOR-PALETTE, ter);
-    background-color: map-get($COLOR-PALETTE, font3);
+    background-color: map-get($COLOR-PALETTE, prim);
+    color: map-get($COLOR-PALETTE, font);
     border-radius: 10px;
     padding: 5px;
-    opacity: 0.7;
   }
 
   &__image-container {

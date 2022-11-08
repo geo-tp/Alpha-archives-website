@@ -10,6 +10,7 @@
   overflow-y: scroll;
   flex-wrap: wrap;
   border: 1px solid map-get($COLOR-PALETTE, prim);
+  border-radius: 0px 0px 10px 10px;
 
   // padding-top: 2%;
   // margin-bottom: 2%;
@@ -27,10 +28,10 @@
     border: 1px solid map-get($COLOR-PALETTE, prim);
 
     margin: 0 auto;
+    padding-left: 10px;
 
     & button {
-      margin: 1%;
-      margin-right: 2%;
+      margin-right: 20px;
       color: white;
       border: none;
       //   background-color: map-get($COLOR_PALETTE, font4);
@@ -43,13 +44,20 @@
     }
 
     & span {
-      margin: 1%;
+      margin: 10px;
       background-color: map-get($COLOR-PALETTE, prim);
-      padding: 1%;
+      padding: 10px;
+      padding-left: 10px;
+
       width: 70%;
       text-align: left;
       overflow: hidden;
     }
+  }
+
+  &__no-results {
+    font-size: 1.6em;
+    color: map-get($COLOR-PALETTE, font);
   }
 
   @include tablet-design {

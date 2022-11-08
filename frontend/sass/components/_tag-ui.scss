@@ -1,0 +1,47 @@
+.tag-ui {
+  position: absolute;
+  left: 5px;
+  top: 40px;
+  background-color: map-get($COLOR-PALETTE, ter);
+  width: 400px;
+  height: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid map-get($COLOR-PALETTE, prim);
+
+  &__search {
+    display: flex;
+    padding-bottom: 20px;
+    align-items: center;
+    & input {
+      height: 20px;
+      color: map-get($COLOR-PALETTE, font);
+      padding: 10px;
+      background-color: map-get($COLOR-PALETTE, prim);
+      border: 1px solid map-get($COLOR-PALETTE, bg);
+      border-radius: 5px 0px 0px 5px;
+
+      &:active {
+        border: 1px map-get($COLOR-PALETTE, font4);
+      }
+    }
+
+    & button {
+      height: 18px;
+      border-radius: 0px 5px 5px 0px;
+      font-size: 0.8em;
+
+      & i {
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    & div {
+      margin-bottom: 10px;
+    }
+  }
+}

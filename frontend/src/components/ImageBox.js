@@ -2,6 +2,7 @@ import { Component } from "react";
 import PropTypes from "prop-types";
 import React from "react";
 import MagnifyImage from "./MagnifyImage";
+import { TagContainer } from "./TagContainer";
 
 class ImageBox extends Component {
   constructor(props) {
@@ -85,12 +86,13 @@ class ImageBox extends Component {
         <span className="main-image-box__images-count">
           {this.state.index + 1}/{this.state.images.length}
         </span>
-        <a
+        <button
           className="image-box-arrow--left image-box-arrow"
           onClick={this.previousImage}
         >
           <i className="fa fa-3x fa-angle-left"></i>
-        </a>
+        </button>
+        <TagContainer />
         <div className="main-image-box__image-container">
           {this.state.magnify ? (
             <MagnifyImage
@@ -101,6 +103,7 @@ class ImageBox extends Component {
           ) : (
             <img
               src={this.state.images[this.state.index]}
+              alt="selected screenshot"
               style={
                 this.state.imageScale
                   ? { width: `${this.state.imageScale}%` }
@@ -132,16 +135,16 @@ class ImageBox extends Component {
                             Magnify
                     </button>
                 </div> */}
-        <a
+        <button
           className="image-box-arrow  image-box-arrow--right"
           onClick={this.nextImage}
         >
           <i className="fa fa-3x fa-angle-right"></i>
-        </a>
-        <a
+        </button>
+        <button
           onClick={() => this.props.handleImageBoxClick()}
           className="fa fa-close fa-2x close-menu-cross"
-        ></a>
+        ></button>
         <p className="main-image-box__filename">
           <strong>{this.props.imagesName[this.state.index].name}</strong>
         </p>

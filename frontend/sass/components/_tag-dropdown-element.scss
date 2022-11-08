@@ -1,0 +1,14 @@
+.tag-dropdown-element {
+  background-color: map-get($COLOR-PALETTE, prim);
+  padding: 2px 10px;
+  border-radius: 7px;
+  margin: 5px;
+  font-size: 0.7em;
+  height: 20px;
+  display: flex;
+  align-items: center;
+
+  &--green {
+    background-color: map-get($COLOR-PALETTE, font4);
+  }
+}

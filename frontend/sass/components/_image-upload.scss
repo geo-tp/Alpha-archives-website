@@ -9,12 +9,15 @@
 .main-image-upload {
   // margin:2%;
   background-color: map-get($COLOR-PALETTE, ter);
+  height: 77vh;
+
   &__previews {
+    height: 45%;
+
     margin: 2%;
     background-color: map-get($COLOR_PALETTE, prim);
     position: relative;
     width: 80%;
-    height: 340px;
     margin: 0 auto;
     overflow-y: scroll;
 

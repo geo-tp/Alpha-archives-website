@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route, Routes } from "react-router-dom";
 import UploadPage from "./pages/UploadPage";
 import { HomePage } from "./pages/HomePage";
 import BrowserPage from "./pages/BrowsePage";
+import { Footer } from "./components/Footer";
+import { AuthPage } from "./pages/AuthPage";
 
 function App() {
   return (
@@ -11,10 +13,12 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/upload" element={<UploadPage />} />
-          <Route path="/browse" element={<BrowserPage />} />
-
+          <Route path="/browse/:folder" element={<BrowserPage />} />
+          <Route path="/browse/" element={<BrowserPage />} />
           <Route path={"/"} element={<HomePage />} />
+          <Route path={"/auth"} element={<AuthPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

@@ -1,16 +1,14 @@
 import { Component } from "react";
+import { useParams } from "react-router-dom";
 import Browser from "../components/Browser";
 
-class BrowserPage extends Component {
+const BrowserPage = () => {
+  const { folder } = useParams();
+  return (
+    <div>
+      <Browser folder={folder} />
+    </div>
+  );
+};
 
-
-    render() {
-        return(
-            <div>
-                <Browser/>
-            </div>
-        )
-    }
-}
-
-export default BrowserPage
+export default BrowserPage;

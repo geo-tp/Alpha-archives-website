@@ -20,7 +20,19 @@
 @import "./components/zoom-image";
 @import "./components/random-box";
 @import "./components/info_box";
+@import "./components/home-cities";
+@import "./components/city-card";
+@import "./components/footer";
+@import "./components/tag-container";
+@import "./components/tag-element";
+@import "./components/tag-ui";
+@import "./components/login";
+@import "./components/register";
+@import "./components/tag-selector";
+@import "./components/tag-dropdown";
+@import "./components/tag-dropdown-element";
 
 @import "./pages/home-page";
 @import "./pages/browse-page";
 @import "./pages/upload-page";
+@import "./pages/auth-page";

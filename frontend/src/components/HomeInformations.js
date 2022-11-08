@@ -1,8 +1,10 @@
 import { Component } from "react";
-import banner from "../assets/banner.png";
+import banner from "../assets/banner.webp";
 import { Link } from "react-router-dom";
 import { randomScreenshot } from "../api/RandomScreenshot";
 import { API_URL } from "../api/utils/config";
+import wowIcon from "../assets/wow-icon-64.webp";
+import { HomeCities } from "./HomeCities";
 
 class HomeInformations extends Component {
   constructor(props) {
@@ -41,15 +43,24 @@ class HomeInformations extends Component {
     return (
       <div className="main-home-informations">
         <div className="main-home-informations__home-banner">
-          <h1>
-            <i className="main-home-informations__home-banner__icon fa fa-image"></i>
-            Alpha Project Archive{" "}
-          </h1>
+          <div class="main-home-informations__home-banner__version">
+            <img
+              className="main-home-informations__home-banner__icon fa fa-image"
+              src={wowIcon}
+              alt="wow icon"
+            />
+            <span> version 0.x to beta 0.12 original screenshots</span>
+          </div>
+          <h1>Alpha Project Archive</h1>
           <h2>
-            Browse World of Warcraft Beta & Alpha screenshots from 2003 to 2004
+            Browse World of Warcraft Beta & Alpha screenshots from 2000 to 2004
           </h2>
 
-          <img src={banner} alt="logo"></img>
+          <img
+            className="main-home-informations__home-banner__cover"
+            src={banner}
+            alt="home banner"
+          ></img>
 
           <div className="main-home-informations__home-banner__description-box">
             <p>
@@ -89,7 +100,7 @@ class HomeInformations extends Component {
             More than 18 000 screenshots to browse
           </p>
         </div>
-        )
+        <HomeCities />)
         {this.state.screenshot && (
           <div className="random-box">
             <div className="random-box__title">
@@ -97,6 +108,7 @@ class HomeInformations extends Component {
             </div>
             <img
               className="random-box__image"
+              alt="random WoW screenshot"
               src={
                 API_URL.slice(0, -1) + this.state.screenshot.image.image_path
               }

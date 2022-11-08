@@ -23,7 +23,7 @@
   cursor: pointer;
   z-index: 10;
   color: map-get($COLOR-PALETTE, font);
-  border: 1px solid map-get($COLOR-PALETTE, ter);
+  border: 2px solid map-get($COLOR-PALETTE, prim);
   @include mobile-design {
     // height: 100%;
     font-size: 0.7em;
@@ -119,6 +119,8 @@
 
 .button-browser {
   background-color: transparent;
+
+  margin: 0px;
   & i {
     font-size: 1.5em;
     color: map-get($COLOR-PALETTE, font);
@@ -129,6 +131,9 @@
   position: absolute;
   color: map-get($COLOR_PALETTE, font);
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  z-index: 50;
 
   &:hover {
     opacity: 0.8;

@@ -1,9 +1,11 @@
 import { Component } from "react";
+import { useParams } from "react-router-dom";
 import { fetchElements } from "../api/FetchElements";
 import { API_URL } from "../api/utils/config";
 import BrowseElement from "./BrowserElement";
 import ImageBox from "./ImageBox";
 import Loading from "./Loading";
+import { TagSelector } from "./TagSelector";
 
 class Browser extends Component {
   constructor(props) {
@@ -13,11 +15,13 @@ class Browser extends Component {
       elements: null,
       elementsImages: null,
       displayImageBox: false,
+      displaySearchBar: false,
       indexInBox: null,
       actualDirectory: [],
+      folderParam: props.folder ? props.folder : "root",
     };
 
-    this.getElements("parent");
+    this.getElements("parent", this.state.folderParam);
   }
 
   goHomeDirectory = () => {
@@ -96,7 +100,21 @@ class Browser extends Component {
             <button className="button-browser" onClick={this.goHomeDirectory}>
               <i className="fa fa-2x fa-home"></i>
             </button>
-            <span>{this.state.actualDirectory.join("/")}</span>
+            <button
+              className="button-browser"
+              onClick={() =>
+                this.setState({
+                  displaySearchBar: !this.state.displaySearchBar,
+                })
+              }
+            >
+              <i className="fa fa-2x fa-search"></i>
+            </button>
+            {this.state.displaySearchBar ? (
+              <TagSelector />
+            ) : (
+              <span>{this.state.actualDirectory.join("/")}</span>
+            )}
           </div>
           <div className="main-browser">
             {this.state.displayImageBox && (
@@ -122,7 +140,12 @@ class Browser extends Component {
               })}
             {this.state.elements &&
               !this.state.loading &&
-              this.state.elements.length == 0 && <p>No elements</p>}
+              this.state.elements.length == 0 && (
+                <p className="main-browser__no-results">
+                  {" "}
+                  "¯\_(ツ)_/¯" No results
+                </p>
+              )}
             {this.state.loading && <Loading />}
           </div>
         </div>

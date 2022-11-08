@@ -1,0 +1,68 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  background-color: map-get($COLOR-PALETTE, ter);
+  border-radius: 10px;
+  border: 1px solid map-get($COLOR-PALETTE, prim);
+  & p {
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+    padding: 20px;
+    line-height: 1.3em;
+    max-width: 250px;
+  }
+
+  & a {
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  & h2 {
+    margin: 0px;
+    margin-bottom: 20px;
+  }
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    // max-width: 250px;
+    text-align: center;
+
+    & label {
+      text-align: left;
+      font-size: 0.7em;
+    }
+
+    & div {
+      max-width: 250px;
+      margin-bottom: 20px;
+      //   margin: 0 auto;
+
+      & input {
+        background-color: map-get($COLOR-PALETTE, prim);
+        border: 1px solid map-get($COLOR-PALETTE, sec);
+        color: map-get($COLOR-PALETTE, font);
+        margin-top: 10px;
+
+        height: 40px;
+        width: 100%;
+      }
+    }
+
+    & button {
+      margin-top: 10px;
+
+      margin-right: 0px;
+      text-align: center;
+    }
+  }
+}

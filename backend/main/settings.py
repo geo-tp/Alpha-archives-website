@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     "rest_framework",
     "generic",
     "user",
@@ -67,6 +68,7 @@ AUTHENTICATION_BACKENDS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -167,9 +169,9 @@ AUTH_USER_MODEL = "user.CustomUser"
 # Email config for sending confirmation mail and more
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = ""
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = "atmimecajbilygjm"
+EMAIL_HOST_PASSWORD = ""
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
@@ -187,12 +189,24 @@ if not EMAIL_HOST_PASSWORD or not EMAIL_HOST_USER:
 
 # Media config for images
 
-MEDIA_URL = "/media/"
+MEDIA_URL = "http://localhost:8000/"
 ARCHIVE_URL = MEDIA_URL + "archive/"
 INCOMING_URL = MEDIA_URL + "incoming/"
 MEDIA_ROOT = str(BASE_DIR) + MEDIA_URL
 ARCHIVE_ROOT = MEDIA_ROOT + "archive/"
 INCOMING_ROOT = MEDIA_ROOT + "incoming/"
-IMAGE_THUMBNAIL_WIDTH = 200  # px for auto generated thumbnail
+IMAGE_THUMBNAIL_WIDTH = 200  # px for auto generated thumbnail (generic img, see utils/database_builder config for modify screenshot thumbnail)
 IMAGE_MAX_WIDTH = 1200  # px for all incoming images
 IMAGE_COMPRESSION_LEVEL = 60  # % for all incoming images
+
+# CORS
+
+CORS_ORIGIN_ALLOW_ALL = (
+    True  # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+)
+CORS_ALLOW_CREDENTIALS = False
+
+
+# Upload
+
+DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT = 5

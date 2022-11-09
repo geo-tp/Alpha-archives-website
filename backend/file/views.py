@@ -21,18 +21,22 @@ from rest_framework import status, viewsets
 from tag.serializers import SearchFilesByTagsSerializer
 from tag.models import AppliedTag, Tag
 from file.serializers import FileSerializer
+from psutil import disk_usage
+from django.conf import settings
+import random
 
 
 class FileViewSet(viewsets.ModelViewSet):
 
     queryset = File.objects.all()
+    pagination_class = None
     serializer_class = FileSerializer
     permission_classes = [permissions.AllowAny]
     filter_backends = [
-        filters.SearchFilter,
         django_filters.rest_framework.DjangoFilterBackend,
+        filters.OrderingFilter,
     ]
-    search_fields = ["parent", "filename"]
+    filterset_fields = ["parent", "filename"]
 
     def get_serializer(self, *args, **kwargs):
         print(self.action)
@@ -86,15 +90,15 @@ class FileViewSet(viewsets.ModelViewSet):
 
     @action(methods=["get"], detail=False)
     def random(self, request, *args, **kwargs):
-        first_element_id = int(Element.objects.first().id)
-        last_element_id = int(Element.objects.last().id)
+        first_element_id = int(File.objects.first().id)
+        last_element_id = int(File.objects.last().id)
 
         random_num = random.randrange(first_element_id, last_element_id)
-        random_element = Element.objects.get(id=random_num)
+        random_element = File.objects.get(id=random_num)
 
-        while not random_element.is_file:
+        while random_element.is_folder:
             random_num = random.randrange(first_element_id, last_element_id)
-            random_element = Element.objects.get(id=random_num)
+            random_element = File.objects.get(id=random_num)
 
         serializer = self.get_serializer(random_element)
 
@@ -126,3 +130,21 @@ class FileViewSet(viewsets.ModelViewSet):
             content=serialized_files.data,
         )
         return Response(api_response, status=status.HTTP_200_OK)
+
+    @action(
+        methods=["get"],
+        detail=False,
+    )
+    def upload_status(self, request):
+
+        hdd = disk_usage("/")
+
+        if hdd.free / (2**30) < settings.DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT:
+            return Response(
+                status=status.HTTP_403_FORBIDDEN,
+                data={"error": "HDD is full, you can't upload now"},
+            )
+        else:
+            return Response(
+                status=status.HTTP_200_OK, data={"upload": "You can upload"}
+            )

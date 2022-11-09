@@ -377,7 +377,7 @@ html {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  margin-bottom: 1.5%;
+  margin-bottom: 5px;
   margin-top: 3%;
   overflow-y: scroll;
   border-radius: 30px;
@@ -464,6 +464,16 @@ html {
 }
 .main-image-upload__feedback {
   margin: 0;
+  padding: 0;
+}
+.main-image-upload__feedback span {
+  font-size: 0.8em;
+}
+.main-image-upload__feedback span:first-child {
+  margin-right: 30px;
+}
+.main-image-upload__feedback span i {
+  font-size: 1em;
 }
 
 .main-image-box {
@@ -510,6 +520,7 @@ html {
   width: 100%;
   height: 90vh;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 .main-image-box__image-container img {
@@ -718,7 +729,7 @@ html {
   border-radius: 7px 7px 0px 0px;
   border: 1px solid #1c2327;
   margin: 0 auto;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 .main-browser__directory-path button {
   margin-right: 20px;
@@ -1164,9 +1175,58 @@ html {
 }
 .login p {
   border: 1px solid #1c2327;
-  padding: 20px;
+  padding: 10px;
   line-height: 1.3em;
-  max-width: 250px;
+  max-width: 210px;
+  border-radius: 10px;
+  margin: 20px auto;
+  margin-top: 0px;
+}
+.login p a {
+  color: #3c73b2;
+}
+.login__forget {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+.login__forget input {
+  background-color: #1c2327;
+  border: 1px solid #161b22;
+  color: #c9d1d9;
+  margin-top: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+  font-size: 0.9em;
+}
+.login__forget input:focus {
+  outline: none;
+}
+.login__forget label {
+  position: absolute;
+  visibility: hidden;
+}
+.login__forget button {
+  width: 30px;
+  height: 20px;
+  position: absolute;
+  right: -2%;
+  background-color: #238636;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+.login span {
+  font-size: 0.7em;
+  margin-left: 10px;
+}
+.login span button {
+  margin-left: 10px;
+  border: 1px solid #3c73b2;
+  color: #3c73b2;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 3px;
 }
 .login a {
   font-weight: bold;

@@ -7,9 +7,67 @@
   border: 1px solid map-get($COLOR-PALETTE, prim);
   & p {
     border: 1px solid map-get($COLOR-PALETTE, prim);
-    padding: 20px;
+    padding: 10px;
     line-height: 1.3em;
-    max-width: 250px;
+    max-width: 210px;
+    border-radius: 10px;
+    margin: 20px auto;
+    margin-top: 0px;
+
+    & a {
+      color: map-get($COLOR-PALETTE, font3);
+    }
+  }
+
+  &__forget {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    & input {
+      background-color: map-get($COLOR-PALETTE, prim);
+      border: 1px solid map-get($COLOR-PALETTE, sec);
+      color: map-get($COLOR-PALETTE, font);
+      margin-top: 10px;
+      padding-left: 10px;
+      // height: 40px;
+      border-radius: 10px;
+      font-size: 0.9em;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    & label {
+      position: absolute;
+      visibility: hidden;
+    }
+
+    & button {
+      width: 30px;
+      height: 20px;
+      position: absolute;
+      right: -2%;
+      // top: 45%;
+      background-color: map-get($COLOR_PALETTE, font4);
+      color: white;
+      border-radius: 5px;
+      border: none;
+    }
+  }
+
+  & span {
+    font-size: 0.7em;
+    margin-left: 10px;
+
+    & button {
+      margin-left: 10px;
+      border: 1px solid map-get($COLOR-PALETTE, font3);
+      color: map-get($COLOR-PALETTE, font3);
+      background-color: transparent;
+      border-radius: 10px;
+      padding: 3px;
+    }
   }
 
   & a {

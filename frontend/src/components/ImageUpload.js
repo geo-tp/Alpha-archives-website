@@ -161,13 +161,13 @@ export default class ImageUpload extends Component {
               <div className="main-image-upload__previews__box__element">
                 <img
                   src={url}
-                  alt="..."
+                  alt="uploaded screenshot"
                   onClick={() =>
                     this.setState({ displayImageBox: true, indexInBox: index })
                   }
                 />
                 {this.state.uploaded ? (
-                  this.state.fileResponse[index] == 208 ? (
+                  this.state.fileResponse[index] === 208 ? (
                     <label className="main-image-upload__previews__box__element__response error">
                       <i className="fa fa-2x fa-exclamation-triangle"></i>
                     </label>
@@ -184,15 +184,17 @@ export default class ImageUpload extends Component {
           </div>
         </div>
 
-        {this.state.uploaded && (
-          <p className="main-image-upload__feedback">
-            <span className="error">
-              Images with Red symbols are already in archive
-            </span>{" "}
-            |
-            <span className="success"> Green symbols have been uploaded !</span>
-          </p>
-        )}
+        <p
+          style={{ visibility: this.state.uploaded ? "visible" : "hidden" }}
+          className="main-image-upload__feedback"
+        >
+          <span className="error">
+            <i className="fa fa-exclamation-triangle"></i> -> already in archive
+          </span>{" "}
+          <span className="success">
+            <i className="fa fa-2x fa-check-circle"></i> -> uploaded
+          </span>
+        </p>
 
         <button
           className="button-base button-upload"

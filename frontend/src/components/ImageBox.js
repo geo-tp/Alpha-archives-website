@@ -24,10 +24,16 @@ class ImageBox extends Component {
   }
 
   handleKeyDown = (e) => {
-    if (e.keyCode === 39) {
+    const ESC = 27;
+    const LEFT_ARROW = 37;
+    const RIGHT_ARROW = 39;
+
+    if (e.keyCode === RIGHT_ARROW) {
       this.nextImage();
-    } else if (e.keyCode === 37) {
+    } else if (e.keyCode === LEFT_ARROW) {
       this.previousImage();
+    } else if (e.keyCode === ESC) {
+      this.props.handleImageBoxClick();
     }
   };
 

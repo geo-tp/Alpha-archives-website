@@ -1,0 +1,15 @@
+
+*.pyc
+__pycache__/
+*.sqlite3
+**/__pycache__/
+db.sqlite3
+**/migrations/
+*.png
+*.webp
+*.jpg
+*.JPG
+*.PNG
+*.WEBP
+**/media
+/backend_env

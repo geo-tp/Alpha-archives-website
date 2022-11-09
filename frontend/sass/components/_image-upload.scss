@@ -18,7 +18,7 @@
     position: relative;
     width: 80%;
     margin: 0 auto;
-    margin-bottom: 1.5%;
+    margin-bottom: 5px;
     margin-top: 3%;
     overflow-y: scroll;
     border-radius: 30px;
@@ -116,5 +116,18 @@
 
   &__feedback {
     margin: 0;
+    padding: 0;
+
+    & span {
+      font-size: 0.8em;
+
+      &:first-child {
+        margin-right: 30px;
+      }
+
+      & i {
+        font-size: 1em;
+      }
+    }
   }
 }

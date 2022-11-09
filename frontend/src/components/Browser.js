@@ -117,10 +117,16 @@ class Browser extends Component {
     selectedTags.splice(index, 1);
 
     this.setState({ selectedTags });
+
+    if (selectedTags.length) {
+      this.getFilesByTags();
+    } else {
+      this.getFiles("parent", "root");
+      this.setState({ actualDirectory: [] });
+    }
   };
 
   handleTagClick = (tagName) => {
-    console.log("CLICK FROM BROWSER", this.state.selectedTags);
     const selectedTags = this.state.selectedTags;
 
     if (selectedTags.includes(tagName)) {
@@ -147,6 +153,20 @@ class Browser extends Component {
     this.setState({ displayImageBox: !this.state.displayImageBox });
   };
 
+  handleSearchIconClick = () => {
+    const displaySearchBar = !this.state.displaySearchBar;
+
+    if (!displaySearchBar) {
+      this.getFiles("parent", "root");
+    }
+
+    this.setState({
+      displaySearchBar,
+      actualDirectory: [],
+      selectedTags: [],
+    });
+  };
+
   render() {
     return (
       <div className="main-container page-top-margin">
@@ -160,13 +180,13 @@ class Browser extends Component {
             </button>
             <button
               className="button-browser"
-              onClick={() =>
-                this.setState({
-                  displaySearchBar: !this.state.displaySearchBar,
-                })
-              }
+              onClick={this.handleSearchIconClick}
             >
-              <i className="fa fa-2x fa-search"></i>
+              <i
+                className={`fa fa-2x fa-${
+                  this.state.displaySearchBar ? "close" : "search"
+                }`}
+              ></i>
             </button>
             {this.state.displaySearchBar ? (
               !this.state.tags.error && (

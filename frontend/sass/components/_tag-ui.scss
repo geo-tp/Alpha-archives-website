@@ -3,36 +3,56 @@
   left: 5px;
   top: 40px;
   background-color: map-get($COLOR-PALETTE, ter);
-  width: 400px;
+  width: 350px;
   height: 200px;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid map-get($COLOR-PALETTE, prim);
 
+  &__label {
+    padding: 10px;
+    padding-left: 0px;
+    margin: 0;
+    font-size: 0.7em;
+  }
+
   &__search {
     display: flex;
+    flex-direction: column;
     padding-bottom: 20px;
-    align-items: center;
+    // align-items: center;
+
+    &__bar {
+      display: flex;
+      // flex-direction: column;
+    }
+
     & input {
-      height: 20px;
+      height: 30px;
       color: map-get($COLOR-PALETTE, font);
       padding: 10px;
       background-color: map-get($COLOR-PALETTE, prim);
       border: 1px solid map-get($COLOR-PALETTE, bg);
       border-radius: 5px 0px 0px 5px;
 
-      &:active {
+      &:focus {
         border: 1px map-get($COLOR-PALETTE, font4);
+        outline: none;
       }
     }
 
-    & button {
-      height: 18px;
+    &__submit {
+      height: 28px;
       border-radius: 0px 5px 5px 0px;
       font-size: 0.8em;
+      font-weight: bold;
+      border: 1px map-get($COLOR-PALETTE, bg);
+      background-color: map-get($COLOR-PALETTE, font4);
+      color: map-get($COLOR-PALETTE, font);
 
       & i {
         font-size: 0.9em;
+        margin-right: 5px;
       }
     }
   }

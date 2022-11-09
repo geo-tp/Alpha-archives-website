@@ -15,7 +15,7 @@ class Browser extends Component {
       loading: true,
       elements: null,
       elementsImages: null,
-      tagsResponse: null,
+      tags: null,
       selectedTags: [],
       displayImageBox: false,
       displaySearchBar: false,
@@ -33,10 +33,23 @@ class Browser extends Component {
 
     this.setState({
       actualDirectory: [],
+      selectedTags: [],
+      displaySearchBar: false,
     });
   };
 
   goBackDirectory = () => {
+    if (this.state.displaySearchBar) {
+      this.getFiles("parent");
+
+      this.setState({
+        actualDirectory: [],
+        selectedTags: [],
+        displaySearchBar: false,
+      });
+      return;
+    }
+
     let directory = this.state.actualDirectory;
     directory.pop();
 
@@ -55,7 +68,7 @@ class Browser extends Component {
 
   async getTags() {
     let tags = await fetchTags();
-
+    console.log(tags);
     this.setState({
       tags,
     });
@@ -204,6 +217,7 @@ class Browser extends Component {
           <div className="main-browser">
             {this.state.displayImageBox && (
               <ImageBox
+                tags={this.state.tags.body}
                 imagesName={this.state.elements}
                 imagesInBox={this.state.elementsImages}
                 indexInBox={this.state.indexInView}

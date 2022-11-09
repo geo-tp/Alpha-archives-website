@@ -1,6 +1,7 @@
 import { SelectedTags } from "./SelectedTags";
 import { TagSelector } from "./TagSelector";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 export const TagSearch = ({
   tags,
@@ -8,6 +9,14 @@ export const TagSearch = ({
   handleTagClick,
   handleRemoveTagClick,
 }) => {
+  const [newSelectedTags, setNewSelectedTags] = useState(selectedTags);
+
+  const handleAddSelectedTags = (tag) => {
+    let tags = newSelectedTags;
+    tags.unshift(tag);
+    setNewSelectedTags(tags);
+  };
+
   return (
     <div className="tag-search">
       <TagSelector tags={tags} handleTagClick={handleTagClick} />

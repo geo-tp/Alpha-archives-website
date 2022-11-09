@@ -18,7 +18,7 @@ from file.messages import ALREADY_IN_ARCHIVE, UPLOAD_SUCCESS
 from rest_framework import filters
 from rest_framework.decorators import action
 from rest_framework import status, viewsets
-from tag.serializers import SearchFilesByTagsSerializer
+from tag.serializers import CustomAppliedTagSerializer
 from tag.models import AppliedTag, Tag
 from file.serializers import FileSerializer
 from psutil import disk_usage
@@ -44,7 +44,7 @@ class FileViewSet(viewsets.ModelViewSet):
             return UploadFileSerializer(*args, **kwargs)
 
         elif self.action == "search_by_tags":
-            return SearchFilesByTagsSerializer(*args, **kwargs)
+            return CustomAppliedTagSerializer(*args, **kwargs)
         else:
             return FileSerializer(*args, **kwargs)
 

@@ -9,7 +9,7 @@
 .main-image-upload {
   // margin:2%;
   background-color: map-get($COLOR-PALETTE, ter);
-  height: 76vh;
+  height: 78vh;
 
   &__previews {
     height: 45%;
@@ -24,6 +24,7 @@
     border-radius: 30px;
 
     &__title {
+      font-size: 0.8em;
       color: map-get($COLOR_PALETTE, font);
     }
 

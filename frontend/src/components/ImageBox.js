@@ -98,7 +98,11 @@ class ImageBox extends Component {
         >
           <i className="fa fa-3x fa-angle-left"></i>
         </button>
-        <TagContainer />
+        <TagContainer
+          file={this.props.imagesName[this.state.index]}
+          tags={this.props.tags}
+          fileTags={this.props.imagesName[this.state.index].tags}
+        />
         <div className="main-image-box__image-container">
           {this.state.magnify ? (
             <MagnifyImage

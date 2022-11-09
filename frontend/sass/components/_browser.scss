@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   // width: 90%;
-  height: 80vh;
+  height: 82vh;
   background-color: map-get($COLOR-PALETTE, ter);
   margin: 0 auto;
   align-items: center;
@@ -48,6 +48,7 @@
       background-color: map-get($COLOR-PALETTE, prim);
       padding: 10px;
       padding-left: 10px;
+      min-height: 20px;
 
       width: 70%;
       text-align: left;
@@ -60,11 +61,11 @@
     color: map-get($COLOR-PALETTE, font);
   }
 
-  @include tablet-design {
-    padding-top: 4%;
-  }
+  // @include tablet-design {
+  //   padding-top: 4%;
+  // }
 
-  @include mobile-design {
-    padding-top: 8%;
-  }
+  // @include mobile-design {
+  //   padding-top: 8%;
+  // }
 }

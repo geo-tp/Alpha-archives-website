@@ -6,7 +6,9 @@ export const Login = () => {
 
   return (
     <div className="login">
-      <h2>Login</h2>
+      <h1>
+        <i className="fa fa-user"></i>Login
+      </h1>
       <p>
         Only avalaible for contributors of{" "}
         <a

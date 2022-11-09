@@ -198,7 +198,7 @@ html {
   align-items: center;
   justify-content: center;
   padding-bottom: 1px;
-  width: 97%;
+  width: 98%;
 }
 @media screen and (max-width: 1200px) {
   .main-container {
@@ -302,6 +302,12 @@ html {
   width: 30%;
 }
 
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .App {
   margin: 0 auto;
   text-align: center;
@@ -369,7 +375,7 @@ html {
 
 .main-image-upload {
   background-color: #0d1117;
-  height: 76vh;
+  height: 78vh;
 }
 .main-image-upload__previews {
   height: 45%;
@@ -383,6 +389,7 @@ html {
   border-radius: 30px;
 }
 .main-image-upload__previews__title {
+  font-size: 0.8em;
   color: #c9d1d9;
 }
 .main-image-upload__previews__box {
@@ -520,7 +527,6 @@ html {
   width: 100%;
   height: 90vh;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 .main-image-box__image-container img {
@@ -712,7 +718,7 @@ html {
 .main-browser {
   position: relative;
   display: flex;
-  height: 80vh;
+  height: 82vh;
   background-color: #0d1117;
   margin: 0 auto;
   align-items: center;
@@ -746,6 +752,7 @@ html {
   background-color: #1c2327;
   padding: 10px;
   padding-left: 10px;
+  min-height: 20px;
   width: 70%;
   text-align: left;
   overflow: hidden;
@@ -753,16 +760,6 @@ html {
 .main-browser__no-results {
   font-size: 1.6em;
   color: #c9d1d9;
-}
-@media screen and (max-width: 1200px) {
-  .main-browser {
-    padding-top: 4%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .main-browser {
-    padding-top: 8%;
-  }
 }
 
 .main-browser-element {
@@ -1078,6 +1075,13 @@ html {
   text-decoration: none;
 }
 
+.footer-hidden + footer {
+  height: 0px;
+  position: absolute;
+  visibility: hidden;
+  z-index: -1;
+}
+
 .tag-container {
   position: absolute;
   left: 5px;
@@ -1087,25 +1091,36 @@ html {
   color: #c9d1d9;
   font-weight: bold;
   border-radius: 10px;
-  width: 90%;
+  width: 93%;
   text-align: left;
   padding: 2px;
   display: flex;
   align-items: center;
 }
-.tag-container button {
+.tag-container__tags {
+  overflow: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+}
+.tag-container__tags::-webkit-scrollbar {
+  display: none;
+}
+.tag-container__selector {
   background-color: #238636;
   font-size: 1em;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 5px 10px;
   margin-right: 10px;
   border: none;
   color: #c9d1d9;
   font-weight: bold;
   display: flex;
   align-items: center;
+  border-radius: 5px;
 }
-.tag-container button i {
+.tag-container__selector i {
   font-size: 1.5em;
   margin-right: 10px;
 }
@@ -1117,6 +1132,8 @@ html {
   margin-left: 2px;
   margin-right: 2px;
   font-size: 0.7em;
+  border: 1px solid #161b22;
+  color: #c9d1d9;
 }
 .tag-element--green {
   background-color: #238636;
@@ -1127,35 +1144,50 @@ html {
   left: 5px;
   top: 40px;
   background-color: #0d1117;
-  width: 400px;
+  width: 350px;
   height: 200px;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #1c2327;
 }
+.tag-ui__label {
+  padding: 10px;
+  padding-left: 0px;
+  margin: 0;
+  font-size: 0.7em;
+}
 .tag-ui__search {
   display: flex;
+  flex-direction: column;
   padding-bottom: 20px;
-  align-items: center;
+}
+.tag-ui__search__bar {
+  display: flex;
 }
 .tag-ui__search input {
-  height: 20px;
+  height: 30px;
   color: #c9d1d9;
   padding: 10px;
   background-color: #1c2327;
   border: 1px solid #01040a;
   border-radius: 5px 0px 0px 5px;
 }
-.tag-ui__search input:active {
+.tag-ui__search input:focus {
   border: 1px #238636;
+  outline: none;
 }
-.tag-ui__search button {
-  height: 18px;
+.tag-ui__search__submit {
+  height: 28px;
   border-radius: 0px 5px 5px 0px;
   font-size: 0.8em;
+  font-weight: bold;
+  border: 1px #01040a;
+  background-color: #238636;
+  color: #c9d1d9;
 }
-.tag-ui__search button i {
+.tag-ui__search__submit i {
   font-size: 0.9em;
+  margin-right: 5px;
 }
 .tag-ui__tags {
   display: flex;
@@ -1210,11 +1242,12 @@ html {
   width: 30px;
   height: 20px;
   position: absolute;
-  right: -2%;
+  right: -5%;
   background-color: #238636;
   color: white;
   border-radius: 5px;
   border: none;
+  border-radius: 0px 10px 10px 0px;
 }
 .login span {
   font-size: 0.7em;
@@ -1232,9 +1265,12 @@ html {
   font-weight: bold;
   text-decoration: none;
 }
-.login h2 {
+.login h1 {
   margin: 0px;
   margin-bottom: 20px;
+}
+.login h1 i {
+  padding-right: 15px;
 }
 .login div {
   display: flex;
@@ -1278,7 +1314,7 @@ html {
 .tag-selector__icon {
   display: flex;
   align-items: center;
-  color: #238636;
+  color: #3c73b2;
   font-weight: bold;
   background-color: #1c2327;
   padding-left: 15px;

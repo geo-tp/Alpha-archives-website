@@ -21,3 +21,12 @@
     }
   }
 }
+
+.footer-hidden {
+  & + footer {
+    height: 0px;
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+  }
+}

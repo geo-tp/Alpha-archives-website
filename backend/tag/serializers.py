@@ -14,5 +14,5 @@ class AppliedTagSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class SearchFilesByTagsSerializer(serializers.Serializer):
+class CustomAppliedTagSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=255)

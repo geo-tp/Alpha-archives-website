@@ -47,12 +47,13 @@
       width: 30px;
       height: 20px;
       position: absolute;
-      right: -2%;
+      right: -5%;
       // top: 45%;
       background-color: map-get($COLOR_PALETTE, font4);
       color: white;
       border-radius: 5px;
       border: none;
+      border-radius: 0px 10px 10px 0px;
     }
   }
 
@@ -75,9 +76,13 @@
     text-decoration: none;
   }
 
-  & h2 {
+  & h1 {
     margin: 0px;
     margin-bottom: 20px;
+
+    & i {
+      padding-right: 15px;
+    }
   }
 
   & div {

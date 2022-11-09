@@ -1,29 +1,45 @@
-export const TagUi = () => {
+import PropTypes from "prop-types";
+import { useState } from "react";
+import { fetchApplyTag } from "../api/fetchApplyTag";
+
+export const TagUi = ({ tags, file, fileTags, handleTagClick }) => {
   return (
     <div className="tag-ui">
       <form className="tag-ui__search">
-        <input
-          type="search"
-          name="search-tag"
-          id="search-tag"
-          placeholder="Tag name"
-          required
-        />
-        <button type="submit">
-          <i className="fa fa-plus"></i>New
-        </button>
+        <label htmlFor="search-tag" className="tag-ui__label">
+          Apply or create a new tag
+        </label>
+        <div className="tag-ui__search__bar">
+          <input
+            type="search"
+            name="search-tag"
+            id="search-tag"
+            placeholder="Tag name"
+            autoFocus={true}
+            required
+          />
+          <button className="tag-ui__search__submit" type="submit">
+            <i className="fa fa-plus"></i>New
+          </button>
+        </div>
       </form>
       <div className="tag-ui__tags">
-        <div className="tag-element">One</div>
-        <div className="tag-element">One</div>
-        <div className="tag-element">Two Three</div>
-        <div className="tag-element tag-element--green">Two Three Four</div>
-        <div className="tag-element">Two Three Four</div>
-        <div className="tag-element">Two Three Four Five</div>
-        <div className="tag-element tag-element--green">
-          Two Three Four Five
-        </div>
+        {tags?.map((tag) => (
+          <button
+            className="tag-element"
+            onClick={() => handleTagClick(tag.name)}
+          >
+            {tag.name}
+          </button>
+        ))}
       </div>
     </div>
   );
+};
+
+TagUi.propTypes = {
+  tags: PropTypes.array.isRequired,
+  file: PropTypes.object.isRequired,
+  fileTags: PropTypes.array.isRequired,
+  handleTagClick: PropTypes.func.isRequired,
 };

@@ -5,7 +5,7 @@ import Browser from "../components/Browser";
 const BrowserPage = () => {
   const { folder } = useParams();
   return (
-    <div>
+    <div class="footer-hidden">
       <Browser folder={folder} />
     </div>
   );

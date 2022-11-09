@@ -2,7 +2,7 @@ import logo from "../assets/logo.png";
 
 export const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <img src={logo} alt="logo" />
       <p>
         - Made by <a href="https://github.com/geo-tp">Geo </a> -{" "}
@@ -12,6 +12,6 @@ export const Footer = () => {
           Blizzard Entertainment, Inc.
         </a>
       </p>
-    </div>
+    </footer>
   );
 };

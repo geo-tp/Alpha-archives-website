@@ -5,7 +5,8 @@
   margin-left: 2px;
   margin-right: 2px;
   font-size: 0.7em;
-
+  border: 1px solid map-get($COLOR-PALETTE, sec);
+  color: map-get($COLOR-PALETTE, font);
   &--green {
     background-color: map-get($COLOR-PALETTE, font4);
   }

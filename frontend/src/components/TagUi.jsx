@@ -3,6 +3,8 @@ import { useState } from "react";
 import { fetchApplyTag } from "../api/fetchApplyTag";
 
 export const TagUi = ({ tags, file, fileTags, handleTagClick }) => {
+  console.log("TAGS", tags);
+  console.log("FILE TAGS", fileTags);
   return (
     <div className="tag-ui">
       <form className="tag-ui__search">
@@ -26,8 +28,12 @@ export const TagUi = ({ tags, file, fileTags, handleTagClick }) => {
       <div className="tag-ui__tags">
         {tags?.map((tag) => (
           <button
-            className="tag-element"
-            onClick={() => handleTagClick(tag.name)}
+            className={
+              fileTags.some((item) => item.tag === tag.name)
+                ? "tag-element tag-element--green"
+                : "tag-element"
+            }
+            onClick={() => handleTagClick(tag)}
           >
             {tag.name}
           </button>

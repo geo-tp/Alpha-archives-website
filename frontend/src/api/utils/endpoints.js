@@ -1,4 +1,4 @@
-const API_BASE = "api/v1/";
+export const API_BASE = "api/v1/";
 
 export const API_MODEL_FILE = "files";
 export const API_MODEL_TAGS = "tags";

@@ -7,9 +7,9 @@ import { useRef } from "react";
 export const TagSelector = ({ tags, handleTagClick }) => {
   const [displayTagDropDown, setDisplayTagDropDown] = useState();
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  useOutsideBox(wrapperRef);
 
-  function useOutsideAlerter(ref) {
+  function useOutsideBox(ref) {
     useEffect(() => {
       /**
        * Alert if clicked on outside of element

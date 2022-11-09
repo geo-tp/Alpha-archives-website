@@ -14,7 +14,8 @@
   align-items: center;
 
   &__tags {
-    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     /* Hide scrollbar for Chrome, Safari and Opera */

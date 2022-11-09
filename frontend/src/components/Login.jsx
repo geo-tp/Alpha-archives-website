@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Login = () => {
   return (
     <div className="login">
@@ -15,6 +17,9 @@ export const Login = () => {
         <button className="button-upload" type="submit">
           Connect <i className="fa fa-sign-in"></i>
         </button>
+        <Link to="/password-forgot" className="login_forget">
+          Forgot your password ? Click here
+        </Link>
       </form>
     </div>
   );

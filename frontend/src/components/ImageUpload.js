@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { fetchUploadFile } from "../api/UploadFiles";
+import { fetchUploadFile } from "../api/fetchUploadFiles";
 import ImageBox from "./ImageBox";
 import { ACCEPTED_MIME_TYPES } from "./../utils/mimeTypes";
-import { UploadStatus } from "../api/UploadStatus";
+import { fetchUploadStatus } from "../api/fetchUploadStatus";
 
 export default class ImageUpload extends Component {
   fileObj = [];
@@ -28,7 +28,7 @@ export default class ImageUpload extends Component {
   }
 
   componentDidMount() {
-    this.uploadStatus();
+    fetchUploadStatus();
   }
 
   fileIsAlreadyIn(file1, file2) {
@@ -76,7 +76,7 @@ export default class ImageUpload extends Component {
   }
 
   async uploadStatus() {
-    let uploadStatus = await UploadStatus();
+    let uploadStatus = await fetchUploadStatus();
 
     if (uploadStatus.hasOwnProperty("error")) {
       this.setState({ uploadStatus: false });

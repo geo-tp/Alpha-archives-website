@@ -1,7 +1,7 @@
 import { Component } from "react";
 import banner from "../assets/banner.webp";
 import { Link } from "react-router-dom";
-import { randomScreenshot } from "../api/RandomScreenshot";
+import { fetchRandomScreenshot } from "../api/fetchRandomScreenshot";
 import { API_URL } from "../api/utils/config";
 import wowIcon from "../assets/wow-icon-64.webp";
 import { HomeCards } from "./HomeCards";
@@ -71,7 +71,7 @@ class HomeInformations extends Component {
     }
 
     this.setState({ rollButtonIsDisabled: true });
-    let screenshot = await randomScreenshot();
+    let screenshot = await fetchRandomScreenshot();
 
     this.setState({
       screenshot: screenshot,
@@ -159,9 +159,7 @@ class HomeInformations extends Component {
             <img
               className="random-box__image"
               alt="random WoW screenshot"
-              src={
-                API_URL.slice(0, -1) + this.state.screenshot.image.image_path
-              }
+              src={this.state.screenshot.image_raw}
             />
             <div className="random-box__roll-box">
               <p className="random-box__roll">

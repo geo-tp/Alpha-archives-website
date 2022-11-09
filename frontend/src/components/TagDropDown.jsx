@@ -1,47 +1,22 @@
-export const TagDropDown = () => {
+import PropTypes from "prop-types";
+
+export const TagDropDown = ({ tags, handleTagClick }) => {
+  console.log("TAGS, ", tags);
   return (
     <div className="tag-dropdown">
-      <div className="tag-dropdown-element">One</div>
-      <div className="tag-dropdown-element">Two Three</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
-      <div className="tag-dropdown-element">Two Three Four Five</div>
+      {tags.map((tag) => (
+        <div
+          className="tag-dropdown-element"
+          onClick={() => handleTagClick(tag.name)}
+        >
+          {tag.name}
+        </div>
+      ))}
     </div>
   );
+};
+
+TagDropDown.propTypes = {
+  tags: PropTypes.array.isRequired,
+  handleTagClick: PropTypes.func.isRequired,
 };

@@ -24,9 +24,9 @@ class ImageBox extends Component {
   }
 
   handleKeyDown = (e) => {
-    if (e.keyCode == 39) {
+    if (e.keyCode === 39) {
       this.nextImage();
-    } else if (e.keyCode == 37) {
+    } else if (e.keyCode === 37) {
       this.previousImage();
     }
   };
@@ -146,7 +146,7 @@ class ImageBox extends Component {
           className="fa fa-close fa-2x close-menu-cross"
         ></button>
         <p className="main-image-box__filename">
-          <strong>{this.props.imagesName[this.state.index].name}</strong>
+          <strong>{this.props.imagesName[this.state.index].filename}</strong>
         </p>
       </div>
     );

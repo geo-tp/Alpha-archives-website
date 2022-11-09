@@ -1,5 +1,7 @@
 import { Component } from "react";
-import { fetchElements } from "../api/FetchElements";
+import { fetchFiles } from "../api/fetchFiles";
+import { fetchFilesByTags } from "../api/fetchFilesByTags";
+import { fetchTags } from "../api/fetchTags";
 import { API_URL } from "../api/utils/config";
 import BrowseElement from "./BrowserElement";
 import ImageBox from "./ImageBox";
@@ -13,6 +15,8 @@ class Browser extends Component {
       loading: true,
       elements: null,
       elementsImages: null,
+      tagsResponse: null,
+      selectedTags: [],
       displayImageBox: false,
       displaySearchBar: false,
       indexInBox: null,
@@ -20,11 +24,12 @@ class Browser extends Component {
       folderParam: props.folder ? props.folder : "root",
     };
 
-    this.getElements("parent", this.state.folderParam);
+    this.getFiles("parent", this.state.folderParam);
+    this.getTags();
   }
 
   goHomeDirectory = () => {
-    this.getElements("parent");
+    this.getFiles("parent");
 
     this.setState({
       actualDirectory: [],
@@ -35,12 +40,12 @@ class Browser extends Component {
     let directory = this.state.actualDirectory;
     directory.pop();
 
-    this.getElements(
+    this.getFiles(
       "parent",
       this.state.actualDirectory[this.state.actualDirectory.length - 1]
     );
 
-    // cause func getElements will add again, we delete actual dir too
+    // cause func getFiles will add again, we delete actual dir too
     directory.pop();
 
     this.setState({
@@ -48,15 +53,48 @@ class Browser extends Component {
     });
   };
 
-  async getElements(filter_field, filter_value = "root") {
+  async getTags() {
+    let tags = await fetchTags();
+
+    this.setState({
+      tags,
+    });
+  }
+
+  getSelectedTags() {
+    const selectedTags = this.state.selectedTags;
+    let formattedSelectedTags = [];
+
+    for (let tag of selectedTags) {
+      formattedSelectedTags.push({ name: tag });
+    }
+
+    return formattedSelectedTags;
+  }
+
+  async getFilesByTags() {
+    this.getFiles("", "", true);
+  }
+
+  async getFiles(filter_field, filter_value = "root", search = false) {
     this.setState({ loading: true });
-    let elements = await fetchElements(filter_field, filter_value);
+
+    let elements = null;
+
+    if (search) {
+      const tags = this.getSelectedTags();
+      const response = await fetchFilesByTags(tags);
+      console.log("search", response);
+      elements = response.body;
+    } else {
+      elements = await fetchFiles(filter_field, filter_value);
+    }
 
     let elementsImages = [];
     for (let i = 0; i < elements.length; i++) {
-      if (elements[i].is_file) {
-        let image_path = API_URL.slice(0, -1) + elements[i].image.image_path;
-        elementsImages.push(image_path);
+      if (!elements[i].is_folder) {
+        // let image_path = API_URL.slice(0, -1) + elements[i].image_raw;
+        elementsImages.push(elements[i].image_raw);
       }
     }
 
@@ -73,8 +111,29 @@ class Browser extends Component {
     });
   }
 
+  handleRemoveTagClick = (tagName) => {
+    const selectedTags = this.state.selectedTags;
+    const index = selectedTags.indexOf(tagName);
+    selectedTags.splice(index, 1);
+
+    this.setState({ selectedTags });
+  };
+
+  handleTagClick = (tagName) => {
+    console.log("CLICK FROM BROWSER", this.state.selectedTags);
+    const selectedTags = this.state.selectedTags;
+
+    if (selectedTags.includes(tagName)) {
+      return;
+    }
+
+    selectedTags.unshift(tagName);
+    this.setState({ selectedTags });
+    this.getFilesByTags();
+  };
+
   handleFolderClick = (elementName) => {
-    this.getElements("parent", elementName);
+    this.getFiles("parent", elementName);
   };
 
   handleFileClick = (element) => {
@@ -110,7 +169,14 @@ class Browser extends Component {
               <i className="fa fa-2x fa-search"></i>
             </button>
             {this.state.displaySearchBar ? (
-              <TagSearch />
+              !this.state.tags.error && (
+                <TagSearch
+                  tags={this.state.tags.body}
+                  handleTagClick={this.handleTagClick}
+                  selectedTags={this.state.selectedTags}
+                  handleRemoveTagClick={this.handleRemoveTagClick}
+                />
+              )
             ) : (
               <span>{this.state.actualDirectory.join("/")}</span>
             )}

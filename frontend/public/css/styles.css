@@ -104,7 +104,7 @@ html {
   position: absolute;
   right: 1%;
   top: 1%;
-  color: #c53333;
+  color: #751b1b;
   background-color: transparent;
   border-radius: 15px;
 }
@@ -218,7 +218,7 @@ html {
 }
 
 .max-width-container {
-  max-width: 1600px;
+  max-width: 1000px;
 }
 
 .modal-container {
@@ -256,7 +256,7 @@ html {
   /* Black w/ opacity */
   opacity: 1;
   transform: translate(-50%, -50%);
-  border: 7px solid #c53333;
+  border: 7px solid #751b1b;
   box-shadow: 5px 5px 15px 5px black;
 }
 .popup-container div {
@@ -276,7 +276,7 @@ html {
 }
 .popup-container div i {
   padding: 4%;
-  color: #c53333;
+  color: #751b1b;
 }
 .popup-container div p {
   padding-left: 1%;
@@ -289,7 +289,7 @@ html {
   }
 }
 .popup-container div p:first-child {
-  color: #c53333;
+  color: #751b1b;
 }
 
 .button-group {
@@ -360,7 +360,7 @@ html {
 }
 
 .error {
-  color: #c53333;
+  color: #751b1b;
 }
 
 .success {
@@ -369,16 +369,18 @@ html {
 
 .main-image-upload {
   background-color: #0d1117;
-  height: 77vh;
+  height: 76vh;
 }
 .main-image-upload__previews {
   height: 45%;
-  margin: 2%;
   background-color: #1c2327;
   position: relative;
   width: 80%;
   margin: 0 auto;
+  margin-bottom: 1.5%;
+  margin-top: 3%;
   overflow-y: scroll;
+  border-radius: 30px;
 }
 .main-image-upload__previews__title {
   color: #c9d1d9;
@@ -400,7 +402,7 @@ html {
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
+  margin-top: 2%;
   width: 50px;
   /* Need a specific value to work */
 }
@@ -433,9 +435,9 @@ html {
   opacity: 0.8;
 }
 .main-image-upload__form-group label {
-  border: 5px dashed #c9d1d9;
+  border: 3px dashed #c9d1d9;
   background-color: #1c2327;
-  width: 80%;
+  width: 100%;
   height: 20vh;
   display: block;
   margin: 0 auto;
@@ -443,6 +445,8 @@ html {
   align-items: center;
   justify-content: center;
   color: #c9d1d9;
+  border-radius: 30px;
+  margin-top: 20px;
 }
 .main-image-upload__form-group label i {
   margin-right: 2%;
@@ -799,10 +803,10 @@ html {
   position: absolute;
   width: 20%;
   height: 20%;
-  border: 8px solid #fff;
+  border: 10px solid black;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: #1c2327 transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {
@@ -1303,7 +1307,7 @@ html {
 .tag-selected-element i {
   padding: 4px;
   color: #c9d1d9;
-  background-color: #c53333;
+  background-color: #751b1b;
   border-radius: 0px 5px 5px 0px;
   margin-left: 5px;
 }

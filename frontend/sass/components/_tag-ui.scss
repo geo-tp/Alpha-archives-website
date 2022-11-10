@@ -1,13 +1,22 @@
 .tag-ui {
   position: absolute;
-  left: 5px;
+  left: 0px;
   top: 40px;
   background-color: map-get($COLOR-PALETTE, ter);
   width: 350px;
-  height: 200px;
+  height: 250px;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid map-get($COLOR-PALETTE, prim);
+
+  &__user-permission {
+    position: absolute;
+    // font-size: 0.6em;
+    color: map-get($COLOR-PALETTE, font3);
+    right: 10px;
+    top: -3%;
+    cursor: default;
+  }
 
   &__label {
     padding: 10px;
@@ -32,11 +41,10 @@
       color: map-get($COLOR-PALETTE, font);
       padding: 10px;
       background-color: map-get($COLOR-PALETTE, prim);
-      border: 1px solid map-get($COLOR-PALETTE, bg);
+      border: 1px map-get($COLOR-PALETTE, bg);
       border-radius: 5px 0px 0px 5px;
 
       &:focus {
-        border: 1px map-get($COLOR-PALETTE, font4);
         outline: none;
       }
     }
@@ -58,9 +66,10 @@
   }
 
   &__tags {
-    display: flex;
     flex-wrap: wrap;
-    & div {
+    overflow: scroll;
+    height: 170px;
+    & button {
       margin-bottom: 10px;
     }
   }

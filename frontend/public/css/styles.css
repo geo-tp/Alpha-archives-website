@@ -1120,6 +1120,12 @@ html {
   display: flex;
   align-items: center;
   border-radius: 5px;
+  transform: rotate(0deg);
+  transition: all 300ms;
+}
+.tag-container__selector__icon--reverse {
+  transition: all 300ms;
+  transform: rotate(180deg);
 }
 .tag-container__selector i {
   font-size: 1.5em;
@@ -1142,14 +1148,21 @@ html {
 
 .tag-ui {
   position: absolute;
-  left: 5px;
+  left: 0px;
   top: 40px;
   background-color: #0d1117;
   width: 350px;
-  height: 200px;
+  height: 250px;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #1c2327;
+}
+.tag-ui__user-permission {
+  position: absolute;
+  color: #3c73b2;
+  right: 10px;
+  top: -3%;
+  cursor: default;
 }
 .tag-ui__label {
   padding: 10px;
@@ -1170,11 +1183,10 @@ html {
   color: #c9d1d9;
   padding: 10px;
   background-color: #1c2327;
-  border: 1px solid #01040a;
+  border: 1px #01040a;
   border-radius: 5px 0px 0px 5px;
 }
 .tag-ui__search input:focus {
-  border: 1px #238636;
   outline: none;
 }
 .tag-ui__search__submit {
@@ -1191,10 +1203,11 @@ html {
   margin-right: 5px;
 }
 .tag-ui__tags {
-  display: flex;
   flex-wrap: wrap;
+  overflow: scroll;
+  height: 170px;
 }
-.tag-ui__tags div {
+.tag-ui__tags button {
   margin-bottom: 10px;
 }
 

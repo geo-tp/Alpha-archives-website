@@ -1,15 +1,46 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { fetchApplyTag } from "../api/fetchApplyTag";
+import { searchTagsByKeywords } from "../utils/search";
 
 export const TagUi = ({ tags, file, fileTags, handleTagClick }) => {
   console.log("TAGS", tags);
   console.log("FILE TAGS", fileTags);
+  const [searchKeywords, setSearchKeywords] = useState("");
+  const [filteredTags, setFilteredTags] = useState(tags);
+  console.log("FILTERED TAGS", filteredTags);
+
+  const handleSearchInputChange = (e) => {
+    const newValue = e.target.value;
+
+    if (newValue === "") {
+      setFilteredTags(tags);
+      return;
+    }
+
+    setSearchKeywords(newValue);
+    const resultsTags = searchTagsByKeywords(newValue, tags);
+    setFilteredTags(resultsTags);
+  };
+
   return (
     <div className="tag-ui">
-      <form className="tag-ui__search">
+      <p
+        title="Hit a Grey Tag to apply it. Hit a Green Tag to remove it. If a tag doesnt exists, you can create it by pressing New"
+        className="tag-ui__user-permission"
+      >
+        <i className="fa fa-info-circle"></i>
+      </p>
+      <form
+        className="tag-ui__search"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+          }
+        }}
+      >
         <label htmlFor="search-tag" className="tag-ui__label">
-          Apply or create a new tag
+          Search or create a new tag
         </label>
         <div className="tag-ui__search__bar">
           <input
@@ -19,6 +50,7 @@ export const TagUi = ({ tags, file, fileTags, handleTagClick }) => {
             placeholder="Tag name"
             autoFocus={true}
             required
+            onChange={handleSearchInputChange}
           />
           <button className="tag-ui__search__submit" type="submit">
             <i className="fa fa-plus"></i>New
@@ -26,12 +58,17 @@ export const TagUi = ({ tags, file, fileTags, handleTagClick }) => {
         </div>
       </form>
       <div className="tag-ui__tags">
-        {tags?.map((tag) => (
+        {filteredTags?.map((tag) => (
           <button
             className={
               fileTags.some((item) => item.tag === tag.name)
                 ? "tag-element tag-element--green"
                 : "tag-element"
+            }
+            title={
+              fileTags.some((item) => item.tag === tag.name)
+                ? "Click to remove"
+                : "Click to apply"
             }
             onClick={() => handleTagClick(tag)}
           >

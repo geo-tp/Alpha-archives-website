@@ -9,6 +9,10 @@ export const TagContainer = ({ fileTags, tags, file }) => {
   const wrapperRef = useRef(null);
   useOutsideBox(wrapperRef);
 
+  useEffect(() => {
+    setNewFileTags(fileTags);
+  }, [fileTags]);
+
   function useOutsideBox(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
@@ -56,7 +60,14 @@ export const TagContainer = ({ fileTags, tags, file }) => {
         onClick={() => setTagBoxIsOpen(!tagBoxIsOpen)}
         className="tag-container__selector"
       >
-        <i className="fa fa-angle-down"></i>Tags
+        <i
+          className={
+            tagBoxIsOpen
+              ? "fa fa-angle-down tag-container__selector__icon--reverse"
+              : "fa fa-angle-down"
+          }
+        ></i>
+        Tags
       </button>
       <div className="tag-container__tags">
         {newFileTags?.map((tag) => (

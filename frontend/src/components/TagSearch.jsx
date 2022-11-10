@@ -2,6 +2,7 @@ import { SelectedTags } from "./SelectedTags";
 import { TagSelector } from "./TagSelector";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { searchTagsByKeywords } from "../utils/search";
 
 export const TagSearch = ({
   tags,

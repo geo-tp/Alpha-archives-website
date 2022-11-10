@@ -3,11 +3,29 @@ import { TagDropDown } from "./TagDropDown";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { searchTagsByKeywords } from "../utils/search";
 
 export const TagSelector = ({ tags, handleTagClick }) => {
   const [displayTagDropDown, setDisplayTagDropDown] = useState();
   const wrapperRef = useRef(null);
   useOutsideBox(wrapperRef);
+
+  const [searchKeywords, setSearchKeywords] = useState("");
+  const [filteredTags, setFilteredTags] = useState(tags);
+  console.log("FILTERED TAGS", filteredTags);
+
+  const handleSearchInputChange = (e) => {
+    const newValue = e.target.value;
+
+    if (newValue === "") {
+      setFilteredTags(tags);
+      return;
+    }
+
+    setSearchKeywords(newValue);
+    const resultsTags = searchTagsByKeywords(newValue, tags);
+    setFilteredTags(resultsTags);
+  };
 
   function useOutsideBox(ref) {
     useEffect(() => {
@@ -41,10 +59,11 @@ export const TagSelector = ({ tags, handleTagClick }) => {
             onFocus={() => {
               setDisplayTagDropDown(true);
             }}
+            onChange={handleSearchInputChange}
           />
         </form>
         {displayTagDropDown && (
-          <TagDropDown tags={tags} handleTagClick={handleTagClick} />
+          <TagDropDown tags={filteredTags} handleTagClick={handleTagClick} />
         )}
       </div>
     </div>

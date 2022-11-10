@@ -28,6 +28,8 @@ class Browser extends Component {
     this.getTags();
   }
 
+  updateElementTags(elementId, tags) {}
+
   goHomeDirectory = () => {
     this.getFiles("parent");
 
@@ -218,9 +220,9 @@ class Browser extends Component {
             {this.state.displayImageBox && (
               <ImageBox
                 tags={this.state.tags.body}
-                imagesName={this.state.elements}
+                files={this.state.elements}
                 imagesInBox={this.state.elementsImages}
-                indexInBox={this.state.indexInView}
+                fileIndexInBox={this.state.indexInView}
                 handleImageBoxClick={this.handleImageBoxClick}
                 autofocus={true}
               />

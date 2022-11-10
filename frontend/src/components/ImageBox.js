@@ -7,10 +7,12 @@ import { TagContainer } from "./TagContainer";
 class ImageBox extends Component {
   constructor(props) {
     super(props);
+    console.log("IMG NAME", props.files);
     this.state = {
+      files: props.files,
       images: props.imagesInBox,
-      index: props.indexInBox,
-      inView: props.imagesInBox[props.index],
+      index: props.fileIndexInBox,
+      fileTags: props.files[props.fileIndexInBox].tags,
 
       imageScale: 100,
       stretched: true,
@@ -46,7 +48,10 @@ class ImageBox extends Component {
       newIndex = this.state.index + 1;
     }
 
-    this.setState({ index: newIndex });
+    this.setState({
+      index: newIndex,
+      fileTags: [...this.state.files[newIndex].tags],
+    });
   };
 
   previousImage = () => {
@@ -57,8 +62,11 @@ class ImageBox extends Component {
     } else {
       newIndex = this.state.index - 1;
     }
-
-    this.setState({ index: newIndex });
+    console.log("FILE TAGS", this.state.files[newIndex].tags);
+    this.setState({
+      index: newIndex,
+      fileTags: this.state.files[newIndex].tags,
+    });
   };
 
   zoomOut = () => {
@@ -99,9 +107,9 @@ class ImageBox extends Component {
           <i className="fa fa-3x fa-angle-left"></i>
         </button>
         <TagContainer
-          file={this.props.imagesName[this.state.index]}
+          file={this.props.files[this.state.index]}
           tags={this.props.tags}
-          fileTags={this.props.imagesName[this.state.index].tags}
+          fileTags={this.state.fileTags}
         />
         <div className="main-image-box__image-container">
           {this.state.magnify ? (
@@ -156,7 +164,7 @@ class ImageBox extends Component {
           className="fa fa-close fa-2x close-menu-cross"
         ></button>
         <p className="main-image-box__filename">
-          <strong>{this.props.imagesName[this.state.index].filename}</strong>
+          <strong>{this.props.files[this.state.index].filename}</strong>
         </p>
       </div>
     );
@@ -164,9 +172,9 @@ class ImageBox extends Component {
 }
 
 ImageBox.propTypes = {
-  imagesName: PropTypes.object.isRequired,
+  files: PropTypes.object.isRequired,
   imagesInBox: PropTypes.object.isRequired,
-  indexInBox: PropTypes.number.isRequired,
+  fileIndexInBox: PropTypes.number.isRequired,
   handleImageBoxClick: PropTypes.func.isRequired,
 };
 

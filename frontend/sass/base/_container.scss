@@ -47,6 +47,7 @@
   // background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgb(255, 253, 253); /* Black w/ opacity */
   opacity: 0.9;
+  backdrop-filter: blur(10px);
   // transform: translate(-50%, -50%);
 }
 

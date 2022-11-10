@@ -110,6 +110,8 @@ class ImageBox extends Component {
           file={this.props.files[this.state.index]}
           tags={this.props.tags}
           fileTags={this.state.fileTags}
+          createTagInState={this.props.createTagInState}
+          updateFileInState={this.props.updateFileInState}
         />
         <div className="main-image-box__image-container">
           {this.state.magnify ? (
@@ -176,6 +178,7 @@ ImageBox.propTypes = {
   imagesInBox: PropTypes.object.isRequired,
   fileIndexInBox: PropTypes.number.isRequired,
   handleImageBoxClick: PropTypes.func.isRequired,
+  createTagInState: PropTypes.func.isRequired,
 };
 
 export default ImageBox;

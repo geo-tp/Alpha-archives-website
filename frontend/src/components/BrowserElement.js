@@ -13,7 +13,6 @@ class BrowseElement extends Component {
   }
 
   determinateIconToUse(element) {
-    console.log("ELEMENt", element);
     if (this.props.element.is_folder) {
       return folder;
     }

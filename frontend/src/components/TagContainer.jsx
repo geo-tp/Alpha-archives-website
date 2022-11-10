@@ -3,7 +3,7 @@ import { TagUi } from "./TagUi";
 import PropTypes from "prop-types";
 import { fetchApplyTag } from "../api/fetchApplyTag";
 import { fetchRemoveApplyTag } from "../api/fetchRemoveApplyTag";
-export const TagContainer = ({ fileTags, tags, file }) => {
+export const TagContainer = ({ fileTags, tags, file, createTagInState }) => {
   const [tagBoxIsOpen, setTagBoxIsOpen] = useState(false);
   const [newFileTags, setNewFileTags] = useState(fileTags ? fileTags : []);
   const wrapperRef = useRef(null);
@@ -80,6 +80,7 @@ export const TagContainer = ({ fileTags, tags, file }) => {
           file={file}
           fileTags={newFileTags}
           handleTagClick={handleTagClick}
+          createTagInState={createTagInState}
         />
       )}
     </div>
@@ -90,4 +91,5 @@ TagContainer.propTypes = {
   tags: PropTypes.array.isRequired,
   fileTags: PropTypes.array.isRequired,
   file: PropTypes.object.isRequired,
+  createTagInState: PropTypes.func.isRequired,
 };

@@ -13,10 +13,13 @@ class Browser extends Component {
     super(props);
     this.state = {
       loading: true,
-      elements: null,
-      elementsImages: null,
+      files: null,
+      filesImages: null,
       tags: null,
       selectedTags: [],
+      instanceFiles: [],
+      instanceAppliedTags: [],
+      instanceTags: [],
       displayImageBox: false,
       displaySearchBar: false,
       indexInBox: null,
@@ -28,7 +31,10 @@ class Browser extends Component {
     this.getTags();
   }
 
-  updateElementTags(elementId, tags) {}
+  createTagInState = (tag) => {
+    console.log("CREATE TAGS", this.state.tags);
+    this.setState({ tags: [tag, ...this.state.tags] });
+  };
 
   goHomeDirectory = () => {
     this.getFiles("parent");
@@ -72,7 +78,7 @@ class Browser extends Component {
     let tags = await fetchTags();
     console.log(tags);
     this.setState({
-      tags,
+      tags: tags.body,
     });
   }
 
@@ -94,33 +100,33 @@ class Browser extends Component {
   async getFiles(filter_field, filter_value = "root", search = false) {
     this.setState({ loading: true });
 
-    let elements = null;
+    let files = null;
 
     if (search) {
       const tags = this.getSelectedTags();
       const response = await fetchFilesByTags(tags);
       console.log("search", response);
-      elements = response.body;
+      files = response.body;
     } else {
-      elements = await fetchFiles(filter_field, filter_value);
+      files = await fetchFiles(filter_field, filter_value);
     }
 
-    let elementsImages = [];
-    for (let i = 0; i < elements.length; i++) {
-      if (!elements[i].is_folder) {
-        // let image_path = API_URL.slice(0, -1) + elements[i].image_raw;
-        elementsImages.push(elements[i].image_raw);
+    let filesImages = [];
+    for (let i = 0; i < files.length; i++) {
+      if (!files[i].is_folder) {
+        // let image_path = API_URL.slice(0, -1) + files[i].image_raw;
+        filesImages.push(files[i].image_raw);
       }
     }
 
     let directory = this.state.actualDirectory;
-    if (elements[0]) {
-      directory.push(elements[0].parent);
+    if (files[0]) {
+      directory.push(files[0].parent);
     }
 
     this.setState({
-      elements: elements,
-      elementsImages: elementsImages,
+      files: files,
+      filesImages: filesImages,
       actualDirectory: directory,
       loading: false,
     });
@@ -159,7 +165,7 @@ class Browser extends Component {
 
   handleFileClick = (element) => {
     this.setState({
-      indexInView: this.state.elements.indexOf(element),
+      indexInView: this.state.files.indexOf(element),
       displayImageBox: true,
     });
   };
@@ -206,7 +212,7 @@ class Browser extends Component {
             {this.state.displaySearchBar ? (
               !this.state.tags.error && (
                 <TagSearch
-                  tags={this.state.tags.body}
+                  tags={this.state.tags}
                   handleTagClick={this.handleTagClick}
                   selectedTags={this.state.selectedTags}
                   handleRemoveTagClick={this.handleRemoveTagClick}
@@ -219,18 +225,19 @@ class Browser extends Component {
           <div className="main-browser">
             {this.state.displayImageBox && (
               <ImageBox
-                tags={this.state.tags.body}
-                files={this.state.elements}
-                imagesInBox={this.state.elementsImages}
+                tags={this.state.tags}
+                files={this.state.files}
+                imagesInBox={this.state.filesImages}
                 fileIndexInBox={this.state.indexInView}
                 handleImageBoxClick={this.handleImageBoxClick}
                 autofocus={true}
+                createTagInState={this.createTagInState}
               />
             )}
 
             {!this.state.loading &&
-              this.state.elements &&
-              this.state.elements.map((element) => {
+              this.state.files &&
+              this.state.files.map((element) => {
                 return (
                   <BrowseElement
                     element={element}
@@ -239,9 +246,9 @@ class Browser extends Component {
                   />
                 );
               })}
-            {this.state.elements &&
+            {this.state.files &&
               !this.state.loading &&
-              this.state.elements.length == 0 && (
+              this.state.files.length == 0 && (
                 <p className="main-browser__no-results">
                   {" "}
                   "¯\_(ツ)_/¯" No results

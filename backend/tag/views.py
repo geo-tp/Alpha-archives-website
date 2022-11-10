@@ -8,6 +8,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from tag.serializers import CustomAppliedTagSerializer
+from user.models import CustomUser
 
 
 class TagViewSet(viewsets.ModelViewSet):
@@ -21,6 +22,22 @@ class TagViewSet(viewsets.ModelViewSet):
 
         api_response = format_api_response(
             content=response.data, status=status.HTTP_200_OK
+        )
+
+        return Response(api_response, status=status.HTTP_200_OK)
+
+    def create(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        name = serializer.data["name"]
+        user = CustomUser.objects.get(id=1)
+
+        tag = Tag.objects.create(user=user, name=name)
+        serializer = self.get_serializer(tag)
+
+        api_response = format_api_response(
+            content=serializer.data, status=status.HTTP_200_OK
         )
 
         return Response(api_response, status=status.HTTP_200_OK)

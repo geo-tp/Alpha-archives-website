@@ -1,9 +1,16 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { fetchApplyTag } from "../api/fetchApplyTag";
+import { fetchCreateTag } from "../api/fetchCreateTag";
 import { searchTagsByKeywords } from "../utils/search";
 
-export const TagUi = ({ tags, file, fileTags, handleTagClick }) => {
+export const TagUi = ({
+  tags,
+  file,
+  fileTags,
+  handleTagClick,
+  createTagInState,
+}) => {
   console.log("TAGS", tags);
   console.log("FILE TAGS", fileTags);
   const [searchKeywords, setSearchKeywords] = useState("");
@@ -23,6 +30,22 @@ export const TagUi = ({ tags, file, fileTags, handleTagClick }) => {
     setFilteredTags(resultsTags);
   };
 
+  const handleSubmitCreateTag = async (e) => {
+    e.preventDefault();
+    console.log("IN NEW CREATE");
+    if (!searchKeywords) {
+      return;
+    }
+
+    const response = await fetchCreateTag(searchKeywords);
+    if (!response.error) {
+      setSearchKeywords("");
+      createTagInState(response.body);
+      const tags = filteredTags;
+      tags.push(response.body);
+    }
+  };
+
   return (
     <div className="tag-ui">
       <p
@@ -32,6 +55,7 @@ export const TagUi = ({ tags, file, fileTags, handleTagClick }) => {
         <i className="fa fa-info-circle"></i>
       </p>
       <form
+        onSubmit={handleSubmitCreateTag}
         className="tag-ui__search"
         onKeyDown={(e) => {
           if (e.key === "Enter") {
@@ -85,4 +109,5 @@ TagUi.propTypes = {
   file: PropTypes.object.isRequired,
   fileTags: PropTypes.array.isRequired,
   handleTagClick: PropTypes.func.isRequired,
+  createTagInState: PropTypes.func.isRequired,
 };

@@ -1,0 +1,156 @@
+.profile {
+  color: map-get($COLOR-PALETTE, font);
+  margin-top: 20px;
+  text-align: left;
+  padding: 20px;
+  width: 93%;
+  background-color: map-get($COLOR_PALETTE, sec);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  background-color: map-get($COLOR-PALETTE, ter);
+  border-radius: 10px;
+  border: 1px solid map-get($COLOR-PALETTE, prim);
+
+  & label {
+    font-size: 0.8em;
+  }
+
+  &__disconnect {
+    margin-bottom: 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+    padding: 2px 15px;
+    border: 1px solid map-get($COLOR_PALETTE, error);
+    color: map-get($COLOR_PALETTE, error);
+    background-color: transparent;
+    font-size: 0.5em;
+  }
+
+  &__infos {
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+    padding: 10px;
+    line-height: 1.3em;
+    // max-width: 210px;
+    border-radius: 10px;
+    margin: 20px auto;
+    margin-top: 0px;
+
+    & a {
+      text-decoration: none;
+      color: map-get($COLOR_PALETTE, font3);
+    }
+  }
+
+  &__title {
+  }
+
+  &__button {
+    // width: 30px;
+    // height: 20px;
+    // position: absolute;
+    // right: -5%;
+    // top: 45%;
+    background-color: map-get($COLOR_PALETTE, font4);
+    color: map-get($COLOR_PALETTE, font);
+
+    // border-radius: 5px;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  &__boxes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__box {
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    max-width: 400px;
+    flex-basis: 30%;
+  }
+
+  & h1 {
+    text-align: center;
+    background-color: map-get($COLOR_PALETTE, prim);
+    border: 1px solid map-get($COLOR-PALETTE, bg);
+    width: 80%;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & i {
+      margin-right: 10px;
+      padding: 20px 0px;
+      background-color: map-get($COLOR_PALETTE, prim);
+    }
+  }
+
+  & h2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-top: 0px;
+
+    & i {
+      background-color: map-get($COLOR_PALETTE, prim);
+      border: 1px solid map-get($COLOR-PALETTE, ter);
+      padding: 7px;
+      width: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+  }
+
+  &__input-box {
+    display: flex;
+    flex-direction: column;
+    color: map-get($COLOR-PALETTE, font);
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+    & input {
+      background-color: map-get($COLOR-PALETTE, prim);
+      border: 1px solid map-get($COLOR-PALETTE, sec);
+      color: map-get($COLOR-PALETTE, font);
+      margin-top: 10px;
+      padding-left: 10px;
+      // height: 40px;
+      border-radius: 10px;
+      font-size: 0.9em;
+      height: 50px;
+    }
+  }
+
+  &__actions {
+    margin: 0 auto;
+    padding: 50px;
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+
+    & button {
+      // width: 30px;
+      // height: 20px;
+      // position: absolute;
+      // right: -5%;
+      // top: 45%;
+      //   background-color: map-get($COLOR_PALETTE, font4);
+      color: map-get($COLOR_PALETTE, font);
+
+      // border-radius: 5px;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+    }
+  }
+}

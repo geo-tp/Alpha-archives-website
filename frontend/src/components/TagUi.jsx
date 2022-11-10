@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { fetchApplyTag } from "../api/fetchApplyTag";
 import { fetchCreateTag } from "../api/fetchCreateTag";
 import { searchTagsByKeywords } from "../utils/search";
 
@@ -40,9 +39,9 @@ export const TagUi = ({
     const response = await fetchCreateTag(searchKeywords);
     if (!response.error) {
       setSearchKeywords("");
-      createTagInState(response.body);
-      const tags = filteredTags;
-      tags.push(response.body);
+      const newTag = response.body;
+      createTagInState(newTag);
+      setFilteredTags([newTag, ...tags]);
     }
   };
 
@@ -75,6 +74,7 @@ export const TagUi = ({
             autoFocus={true}
             required
             onChange={handleSearchInputChange}
+            value={searchKeywords}
           />
           <button className="tag-ui__search__submit" type="submit">
             <i className="fa fa-plus"></i>New

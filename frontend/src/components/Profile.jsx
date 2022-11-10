@@ -13,7 +13,7 @@ export const Profile = () => {
           <i className="fa fa-user"></i> Profile
           <form action="">
             <button className="profile__disconnect" type="submit">
-              Disconnect
+              Logout
             </button>
           </form>
         </h1>
@@ -24,8 +24,8 @@ export const Profile = () => {
             User <i className="fa fa-bookmark"></i>
           </h2>
           <p className="profile__infos">
-            You are connected as contributors, you can add, edit, and remove
-            tags.
+            You are connected as <b>contributor</b>, you can add, edit, and
+            remove tags.
           </p>
           <div className="profile__input-box">
             <label htmlFor="username-user">Username</label>
@@ -49,37 +49,7 @@ export const Profile = () => {
             />
           </div>
         </div>
-        <div className="profile__box">
-          <h2>
-            Tags <i className="fa fa-tag"></i>
-          </h2>
-          <p className="profile__infos">
-            You can edit or remove your tags. Warning, if you delete a tag, it
-            will be removed from all elements.
-          </p>
-          <div className="profile__input-box">
-            <label htmlFor="tag-name-user">Edit tag</label>
 
-            <input
-              type="text"
-              name="tag-name-user"
-              id="tag-name-user"
-              value={tagInput}
-            />
-          </div>
-          <div className="tag-ui__tags">
-            <button onClick={(e) => setTagInput("tag")} className="tag-element">
-              Test
-            </button>
-            <button className="tag-element">Test</button>
-
-            <button className="tag-element">Test</button>
-            <button className="tag-element">Test</button>
-            <button className="tag-element">Test</button>
-            <button className="tag-element">Test</button>
-            <button className="tag-element">Test</button>
-          </div>
-        </div>
         <form className="profile__box">
           <h2>
             Password <i className="fa fa-key"></i>
@@ -120,18 +90,49 @@ export const Profile = () => {
             Change
           </button>
         </form>
+        <div className="profile__box">
+          <h2>
+            Tags <i className="fa fa-tag"></i>
+          </h2>
+          <p className="profile__infos">
+            You can edit or remove your tags. Warning, if you delete a tag, it
+            will be removed from all elements.
+          </p>
+          <div className="profile__input-box">
+            <label htmlFor="tag-name-user">Edit tag</label>
+
+            <input
+              type="text"
+              name="tag-name-user"
+              id="tag-name-user"
+              value={tagInput}
+            />
+          </div>
+          <div className="tag-ui__tags">
+            <button onClick={(e) => setTagInput("tag")} className="tag-element">
+              Test
+            </button>
+            <button className="tag-element">Test</button>
+
+            <button className="tag-element">Test</button>
+            <button className="tag-element">Test</button>
+            <button className="tag-element">Test</button>
+            <button className="tag-element">Test</button>
+            <button className="tag-element">Test</button>
+          </div>
+        </div>
         <form className="profile__box">
           <h2>
             Invitation <i className="fa fa-envelope"></i>
           </h2>
 
           <p className="profile__infos">
-            You can invite people to become contributor. That mean they could
+            You can invite people to become contributor. That means they could
             add, edit, and delete tags on screenshots. New user will receive an
             email with crendentials to login.
           </p>
           <div className="profile__input-box">
-            <label htmlFor="email-giest">New user email</label>
+            <label htmlFor="email-giest">New contributor email</label>
             <input
               type="email"
               name="email-guest"

@@ -1,10 +1,15 @@
 import { Component } from "react";
 import ImageUpload from "../components/ImageUpload";
-
+import UploadScreen from "../assets/upload.png";
 class UploadPage extends Component {
   render() {
     return (
-      <div className="main-container page-top-margin footer-hidden">
+      <main className="main-container page-top-margin footer-hidden">
+        <img
+          src={UploadScreen}
+          alt="wow login screen"
+          className="image-background-container"
+        />
         <div className="sub-container2 max-width-container">
           <div className="main-browser__directory-path">
             <h1 className="page-title">Upload Screenshots</h1>
@@ -21,7 +26,7 @@ class UploadPage extends Component {
           </div>
           <ImageUpload />
         </div>
-      </div>
+      </main>
     );
   }
 }

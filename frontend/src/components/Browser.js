@@ -36,6 +36,20 @@ class Browser extends Component {
     this.setState({ tags: [tag, ...this.state.tags] });
   };
 
+  updateFileInState = (FileToUpdate) => {
+    let index = this.state.files
+      .map(function (e) {
+        return e.id;
+      })
+      .indexOf(FileToUpdate.id);
+
+    let newFiles = this.state.files;
+
+    newFiles[index] = FileToUpdate;
+
+    this.setState({ files: newFiles });
+  };
+
   goHomeDirectory = () => {
     this.getFiles("parent");
 
@@ -232,6 +246,7 @@ class Browser extends Component {
                 handleImageBoxClick={this.handleImageBoxClick}
                 autofocus={true}
                 createTagInState={this.createTagInState}
+                updateFileInState={this.updateFileInState}
               />
             )}
 

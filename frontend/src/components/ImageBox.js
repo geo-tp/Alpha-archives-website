@@ -109,7 +109,7 @@ class ImageBox extends Component {
         <TagContainer
           file={this.props.files[this.state.index]}
           tags={this.props.tags}
-          fileTags={this.state.fileTags}
+          fileTags={this.props.files[this.state.index].tags}
           createTagInState={this.props.createTagInState}
           updateFileInState={this.props.updateFileInState}
         />

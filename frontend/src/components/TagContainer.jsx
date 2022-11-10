@@ -3,7 +3,13 @@ import { TagUi } from "./TagUi";
 import PropTypes from "prop-types";
 import { fetchApplyTag } from "../api/fetchApplyTag";
 import { fetchRemoveApplyTag } from "../api/fetchRemoveApplyTag";
-export const TagContainer = ({ fileTags, tags, file, createTagInState }) => {
+export const TagContainer = ({
+  fileTags,
+  tags,
+  file,
+  createTagInState,
+  updateFileInState,
+}) => {
   const [tagBoxIsOpen, setTagBoxIsOpen] = useState(false);
   const [newFileTags, setNewFileTags] = useState(fileTags ? fileTags : []);
   const wrapperRef = useRef(null);
@@ -48,10 +54,15 @@ export const TagContainer = ({ fileTags, tags, file, createTagInState }) => {
 
     const response = await fetchApplyTag(tag.name, file.image_hash);
     const createdTag = response.body;
-    console.log("CREATED", createdTag);
-    let tags = newFileTags;
-    setNewFileTags([...tags, createdTag]);
-    console.log("NEW TAGS", tags);
+    const newTags = [...file.tags, createdTag];
+    console.log("n new TAGS", newTags);
+    const updatedFile = { ...file, tags: newTags };
+    console.log("NEW FILE", updatedFile);
+    updateFileInState(updatedFile);
+    // console.log("CREATED", createdTag);
+    // let tags = newFileTags;
+    // setNewFileTags([...tags, createdTag]);
+    // console.log("NEW TAGS", tags);
   };
 
   return (
@@ -78,7 +89,7 @@ export const TagContainer = ({ fileTags, tags, file, createTagInState }) => {
         <TagUi
           tags={tags}
           file={file}
-          fileTags={newFileTags}
+          fileTags={file.tags}
           handleTagClick={handleTagClick}
           createTagInState={createTagInState}
         />

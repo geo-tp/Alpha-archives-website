@@ -147,7 +147,11 @@ class HomeInformations extends Component {
 
           <p className="main-home-informations__check-sentence">
             <i className="fa fa-check"></i>
-            More than 18 000 screenshots to browse
+            We have{" "}
+            <b>
+              {this.state.screenshot && this.state.screenshot.total_number}{" "}
+              screenshots
+            </b>
           </p>
         </div>
         <HomeCards cards={cityCards} title="Explore cities screenshots" />)

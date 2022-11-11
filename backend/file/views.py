@@ -120,8 +120,8 @@ class FileViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data, many=True)
         serializer.is_valid(raise_exception=True)
 
-        tags = [data["name"] for data in serializer.data]
-        applied_tags = AppliedTag.objects.filter(tag_id__in=tags)
+        tags_array = [data["name"] for data in serializer.data]
+        applied_tags = AppliedTag.objects.filter(tag_id__in=tags_array)
         images_hash = [data.file_hash for data in applied_tags]
         files = File.objects.filter(image_hash__in=images_hash)
         serialized_files = FileSerializer(files, many=True)

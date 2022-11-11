@@ -4,6 +4,7 @@ export const API_MODEL_FILE = "files";
 export const API_MODEL_TAGS = "tags";
 export const API_MODEL_APPLIED_TAGS = "applied-tags";
 export const API_MODEL_AUTH = "auth";
+export const API_MODEL_USER = "user";
 
 export const API_IMAGE = "api/images";
 export const API_UPLOAD_STATUS = API_BASE + "files/upload_status";
@@ -16,3 +17,6 @@ export const API_LOGIN = API_BASE + API_MODEL_AUTH + "/login";
 export const API_LOGOUT = API_BASE + API_MODEL_AUTH + "/logout";
 export const API_PASSWORD_FORGET =
   API_BASE + API_MODEL_AUTH + "/password-forget";
+export const API_INVITATION = API_BASE + API_MODEL_AUTH + "/invitation";
+export const API_PASSWORD_UPDATE = API_BASE + API_MODEL_USER + "/password";
+export const API_PROFILE = API_BASE + API_MODEL_USER + "/profile";

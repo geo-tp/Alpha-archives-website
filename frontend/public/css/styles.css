@@ -1755,6 +1755,7 @@ input[type]:focus,
   font-weight: bold;
   margin: 20px auto;
   margin-bottom: 0px;
+  text-align: center;
 }
 .api-response__message--success {
   color: #238636;

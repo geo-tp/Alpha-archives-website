@@ -24,6 +24,7 @@ export const Login = () => {
 
   const handleLoginClick = (e) => {
     e.preventDefault();
+    setPasswordForgetResponse(null);
 
     if (!username || !password) {
       return;
@@ -106,7 +107,7 @@ export const Login = () => {
           isError="True"
         />
       )}
-      {passwordForgetResponse.message && (
+      {passwordForgetResponse?.message && (
         <ApiResponse message={passwordForgetResponse.message} />
       )}
     </div>

@@ -44,6 +44,7 @@ class PasswordView(APIView):
             api_response = format_api_response(
                 content={"old_password": [OLD_PASSWORD_INCORRECT]},
                 status=status.HTTP_400_BAD_REQUEST,
+                error=True,
             )
             return Response(api_response, status=status.HTTP_400_BAD_REQUEST)
 

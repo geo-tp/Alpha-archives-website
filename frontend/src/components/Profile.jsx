@@ -1,37 +1,75 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchInvitation } from "../api/fetchInvitation";
 import { fetchLogout } from "../api/fetchLogout";
+import { fetchPasswordUpdate } from "../api/fetchPasswordUpdate";
+import { fetchProfile } from "../api/fetchProfile";
 import { fetchRemoveTag } from "../api/fetchRemoveTag";
 import { fetchTags } from "../api/fetchTags";
 import { fetchUpdateTag } from "../api/fetchUpdateTag";
 import { getAuth } from "../store/features/auth/selectors";
+import { ApiResponse } from "./ApiResponse";
 import { TagSelector } from "./TagSelector";
 
 export const Profile = () => {
   const [tagSelected, setTagSelected] = useState(null);
   const [tagNewValue, setTagNewValue] = useState("");
   const [userTags, setUserTags] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
   const auth = useSelector(getAuth);
   const dispatch = useDispatch();
   const editTagInputRef = useRef();
+  const [newPasssword, setNewPassword] = useState("");
+  const [newPasssword2, setNewPassword2] = useState("");
+  const [oldPasssword, setOldPassword] = useState("");
+  const [passwordUpdateResponse, setPasswordUpdateResponse] = useState(null);
+
+  const [invitationEmail, setInvitationEmail] = useState("");
+  const [invitationResponse, setInvitationResponse] = useState(null);
 
   useEffect(() => {
     async function fetchRes() {
       let tags = await fetchTags();
       setUserTags(tags.body);
-      console.log("tags", tags);
+      let profile = await fetchProfile();
+      setUserProfile(profile.body);
     }
 
     fetchRes();
   }, []);
 
-  // const tags = [
-  //   { name: "Test" },
-  //   { name: "Test" },
-  //   { name: "Test" },
-  //   { name: "Test" },
-  // ];
+  const handlePasswordUpdate = async (e) => {
+    e.preventDefault();
+    if (newPasssword !== newPasssword2) {
+      setPasswordUpdateResponse({
+        message: "New passwords are not equals",
+        error: true,
+      });
+    }
+
+    let response = await fetchPasswordUpdate(oldPasssword, newPasssword);
+
+    if (response.body?.hasOwnProperty("new_password")) {
+      response["message"] = response.body.new_password[0];
+    } else if (response.body?.hasOwnProperty("old_password")) {
+      response["message"] = response.body.old_password[0];
+    }
+
+    setPasswordUpdateResponse(response);
+  };
+
+  const handleInvitation = async (e) => {
+    e.preventDefault();
+    setInvitationResponse(null);
+    const response = await fetchInvitation(invitationEmail);
+
+    if (!response.error) {
+      setInvitationEmail("");
+    }
+
+    setInvitationResponse(response);
+  };
 
   const handleTagSelection = (tag) => {
     setTagNewValue(tag);
@@ -112,7 +150,7 @@ export const Profile = () => {
               name="username-user"
               id="username-user"
               disabled={true}
-              value="John87873"
+              value={userProfile?.username}
             />
           </div>
           <div className="profile__input-box">
@@ -122,13 +160,13 @@ export const Profile = () => {
               type="email"
               name="email-user"
               id="email-user"
-              value="fezzefze@mail.com"
+              value={userProfile?.email}
               disabled={true}
             />
           </div>
         </div>
 
-        <form className="profile__box">
+        <form className="profile__box" onSubmit={handlePasswordUpdate}>
           <h2>
             Password <i className="fa fa-key"></i>
           </h2>
@@ -141,7 +179,8 @@ export const Profile = () => {
               type="password"
               name="old-password-user"
               id="old-password-user2"
-              value="XXXX"
+              value={oldPasssword}
+              onChange={(e) => setOldPassword(e.target.value)}
             />
           </div>
           <div className="profile__input-box">
@@ -151,7 +190,8 @@ export const Profile = () => {
               type="password"
               name="new-password-user"
               id="new-password-user"
-              value="XXXXXXXXX"
+              value={newPasssword}
+              onChange={(e) => setNewPassword(e.target.value)}
             />
           </div>
           <div className="profile__input-box">
@@ -161,12 +201,19 @@ export const Profile = () => {
               type="password"
               name="new-password-user2"
               id="new-password-user2"
-              value="XXXXXXXXXX"
+              value={newPasssword2}
+              onChange={(e) => setNewPassword2(e.target.value)}
             />
           </div>
           <button className="profile__button" type="submit">
             Change
           </button>
+          {passwordUpdateResponse?.message && (
+            <ApiResponse
+              message={passwordUpdateResponse.message}
+              isError={passwordUpdateResponse.error}
+            />
+          )}
         </form>
         <div className="profile__box">
           <h2>
@@ -211,7 +258,7 @@ export const Profile = () => {
           </div>
         </div>
         {auth.isAdmin && (
-          <form className="profile__box">
+          <form className="profile__box" onSubmit={handleInvitation}>
             <h2>
               Invitation <i className="fa fa-envelope"></i>
             </h2>
@@ -228,13 +275,20 @@ export const Profile = () => {
                 type="email"
                 name="email-guest"
                 id="email-guest"
-                value="fezzefze@mail.com"
-                disabled={true}
+                value={invitationEmail}
+                onChange={(e) => setInvitationEmail(e.target.value)}
+                required
               />
             </div>
             <button className="profile__button" type="submit">
               Send
             </button>
+            {invitationResponse?.message && (
+              <ApiResponse
+                message={invitationResponse.message}
+                isError={invitationResponse.error}
+              />
+            )}
           </form>
         )}
         <div className="profile__box">

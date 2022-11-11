@@ -91,8 +91,13 @@ export const TagUi = ({
             required
             onChange={handleSearchInputChange}
             value={searchKeywords}
+            disabled={auth.isConnected ? false : true}
           />
-          <button className="tag-ui__search__submit" type="submit">
+          <button
+            disabled={auth.isConnected ? false : true}
+            className="tag-ui__search__submit"
+            type="submit"
+          >
             <i className="fa fa-plus"></i>New
           </button>
         </div>

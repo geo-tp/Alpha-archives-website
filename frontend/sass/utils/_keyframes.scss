@@ -19,3 +19,25 @@
     transform: translateY(-10px);
   }
 }
+
+@keyframes slideinout {
+  0% {
+    transform: translateX(0px);
+    opacity: 0;
+  }
+
+  30% {
+    transform: translateX(-30px);
+    opacity: 1;
+  }
+
+  85% {
+    transform: translateX(-30px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+}

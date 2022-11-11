@@ -5,7 +5,28 @@
   background-color: map-get($COLOR-PALETTE, ter);
   border-radius: 10px;
   border: 1px solid map-get($COLOR-PALETTE, prim);
-  & p {
+  position: relative;
+
+  &__error {
+    border: 1px solid map-get($COLOR-PALETTE, error);
+    color: map-get($COLOR-PALETTE, error);
+    margin: 0px;
+    padding: 0px;
+    // position: absolute;
+    // top: 10px;
+    // left: 50%;
+    // transform: translateX(-50%);
+    // width: 90%;
+    font-size: 0.7em;
+    max-width: 200px;
+    padding: 4px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 20px auto;
+    margin-bottom: 0px;
+  }
+
+  &__mention {
     border: 1px solid map-get($COLOR-PALETTE, prim);
     padding: 10px;
     line-height: 1.3em;

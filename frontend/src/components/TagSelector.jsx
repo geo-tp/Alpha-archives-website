@@ -6,7 +6,13 @@ import { useRef } from "react";
 import { searchTagsByKeywords } from "../utils/search";
 const forbiddenInputChar = ".?/!%*µ$^)'(#&@+²,;:<>`+°¨{}[]|ø¹^" + '"';
 
-export const TagSelector = ({ tags, handleTagClick, showOnFocus = true }) => {
+export const TagSelector = ({
+  tags,
+  handleTagClick,
+  handleTagCreateClick,
+  showOnFocus = true,
+  showCreateButton = true,
+}) => {
   const [displayTagDropDown, setDisplayTagDropDown] = useState(
     showOnFocus ? false : true
   );
@@ -21,7 +27,12 @@ export const TagSelector = ({ tags, handleTagClick, showOnFocus = true }) => {
   const [searchKeywords, setSearchKeywords] = useState("");
   const [filteredTags, setFilteredTags] = useState(tags);
   const [buzzForForbiddenChar, setBuzzForForbiddenChar] = useState(false);
-  console.log("FILTERED TAGS", filteredTags);
+
+  const handleTagCreation = (e) => {
+    e.preventDefault();
+    handleTagCreateClick(searchKeywords);
+    setSearchKeywords("");
+  };
 
   const handleSearchInputChange = (e) => {
     const newValue = e.target.value;
@@ -72,7 +83,7 @@ export const TagSelector = ({ tags, handleTagClick, showOnFocus = true }) => {
     <div ref={wrapperRef} className="tag-selector">
       <div className="tag-selector__search">
         <form
-          action=""
+          onSubmit={(e) => handleTagCreation(e)}
           className={
             buzzForForbiddenChar
               ? "tag-selector__search__form tag-selector__search__form--buzz"
@@ -91,6 +102,15 @@ export const TagSelector = ({ tags, handleTagClick, showOnFocus = true }) => {
             onChange={handleSearchInputChange}
             value={searchKeywords}
           />
+          {showCreateButton && (
+            <button
+              // disabled={auth.isConnected ? false : true}
+              className="tag-selector__search__submit"
+              type="submit"
+            >
+              <i className="fa fa-plus"></i>New
+            </button>
+          )}
         </form>
         {displayTagDropDown && (
           <TagDropDown tags={filteredTags} handleTagClick={handleTagClick} />

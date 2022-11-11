@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchCreateTag } from "../api/fetchCreateTag";
 import { fetchInvitation } from "../api/fetchInvitation";
 import { fetchLogout } from "../api/fetchLogout";
 import { fetchPasswordUpdate } from "../api/fetchPasswordUpdate";
@@ -38,6 +39,19 @@ export const Profile = () => {
 
     fetchRes();
   }, []);
+
+  const handleTagCreate = async (tagName) => {
+    if (!tagName) {
+      return;
+    }
+
+    const response = await fetchCreateTag(tagName);
+    if (!response.error) {
+      setTagNewValue("");
+      const newTag = response.body;
+      setUserTags([newTag, ...userTags]);
+    }
+  };
 
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
@@ -227,6 +241,7 @@ export const Profile = () => {
             {userTags && (
               <TagSelector
                 handleTagClick={handleTagSelection}
+                handleTagCreateClick={handleTagCreate}
                 tags={userTags}
                 showOnFocus={false}
               />

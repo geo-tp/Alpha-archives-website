@@ -7,6 +7,10 @@
   border: 1px solid map-get($COLOR-PALETTE, prim);
   position: relative;
 
+  @include mobile-design {
+    padding: 20px;
+  }
+
   &__error {
     border: 1px solid map-get($COLOR-PALETTE, error);
     color: map-get($COLOR-PALETTE, error);

@@ -23,6 +23,7 @@ class NavBar extends Component {
   }
 
   render() {
+    console.log("W", window.innerWidth);
     return (
       <header className="nav-bar">
         <div className="nav-bar__logo-box">

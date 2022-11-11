@@ -20,6 +20,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+    border-radius: 10px;
     & p {
       border: 1px solid map-get($COLOR-PALETTE, prim);
       font-size: 0.7em;

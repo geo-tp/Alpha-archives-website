@@ -69,6 +69,10 @@
     bottom: 10%;
     transform: translateX(-50%);
 
+    @include mobile-design {
+      bottom: 0%;
+    }
+
     // @include mobile-design {
     //   background-color: #ffffff;
     //   border: none;
@@ -87,6 +91,12 @@
     border: 1px solid map-get($COLOR-PALETTE, prim);
     min-width: 220px;
     font-size: 0.8em;
+
+    @include mobile-design {
+      min-width: 180px;
+      font-size: 0.7em;
+      opacity: 0.75;
+    }
   }
 
   &__button {

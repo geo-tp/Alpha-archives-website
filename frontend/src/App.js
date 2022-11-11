@@ -27,14 +27,15 @@ function App() {
             <Route path="/browse/" element={<BrowserPage />} />
             <Route path={"/"} element={<HomePage />} />
             <Route path={"/auth"} element={<AuthPage />} />
-            <Route
+            <Route path={"/profile"} element={<ProfilePage />} />
+            {/* <Route
               path={"/profile"}
               element={
                 <RequireAuth>
                   <ProfilePage />
                 </RequireAuth>
               }
-            />
+            /> */}
           </Routes>
           <Footer />
         </BrowserRouter>

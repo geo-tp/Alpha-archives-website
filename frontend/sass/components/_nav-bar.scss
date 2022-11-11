@@ -36,10 +36,15 @@
     color: map-get($COLOR-PALETTE, font);
     text-decoration: none;
     width: 100%;
+
+    @include mobile-design {
+      min-width: 50px;
+    }
   }
 
   &__button-box {
     margin: 20px;
     display: flex;
+    align-items: center;
   }
 }

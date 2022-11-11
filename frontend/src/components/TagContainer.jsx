@@ -42,7 +42,6 @@ export const TagContainer = ({
 
       for (let tagApplied of newFileTags) {
         if (tagApplied.tag === tag.name) {
-          console.log("tag appied", tagApplied);
           const response = await fetchRemoveApplyTag(tagApplied);
           const index = newFileTags.indexOf(tagApplied);
           tags.splice(index, 1);
@@ -54,7 +53,7 @@ export const TagContainer = ({
 
     const response = await fetchApplyTag(tag.name, file.image_hash);
     const createdTag = response.body;
-    const newTags = [...file.tags, createdTag];
+    const newTags = [createdTag, ...file.tags];
     console.log("n new TAGS", newTags);
     const updatedFile = { ...file, tags: newTags };
     console.log("NEW FILE", updatedFile);

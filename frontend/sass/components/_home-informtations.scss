@@ -3,58 +3,6 @@
   margin: 0 auto;
   border-bottom: 2px solid map-get($COLOR-PALETTE, prim);
 
-  &__screenshot_title {
-    color: rgb(35, 35, 35);
-    border-radius: 20px;
-    border: 1px solid grey;
-    padding: 10px;
-    background-color: white;
-    position: absolute;
-    opacity: 0.85;
-    bottom: 5%;
-    left: 50%;
-    border: 3px solid map-get($COLOR-PALETTE, font3);
-    color: darken(map-get($COLOR-PALETTE, font3), 30%);
-    transform: translate(-50%);
-
-    &:hover {
-      transition: all 300ms linear;
-      opacity: 1;
-      color: darken(map-get($COLOR-PALETTE, font3), 30%);
-      cursor: pointer;
-    }
-
-    @media screen and (max-height: 800px) {
-      display: none;
-    }
-  }
-
-  // &__image {
-  //   width: 95%;
-  //   margin: 0 auto;
-  //   position: relative;
-  //   // display: flex;
-  //   // justify-content: center;
-  //   // align-items: center;
-  //   object-fit: cover;
-  //   top: 0;
-  //   left: 0;
-  //   transform: none;
-
-  //   @include tablet-design {
-  //     width: 95%;
-  //     margin: 0 auto;
-  //     position: relative;
-  //     // display: flex;
-  //     // justify-content: center;
-  //     // align-items: center;
-  //     top: 0;
-  //     left: 0;
-  //     transform: none;
-  //     max-height: 80vh;
-  //   }
-  // }
-
   &__roll {
     // position: absolute;
     // bottom: 12%;
@@ -133,6 +81,11 @@
       background-color: rgba(0, 0, 0, 0.569);
       padding: 7px;
       border-radius: 20px 10px 10px 20px;
+
+      @include mobile-design {
+        font-size: 0.55em;
+        max-width: 60%;
+      }
     }
 
     &__icon {
@@ -190,11 +143,27 @@
       padding-bottom: 20px;
       font-size: 3.5em;
       // border-bottom: 1px solid map-get($COLOR-PALETTE, prim);
+
+      @include tablet-design {
+        font-size: 2.5em;
+      }
+
+      @include mobile-design {
+        font-size: 1.5em;
+      }
     }
 
     & h2 {
       margin-top: 0px;
       font-size: 1.2em;
+
+      @include tablet-design {
+        font-size: 1.1em;
+      }
+
+      @include mobile-design {
+        font-size: 1em;
+      }
     }
 
     & a {
@@ -207,6 +176,10 @@
       max-width: 600px;
       // padding-left: 30px;
       padding-right: 30px;
+
+      @include mobile-design {
+        font-size: 14px;
+      }
     }
   }
 
@@ -215,6 +188,10 @@
       margin-right: 10px;
       font-size: 1.5em;
       color: map-get($COLOR-PALETTE, font4);
+    }
+
+    @include tablet-design {
+      font-size: 0.7em;
     }
   }
 

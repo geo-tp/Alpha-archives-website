@@ -214,15 +214,21 @@ class Browser extends Component {
     return (
       <div className="main-container page-top-margin">
         <div className="sub-container">
-          <div className="main-browser__directory-path">
-            <button className="button-browser" onClick={this.goBackDirectory}>
+          <div className="button-browser main-browser__directory-path">
+            <button
+              className="button-browser main-browser__directory-path__button"
+              onClick={this.goBackDirectory}
+            >
               <i className="fa fa-2x fa-arrow-left"></i>
             </button>
-            <button className="button-browser" onClick={this.goHomeDirectory}>
+            <button
+              className="button-browser main-browser__directory-path__button"
+              onClick={this.goHomeDirectory}
+            >
               <i className="fa fa-2x fa-home"></i>
             </button>
             <button
-              className="button-browser"
+              className="button-browser main-browser__directory-path__button"
               onClick={this.handleSearchIconClick}
             >
               <i

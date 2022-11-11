@@ -16,11 +16,21 @@
   &__tags {
     overflow-x: scroll;
     overflow-y: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    max-height: 20px;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     /* Hide scrollbar for Chrome, Safari and Opera */
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    & span {
+      // display: flex;
+      // text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
 

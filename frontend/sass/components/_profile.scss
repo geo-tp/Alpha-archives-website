@@ -26,6 +26,7 @@
     color: map-get($COLOR_PALETTE, error);
     background-color: transparent;
     font-size: 0.5em;
+    cursor: pointer;
   }
 
   &__infos {
@@ -133,13 +134,13 @@
       }
 
       &__button {
-        background-color: map-get($COLOR-PALETTE, font4);
         color: map-get($COLOR-PALETTE, font);
         border: 0px;
         height: 30px;
         width: 30px;
 
         &--valid {
+          background-color: map-get($COLOR-PALETTE, font4);
         }
 
         &--erase {

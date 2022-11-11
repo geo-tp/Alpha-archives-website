@@ -4,6 +4,8 @@ import {
   GET_CONNECTED_ERROR,
   GET_CONNECTED_SUCCESS,
   GET_DISCONNECTED,
+  GET_DISCONNECTED_ERROR,
+  GET_DISCONNECTED_SUCCESS,
 } from "./constants";
 import { authDefaultState } from "./state";
 
@@ -40,6 +42,19 @@ export const authReducer = (state = authDefaultState, action) => {
       };
 
     case GET_DISCONNECTED:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case GET_DISCONNECTED_SUCCESS:
+      HeadersManager.removeAuthorization();
+
+      return {
+        ...authDefaultState,
+      };
+
+    case GET_DISCONNECTED_ERROR:
       HeadersManager.removeAuthorization();
 
       return {

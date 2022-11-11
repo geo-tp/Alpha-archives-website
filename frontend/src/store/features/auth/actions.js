@@ -6,6 +6,8 @@ import {
   GET_CONNECTED_ERROR,
   GET_CONNECTED_SUCCESS,
   GET_DISCONNECTED,
+  GET_DISCONNECTED_ERROR,
+  GET_DISCONNECTED_SUCCESS,
 } from "./constants";
 
 export const getConnected = (mail, password) => ({
@@ -25,6 +27,16 @@ export const getConnectedError = () => ({
 
 export const getDisconnected = () => ({
   type: GET_DISCONNECTED,
+  payload: {},
+});
+
+export const getDisconnectedSuccess = () => ({
+  type: GET_DISCONNECTED_SUCCESS,
+  payload: {},
+});
+
+export const getDisconnectedError = () => ({
+  type: GET_DISCONNECTED_ERROR,
   payload: {},
 });
 

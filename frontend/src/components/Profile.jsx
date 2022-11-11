@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchLogout } from "../api/fetchLogout";
 import { fetchRemoveTag } from "../api/fetchRemoveTag";
 import { fetchTags } from "../api/fetchTags";
 import { fetchUpdateTag } from "../api/fetchUpdateTag";
@@ -12,6 +13,8 @@ export const Profile = () => {
   const [tagNewValue, setTagNewValue] = useState("");
   const [userTags, setUserTags] = useState(null);
   const auth = useSelector(getAuth);
+  const dispatch = useDispatch();
+  const editTagInputRef = useRef();
 
   useEffect(() => {
     async function fetchRes() {
@@ -33,6 +36,7 @@ export const Profile = () => {
   const handleTagSelection = (tag) => {
     setTagNewValue(tag);
     setTagSelected(tag);
+    editTagInputRef.current.focus();
   };
 
   const handleTagUpdate = async () => {
@@ -68,13 +72,23 @@ export const Profile = () => {
     setUserTags([...updatedTags]);
   };
 
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    console.log("LOGOUT Attzmpt");
+    dispatch(fetchLogout());
+  };
+
   return (
     <div className="profile">
       <div className="profile__title">
         <h1>
           <i className="fa fa-user"></i> Profile
           <form action="">
-            <button className="profile__disconnect" type="submit">
+            <button
+              onClick={handleLogout}
+              className="profile__disconnect"
+              type="submit"
+            >
               Logout
             </button>
           </form>
@@ -127,7 +141,6 @@ export const Profile = () => {
               type="password"
               name="old-password-user"
               id="old-password-user2"
-              disabled={true}
               value="XXXX"
             />
           </div>
@@ -139,7 +152,6 @@ export const Profile = () => {
               name="new-password-user"
               id="new-password-user"
               value="XXXXXXXXX"
-              disabled={true}
             />
           </div>
           <div className="profile__input-box">
@@ -150,7 +162,6 @@ export const Profile = () => {
               name="new-password-user2"
               id="new-password-user2"
               value="XXXXXXXXXX"
-              disabled={true}
             />
           </div>
           <button className="profile__button" type="submit">
@@ -179,6 +190,8 @@ export const Profile = () => {
                 onChange={(e) => setTagNewValue(e.target.value)}
                 className="profile__tag-box__edit__bar"
                 type="text"
+                disabled={tagSelected ? false : true}
+                ref={editTagInputRef}
               />
               <button
                 disabled={tagSelected ? false : true}

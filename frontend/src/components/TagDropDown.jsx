@@ -4,9 +4,9 @@ export const TagDropDown = ({ tags, handleTagClick }) => {
   console.log("TAGS, ", tags);
   return (
     <div className="tag-dropdown">
-      {tags.map((tag) => (
+      {tags?.map((tag) => (
         <div
-          className="tag-dropdown-element"
+          className="tag-element tag-element--dropdown"
           onClick={() => handleTagClick(tag.name)}
         >
           {tag.name}

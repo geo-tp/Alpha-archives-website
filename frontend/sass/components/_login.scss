@@ -53,10 +53,7 @@
       // height: 40px;
       border-radius: 10px;
       font-size: 0.9em;
-
-      &:focus {
-        outline: none;
-      }
+      border-radius: 5px;
     }
 
     & label {
@@ -136,9 +133,11 @@
         border: 1px solid map-get($COLOR-PALETTE, sec);
         color: map-get($COLOR-PALETTE, font);
         margin-top: 10px;
+        padding-left: 10px;
 
         height: 40px;
         width: 100%;
+        border-radius: 5px;
       }
     }
 

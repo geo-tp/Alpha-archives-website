@@ -114,29 +114,37 @@ class Browser extends Component {
   async getFiles(filter_field, filter_value = "root", search = false) {
     this.setState({ loading: true });
 
-    let files = null;
+    let files = [];
+    let filesImages = [];
+    let directory = this.state.actualDirectory;
 
     if (search) {
       const tags = this.getSelectedTags();
       const response = await fetchFilesByTags(tags);
-      console.log("search", response);
-      files = response.body;
+
+      if (response.body) {
+        files = response.body;
+      }
     } else {
       files = await fetchFiles(filter_field, filter_value);
     }
 
-    let filesImages = [];
-    for (let i = 0; i < files.length; i++) {
-      if (!files[i].is_folder) {
-        // let image_path = API_URL.slice(0, -1) + files[i].image_raw;
-        filesImages.push(files[i].image_raw);
+    if (files) {
+      this.setState({ loading: false });
+
+      for (let i = 0; i < files.length; i++) {
+        if (!files[i].is_folder) {
+          // let image_path = API_URL.slice(0, -1) + files[i].image_raw;
+          filesImages.push(files[i].image_raw);
+        }
+      }
+
+      if (files[0]) {
+        directory.push(files[0].parent);
       }
     }
 
-    let directory = this.state.actualDirectory;
-    if (files[0]) {
-      directory.push(files[0].parent);
-    }
+    console.log("FILES", files);
 
     this.setState({
       files: files,
@@ -224,7 +232,7 @@ class Browser extends Component {
               ></i>
             </button>
             {this.state.displaySearchBar ? (
-              !this.state.tags.error && (
+              !this.state.tags?.error && (
                 <TagSearch
                   tags={this.state.tags}
                   handleTagClick={this.handleTagClick}
@@ -261,14 +269,12 @@ class Browser extends Component {
                   />
                 );
               })}
-            {this.state.files &&
-              !this.state.loading &&
-              this.state.files.length == 0 && (
-                <p className="main-browser__no-results">
-                  {" "}
-                  "¯\_(ツ)_/¯" No results
-                </p>
-              )}
+            {this.state.files?.length === 0 && (
+              <p className="main-browser__no-results">
+                {" "}
+                "¯\_(ツ)_/¯" No results
+              </p>
+            )}
             {this.state.loading && <Loading />}
           </div>
         </div>

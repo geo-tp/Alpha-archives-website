@@ -6,3 +6,25 @@ html {
   background-color: map-get($COLOR-PALETTE, bg);
   font-family: "Roboto", sans-serif;
 }
+
+// input {
+//   // border: none;
+//   // outline: none;
+//   :focus {
+//     border: 1px solid map-get($COLOR-PALETTE, white);
+
+//     outline-color: map-get($COLOR-PALETTE, white);
+//   }
+// }
+
+textarea:focus,
+input:focus,
+input[type]:focus,
+.uneditable-input:focus {
+  border-color: map-get($COLOR-PALETTE, font3);
+  border: 1 solid;
+  // box-shadow: 0 1px 1px map-get($COLOR-PALETTE, font3) inset;
+  outline: 0 none;
+  background-color: lighten(map-get($COLOR-PALETTE, prim), 3%);
+  transition: all 500ms;
+}

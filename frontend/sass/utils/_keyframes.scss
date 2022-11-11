@@ -41,3 +41,20 @@
     opacity: 0;
   }
 }
+
+@keyframes buzz {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
+}

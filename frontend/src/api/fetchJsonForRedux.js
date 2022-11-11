@@ -14,7 +14,7 @@ export function fetchJsonForRedux(
   getResourceSuccess,
   getResourceError,
   routeUrl,
-  requestParams
+  requestParams = {}
 ) {
   return (dispatch) => {
     dispatch(getResource());

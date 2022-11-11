@@ -34,6 +34,20 @@
     opacity: 0;
   }
 }
+@keyframes buzz {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
+}
 body {
   overflow-y: scroll;
 }
@@ -41,6 +55,17 @@ body {
 html {
   background-color: #01040a;
   font-family: "Roboto", sans-serif;
+}
+
+textarea:focus,
+input:focus,
+input[type]:focus,
+.uneditable-input:focus {
+  border-color: #3c73b2;
+  border: 1 solid;
+  outline: 0 none;
+  background-color: #222b30;
+  transition: all 500ms;
 }
 
 .button-base {
@@ -783,6 +808,7 @@ html {
   padding: 10px;
   padding-left: 10px;
   min-height: 20px;
+  border-radius: 10px;
   width: 70%;
   text-align: left;
   overflow: hidden;
@@ -1130,6 +1156,9 @@ html {
 .tag-container__tags {
   overflow-x: scroll;
   overflow-y: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  max-height: 20px;
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -1138,6 +1167,10 @@ html {
 }
 .tag-container__tags::-webkit-scrollbar {
   display: none;
+}
+.tag-container__tags span {
+  white-space: nowrap;
+  overflow: hidden;
 }
 .tag-container__selector {
   background-color: #238636;
@@ -1166,11 +1199,18 @@ html {
   background-color: #1c2327;
   padding: 2px 10px;
   border-radius: 7px;
-  margin-left: 2px;
+  margin-left: 5px;
   margin-right: 2px;
   font-size: 0.7em;
   border: 1px solid #161b22;
   color: #c9d1d9;
+  cursor: pointer;
+}
+.tag-element--dropdown {
+  margin: 5px;
+  height: 20px;
+  display: flex;
+  align-items: center;
 }
 .tag-element--green {
   background-color: #238636;
@@ -1307,9 +1347,7 @@ html {
   padding-left: 10px;
   border-radius: 10px;
   font-size: 0.9em;
-}
-.login__forget input:focus {
-  outline: none;
+  border-radius: 5px;
 }
 .login__forget label {
   position: absolute;
@@ -1374,8 +1412,10 @@ html {
   border: 1px solid #161b22;
   color: #c9d1d9;
   margin-top: 10px;
+  padding-left: 10px;
   height: 40px;
   width: 100%;
+  border-radius: 5px;
 }
 .login form button {
   margin-top: 10px;
@@ -1395,7 +1435,9 @@ html {
   color: #3c73b2;
   font-weight: bold;
   background-color: #1c2327;
-  padding-left: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px 0px 0px 10px;
 }
 .tag-selector__search {
   margin: 10px;
@@ -1405,8 +1447,11 @@ html {
   text-align: left;
   overflow: hidden;
 }
-.tag-selector__search form {
+.tag-selector__search__form {
   display: flex;
+}
+.tag-selector__search__form--buzz {
+  animation: buzz 100ms alternate-reverse infinite;
 }
 .tag-selector__search__bar {
   padding-left: 10px;
@@ -1417,6 +1462,8 @@ html {
   width: 100%;
   outline: #238636;
   width: 200px;
+  transition: all 1s;
+  border-radius: 0px 10px 10px 0px;
 }
 .tag-selector__angle {
   color: #238636;
@@ -1440,24 +1487,10 @@ html {
   background-color: #0d1117;
   z-index: 51;
   border: 1px solid #1c2327;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px;
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.tag-dropdown-element {
-  background-color: #1c2327;
-  padding: 2px 10px;
-  border-radius: 7px;
-  margin: 5px;
-  font-size: 0.7em;
-  height: 20px;
-  display: flex;
-  align-items: center;
-}
-.tag-dropdown-element--green {
-  background-color: #238636;
 }
 
 .selected-tags {
@@ -1474,6 +1507,7 @@ html {
   padding-left: 10px;
   box-sizing: border-box;
   border: 1px solid #01040a;
+  cursor: pointer;
   border-radius: 7px;
   margin: 2px;
   font-size: 0.7em;
@@ -1518,6 +1552,7 @@ html {
   color: #751b1b;
   background-color: transparent;
   font-size: 0.5em;
+  cursor: pointer;
 }
 .profile__infos {
   border: 1px solid #1c2327;
@@ -1601,11 +1636,13 @@ html {
   width: 40%;
 }
 .profile__tag-box__edit__button {
-  background-color: #238636;
   color: #c9d1d9;
   border: 0px;
   height: 30px;
   width: 30px;
+}
+.profile__tag-box__edit__button--valid {
+  background-color: #238636;
 }
 .profile__tag-box__edit__button--erase {
   border-radius: 0px 10px 10px 0px;

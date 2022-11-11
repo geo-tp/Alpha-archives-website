@@ -23,7 +23,9 @@
     color: map-get($COLOR-PALETTE, font3);
     font-weight: bold;
     background-color: map-get($COLOR-PALETTE, prim);
-    padding-left: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px 0px 0px 10px;
   }
   &__search {
     margin: 10px;
@@ -34,8 +36,11 @@
     text-align: left;
     overflow: hidden;
 
-    & form {
+    &__form {
       display: flex;
+      &--buzz {
+        animation: buzz 100ms alternate-reverse infinite;
+      }
     }
 
     &__bar {
@@ -47,6 +52,8 @@
       width: 100%;
       outline: map-get($COLOR-PALETTE, font4);
       width: 200px;
+      transition: all 1s;
+      border-radius: 0px 10px 10px 0px;
     }
   }
 

@@ -2,14 +2,25 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { fetchLogin } from "../api/fetchLogin";
+import { fetchPasswordForget } from "../api/fetchPasswordForget";
 import { getAuth } from "../store/features/auth/selectors";
+import { ApiResponse } from "./ApiResponse";
 
 export const Login = () => {
   const [displayPasswordReset, setDisplayPasswordReset] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordForgetEmail, setPasswordForgetEmail] = useState("");
+  const [passwordForgetResponse, setPasswordForgetResponse] = useState("");
   const auth = useSelector(getAuth);
   const dispatch = useDispatch();
+
+  const handePasswordForgetClick = async (e) => {
+    e.preventDefault();
+
+    const response = await fetchPasswordForget(passwordForgetEmail);
+    setPasswordForgetResponse(response);
+  };
 
   const handleLoginClick = (e) => {
     e.preventDefault();
@@ -73,13 +84,16 @@ export const Login = () => {
         </button>
       </span>
       {displayPasswordReset && (
-        <form className="login__forget" action="">
+        <form className="login__forget" onSubmit={handePasswordForgetClick}>
           <label htmlFor="username">Email</label>
           <input
-            type="text"
+            type="email"
             placeholder="Email for password reset"
             name="username"
             id="username"
+            required
+            value={passwordForgetEmail}
+            onChange={(e) => setPasswordForgetEmail(e.target.value)}
           />
           <button title="Reset your password" type="submit">
             <i className="fa fa-arrow-right"></i>
@@ -87,11 +101,13 @@ export const Login = () => {
         </form>
       )}
       {auth.isError && (
-        <div>
-          <p className="login__error">
-            Unable to login with provided credentials
-          </p>
-        </div>
+        <ApiResponse
+          message="Unable to login with provided credentials"
+          isError="True"
+        />
+      )}
+      {passwordForgetResponse.message && (
+        <ApiResponse message={passwordForgetResponse.message} />
       )}
     </div>
   );

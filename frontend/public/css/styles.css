@@ -1745,6 +1745,26 @@ input[type]:focus,
   background-color: #0d1117;
 }
 
+.api-response__message {
+  margin: 0px;
+  padding: 0px;
+  font-size: 0.7em;
+  max-width: 200px;
+  padding: 4px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 20px auto;
+  margin-bottom: 0px;
+}
+.api-response__message--success {
+  color: #238636;
+  border: 1px solid #238636;
+}
+.api-response__message--error {
+  color: #751b1b;
+  border: 1px solid #751b1b;
+}
+
 .main-home-page {
   width: 100%;
   background-color: #0d1117;

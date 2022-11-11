@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { fetchCreateTag } from "../api/fetchCreateTag";
+import { getAuth } from "../store/features/auth/selectors";
 import { searchTagsByKeywords } from "../utils/search";
 
 export const TagUi = ({
@@ -10,11 +12,10 @@ export const TagUi = ({
   handleTagClick,
   createTagInState,
 }) => {
-  console.log("TAGS", tags);
-  console.log("FILE TAGS", fileTags);
   const [searchKeywords, setSearchKeywords] = useState("");
   const [filteredTags, setFilteredTags] = useState(tags);
-  console.log("FILTERED TAGS", filteredTags);
+
+  const auth = useSelector(getAuth);
 
   const handleSearchInputChange = (e) => {
     const newValue = e.target.value;
@@ -45,8 +46,23 @@ export const TagUi = ({
     }
   };
 
+  // if (!auth.isStaff || !auth.isAdmin) {
+  //   return (
+  //     <div className="tag-ui tag-ui--restricted">
+  //       <p className="tag-ui__restricted">
+  //         You don't have persmissions to add tags
+  //       </p>
+  //     </div>
+  //   );
+  // }
+
   return (
     <div className="tag-ui">
+      {(!auth.isStaff || !auth.isAdmin) && (
+        <div className="tag-ui__restricted">
+          <p>You don't have persmissions to add tags</p>
+        </div>
+      )}
       <p
         title="Hit a Grey Tag to apply it. Hit a Green Tag to remove it. If a tag doesnt exists, you can create it by pressing New"
         className="tag-ui__user-permission"
@@ -71,7 +87,7 @@ export const TagUi = ({
             name="search-tag"
             id="search-tag"
             placeholder="Tag name"
-            autoFocus={true}
+            autoFocus={auth.isStaff || auth.isAdmin ? true : false}
             required
             onChange={handleSearchInputChange}
             value={searchKeywords}

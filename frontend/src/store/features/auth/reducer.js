@@ -30,7 +30,7 @@ export const authReducer = (state = authDefaultState, action) => {
       return {
         ...state,
         isLoading: false,
-        isError: action.payload.error,
+        isError: true,
         isConnected: false,
         token: null,
       };

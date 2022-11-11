@@ -1,3 +1,5 @@
+import binascii
+import os
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import permissions
@@ -6,6 +8,7 @@ from .serializers import (
     RegisterSerializer,
     PasswordResetSerializer,
     PasswordForgetSerializer,
+    InvitationSerializer,
 )
 from authentication.models import AuthToken
 from rest_framework import status
@@ -15,11 +18,13 @@ from django.core.exceptions import ValidationError
 from authentication.emails import (
     send_register_confirmation_email,
     send_password_reset_email,
+    send_invitation_email,
 )
 from generic.response import format_api_response
 from user.models import CustomUser, UserProfileImage
 from generic.models import GenericImage
 from .models import EmailValidationToken, PasswordValidationToken
+
 from .messages import (
     LOGIN_SUCCESS,
     LOGOUT_SUCCESS,
@@ -32,6 +37,7 @@ from .messages import (
     TOKEN_ALREADY_USED,
     MISC_ERROR,
     ACCOUNT_DEACTIVATED,
+    INVITATION_SUCCESS,
 )
 
 
@@ -193,6 +199,54 @@ class PasswordForgetView(APIView):
 
 
 password_forget_view = PasswordForgetView.as_view()
+
+
+class InvitationView(APIView):
+    """
+    Invite a new user to join website, send credentials to email
+    """
+
+    serializer_class = InvitationSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get_serializer(self, *args, **kwargs):
+        return self.serializer_class(*args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        email = serializer.data["email"]
+        username = email.split("@")[0] + binascii.hexlify(os.urandom(5)).decode()
+        password = binascii.hexlify(os.urandom(10)).decode()
+
+        user = CustomUser.objects.create_user(
+            email=email,
+            username=username,
+            password=password,
+            email_validated=True,
+            is_staff=True,
+        )
+
+        send_invitation_email(email, username, password)
+
+        # try:
+        #     user = CustomUser.objects.get(email=email)
+        # except:
+        #     user = None
+
+        # if user:
+        #     if user.email_validated:
+        #         (
+        #             password_token,
+        #             created,
+        #         ) = PasswordValidationToken.objects.get_or_create(user=user)
+
+        #         send_password_reset_email(user.email, user.username, password_token)
+        api_response = format_api_response(message=INVITATION_SUCCESS)
+        return Response(api_response, status=status.HTTP_200_OK)
+
+
+invitation_view = InvitationView.as_view()
 
 
 class PasswordResetView(APIView):

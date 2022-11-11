@@ -39,3 +39,11 @@ class PasswordResetSerializer(serializers.Serializer):
     def validate_password(self, value):
         validate_password(value, CustomUser)
         return value
+
+
+class InvitationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = [
+            "email",
+        ]

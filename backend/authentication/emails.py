@@ -8,6 +8,7 @@ from main.settings import (
     APP_NAME,
 )
 from sys import path
+from django.urls import reverse
 
 # Path containing email templates
 TEMPLATES_PATH = path[0] + "/authentication/templates/"
@@ -50,6 +51,30 @@ def send_password_reset_email(email, username, token):
 
     send_mail(
         f"{APP_NAME} - Your requested a password reset {username}",
+        plain_message,
+        DEFAULT_FROM_EMAIL,
+        [email],
+        html_message=html_message,
+    )
+
+
+def send_invitation_email(email, username, password):
+
+    link = reverse("api_login")
+    html_template = TEMPLATES_PATH + "invitation_email.html"
+    html_message = render_to_string(
+        html_template,
+        {
+            "username": username,
+            "password": password,
+            "link": link,
+            "app_name": APP_NAME,
+        },
+    )
+    plain_message = strip_tags(html_message)
+
+    send_mail(
+        f"{APP_NAME} - Someone invited you",
         plain_message,
         DEFAULT_FROM_EMAIL,
         [email],

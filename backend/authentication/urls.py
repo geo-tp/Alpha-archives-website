@@ -7,6 +7,7 @@ from .views import (
     password_forget_view,
     password_reset_view,
     deactivate_account_view,
+    invitation_view,
 )
 
 urlpatterns = [
@@ -16,5 +17,6 @@ urlpatterns = [
     path("email-validation/<key>", email_validation_view, name="api_email_validation"),
     path("password-forget", password_forget_view, name="api_password_forget"),
     path("password-reset/<key>", password_reset_view, name="api_password_reset"),
+    path("invitation", invitation_view, name="api_invitation"),
     path("deactivate-account", deactivate_account_view, name="api_deactivate_account"),
 ]

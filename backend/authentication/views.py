@@ -1,5 +1,6 @@
 import binascii
 import os
+import random
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import permissions
@@ -216,7 +217,18 @@ class InvitationView(APIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         email = serializer.data["email"]
-        username = email.split("@")[0] + binascii.hexlify(os.urandom(5)).decode()
+
+        while 1:
+            user_random_num = str(random.randint(1, 10000))
+            username = email.split("@")[0] + str(user_random_num)
+
+            username_already_used = CustomUser.objects.filter(
+                username=username
+            ).exists()
+
+            if not username_already_used:
+                break
+
         password = binascii.hexlify(os.urandom(10)).decode()
 
         user = CustomUser.objects.create_user(
@@ -228,20 +240,6 @@ class InvitationView(APIView):
         )
 
         send_invitation_email(email, username, password)
-
-        # try:
-        #     user = CustomUser.objects.get(email=email)
-        # except:
-        #     user = None
-
-        # if user:
-        #     if user.email_validated:
-        #         (
-        #             password_token,
-        #             created,
-        #         ) = PasswordValidationToken.objects.get_or_create(user=user)
-
-        #         send_password_reset_email(user.email, user.username, password_token)
         api_response = format_api_response(message=INVITATION_SUCCESS)
         return Response(api_response, status=status.HTTP_200_OK)
 

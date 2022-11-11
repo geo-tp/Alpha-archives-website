@@ -65,7 +65,7 @@ def send_invitation_email(email, username, password):
     html_message = render_to_string(
         html_template,
         {
-            "username": username,
+            "email": email,
             "password": password,
             "link": link,
             "app_name": APP_NAME,

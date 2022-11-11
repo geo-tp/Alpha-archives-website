@@ -1,3 +1,4 @@
+import { HeadersManager } from "../../../api/utils/headers";
 import {
   GET_CONNECTED,
   GET_CONNECTED_ERROR,
@@ -18,12 +19,15 @@ export const authReducer = (state = authDefaultState, action) => {
       };
 
     case GET_CONNECTED_SUCCESS:
+      const token = action.payload.loginInfos.token;
+      HeadersManager.addAuthorization(token);
+
       return {
         ...state,
         isLoading: false,
         isError: false,
         isConnected: true,
-        token: action.payload.loginInfos.token,
+        ...action.payload.loginInfos,
       };
 
     case GET_CONNECTED_ERROR:
@@ -36,6 +40,8 @@ export const authReducer = (state = authDefaultState, action) => {
       };
 
     case GET_DISCONNECTED:
+      HeadersManager.removeAuthorization();
+
       return {
         ...authDefaultState,
       };

@@ -1386,6 +1386,7 @@ html {
 .tag-selector {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 .tag-selector__icon {
@@ -1583,14 +1584,71 @@ html {
   align-items: center;
   border-radius: 10px;
 }
+.profile__tag-box__edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.profile__tag-box__edit__bar {
+  background-color: #1c2327;
+  border: 1px solid #161b22;
+  color: #c9d1d9;
+  padding-left: 10px;
+  border-radius: 10px 0px 0px 10px;
+  font-size: 0.9em;
+  height: 30px;
+  width: 40%;
+}
+.profile__tag-box__edit__button {
+  background-color: #238636;
+  color: #c9d1d9;
+  border: 0px;
+  height: 30px;
+  width: 30px;
+}
+.profile__tag-box__edit__button--erase {
+  border-radius: 0px 10px 10px 0px;
+  background-color: #751b1b;
+}
+.profile__tag-box__edit-bar {
+  background-color: #1c2327;
+  border: 1px solid #161b22;
+  color: #c9d1d9;
+  margin-top: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+  font-size: 0.9em;
+  height: 30px;
+}
+.profile .tag-selector .tag-dropdown {
+  height: 120px;
+  position: block;
+}
+.profile .tag-selector__search {
+  flex-direction: column;
+  justify-content: center;
+}
+.profile .tag-selector__search__bar {
+  margin: 0px;
+}
+.profile .tag-selector__search .tag-dropdown {
+  height: 120px;
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  left: 0%;
+  top: 0%;
+}
 .profile__input-box {
   display: flex;
   flex-direction: column;
   color: #c9d1d9;
   margin-top: 20px;
   margin-bottom: 30px;
+  position: relative;
 }
-.profile__input-box input {
+.profile__input-box__input {
   background-color: #1c2327;
   border: 1px solid #161b22;
   color: #c9d1d9;

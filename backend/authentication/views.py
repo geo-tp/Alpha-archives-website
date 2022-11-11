@@ -65,7 +65,12 @@ class LoginView(ObtainAuthToken):
 
         token, created = AuthToken.objects.get_or_create(user=user)
         api_response = format_api_response(
-            content={"token": token.key}, message=LOGIN_SUCCESS
+            content={
+                "token": token.key,
+                "isStaff": user.is_staff,
+                "isAdmin": user.is_superuser,
+            },
+            message=LOGIN_SUCCESS,
         )
         return Response(api_response, status=status.HTTP_200_OK)
 

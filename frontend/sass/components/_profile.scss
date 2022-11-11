@@ -113,14 +113,89 @@
     }
   }
 
+  &__tag-box {
+    &__edit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      &__bar {
+        background-color: map-get($COLOR-PALETTE, prim);
+        border: 1px solid map-get($COLOR-PALETTE, sec);
+        color: map-get($COLOR-PALETTE, font);
+        // margin-top: 10px;
+        padding-left: 10px;
+        // height: 40px;
+        border-radius: 10px 0px 0px 10px;
+        font-size: 0.9em;
+        height: 30px;
+        width: 40%;
+      }
+
+      &__button {
+        background-color: map-get($COLOR-PALETTE, font4);
+        color: map-get($COLOR-PALETTE, font);
+        border: 0px;
+        height: 30px;
+        width: 30px;
+
+        &--valid {
+        }
+
+        &--erase {
+          border-radius: 0px 10px 10px 0px;
+          background-color: map-get($COLOR-PALETTE, error);
+        }
+      }
+    }
+    &__edit-bar {
+      background-color: map-get($COLOR-PALETTE, prim);
+      border: 1px solid map-get($COLOR-PALETTE, sec);
+      color: map-get($COLOR-PALETTE, font);
+      margin-top: 10px;
+      padding-left: 10px;
+      // height: 40px;
+      border-radius: 10px;
+      font-size: 0.9em;
+      height: 30px;
+    }
+    &__valid-button {
+    }
+  }
+
+  & .tag-selector {
+    & .tag-dropdown {
+      height: 120px;
+      position: block;
+    }
+    &__search {
+      flex-direction: column;
+      justify-content: center;
+
+      &__bar {
+        margin: 0px;
+      }
+
+      & .tag-dropdown {
+        height: 120px;
+        position: relative;
+        width: 100%;
+        margin-top: 10px;
+        left: 0%;
+        top: 0%;
+      }
+    }
+  }
+
   &__input-box {
     display: flex;
     flex-direction: column;
     color: map-get($COLOR-PALETTE, font);
     margin-top: 20px;
     margin-bottom: 30px;
+    position: relative;
 
-    & input {
+    &__input {
       background-color: map-get($COLOR-PALETTE, prim);
       border: 1px solid map-get($COLOR-PALETTE, sec);
       color: map-get($COLOR-PALETTE, font);

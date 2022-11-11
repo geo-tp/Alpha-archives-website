@@ -58,7 +58,7 @@ export const TagUi = ({
 
   return (
     <div className="tag-ui">
-      {(!auth.isStaff || !auth.isAdmin) && (
+      {!auth.isConnected && (
         <div className="tag-ui__restricted">
           <p>You don't have persmissions to add tags</p>
         </div>

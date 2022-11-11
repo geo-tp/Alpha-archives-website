@@ -1,3 +1,5 @@
+import { HeadersManager } from "./utils/headers";
+
 /**
  * Fetch API resource with redux actions and return body of the api response
  * @param {func} getResource - Redux action for initiate resource fetching process
@@ -16,6 +18,7 @@ export function fetchJsonForRedux(
 ) {
   return (dispatch) => {
     dispatch(getResource());
+    requestParams["headers"] = HeadersManager.getHeaders();
 
     return fetch(routeUrl, requestParams)
       .then((response) => {

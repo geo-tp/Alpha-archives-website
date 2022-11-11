@@ -5,10 +5,17 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { searchTagsByKeywords } from "../utils/search";
 
-export const TagSelector = ({ tags, handleTagClick }) => {
-  const [displayTagDropDown, setDisplayTagDropDown] = useState();
+export const TagSelector = ({ tags, handleTagClick, showOnFocus = true }) => {
+  const [displayTagDropDown, setDisplayTagDropDown] = useState(
+    showOnFocus ? false : true
+  );
   const wrapperRef = useRef(null);
+
   useOutsideBox(wrapperRef);
+
+  useEffect(() => {
+    setFilteredTags(tags);
+  }, [tags]);
 
   const [searchKeywords, setSearchKeywords] = useState("");
   const [filteredTags, setFilteredTags] = useState(tags);
@@ -30,13 +37,14 @@ export const TagSelector = ({ tags, handleTagClick }) => {
   function useOutsideBox(ref) {
     useEffect(() => {
       /**
-       * Alert if clicked on outside of element
+       * if clicked on outside of element
        */
       function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
+        if (showOnFocus && ref.current && !ref.current.contains(event.target)) {
           setDisplayTagDropDown(false);
         }
       }
+
       // Bind the event listener
       document.addEventListener("mousedown", handleClickOutside);
       return () => {
@@ -60,6 +68,7 @@ export const TagSelector = ({ tags, handleTagClick }) => {
               setDisplayTagDropDown(true);
             }}
             onChange={handleSearchInputChange}
+            value={searchKeywords}
           />
         </form>
         {displayTagDropDown && (
@@ -73,4 +82,5 @@ export const TagSelector = ({ tags, handleTagClick }) => {
 TagSelector.propTypes = {
   tags: PropTypes.array.isRequired,
   handleTagClick: PropTypes.func.isRequired,
+  showOnFocus: PropTypes.bool,
 };

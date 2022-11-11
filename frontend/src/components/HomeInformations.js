@@ -22,7 +22,7 @@ const cityCards = [
   { name: "Ironforge", image: if_, alt: "Ironforge screenshots" },
   { name: "Darnassus", image: ds, alt: "Darnassus screenshots" },
   { name: "Orgrimmar", image: og, alt: "Orgrimmar screenshots" },
-  { name: "Thunderbluff", image: tb, alt: "Thunderbluff screenshots" },
+  { name: "Thunder Bluff", image: tb, alt: "Thunderbluff screenshots" },
   { name: "Undercity", image: uc, alt: "Undercity  screenshots" },
 ];
 

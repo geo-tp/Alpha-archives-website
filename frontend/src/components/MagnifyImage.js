@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 function MagnifyImage({
   src,
@@ -6,21 +6,22 @@ function MagnifyImage({
   height,
   magnifierHeight = 250,
   magnifieWidth = 400,
-  zoomLevel = 3
-}){
+  zoomLevel = 3,
+}) {
   const [[x, y], setXY] = useState([0, 0]);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);
   return (
-    <div className="main-image-box__image-container"
+    <div
+      className="main-image-box__image-container"
       style={{
         position: "relative",
-        width:"100%"
+        width: "100%",
       }}
     >
       <img
         src={src}
-        style={{width:"100%"}}
+        style={{ width: "100%" }}
         onMouseEnter={(e) => {
           // update image size and turn-on magnifier
           const elem = e.currentTarget;
@@ -72,11 +73,11 @@ function MagnifyImage({
 
           //calculete position of zoomed image.
           backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
-          backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`
+          backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`,
         }}
       ></div>
     </div>
   );
 }
 
-export default MagnifyImage
+export default MagnifyImage;

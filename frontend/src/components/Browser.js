@@ -2,7 +2,6 @@ import { Component } from "react";
 import { fetchFiles } from "../api/fetchFiles";
 import { fetchFilesByTags } from "../api/fetchFilesByTags";
 import { fetchTags } from "../api/fetchTags";
-import { API_URL } from "../api/utils/config";
 import BrowseElement from "./BrowserElement";
 import ImageBox from "./ImageBox";
 import Loading from "./Loading";
@@ -32,7 +31,6 @@ class Browser extends Component {
   }
 
   createTagInState = (tag) => {
-    console.log("CREATE TAGS", this.state.tags);
     this.setState({ tags: [tag, ...this.state.tags] });
   };
 
@@ -90,7 +88,6 @@ class Browser extends Component {
 
   async getTags() {
     let tags = await fetchTags();
-    console.log(tags);
     this.setState({
       tags: tags.body,
     });
@@ -143,8 +140,6 @@ class Browser extends Component {
         directory.push(files[0].parent);
       }
     }
-
-    console.log("FILES", files);
 
     this.setState({
       files: files,

@@ -8,6 +8,29 @@ export const PasswordReset = () => {
   const [password2, setPassword2] = useState("");
   const [passwordResetResponse, setPasswordResetResponse] = useState("");
   const { key } = useParams();
+  const [keyIsValid, setKeyIsValid] = useState(false);
+
+  const checkIfKeyFormatIsValid = () => {
+    const validCharset = "abcdefghijklmnopqrstuvwxyz1234567890";
+    const keyDefaultLength = 40;
+    if (key.length !== keyDefaultLength) {
+      setKeyIsValid(false);
+      return;
+    }
+
+    for (let char of key) {
+      if (!validCharset.includes(char)) {
+        setKeyIsValid(false);
+        return;
+      }
+    }
+
+    setKeyIsValid(true);
+  };
+
+  useState(() => {
+    checkIfKeyFormatIsValid();
+  }, []);
 
   const handlePasswordResetClick = async (e) => {
     e.preventDefault();
@@ -33,6 +56,17 @@ export const PasswordReset = () => {
 
     passwordResetResponse(response.body);
   };
+
+  if (!keyIsValid) {
+    return (
+      <div className="login">
+        <h1>
+          {" "}
+          <i className="fa fa-close"></i> Invalid Token
+        </h1>
+      </div>
+    );
+  }
 
   return (
     <div className="login">

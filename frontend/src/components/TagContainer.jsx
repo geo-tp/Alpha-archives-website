@@ -14,6 +14,7 @@ export const TagContainer = ({
   const [tagBoxIsOpen, setTagBoxIsOpen] = useState(false);
   const [newFileTags, setNewFileTags] = useState(fileTags ? fileTags : []);
   const [tagSelected, setTagSelected] = useState(null);
+  const [tagBoxIsLoading, setTagBoxIsLoading] = useState(false);
   const wrapperRef = useRef(null);
   useOutsideBox(wrapperRef);
 
@@ -38,7 +39,11 @@ export const TagContainer = ({
   }
 
   const handleCreateTagClick = async (searchKeywords) => {
+    setTagBoxIsLoading(true);
+
     if (!searchKeywords) {
+      setTagBoxIsLoading(false);
+
       return;
     }
 
@@ -46,35 +51,38 @@ export const TagContainer = ({
     if (!response.error) {
       const newTag = response.body;
       createTagInState(newTag);
-      // setFilteredTags([newTag, ...tags]);
+      setTagBoxIsLoading(true);
     }
   };
 
   const handleTagClick = async (tag) => {
+    setTagBoxIsLoading(true);
+
     if (newFileTags.some((item) => item.tag === tag)) {
-      console.log("LE TAG", tag);
       // const response = await fetchRemoveApplyTag(tag);
       const updatedFileTags = newFileTags;
 
+      // Tag is already applied, we remove it
       for (let tagApplied of newFileTags) {
         if (tagApplied.tag === tag) {
           const response = await fetchRemoveApplyTag(tagApplied);
           const index = newFileTags.indexOf(tagApplied);
           updatedFileTags.splice(index, 1);
           setNewFileTags([...updatedFileTags]);
+          setTagBoxIsLoading(false);
           return;
         }
       }
     }
 
+    // We add apply tag
     const response = await fetchApplyTag(tag, file.image_hash);
     const createdTag = response.body;
-    const newTags = [createdTag, ...file.tags];
-    console.log("n new TAGS", newTags);
+    const newTags = [createdTag, ...newFileTags];
     const updatedFile = { ...file, tags: newTags };
-    console.log("NEW FILE", updatedFile);
     updateFileInState(updatedFile);
-    setNewFileTags([createdTag, ...fileTags]);
+    setNewFileTags([createdTag, ...newFileTags]);
+    setTagBoxIsLoading(false);
   };
 
   return (
@@ -105,7 +113,8 @@ export const TagContainer = ({
             tagSelected={tagSelected}
             handleTagCreateClick={handleCreateTagClick}
             showOnFocus={false}
-            fileTags={fileTags}
+            fileTags={newFileTags}
+            isLoading={tagBoxIsLoading}
           />
         </div>
       )}

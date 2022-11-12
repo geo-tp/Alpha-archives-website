@@ -4,7 +4,7 @@
   overflow-y: hidden;
   display: flex;
   flex-wrap: nowrap;
-  max-height: 20px;
+  // max-height: 20px;
   // max-width: 70%;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -12,4 +12,5 @@
   &::-webkit-scrollbar {
     display: none;
   }
+  transition: all 500ms;
 }

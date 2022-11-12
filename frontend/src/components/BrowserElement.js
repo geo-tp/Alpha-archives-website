@@ -1,5 +1,6 @@
 import { Component } from "react";
 
+// Icon for file with no thumbnails
 import divers from "../assets/file_icones/divers.png";
 import folder from "../assets/file_icones/folder.png";
 
@@ -35,27 +36,16 @@ class BrowseElement extends Component {
 
   handleClick() {
     if (this.props.element.is_folder) {
-      // this.setState({
-      //     imageBoxIsOpen: true,
-      //     imageInBoxUrl: this.props.element.image.image_url,
-      // })
-
       this.props.handleFolderClick(this.props.element.filename);
     } else {
       this.props.handleFileClick(this.props.element);
     }
   }
 
-  // handleImageBoxClick = () => {
-  //     this.setState({imageBoxIsOpen: !false})
-  // }
-
   render() {
     let icon = this.determinateIconToUse(this.props.element);
     return (
       <div className="main-browser-element" onClick={() => this.handleClick()}>
-        {/* {this.state.imageBoxIsOpen && <ImageBox image={this.state.imageInBoxUrl}
-                                                        handleFullResolutionDisplay={this.handleImageBoxClick}/>} */}
         <img src={icon} alt="thumbnail" />
         <p>{this.props.element.filename}</p>
       </div>

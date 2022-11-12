@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { fetchUploadFile } from "../api/fetchUploadFiles";
-import ImageBox from "./ImageBox";
 import { ACCEPTED_MIME_TYPES } from "./../utils/mimeTypes";
 import { fetchUploadStatus } from "../api/fetchUploadStatus";
 
@@ -97,7 +96,6 @@ export default class ImageUpload extends Component {
       let fdata = new FormData();
       fdata.append("image", this.fileObj[i], this.fileObj[i].name);
       responseList.push(await fetchUploadFile(fdata));
-      console.log(responseList);
       this.setState({ loadingCount: this.state.loadingCount + 1 });
     }
 

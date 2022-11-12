@@ -9,8 +9,6 @@ export const TagSearch = ({
   handleTagClick,
   handleRemoveTagClick,
 }) => {
-  const [newSelectedTags, setNewSelectedTags] = useState(selectedTags);
-
   return (
     <div className="tag-search">
       <TagSelector

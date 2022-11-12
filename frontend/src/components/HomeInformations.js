@@ -2,10 +2,10 @@ import { Component } from "react";
 import banner from "../assets/banner.webp";
 import { Link } from "react-router-dom";
 import { fetchRandomScreenshot } from "../api/fetchRandomScreenshot";
-import { API_URL } from "../api/utils/config";
 import wowIcon from "../assets/wow-icon-64.webp";
 import { HomeCards } from "./HomeCards";
-import { CityCard } from "./LinkCard";
+
+// IMG FOR CARDS
 import sw from "../assets/sw.webp";
 import og from "../assets/og.webp";
 import tb from "../assets/tb.webp";

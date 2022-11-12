@@ -23,7 +23,6 @@ export function fetchJsonForRedux(
     return fetch(routeUrl, requestParams)
       .then((response) => {
         if (!response.ok) {
-          console.log("RESPONSE", response);
           throw response;
         }
 

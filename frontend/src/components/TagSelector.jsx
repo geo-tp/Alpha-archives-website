@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { searchTagsByKeywords } from "../utils/search";
-const forbiddenInputChar = ".?/!%*µ$^)'(#&@+²,;:<>`+°¨{}[]|ø¹^" + '"';
+import Loading from "./Loading";
+const forbiddenInputChar = ".?/!%*µ$^)'(#&@+²,;:<>`+°¨{}=[]|ø¹^" + '"';
 
 export const TagSelector = ({
   tags,
@@ -14,6 +15,7 @@ export const TagSelector = ({
   handleTagCreateClick,
   showOnFocus = true,
   showCreateButton = true,
+  isLoading = false,
 }) => {
   const [displayTagDropDown, setDisplayTagDropDown] = useState(
     showOnFocus ? false : true
@@ -40,6 +42,7 @@ export const TagSelector = ({
     const newValue = e.target.value;
     const lastChar = newValue[newValue.length - 1];
 
+    // to display buzz when a bad char is typed in tag search input
     if (forbiddenInputChar.includes(lastChar)) {
       setBuzzForForbiddenChar(true);
       setTimeout(() => {
@@ -48,8 +51,7 @@ export const TagSelector = ({
       return;
     }
 
-    console.log();
-
+    // go back to default dataset
     if (newValue === "") {
       setFilteredTags(tags);
       setSearchKeywords(newValue);
@@ -83,6 +85,11 @@ export const TagSelector = ({
 
   return (
     <div ref={wrapperRef} className="tag-selector">
+      {isLoading && (
+        <div className="tag-selector__loader">
+          <Loading />
+        </div>
+      )}
       <div className="tag-selector__search">
         <form
           onKeyDown={(e) => {
@@ -134,6 +141,7 @@ export const TagSelector = ({
             tagSelected={tagSelected}
             handleTagClick={handleTagClick}
             fileTags={fileTags}
+            isLoading={isLoading}
           />
         )}
       </div>
@@ -145,4 +153,5 @@ TagSelector.propTypes = {
   tags: PropTypes.array.isRequired,
   handleTagClick: PropTypes.func.isRequired,
   showOnFocus: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };

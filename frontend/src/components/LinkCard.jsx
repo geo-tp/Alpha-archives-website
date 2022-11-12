@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
 export const LinkCard = ({ image, alt, name, link }) => {
-  console.log(link);
-
   if (link) {
     return (
       <a href={link} className="link-card">

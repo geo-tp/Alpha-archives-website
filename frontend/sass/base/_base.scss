@@ -26,5 +26,5 @@ input[type]:focus,
   // box-shadow: 0 1px 1px map-get($COLOR-PALETTE, font3) inset;
   outline: 0 none;
   background-color: lighten(map-get($COLOR-PALETTE, prim), 3%);
-  transition: all 500ms;
+  transition: background-color 500ms;
 }

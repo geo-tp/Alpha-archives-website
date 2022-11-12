@@ -127,7 +127,6 @@ export const Profile = () => {
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    console.log("LOGOUT Attzmpt");
     dispatch(fetchLogout());
   };
 

@@ -5,16 +5,16 @@ export const TagDropDown = ({
   handleTagClick,
   tagSelected = null,
   fileTags = null,
+  isLoading = false,
 }) => {
   const defaultClass = "tag-element tag-element--dropdown";
   const selectedClass = defaultClass + " tag-element--green";
-  console.log("tags", tags, "tag selected", tagSelected);
 
   if (fileTags) {
     return (
       <div className="tag-dropdown">
         {tags?.map((tag) => (
-          <div
+          <button
             className={
               fileTags.some((item) => item.tag === tag.name)
                 ? selectedClass
@@ -26,9 +26,10 @@ export const TagDropDown = ({
                 : "Click to apply"
             }
             onClick={() => handleTagClick(tag.name)}
+            disabled={isLoading ? true : false}
           >
             {tag.name}
-          </div>
+          </button>
         ))}
       </div>
     );
@@ -36,12 +37,13 @@ export const TagDropDown = ({
   return (
     <div className="tag-dropdown">
       {tags?.map((tag) => (
-        <div
+        <button
           className={tag.name === tagSelected ? selectedClass : defaultClass}
           onClick={() => handleTagClick(tag.name)}
+          disabled={isLoading ? true : false}
         >
           {tag.name}
-        </div>
+        </button>
       ))}
     </div>
   );

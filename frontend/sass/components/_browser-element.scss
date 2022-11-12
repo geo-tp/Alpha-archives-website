@@ -7,6 +7,7 @@
   transition-duration: 200ms;
   max-width: 20%;
   color: map-get($COLOR-PALETTE, font);
+  animation: 200ms appear-slowly normal;
 
   @include tablet-design {
     flex-basis: 20%;

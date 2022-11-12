@@ -7,7 +7,6 @@ import { TagContainer } from "./TagContainer";
 class ImageBox extends Component {
   constructor(props) {
     super(props);
-    console.log("IMG NAME", props.files);
     this.state = {
       files: props.files,
       images: props.imagesInBox,
@@ -62,7 +61,6 @@ class ImageBox extends Component {
     } else {
       newIndex = this.state.index - 1;
     }
-    console.log("FILE TAGS", this.state.files[newIndex].tags);
     this.setState({
       index: newIndex,
       fileTags: this.state.files[newIndex].tags,
@@ -133,28 +131,6 @@ class ImageBox extends Component {
           )}
         </div>
 
-        {/* <div className="button-group">
-                    <button className="zoom zoom--out" 
-                        onClick={this.zoomOut}
-                        disabled={!this.state.stretched}
-                        title={"Original image size"}>
-                            <i className="fa fa-1x fa-search-minus"></i>
-                            Original
-                    </button>
-                    <button className="zoom zoom--in" 
-                        onClick={this.zoomIn}
-                        disabled={this.state.stretched}
-                        title={"Stretched image size"}>
-                            <i className="fa fa-1x fa-search-plus"></i>
-                            Stretch
-                    </button>
-                    <button className={this.state.magnify ? "zoom zoom-magnify-glass--active zoom-magnify-glass--active" : "zoom zoom-magnify-glass"}
-                        onClick={this.magnifyGlass}
-                        title="Magnify Glass to zoom hover image">
-                            <i className="fa fa-1x fa-search"></i>
-                            Magnify
-                    </button>
-                </div> */}
         <button
           className="image-box-arrow  image-box-arrow--right"
           onClick={this.nextImage}

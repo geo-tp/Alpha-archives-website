@@ -16,12 +16,6 @@ export function searchTagsByKeywords(keywords, dataset) {
   const formattedKeywords = formatStr(keywords);
   for (let element of dataset) {
     let formattedName = formatStr(element.name);
-    console.log(
-      "formatted kw : ",
-      formattedKeywords,
-      "formatted name",
-      formattedName
-    );
 
     if (formattedName.includes(formattedKeywords)) {
       elementsResults.push(element);

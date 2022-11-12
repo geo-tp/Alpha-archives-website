@@ -32,7 +32,6 @@ export const TagUi = ({
 
   const handleSubmitCreateTag = async (e) => {
     e.preventDefault();
-    console.log("IN NEW CREATE");
     if (!searchKeywords) {
       return;
     }

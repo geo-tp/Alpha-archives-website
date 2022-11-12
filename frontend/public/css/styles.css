@@ -150,11 +150,18 @@ input[type]:focus,
   color: #751b1b;
   background-color: transparent;
   border-radius: 15px;
+  z-index: 50;
+  font-size: 0.9em;
 }
 @media screen and (max-width: 1200px) {
   .button-reset {
-    width: 15%;
-    height: 45px;
+    right: 3%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .button-reset {
+    right: 7%;
+    top: 0%;
   }
 }
 

@@ -87,10 +87,15 @@
   color: map-get($COLOR-PALETTE, error);
   background-color: transparent;
   border-radius: 15px;
+  z-index: 50;
+  font-size: 0.9em;
 
   @include tablet-design {
-    width: 15%;
-    height: 45px;
+    right: 3%;
+  }
+  @include tablet-design {
+    right: 7%;
+    top: 0%;
   }
 }
 

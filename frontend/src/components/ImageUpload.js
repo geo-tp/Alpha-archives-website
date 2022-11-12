@@ -14,7 +14,6 @@ export default class ImageUpload extends Component {
     this.state = {
       files: [null],
       fileResponse: [],
-      displayImageBox: false,
       imagesInBox: null,
       indexInBox: null,
       uploaded: false,
@@ -32,7 +31,7 @@ export default class ImageUpload extends Component {
   }
 
   fileIsAlreadyIn(file1, file2) {
-    if (file1.name == file2.name && file1.size == file2.size) {
+    if (file1.name === file2.name && file1.size === file2.size) {
       return true;
     }
 
@@ -98,6 +97,7 @@ export default class ImageUpload extends Component {
       let fdata = new FormData();
       fdata.append("image", this.fileObj[i], this.fileObj[i].name);
       responseList.push(await fetchUploadFile(fdata));
+      console.log(responseList);
       this.setState({ loadingCount: this.state.loadingCount + 1 });
     }
 
@@ -109,10 +109,6 @@ export default class ImageUpload extends Component {
     });
   }
 
-  handleImageBoxClick = () => {
-    this.setState({ displayImageBox: !this.state.displayImageBox });
-  };
-
   handleReset = () => {
     this.fileArray = [];
     this.fileObj = [];
@@ -122,14 +118,6 @@ export default class ImageUpload extends Component {
   render() {
     return (
       <form className="main-image-upload" onSubmit={(e) => this.uploadFiles(e)}>
-        {this.state.displayImageBox && (
-          <ImageBox
-            imagesInBox={this.fileArray}
-            imagesName={this.fileObj}
-            indexInBox={this.state.indexInBox}
-            handleImageBoxClick={this.handleImageBoxClick}
-          />
-        )}
         <div className="main-image-upload__form-group">
           <label htmlFor="file-upload">
             <i className="fa fa-2x fa-download"></i>
@@ -159,13 +147,7 @@ export default class ImageUpload extends Component {
           <div className="main-image-upload__previews__box">
             {(this.fileArray || []).map((url, index) => (
               <div className="main-image-upload__previews__box__element">
-                <img
-                  src={url}
-                  alt="uploaded screenshot"
-                  onClick={() =>
-                    this.setState({ displayImageBox: true, indexInBox: index })
-                  }
-                />
+                <img src={url} alt="uploaded screenshot" />
                 {this.state.uploaded ? (
                   this.state.fileResponse[index] === 208 ? (
                     <label className="main-image-upload__previews__box__element__response error">

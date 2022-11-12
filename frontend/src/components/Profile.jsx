@@ -29,6 +29,9 @@ export const Profile = () => {
   const [invitationEmail, setInvitationEmail] = useState("");
   const [invitationResponse, setInvitationResponse] = useState(null);
 
+  const [tagBoxIsLoading, setTagBoxIsLoading] = useState(false);
+  const [tagApiResponse, SetTagApiResponse] = useState(false);
+
   useEffect(() => {
     async function fetchRes() {
       let tags = await fetchTags();
@@ -40,12 +43,17 @@ export const Profile = () => {
     fetchRes();
   }, []);
 
+  useEffect(() => {
+    SetTagApiResponse(null);
+  }, [tagNewValue]);
+
   const handleTagCreate = async (tagName) => {
-    if (!tagName) {
+    if (!tagNewValue) {
       return;
     }
 
     const response = await fetchCreateTag(tagName);
+    SetTagApiResponse(response);
     if (!response.error) {
       setTagNewValue("");
       const newTag = response.body;
@@ -93,9 +101,24 @@ export const Profile = () => {
   };
 
   const handleTagUpdate = async () => {
+    if (!tagNewValue) {
+      return;
+    }
+
+    if (tagSelected === tagNewValue) {
+      SetTagApiResponse({
+        body: { name: "Tag name is the same" },
+        error: true,
+      });
+      return;
+    }
+
+    setTagBoxIsLoading(true);
     const response = await fetchUpdateTag(tagSelected, tagNewValue);
+    SetTagApiResponse(response);
 
     if (response.error) {
+      setTagBoxIsLoading(false);
       return;
     }
     const newTag = response;
@@ -104,6 +127,7 @@ export const Profile = () => {
     updatedTags[indexToUpdate] = newTag;
     setTagSelected(newTag.name);
     setUserTags([...updatedTags]);
+    setTagBoxIsLoading(false);
   };
 
   const handleTagDelete = async () => {
@@ -114,6 +138,7 @@ export const Profile = () => {
     if (!confirmation) {
       return;
     }
+    setTagBoxIsLoading(true);
 
     const response = await fetchRemoveTag(tagSelected);
     const updatedTags = userTags;
@@ -123,6 +148,8 @@ export const Profile = () => {
     setTagSelected(null);
 
     setUserTags([...updatedTags]);
+
+    setTagBoxIsLoading(false);
   };
 
   const handleLogout = async (e) => {
@@ -248,7 +275,13 @@ export const Profile = () => {
                 tags={userTags}
                 showOnFocus={false}
                 tagSelected={tagSelected}
+                isLoading={tagBoxIsLoading}
               />
+            )}
+            {tagApiResponse?.error && (
+              <span className="profile__tag-box__message">
+                {tagApiResponse?.body.name}
+              </span>
             )}
             <div className="profile__tag-box__edit">
               <input
@@ -260,7 +293,7 @@ export const Profile = () => {
                 ref={editTagInputRef}
               />
               <button
-                disabled={tagSelected ? false : true}
+                disabled={tagSelected && !tagBoxIsLoading ? false : true}
                 onClick={handleTagUpdate}
                 className="profile__tag-box__edit__button profile__tag-box__edit__button--valid"
               >
@@ -268,7 +301,7 @@ export const Profile = () => {
               </button>
               <button
                 onClick={handleTagDelete}
-                disabled={tagSelected ? false : true}
+                disabled={tagSelected && !tagBoxIsLoading ? false : true}
                 className="profile__tag-box__edit__button profile__tag-box__edit__button--erase"
               >
                 <i className="fa fa-trash"></i>

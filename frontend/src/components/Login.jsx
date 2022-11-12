@@ -20,6 +20,10 @@ export const Login = () => {
 
     const response = await fetchPasswordForget(passwordForgetEmail);
     setPasswordForgetResponse(response);
+
+    if (!response?.error) {
+      setPasswordForgetEmail("");
+    }
   };
 
   const handleLoginClick = (e) => {
@@ -74,7 +78,11 @@ export const Login = () => {
             required
           />
         </div>
-        <button className="button-upload" type="submit">
+        <button
+          disabled={auth.isLoading ? true : false}
+          className="button-upload"
+          type="submit"
+        >
           Connect <i className="fa fa-sign-in"></i>
         </button>
       </form>

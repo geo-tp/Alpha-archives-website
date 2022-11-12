@@ -64,13 +64,15 @@
 
     &__submit {
       // height: 28px;
-      border-radius: 0px 5px 5px 0px;
+      border-radius: 0px 10px 10px 0px;
       font-size: 0.8em;
       font-weight: bold;
       border: 1px map-get($COLOR-PALETTE, bg);
       background-color: map-get($COLOR-PALETTE, font4);
       color: map-get($COLOR-PALETTE, font);
-
+      padding-left: 8px;
+      padding-right: 8px;
+      cursor: pointer;
       & i {
         font-size: 0.9em;
         margin-right: 5px;

@@ -28,3 +28,13 @@ input[type]:focus,
   background-color: lighten(map-get($COLOR-PALETTE, prim), 3%);
   transition: background-color 500ms;
 }
+
+button {
+  cursor: pointer;
+  transition: all 200ms;
+
+  &:hover {
+    transition: all 200ms;
+    opacity: 0.8;
+  }
+}

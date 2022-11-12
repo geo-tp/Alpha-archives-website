@@ -9,6 +9,7 @@
   color: map-get($COLOR-PALETTE, font);
   cursor: pointer;
   transition: all 500ms;
+  max-height: 30px;
 
   &:disabled {
     cursor: default;

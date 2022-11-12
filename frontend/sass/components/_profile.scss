@@ -137,6 +137,11 @@
   }
 
   &__tag-box {
+    text-align: center;
+    &__message {
+      font-size: 0.7em;
+      color: map-get($COLOR-PALETTE, error);
+    }
     &__edit {
       display: flex;
       justify-content: center;

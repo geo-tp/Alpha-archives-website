@@ -68,6 +68,15 @@ input[type]:focus,
   transition: background-color 500ms;
 }
 
+button {
+  cursor: pointer;
+  transition: all 200ms;
+}
+button:hover {
+  transition: all 200ms;
+  opacity: 0.8;
+}
+
 .button-base {
   transform: scale(1);
   transition-property: transform;
@@ -1186,6 +1195,7 @@ input[type]:focus,
   align-items: center;
   border-radius: 5px;
   transform: rotate(0deg);
+  cursor: pointer;
   transition: all 300ms;
 }
 .tag-container__selector__icon--reverse {
@@ -1240,6 +1250,7 @@ input[type]:focus,
   color: #c9d1d9;
   cursor: pointer;
   transition: all 500ms;
+  max-height: 30px;
 }
 .tag-element:disabled {
   cursor: default;
@@ -1434,12 +1445,15 @@ input[type]:focus,
   color: #1c2327;
 }
 .tag-selector__search__submit {
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 10px 10px 0px;
   font-size: 0.8em;
   font-weight: bold;
   border: 1px #01040a;
   background-color: #238636;
   color: #c9d1d9;
+  padding-left: 8px;
+  padding-right: 8px;
+  cursor: pointer;
 }
 .tag-selector__search__submit i {
   font-size: 0.9em;
@@ -1663,6 +1677,13 @@ input[type]:focus,
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+}
+.profile__tag-box {
+  text-align: center;
+}
+.profile__tag-box__message {
+  font-size: 0.7em;
+  color: #751b1b;
 }
 .profile__tag-box__edit {
   display: flex;

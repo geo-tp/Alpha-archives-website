@@ -4,13 +4,15 @@
   box-sizing: border-box;
   border: 1px solid map-get($COLOR-PALETTE, bg);
   cursor: pointer;
-
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  height: 20px;
   border-radius: 7px;
   margin: 2px;
-
-  font-size: 0.7em;
+  margin-left: 10px;
+  font-size: 0.9em;
   // height: 20px;
-  // min-width: 200px;
   // flex-basis: 100%;
   // width: 150px;
 

@@ -9,6 +9,7 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { Provider, useSelector } from "react-redux";
 import store from "./store/store";
 import { getAuth } from "./store/features/auth/selectors";
+import { PasswordResetPage } from "./pages/PasswordResetPage";
 
 function RequireAuth({ children }) {
   let auth = useSelector(getAuth);
@@ -28,6 +29,11 @@ function App() {
             <Route path={"/"} element={<HomePage />} />
             <Route path={"/auth"} element={<AuthPage />} />
             <Route path={"/profile"} element={<ProfilePage />} />
+            <Route
+              path={"/password-reset/:key"}
+              element={<PasswordResetPage />}
+            />
+
             {/* <Route
               path={"/profile"}
               element={

@@ -60,6 +60,7 @@ export const Profile = () => {
         message: "New passwords are not equals",
         error: true,
       });
+      return;
     }
 
     let response = await fetchPasswordUpdate(oldPasssword, newPasssword);
@@ -195,6 +196,7 @@ export const Profile = () => {
               id="old-password-user2"
               value={oldPasssword}
               onChange={(e) => setOldPassword(e.target.value)}
+              required
             />
           </div>
           <div className="profile__input-box">
@@ -206,6 +208,7 @@ export const Profile = () => {
               id="new-password-user"
               value={newPasssword}
               onChange={(e) => setNewPassword(e.target.value)}
+              required
             />
           </div>
           <div className="profile__input-box">
@@ -217,6 +220,7 @@ export const Profile = () => {
               id="new-password-user2"
               value={newPasssword2}
               onChange={(e) => setNewPassword2(e.target.value)}
+              required
             />
           </div>
           <button className="profile__button" type="submit">
@@ -244,6 +248,7 @@ export const Profile = () => {
                 handleTagCreateClick={handleTagCreate}
                 tags={userTags}
                 showOnFocus={false}
+                tagSelected={tagSelected}
               />
             )}
             <div className="profile__tag-box__edit">

@@ -8,6 +8,8 @@ const forbiddenInputChar = ".?/!%*µ$^)'(#&@+²,;:<>`+°¨{}[]|ø¹^" + '"';
 
 export const TagSelector = ({
   tags,
+  tagSelected,
+  fileTags = null,
   handleTagClick,
   handleTagCreateClick,
   showOnFocus = true,
@@ -83,6 +85,11 @@ export const TagSelector = ({
     <div ref={wrapperRef} className="tag-selector">
       <div className="tag-selector__search">
         <form
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+            }
+          }}
           onSubmit={(e) => handleTagCreation(e)}
           className={
             buzzForForbiddenChar
@@ -92,6 +99,14 @@ export const TagSelector = ({
         >
           <div className="tag-selector__icon">#</div>
           <input
+            style={
+              showCreateButton
+                ? {}
+                : {
+                    borderBottomRightRadius: 10 + "px",
+                    borderTopRightRadius: 10 + "px",
+                  }
+            }
             className="tag-selector__search__bar"
             type="text"
             autoFocus={true}
@@ -107,13 +122,19 @@ export const TagSelector = ({
               // disabled={auth.isConnected ? false : true}
               className="tag-selector__search__submit"
               type="submit"
+              title="Click to create a new tag"
             >
               <i className="fa fa-plus"></i>New
             </button>
           )}
         </form>
         {displayTagDropDown && (
-          <TagDropDown tags={filteredTags} handleTagClick={handleTagClick} />
+          <TagDropDown
+            tags={filteredTags}
+            tagSelected={tagSelected}
+            handleTagClick={handleTagClick}
+            fileTags={fileTags}
+          />
         )}
       </div>
     </div>

@@ -44,8 +44,8 @@
 
 @keyframes buzz {
   0% {
-    transform: translateX(-10px);
-    opacity: 0;
+    transform: translateX(-6px);
+    opacity: 0.9;
   }
 
   50% {
@@ -54,7 +54,7 @@
   }
 
   100% {
-    transform: translateX(10px);
-    opacity: 1;
+    transform: translateX(6px);
+    opacity: 0.9;
   }
 }

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { TagUi } from "./TagUi";
 import PropTypes from "prop-types";
 import { fetchApplyTag } from "../api/fetchApplyTag";
 import { fetchRemoveApplyTag } from "../api/fetchRemoveApplyTag";
+import { TagSelector } from "./TagSelector";
+import { fetchCreateTag } from "../api/fetchCreateTag";
 export const TagContainer = ({
   fileTags,
   tags,
@@ -12,6 +13,7 @@ export const TagContainer = ({
 }) => {
   const [tagBoxIsOpen, setTagBoxIsOpen] = useState(false);
   const [newFileTags, setNewFileTags] = useState(fileTags ? fileTags : []);
+  const [tagSelected, setTagSelected] = useState(null);
   const wrapperRef = useRef(null);
   useOutsideBox(wrapperRef);
 
@@ -35,33 +37,44 @@ export const TagContainer = ({
     }, [ref]);
   }
 
+  const handleCreateTagClick = async (searchKeywords) => {
+    if (!searchKeywords) {
+      return;
+    }
+
+    const response = await fetchCreateTag(searchKeywords);
+    if (!response.error) {
+      const newTag = response.body;
+      createTagInState(newTag);
+      // setFilteredTags([newTag, ...tags]);
+    }
+  };
+
   const handleTagClick = async (tag) => {
-    if (newFileTags.some((item) => item.tag === tag.name)) {
+    if (newFileTags.some((item) => item.tag === tag)) {
+      console.log("LE TAG", tag);
       // const response = await fetchRemoveApplyTag(tag);
-      const tags = newFileTags;
+      const updatedFileTags = newFileTags;
 
       for (let tagApplied of newFileTags) {
-        if (tagApplied.tag === tag.name) {
+        if (tagApplied.tag === tag) {
           const response = await fetchRemoveApplyTag(tagApplied);
           const index = newFileTags.indexOf(tagApplied);
-          tags.splice(index, 1);
-          setNewFileTags([...tags]);
+          updatedFileTags.splice(index, 1);
+          setNewFileTags([...updatedFileTags]);
           return;
         }
       }
     }
 
-    const response = await fetchApplyTag(tag.name, file.image_hash);
+    const response = await fetchApplyTag(tag, file.image_hash);
     const createdTag = response.body;
     const newTags = [createdTag, ...file.tags];
     console.log("n new TAGS", newTags);
     const updatedFile = { ...file, tags: newTags };
     console.log("NEW FILE", updatedFile);
     updateFileInState(updatedFile);
-    // console.log("CREATED", createdTag);
-    // let tags = newFileTags;
-    // setNewFileTags([...tags, createdTag]);
-    // console.log("NEW TAGS", tags);
+    setNewFileTags([createdTag, ...fileTags]);
   };
 
   return (
@@ -85,13 +98,16 @@ export const TagContainer = ({
         ))}
       </div>
       {tagBoxIsOpen && (
-        <TagUi
-          tags={tags}
-          file={file}
-          fileTags={file.tags}
-          handleTagClick={handleTagClick}
-          createTagInState={createTagInState}
-        />
+        <div className="tag-container__box">
+          <TagSelector
+            tags={tags}
+            handleTagClick={handleTagClick}
+            tagSelected={tagSelected}
+            handleTagCreateClick={handleCreateTagClick}
+            showOnFocus={false}
+            fileTags={fileTags}
+          />
+        </div>
       )}
     </div>
   );

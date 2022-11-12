@@ -68,6 +68,8 @@
       outline: map-get($COLOR-PALETTE, font4);
       max-width: 200px;
       transition: all 1s;
+      min-width: 120px;
+
       // border-radius: 0px 10px 10px 0px;
     }
   }

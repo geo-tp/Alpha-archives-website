@@ -93,11 +93,7 @@ export const TagUi = ({
             value={searchKeywords}
             disabled={auth.isConnected ? false : true}
           />
-          <button
-            disabled={auth.isConnected ? false : true}
-            className="tag-ui__search__submit"
-            type="submit"
-          >
+          <button className="tag-ui__search__submit" type="submit">
             <i className="fa fa-plus"></i>New
           </button>
         </div>

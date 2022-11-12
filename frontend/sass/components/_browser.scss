@@ -23,10 +23,8 @@
     background-color: map-get($COLOR-PALETTE, ter);
     color: map-get($COLOR-PALETTE, font);
     // padding: 1%;
-    // width:90%;
     border-radius: 7px 7px 0px 0px;
     border: 1px solid map-get($COLOR-PALETTE, prim);
-
     margin: 0 auto;
     padding-left: 20px;
 
@@ -50,6 +48,7 @@
       padding-left: 10px;
       min-height: 20px;
       border-radius: 10px;
+      max-height: 30px;
 
       width: 70%;
       text-align: left;

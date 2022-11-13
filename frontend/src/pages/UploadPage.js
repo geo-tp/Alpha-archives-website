@@ -1,12 +1,13 @@
 import { Component } from "react";
 import ImageUpload from "../components/ImageUpload";
-import UploadScreen from "../assets/upload.png";
+import bgScreen from "../assets/background.webp";
+
 class UploadPage extends Component {
   render() {
     return (
       <main className="main-container page-top-margin footer-hidden">
         <img
-          src={UploadScreen}
+          src={bgScreen}
           alt="wow login screen"
           className="image-background-container"
         />

@@ -58,3 +58,18 @@
     opacity: 0.9;
   }
 }
+
+@keyframes moveBackground {
+  0% {
+    // transform: skew(-7turn, 0);
+    opacity: 0.96;
+    transform: scale(1);
+  }
+
+  100% {
+    transform: translateX(6px);
+    // transform: skew(-0turn, 0);
+    opacity: 0.94;
+    transform: scale(1.03);
+  }
+}

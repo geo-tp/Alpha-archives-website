@@ -1,11 +1,11 @@
 import { Profile } from "../components/Profile";
-import UploadScreen from "../assets/upload.png";
+import bgScreen from "../assets/background.webp";
 
 export const ProfilePage = () => {
   return (
     <main className="profile-page">
       <img
-        src={UploadScreen}
+        src={bgScreen}
         alt="wow login screen"
         className="image-background-container"
       />

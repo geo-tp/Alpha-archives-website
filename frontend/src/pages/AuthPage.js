@@ -1,12 +1,12 @@
 import { Login } from "../components/Login";
 import { Register } from "../components/Register";
-import UploadScreen from "../assets/upload.png";
+import bgScreen from "../assets/background.webp";
 
 export const AuthPage = () => {
   return (
     <main className="auth-page footer-hidden">
       <img
-        src={UploadScreen}
+        src={bgScreen}
         alt="wow login screen"
         className="image-background-container"
       />

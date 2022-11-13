@@ -1,7 +1,7 @@
 import NavBar from "./components/NavBar";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import UploadPage from "./pages/UploadPage";
-import { HomePage } from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
 import BrowserPage from "./pages/BrowsePage";
 import { Footer } from "./components/Footer";
 import { AuthPage } from "./pages/AuthPage";

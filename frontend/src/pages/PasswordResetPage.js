@@ -1,11 +1,11 @@
-import UploadScreen from "../assets/upload.png";
 import { PasswordReset } from "../components/PasswordReset";
+import bgScreen from "../assets/background.webp";
 
 export const PasswordResetPage = () => {
   return (
     <main className="auth-page footer-hidden">
       <img
-        src={UploadScreen}
+        src={bgScreen}
         alt="wow login screen"
         className="image-background-container"
       />

@@ -2,7 +2,7 @@ from rest_framework import serializers
 from file.models import File
 from tag.serializers import AppliedTagSerializer
 from tag.models import AppliedTag
-from main.settings import MEDIA_URL
+from main.settings import MEDIA_HOST_URL
 
 
 class FileSerializer(serializers.ModelSerializer):
@@ -18,8 +18,8 @@ class FileSerializer(serializers.ModelSerializer):
 
         image_raw = response["image_raw"]
         if image_raw:
-            # we remove / at the end of url
-            response["image_raw"] = MEDIA_URL[0:-1] + image_raw
+            response["image_raw"] = MEDIA_HOST_URL + image_raw
+            response["image_thumbnail"] = MEDIA_HOST_URL + image_raw
 
         return response
 

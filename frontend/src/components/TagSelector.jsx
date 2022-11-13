@@ -16,6 +16,7 @@ export const TagSelector = ({
   showOnFocus = true,
   showCreateButton = true,
   isLoading = false,
+  disabled = false,
 }) => {
   const [displayTagDropDown, setDisplayTagDropDown] = useState(
     showOnFocus ? false : true
@@ -116,7 +117,8 @@ export const TagSelector = ({
             }
             className="tag-selector__search__bar"
             type="text"
-            autoFocus={true}
+            disabled={disabled}
+            autoFocus={disabled ? false : true}
             placeholder="Search and select tags"
             onFocus={() => {
               setDisplayTagDropDown(true);
@@ -126,7 +128,7 @@ export const TagSelector = ({
           />
           {showCreateButton && (
             <button
-              // disabled={auth.isConnected ? false : true}
+              disabled={disabled ? true : false}
               className="tag-selector__search__submit"
               type="submit"
               title="Click to create a new tag"
@@ -154,4 +156,5 @@ TagSelector.propTypes = {
   handleTagClick: PropTypes.func.isRequired,
   showOnFocus: PropTypes.bool,
   isLoading: PropTypes.bool,
+  disabled: PropTypes.bool,
 };

@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { fetchLogin } from "../api/fetchLogin";
 import { fetchPasswordForget } from "../api/fetchPasswordForget";
 import { getAuth } from "../store/features/auth/selectors";
 import { ApiResponse } from "./ApiResponse";
+import Loading from "./Loading";
 
 export const Login = () => {
   const [displayPasswordReset, setDisplayPasswordReset] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordForgetEmail, setPasswordForgetEmail] = useState("");
+  const [passwordForgetIsLoading, setPasswordForgetIsLoading] = useState(false);
   const [passwordForgetResponse, setPasswordForgetResponse] = useState("");
   const auth = useSelector(getAuth);
   const dispatch = useDispatch();
@@ -18,12 +20,15 @@ export const Login = () => {
   const handePasswordForgetClick = async (e) => {
     e.preventDefault();
 
+    setPasswordForgetIsLoading(true);
     const response = await fetchPasswordForget(passwordForgetEmail);
     setPasswordForgetResponse(response);
 
     if (!response?.error) {
       setPasswordForgetEmail("");
     }
+
+    setPasswordForgetIsLoading(false);
   };
 
   const handleLoginClick = (e) => {
@@ -104,9 +109,18 @@ export const Login = () => {
             value={passwordForgetEmail}
             onChange={(e) => setPasswordForgetEmail(e.target.value)}
           />
-          <button title="Reset your password" type="submit">
+          <button
+            disabled={passwordForgetIsLoading ? true : false}
+            title="Reset your password"
+            type="submit"
+          >
             <i className="fa fa-arrow-right"></i>
           </button>
+          {passwordForgetIsLoading && (
+            <div className="login__password-loader">
+              <Loading />
+            </div>
+          )}
         </form>
       )}
       {auth.isError && (

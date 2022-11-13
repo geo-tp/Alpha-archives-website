@@ -85,7 +85,6 @@ class FileViewSet(
 
         file_instance = File.objects.create(**formatted_data)
         default_storage.save(INCOMING_ROOT + str(image), image)
-
         api_response = format_api_response(
             status=status.HTTP_201_CREATED,
             message=UPLOAD_SUCCESS,

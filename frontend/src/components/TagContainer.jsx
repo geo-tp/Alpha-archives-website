@@ -16,7 +16,6 @@ export const TagContainer = ({
 }) => {
   const [tagBoxIsOpen, setTagBoxIsOpen] = useState(false);
   const [newFileTags, setNewFileTags] = useState(fileTags ? fileTags : []);
-  const [tagSelected, setTagSelected] = useState(null);
   const [tagBoxIsLoading, setTagBoxIsLoading] = useState(false);
   const wrapperRef = useRef(null);
   const auth = useSelector(getAuth);
@@ -80,7 +79,7 @@ export const TagContainer = ({
       }
     }
 
-    // We add apply tag
+    // We apply tag
     const response = await fetchApplyTag(tag, file.image_hash);
     const createdTag = response.body;
     const newTags = [createdTag, ...newFileTags];
@@ -123,11 +122,11 @@ export const TagContainer = ({
           <TagSelector
             tags={tags}
             handleTagClick={handleTagClick}
-            tagSelected={tagSelected}
             handleTagCreateClick={handleCreateTagClick}
             showOnFocus={false}
             fileTags={newFileTags}
             isLoading={tagBoxIsLoading}
+            disabled={auth.isStaff ? false : true}
           />
         </div>
       )}

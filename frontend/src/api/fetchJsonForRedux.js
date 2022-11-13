@@ -1,3 +1,6 @@
+import { getDisconnectedSuccess } from "../store/features/auth/actions";
+import store from "../store/store";
+import { CookieManager } from "../utils/CookieManager";
 import { HeadersManager } from "./utils/headers";
 
 /**
@@ -24,6 +27,12 @@ export function fetchJsonForRedux(
       .then((response) => {
         if (!response.ok) {
           throw response;
+        }
+
+        // Token can be expired, so we delete it, no reason normal user can get a 401
+        if (response.status === 401) {
+          CookieManager.deleteUserData();
+          store.dispatch(getDisconnectedSuccess());
         }
 
         return response.json();

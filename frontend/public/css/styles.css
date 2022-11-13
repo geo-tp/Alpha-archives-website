@@ -1285,6 +1285,10 @@ button:hover {
     padding: 20px;
   }
 }
+.login__password-loader .lds-ring {
+  width: 20px;
+  position: absolute;
+}
 .login__error {
   border: 1px solid #751b1b;
   color: #751b1b;

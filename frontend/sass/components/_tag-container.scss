@@ -72,7 +72,7 @@
     border-radius: 10px;
     border: 1px solid map-get($COLOR-PALETTE, prim);
 
-    &__restricted {
+    &--restricted {
       z-index: 100;
       position: absolute;
       width: 100%;
@@ -85,9 +85,18 @@
       align-items: center;
       border: 1px solid map-get($COLOR-PALETTE, prim);
       border-radius: 10px;
+
+      & a {
+        color: map-get($COLOR-PALETTE, font3);
+        text-decoration: none;
+        border: 1px solid map-get($COLOR-PALETTE, font3);
+        border-radius: 10px;
+        padding: 5px;
+      }
+
       & p {
         border: 1px solid map-get($COLOR-PALETTE, prim);
-        font-size: 0.7em;
+        // font-size: 0.7em;
         padding: 10px;
         border-radius: 10px;
         background-color: map-get($COLOR-PALETTE, prim);

@@ -1217,7 +1217,7 @@ button:hover {
   border-radius: 10px;
   border: 1px solid #1c2327;
 }
-.tag-container__box__restricted {
+.tag-container__box--restricted {
   z-index: 100;
   position: absolute;
   width: 100%;
@@ -1231,9 +1231,15 @@ button:hover {
   border: 1px solid #1c2327;
   border-radius: 10px;
 }
-.tag-container__box__restricted p {
+.tag-container__box--restricted a {
+  color: #3c73b2;
+  text-decoration: none;
+  border: 1px solid #3c73b2;
+  border-radius: 10px;
+  padding: 5px;
+}
+.tag-container__box--restricted p {
   border: 1px solid #1c2327;
-  font-size: 0.7em;
   padding: 10px;
   border-radius: 10px;
   background-color: #1c2327;
@@ -1736,7 +1742,6 @@ button:hover {
   height: 30px;
 }
 .profile .tag-selector .tag-dropdown {
-  height: 120px;
   position: block;
 }
 .profile .tag-selector__search {
@@ -1747,7 +1752,6 @@ button:hover {
   margin: 0px;
 }
 .profile .tag-selector__search .tag-dropdown {
-  height: 120px;
   position: relative;
   width: 100%;
   margin-top: 10px;

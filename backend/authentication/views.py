@@ -25,6 +25,7 @@ from generic.response import format_api_response
 from user.models import CustomUser, UserProfileImage
 from generic.models import GenericImage
 from .models import EmailValidationToken, PasswordValidationToken
+from generic.permissions import IsAdminAuthenticated, IsStaffAuthenticated
 
 from .messages import (
     LOGIN_SUCCESS,
@@ -208,7 +209,7 @@ class InvitationView(APIView):
     """
 
     serializer_class = InvitationSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAdminAuthenticated]
 
     def get_serializer(self, *args, **kwargs):
         return self.serializer_class(*args, **kwargs)

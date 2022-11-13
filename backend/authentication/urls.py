@@ -13,7 +13,7 @@ from .views import (
 urlpatterns = [
     path("login", login_view, name="api_login"),
     path("logout", logout_view, name="api_logout"),
-    path("register", register_view, name="api_register"),
+    # path("register", register_view, name="api_register"), NO REGISTRATION FOR THIS WEBSITE
     path("email-validation/<key>", email_validation_view, name="api_email_validation"),
     path("password-forget", password_forget_view, name="api_password_forget"),
     path("password-reset/<key>", password_reset_view, name="api_password_reset"),

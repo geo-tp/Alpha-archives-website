@@ -38,6 +38,14 @@ class IsAdminAuthenticated(permissions.BasePermission):
         )
 
 
+class IsStaffAuthenticated(permissions.BasePermission):
+    def has_permission(self, request, view):
+
+        return bool(
+            request.user and request.user.is_authenticated and request.user.is_staff
+        )
+
+
 class IsAdminAuthenticatedOrReadOnly(permissions.BasePermission):
     """
     The request is authenticated as a admin user, or is a read-only request.

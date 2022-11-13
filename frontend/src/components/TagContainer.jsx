@@ -4,6 +4,9 @@ import { fetchApplyTag } from "../api/fetchApplyTag";
 import { fetchRemoveApplyTag } from "../api/fetchRemoveApplyTag";
 import { TagSelector } from "./TagSelector";
 import { fetchCreateTag } from "../api/fetchCreateTag";
+import { useSelector } from "react-redux";
+import { getAuth } from "../store/features/auth/selectors";
+import { Link } from "react-router-dom";
 export const TagContainer = ({
   fileTags,
   tags,
@@ -16,6 +19,8 @@ export const TagContainer = ({
   const [tagSelected, setTagSelected] = useState(null);
   const [tagBoxIsLoading, setTagBoxIsLoading] = useState(false);
   const wrapperRef = useRef(null);
+  const auth = useSelector(getAuth);
+
   useOutsideBox(wrapperRef);
 
   useEffect(() => {
@@ -107,6 +112,14 @@ export const TagContainer = ({
       </div>
       {tagBoxIsOpen && (
         <div className="tag-container__box">
+          {!auth.isStaff && (
+            <div className="tag-container__box--restricted">
+              <p>
+                <Link to="/auth">login</Link> to add tags
+              </p>
+            </div>
+          )}
+
           <TagSelector
             tags={tags}
             handleTagClick={handleTagClick}

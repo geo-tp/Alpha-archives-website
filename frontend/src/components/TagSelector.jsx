@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { searchTagsByKeywords } from "../utils/search";
 import Loading from "./Loading";
-const forbiddenInputChar = ".?/!%*µ$^)'(#&@+²,;:<>`+°¨{}=[]|ø¹^" + '"';
+import { forbiddenInputChar } from "../utils/string";
 
 export const TagSelector = ({
   tags,

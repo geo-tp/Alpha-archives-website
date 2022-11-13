@@ -1,3 +1,5 @@
+from psutil import disk_usage
+import random
 import imagehash
 from PIL import Image as Img
 from copy import deepcopy
@@ -15,18 +17,20 @@ from rest_framework import status
 from main.settings import INCOMING_ROOT, INCOMING_URL
 from generic.response import format_api_response
 from file.messages import ALREADY_IN_ARCHIVE, UPLOAD_SUCCESS
-from rest_framework import filters
+from rest_framework import filters, status, viewsets, mixins
 from rest_framework.decorators import action
-from rest_framework import status, viewsets
 from tag.serializers import CustomAppliedTagSerializer
 from tag.models import AppliedTag, Tag
 from file.serializers import FileSerializer
-from psutil import disk_usage
 from django.conf import settings
-import random
 
 
-class FileViewSet(viewsets.ModelViewSet):
+class FileViewSet(
+    mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet,
+):
 
     queryset = File.objects.all()
     pagination_class = None

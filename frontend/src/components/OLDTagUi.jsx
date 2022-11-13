@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchCreateTag } from "../api/fetchCreateTag";
 import { getAuth } from "../store/features/auth/selectors";
 import { searchTagsByKeywords } from "../utils/search";
@@ -44,22 +45,24 @@ export const TagUi = ({
       setFilteredTags([newTag, ...tags]);
     }
   };
-
-  // if (!auth.isStaff || !auth.isAdmin) {
-  //   return (
-  //     <div className="tag-ui tag-ui--restricted">
-  //       <p className="tag-ui__restricted">
-  //         You don't have persmissions to add tags
-  //       </p>
-  //     </div>
-  //   );
-  // }
+  console.log(auth.isStaff);
+  if (!auth.isStaff || !auth.isAdmin) {
+    return (
+      <div className="tag-ui tag-ui--restricted">
+        <p className="tag-ui__restricted">
+          You don't have persmissions to add tags
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="tag-ui">
       {!auth.isConnected && (
         <div className="tag-ui__restricted">
-          <p>You don't have persmissions to add tags</p>
+          <p>
+            Please <Link to="/login">login</Link> to add tags
+          </p>
         </div>
       )}
       <p

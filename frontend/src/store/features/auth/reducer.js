@@ -1,4 +1,5 @@
 import { HeadersManager } from "../../../api/utils/headers";
+import { CookieManager } from "../../../utils/CookieManager";
 import {
   GET_CONNECTED,
   GET_CONNECTED_ERROR,
@@ -22,7 +23,11 @@ export const authReducer = (state = authDefaultState, action) => {
 
     case GET_CONNECTED_SUCCESS:
       const token = action.payload.loginInfos.token;
+      const isStaff = action.payload.loginInfos.isStaff;
+      const isAdmin = action.payload.loginInfos.isAdmin;
+      console.log(token, isAdmin, isStaff);
       HeadersManager.addAuthorization(token);
+      CookieManager.setUserData(token, isStaff, isAdmin);
 
       return {
         ...state,
@@ -49,13 +54,14 @@ export const authReducer = (state = authDefaultState, action) => {
 
     case GET_DISCONNECTED_SUCCESS:
       HeadersManager.removeAuthorization();
-
+      CookieManager.deleteUserData();
       return {
         ...authDefaultState,
       };
 
     case GET_DISCONNECTED_ERROR:
       HeadersManager.removeAuthorization();
+      CookieManager.deleteUserData();
 
       return {
         ...authDefaultState,

@@ -169,10 +169,10 @@ AUTH_USER_MODEL = "user.CustomUser"
 # Email config for sending confirmation mail and more
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "macartefidelite.test@gmail.com"
-EMAIL_HOST_PASSWORD = "atmimecajbilygjm"
-EMAIL_PORT = 587
+EMAIL_HOST = "smtp.develmail.com"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
+EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
@@ -210,3 +210,7 @@ CORS_ALLOW_CREDENTIALS = False
 # Upload
 
 DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT = 5
+
+# Input
+
+FORBIDDEN_CHAR = ".?/!%*µ$^)'(#\&@+²,;:<>}`+°¨{=[]|ø¹^" + '"'

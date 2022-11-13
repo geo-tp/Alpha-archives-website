@@ -65,7 +65,13 @@ class HomePage extends Component {
     this.getRandomScreenshot();
   }
 
-  async getRandomScreenshot() {
+  handleCloseBoxClick() {
+    this.setState({
+      infoBoxIsOpen: false,
+    });
+  }
+
+  getRandomScreenshot = async () => {
     if (this.state.rollButtonIsDisabled) {
       return;
     }
@@ -78,13 +84,7 @@ class HomePage extends Component {
     });
 
     this.setState({ rollButtonIsDisabled: false });
-  }
-
-  handleCloseBoxClick() {
-    this.setState({
-      infoBoxIsOpen: false,
-    });
-  }
+  };
 
   render() {
     return (

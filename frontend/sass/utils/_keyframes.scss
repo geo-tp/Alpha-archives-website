@@ -62,14 +62,23 @@
 @keyframes moveBackground {
   0% {
     // transform: skew(-7turn, 0);
-    opacity: 0.96;
+    opacity: 0.95;
     transform: scale(1);
   }
 
   100% {
     transform: translateX(6px);
     // transform: skew(-0turn, 0);
-    opacity: 0.94;
-    transform: scale(1.03);
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes lds-ring-form {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

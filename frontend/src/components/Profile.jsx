@@ -11,6 +11,7 @@ import { fetchTags } from "../api/fetchTags";
 import { fetchUpdateTag } from "../api/fetchUpdateTag";
 import { getAuth } from "../store/features/auth/selectors";
 import { ApiResponse } from "./ApiResponse";
+import { FormLoading } from "./FormLoading";
 import { TagSelector } from "./TagSelector";
 
 export const Profile = () => {
@@ -25,9 +26,11 @@ export const Profile = () => {
   const [newPasssword2, setNewPassword2] = useState("");
   const [oldPasssword, setOldPassword] = useState("");
   const [passwordUpdateResponse, setPasswordUpdateResponse] = useState(null);
+  const [passwordUpdateIsLoading, setPasswordUpdateIsLoading] = useState(false);
 
   const [invitationEmail, setInvitationEmail] = useState("");
   const [invitationResponse, setInvitationResponse] = useState(null);
+  const [invitationIsLoading, setInvitationIsLoading] = useState(false);
 
   const [tagBoxIsLoading, setTagBoxIsLoading] = useState(false);
   const [tagApiResponse, SetTagApiResponse] = useState(false);
@@ -35,9 +38,20 @@ export const Profile = () => {
   useEffect(() => {
     async function fetchRes() {
       let tags = await fetchTags();
-      setUserTags(tags.body);
       let profile = await fetchProfile();
       setUserProfile(profile.body);
+
+      let filteredTags = [];
+      // We keep only user tags or all if admin
+      console.log(tags.body, profile.body.id);
+      if (!tags.error && !profile.error) {
+        for (let tag of tags.body) {
+          if (profile.is_admin || tag.user === profile.body.id) {
+            filteredTags.push(tag);
+          }
+        }
+      }
+      setUserTags(filteredTags);
     }
 
     fetchRes();
@@ -70,7 +84,7 @@ export const Profile = () => {
       });
       return;
     }
-
+    setPasswordUpdateIsLoading(true);
     let response = await fetchPasswordUpdate(oldPasssword, newPasssword);
 
     if (response.body?.hasOwnProperty("new_password")) {
@@ -80,11 +94,13 @@ export const Profile = () => {
     }
 
     setPasswordUpdateResponse(response);
+    setPasswordUpdateIsLoading(false);
   };
 
   const handleInvitation = async (e) => {
     e.preventDefault();
     setInvitationResponse(null);
+    setInvitationIsLoading(true);
     const response = await fetchInvitation(invitationEmail);
 
     if (!response.error) {
@@ -92,6 +108,7 @@ export const Profile = () => {
     }
 
     setInvitationResponse(response);
+    setInvitationIsLoading(false);
   };
 
   const handleTagSelection = (tag) => {
@@ -249,9 +266,16 @@ export const Profile = () => {
               required
             />
           </div>
-          <button className="profile__button" type="submit">
-            Change
-          </button>
+          <div className="profile__button-box">
+            <button
+              disabled={passwordUpdateIsLoading ? true : false}
+              className="profile__button"
+              type="submit"
+            >
+              Change
+            </button>
+            {passwordUpdateIsLoading && <FormLoading />}
+          </div>
           {passwordUpdateResponse?.message && (
             <ApiResponse
               message={passwordUpdateResponse.message}
@@ -278,10 +302,12 @@ export const Profile = () => {
                 isLoading={tagBoxIsLoading}
               />
             )}
+            {!userTags?.length && <p>You don't have tags yet</p>}
             {tagApiResponse?.error && (
-              <span className="profile__tag-box__message">
-                {tagApiResponse?.body.name}
-              </span>
+              <ApiResponse
+                message={tagApiResponse?.body.name}
+                isError={tagApiResponse.error}
+              />
             )}
             <div className="profile__tag-box__edit">
               <input
@@ -332,9 +358,16 @@ export const Profile = () => {
                 required
               />
             </div>
-            <button className="profile__button" type="submit">
-              Send
-            </button>
+            <div className="profile__button-box">
+              <button
+                disabled={invitationIsLoading ? true : false}
+                className="profile__button"
+                type="submit"
+              >
+                Send
+              </button>
+              {invitationIsLoading && <FormLoading />}
+            </div>
             {invitationResponse?.message && (
               <ApiResponse
                 message={invitationResponse.message}
@@ -363,7 +396,7 @@ export const Profile = () => {
           <p className="profile__infos">
             <Link to="/upload">Upload page</Link> filters screenshots to avoid
             100% exact duplicates. You can check in depth with software like
-            <a href="https://www.digikam.org/"> DigiKam (linux)</a> or{" "}
+            <a href="https://www.digikam.org/"> DigiKam (Linux)</a> or{" "}
             <a href="https://github.com/ermig1979/AntiDupl">
               Antidupl (Windows)
             </a>

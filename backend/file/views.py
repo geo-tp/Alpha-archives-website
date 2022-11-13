@@ -124,9 +124,18 @@ class FileViewSet(
         serializer.is_valid(raise_exception=True)
 
         tags_array = [data["name"] for data in serializer.data]
-        applied_tags = AppliedTag.objects.filter(tag_id__in=tags_array)
+
+        # We get applied tags from first submitted tag, an then filtering queryset with other tags
+        applied_tags = AppliedTag.objects.filter(tag_id=tags_array[0])
+        for i in range(1, len(tags_array) - 1):
+            applied_tags = applied_tags.filter(tag_id=tags_array[i])
+
+        # we get image hash corresponding to applied tags
         images_hash = [data.file_hash for data in applied_tags]
+
+        # we get files corresponding to image_hash
         files = File.objects.filter(image_hash__in=images_hash)
+
         serialized_files = FileSerializer(files, many=True)
         api_response = format_api_response(
             status=status.HTTP_200_OK,

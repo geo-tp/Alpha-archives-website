@@ -30,7 +30,7 @@ class TagSerializer(serializers.ModelSerializer):
 class AppliedTagSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppliedTag
-        fields = ["tag", "file_hash"]
+        fields = ["id", "tag", "file_hash"]
 
     def validate(self, attrs):
 

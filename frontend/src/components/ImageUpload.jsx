@@ -144,7 +144,10 @@ export default class ImageUpload extends Component {
           </button>
           <div className="main-image-upload__previews__box">
             {(this.fileArray || []).map((url, index) => (
-              <div className="main-image-upload__previews__box__element">
+              <div
+                key={`image-upload-${url}-${index}`}
+                className="main-image-upload__previews__box__element"
+              >
                 <img src={url} alt="uploaded screenshot" />
                 {this.state.uploaded ? (
                   this.state.fileResponse[index] === 208 ? (

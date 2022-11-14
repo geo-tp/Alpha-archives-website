@@ -8,6 +8,7 @@ export const HomeCards = ({ title, cards }) => {
       <div className="home-cards__cards">
         {cards.map((card) => (
           <LinkCard
+            key={`homecards-${card.name}${card.alt}`}
             name={card.name}
             image={card.image}
             alt={card.alt}

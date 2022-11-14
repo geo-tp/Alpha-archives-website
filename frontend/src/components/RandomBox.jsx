@@ -25,7 +25,7 @@ export const RandomBox = ({
           </p>
         )}
         <button
-          class="nav-button-base random-box__button"
+          className="nav-button-base random-box__button"
           disabled={rollButtonIsDisabled}
           onClick={() => getRandomScreenshot()}
         >
@@ -37,7 +37,7 @@ export const RandomBox = ({
 };
 
 RandomBox.propTypes = {
-  screenshot: PropTypes.object.isRequired,
+  screenshot: PropTypes.object,
   getRandomScreenshot: PropTypes.func.isRequired,
-  rollButtonIsDisabled: PropTypes.bool.isRequired,
+  rollButtonIsDisabled: PropTypes.bool,
 };

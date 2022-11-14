@@ -150,11 +150,11 @@ class ImageBox extends Component {
 }
 
 ImageBox.propTypes = {
-  files: PropTypes.object.isRequired,
-  imagesInBox: PropTypes.object.isRequired,
+  files: PropTypes.array.isRequired,
+  imagesInBox: PropTypes.array.isRequired,
   fileIndexInBox: PropTypes.number.isRequired,
-  handleImageBoxClick: PropTypes.func.isRequired,
-  createTagInState: PropTypes.func.isRequired,
+  handleImageBoxClick: PropTypes.func,
+  createTagInState: PropTypes.func,
 };
 
 export default ImageBox;

@@ -25,7 +25,9 @@ class Browser extends Component {
       actualDirectory: [],
       folderParam: props.folder ? props.folder : "root",
     };
+  }
 
+  componentDidMount() {
     this.getFiles("parent", this.state.folderParam);
     this.getTags();
   }
@@ -264,6 +266,7 @@ class Browser extends Component {
               this.state.files.map((element) => {
                 return (
                   <BrowseElement
+                    key={`browser-element-${element.parent}-${element.filename}`}
                     element={element}
                     handleFolderClick={this.handleFolderClick}
                     handleFileClick={this.handleFileClick}

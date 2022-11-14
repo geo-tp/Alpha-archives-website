@@ -7,6 +7,7 @@ import { fetchCreateTag } from "../api/fetchCreateTag";
 import { useSelector } from "react-redux";
 import { getAuth } from "../store/features/auth/selectors";
 import { Link } from "react-router-dom";
+import { getRandomInt } from "../utils/misc";
 export const TagContainer = ({
   fileTags,
   tags,
@@ -43,25 +44,21 @@ export const TagContainer = ({
   }
 
   const handleCreateTagClick = async (searchKeywords) => {
-    setTagBoxIsLoading(true);
-
     if (!searchKeywords) {
-      setTagBoxIsLoading(false);
-
       return;
     }
 
+    setTagBoxIsLoading(true);
     const response = await fetchCreateTag(searchKeywords);
     if (!response.error) {
       const newTag = response.body;
       createTagInState(newTag);
-      setTagBoxIsLoading(true);
     }
+    setTagBoxIsLoading(false);
   };
 
   const handleTagClick = async (tag) => {
     setTagBoxIsLoading(true);
-
     if (newFileTags.some((item) => item.tag === tag)) {
       // const response = await fetchRemoveApplyTag(tag);
       const updatedFileTags = newFileTags;
@@ -106,7 +103,12 @@ export const TagContainer = ({
       </button>
       <div className="tag-container__tags">
         {newFileTags?.map((tag) => (
-          <span className="tag-element">{tag.tag}</span>
+          <span
+            key={`tag-container-${tag.tag}-${getRandomInt(10000)}`}
+            className="tag-element"
+          >
+            {tag.tag}
+          </span>
         ))}
       </div>
       {tagBoxIsOpen && (
@@ -138,6 +140,6 @@ TagContainer.propTypes = {
   tags: PropTypes.array.isRequired,
   fileTags: PropTypes.array.isRequired,
   file: PropTypes.object.isRequired,
-  createTagInState: PropTypes.func.isRequired,
-  updateTagInState: PropTypes.func.isRequired,
+  createTagInState: PropTypes.func,
+  updateTagInState: PropTypes.func,
 };

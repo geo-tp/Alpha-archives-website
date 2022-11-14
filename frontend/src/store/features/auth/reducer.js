@@ -25,7 +25,6 @@ export const authReducer = (state = authDefaultState, action) => {
       const token = action.payload.loginInfos.token;
       const isStaff = action.payload.loginInfos.isStaff;
       const isAdmin = action.payload.loginInfos.isAdmin;
-      console.log(token, isAdmin, isStaff);
       HeadersManager.addAuthorization(token);
       CookieManager.setUserData(token, isStaff, isAdmin);
 

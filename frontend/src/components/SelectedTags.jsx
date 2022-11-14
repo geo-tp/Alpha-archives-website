@@ -3,8 +3,11 @@ import PropTypes from "prop-types";
 export const SelectedTags = ({ selectedTags, handleRemoveTagClick }) => {
   return (
     <div className="selected-tags">
-      {selectedTags.map((tag) => (
-        <div className="tag-selected-element">
+      {selectedTags.map((tag, index) => (
+        <div
+          key={`selected-tags-${tag.name}-${index}`}
+          className="tag-selected-element"
+        >
           {tag}{" "}
           <button className="tag-selected-element__close">
             <i

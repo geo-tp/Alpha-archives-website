@@ -21,7 +21,11 @@ export class CookieManager {
 
     const today = new Date();
     const expirationDate = Date.parse(expiration);
-    let data = { token, isAdmin, isStaff };
+    let data = {
+      token,
+      isAdmin: isAdmin === "true",
+      isStaff: isStaff === "true",
+    };
 
     if (expirationDate < today) {
       data = { ...data, expired: true };
@@ -33,10 +37,9 @@ export class CookieManager {
   static setUserData = (token, isStaff, isAdmin) => {
     const expirationDate = new Date();
     expirationDate.setDate(expirationDate.getDate() + 30);
-    Cookie.set("token", token);
-    Cookie.set("expiration", expirationDate.toString());
-    Cookie.set("staff", isStaff);
-    Cookie.set("admin", isAdmin);
-    Cookie.set("SameSite", "strict");
+    Cookie.set("token", token, { sameSite: "strict" });
+    Cookie.set("expiration", expirationDate.toString(), { sameSite: "strict" });
+    Cookie.set("staff", isStaff, { sameSite: "strict" });
+    Cookie.set("admin", isAdmin, { sameSite: "strict" });
   };
 }

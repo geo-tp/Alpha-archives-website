@@ -41,16 +41,18 @@ export const Profile = () => {
       let profile = await fetchProfile();
       setUserProfile(profile.body);
 
-      let filteredTags = [];
       // We keep only user tags or all if admin
-      if (!tags.error && !profile.error) {
+      let dataset = [];
+      if (auth.isAdmin) {
+        dataset = tags.body;
+      } else if (!tags.error && !profile.error) {
         for (let tag of tags.body) {
           if (profile.is_admin || tag.user === profile.body.id) {
-            filteredTags.push(tag);
+            dataset.push(tag);
           }
         }
       }
-      setUserTags(filteredTags);
+      setUserTags(dataset);
     }
 
     fetchRes();
@@ -310,10 +312,11 @@ export const Profile = () => {
             )}
             <div className="profile__tag-box__edit">
               <input
-                value={tagNewValue}
+                value={tagNewValue || ""}
                 onChange={(e) => setTagNewValue(e.target.value)}
                 className="profile__tag-box__edit__bar"
                 type="text"
+                placeholder="Select tag to use me"
                 disabled={tagSelected ? false : true}
                 ref={editTagInputRef}
               />

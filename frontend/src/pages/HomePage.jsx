@@ -61,7 +61,9 @@ class HomePage extends Component {
       infoBoxIsOpen: true,
       rollButtonIsDisabled: false,
     };
+  }
 
+  componentDidMount() {
     this.getRandomScreenshot();
   }
 

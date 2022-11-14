@@ -126,7 +126,7 @@ export const Login = () => {
       {auth.isError && (
         <ApiResponse
           message="Unable to login with provided credentials"
-          isError="True"
+          isError={true}
         />
       )}
       {passwordForgetResponse?.message && (

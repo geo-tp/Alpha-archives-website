@@ -15,6 +15,7 @@ export const TagDropDown = ({
       <div className="tag-dropdown">
         {tags?.map((tag) => (
           <button
+            key={`tag-dropdown-button-${tag.name}`}
             className={
               fileTags.some((item) => item.tag === tag.name)
                 ? selectedClass
@@ -38,6 +39,7 @@ export const TagDropDown = ({
     <div className="tag-dropdown">
       {tags?.map((tag) => (
         <button
+          key={`tag-dropdown-button2-${tag.name}`}
           className={tag.name === tagSelected ? selectedClass : defaultClass}
           onClick={() => handleTagClick(tag.name)}
           disabled={isLoading ? true : false}
@@ -52,7 +54,7 @@ export const TagDropDown = ({
 TagDropDown.propTypes = {
   tags: PropTypes.array.isRequired,
   handleTagClick: PropTypes.func.isRequired,
-  tagSelected: PropTypes.object,
+  tagSelected: PropTypes.string,
   fileTags: PropTypes.array,
   isLoading: PropTypes.bool,
 };

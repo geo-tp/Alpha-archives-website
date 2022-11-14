@@ -9,7 +9,7 @@ export const HomeBanner = ({ screenshotNumber = null }) => {
     <div className="home-banner">
       <i className="home-banner__angle fa fa-angle-down"></i>
 
-      <div class="home-banner__version">
+      <div className="home-banner__version">
         <img
           className="home-banner__icon fa fa-image"
           src={wowIcon}
@@ -66,5 +66,5 @@ export const HomeBanner = ({ screenshotNumber = null }) => {
 };
 
 HomeBanner.propTypes = {
-  screenshotNumber: PropTypes.bool,
+  screenshotNumber: PropTypes.number,
 };

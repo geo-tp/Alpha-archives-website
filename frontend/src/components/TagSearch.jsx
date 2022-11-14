@@ -25,7 +25,7 @@ export const TagSearch = ({
 
 TagSearch.propTypes = {
   tags: PropTypes.array.isRequired,
-  handleTagClick: PropTypes.func.isRequired,
-  selected_tags: PropTypes.array.isRequired,
+  handleTagClick: PropTypes.func,
+  selected_tags: PropTypes.array,
   handleRemoveTagClick: PropTypes.func.isRequired,
 };

@@ -88,7 +88,7 @@
   position: absolute;
   right: 1%;
   top: 1%;
-  color: map-get($COLOR-PALETTE, error);
+  color: map-get($COLOR-PALETTE, font);
   background-color: transparent;
   border-radius: 15px;
   z-index: 50;
@@ -97,7 +97,7 @@
   @include tablet-design {
     right: 3%;
   }
-  @include tablet-design {
+  @include mobile-design {
     right: 7%;
     top: 0%;
   }

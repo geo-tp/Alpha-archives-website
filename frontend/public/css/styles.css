@@ -183,7 +183,7 @@ button:hover {
   position: absolute;
   right: 1%;
   top: 1%;
-  color: #751b1b;
+  color: #c9d1d9;
   background-color: transparent;
   border-radius: 15px;
   z-index: 50;
@@ -194,7 +194,7 @@ button:hover {
     right: 3%;
   }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 768px) {
   .button-reset {
     right: 7%;
     top: 0%;
@@ -430,7 +430,7 @@ button:hover {
   height: 100%;
   z-index: -1;
   top: 0;
-  opacity: 0.3;
+  opacity: 0.35;
   object-fit: cover;
 }
 
@@ -501,6 +501,11 @@ button:hover {
 }
 .close-menu-cross:hover {
   opacity: 0.6;
+}
+@media screen and (max-width: 1200px) {
+  .close-menu-cross {
+    top: 30px;
+  }
 }
 @media screen and (max-width: 768px) {
   .close-menu-cross {
@@ -766,12 +771,22 @@ button:hover {
   margin: 0 auto;
   padding-left: 20px;
 }
+@media screen and (max-width: 768px) {
+  .main-browser__directory-path {
+    padding-left: 5px;
+  }
+}
 .main-browser__directory-path__button {
   margin-right: 20px;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .main-browser__directory-path__button {
+    margin-right: 5px;
+  }
 }
 .main-browser__directory-path__button:hover {
   opacity: 0.6;
@@ -1082,6 +1097,16 @@ button:hover {
   align-items: center;
   width: 93%;
 }
+@media screen and (max-width: 1200px) {
+  .tag-container {
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .tag-container {
+    margin-top: 5px;
+  }
+}
 .tag-container__tags {
   overflow-x: scroll;
   overflow-y: hidden;
@@ -1341,6 +1366,11 @@ button:hover {
   padding-right: 10px;
   border-radius: 10px 0px 0px 10px;
 }
+@media screen and (max-width: 420px) {
+  .tag-selector__icon {
+    display: none;
+  }
+}
 .tag-selector__search {
   margin: 10px;
   margin-right: 0px;
@@ -1348,6 +1378,11 @@ button:hover {
   align-items: center;
   text-align: left;
   overflow: hidden;
+}
+@media screen and (max-width: 420px) {
+  .tag-selector__search {
+    border-radius: 10px;
+  }
 }
 .tag-selector__search__form {
   display: flex;
@@ -1486,7 +1521,6 @@ button:hover {
 .profile {
   color: #c9d1d9;
   text-align: left;
-  background-color: #161b22;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -1535,6 +1569,9 @@ button:hover {
   text-decoration: none;
   color: #3c73b2;
 }
+.profile__title {
+  box-shadow: 0px 0px 5px #01040a;
+}
 .profile__button {
   background-color: #238636;
   color: #c9d1d9;
@@ -1547,6 +1584,8 @@ button:hover {
   justify-content: center;
   flex-wrap: wrap;
   padding-top: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .profile__button-box {
   display: flex;
@@ -1560,6 +1599,7 @@ button:hover {
   max-width: 400px;
   flex-basis: 30%;
   position: relative;
+  box-shadow: 0px 0px 5px #01040a;
 }
 @media screen and (max-width: 1200px) {
   .profile__box {
@@ -1573,29 +1613,6 @@ button:hover {
   .profile__box {
     flex-basis: 100%;
   }
-}
-.profile h1 {
-  text-align: center;
-  background-color: #1c2327;
-  border: 1px solid #01040a;
-  width: 80%;
-  border-radius: 20px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@media screen and (max-width: 768px) {
-  .profile h1 {
-    width: 100%;
-    font-size: 1.5em;
-  }
-}
-.profile h1 i {
-  margin-right: 10px;
-  padding: 20px 0px;
-  background-color: #1c2327;
 }
 .profile h2 {
   display: flex;
@@ -2049,7 +2066,7 @@ button:hover {
   text-align: center;
   background-color: #1c2327;
   border: 1px solid #161b22;
-  width: 75%;
+  width: 50%;
   border-radius: 20px;
   margin: 0 auto;
   margin-bottom: 20px;

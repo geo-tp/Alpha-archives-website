@@ -21,6 +21,10 @@
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 10px 0px 0px 10px;
+
+    @include small-mobile-design {
+      display: none;
+    }
   }
   &__search {
     margin: 10px;
@@ -30,6 +34,10 @@
 
     text-align: left;
     overflow: hidden;
+
+    @include small-mobile-design {
+      border-radius: 10px;
+    }
 
     &__form {
       display: flex;

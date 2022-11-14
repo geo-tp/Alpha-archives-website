@@ -154,7 +154,7 @@ export const TagSelector = ({
 TagSelector.propTypes = {
   tags: PropTypes.array.isRequired,
   handleTagClick: PropTypes.func.isRequired,
-  handleTagCreateClick: PropTypes.func.isRequired,
+  handleTagCreateClick: PropTypes.func,
   showOnFocus: PropTypes.bool,
   isLoading: PropTypes.bool,
   disabled: PropTypes.bool,

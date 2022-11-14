@@ -14,6 +14,14 @@
   align-items: center;
   width: 93%;
 
+  @include tablet-design {
+    margin-top: 20px;
+  }
+
+  @include mobile-design {
+    margin-top: 5px;
+  }
+
   &__tags {
     overflow-x: scroll;
     overflow-y: hidden;

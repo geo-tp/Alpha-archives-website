@@ -178,25 +178,30 @@ export const Profile = () => {
             User <i className="fa fa-bookmark"></i>
           </h2>
           {auth.isStaff && !auth.isAdmin && (
-            <p className="profile__infos">
-              You are connected as <b>Contributor</b>.
+            <div className="profile__infos">
+              <span>
+                You are connected as <b>Contributor</b>.
+              </span>
               <ul>
                 <li>✓ Apply or remove tags on image</li>
                 <li>✓ Create new tags</li>
                 <li>✓ Edit or delete your own tags</li>
               </ul>
-            </p>
+            </div>
           )}
 
           {auth.isAdmin && (
-            <p className="profile__infos">
-              You are connected as <b>Administrator</b>.
+            <div className="profile__infos">
+              <span>
+                You are connected as <b>Administrator</b>.
+              </span>
               <ul>
                 <li>✓ Apply or remove tags on image</li>
                 <li>✓ Create new tags</li>
                 <li>✓ Edit or delete any tags</li>
+                <li>✓ Invite new contributor</li>
               </ul>
-            </p>
+            </div>
           )}
 
           <div className="profile__input-box">

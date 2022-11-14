@@ -11,6 +11,10 @@
     opacity: 0.6;
   }
 
+  @include tablet-design {
+    top: 30px;
+  }
+
   @include mobile-design {
     top: 50px;
   }

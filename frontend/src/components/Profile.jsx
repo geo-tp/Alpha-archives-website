@@ -43,7 +43,6 @@ export const Profile = () => {
 
       let filteredTags = [];
       // We keep only user tags or all if admin
-      console.log(tags.body, profile.body.id);
       if (!tags.error && !profile.error) {
         for (let tag of tags.body) {
           if (profile.is_admin || tag.user === profile.body.id) {
@@ -403,8 +402,6 @@ export const Profile = () => {
           </p>
         </div>
       </div>
-
-      {/* <div className="profile__actions"></div> */}
     </div>
   );
 };

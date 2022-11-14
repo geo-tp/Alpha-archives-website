@@ -19,7 +19,6 @@
     overflow-y: hidden;
     display: flex;
     flex-wrap: nowrap;
-    // max-width: 80%;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     /* Hide scrollbar for Chrome, Safari and Opera */
@@ -28,10 +27,7 @@
     }
 
     & span {
-      // display: flex;
-      // text-overflow: ellipsis;
       white-space: nowrap;
-      // overflow: hidden;
     }
   }
 
@@ -96,7 +92,6 @@
 
       & p {
         border: 1px solid map-get($COLOR-PALETTE, prim);
-        // font-size: 0.7em;
         padding: 10px;
         border-radius: 10px;
         background-color: map-get($COLOR-PALETTE, prim);

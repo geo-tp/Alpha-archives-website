@@ -1,5 +1,4 @@
 .tag-selector {
-  // flex-basis: 20%;
   position: relative;
 
   display: flex;
@@ -14,8 +13,6 @@
   }
 
   &__icon {
-    // position: absolute;
-    // right: 10px;
     display: flex;
     align-items: center;
     color: map-get($COLOR-PALETTE, font3);
@@ -44,9 +41,6 @@
           font-size: 0.8em;
           font-weight: bold;
           position: absolute;
-          // top: 50%;
-          // left: 50%;
-          // transform: translate(-50%, -50%);
           width: 100%;
           height: 100%;
           display: flex;
@@ -63,7 +57,6 @@
     }
 
     &__submit {
-      // height: 28px;
       border-radius: 0px 10px 10px 0px;
       font-size: 0.8em;
       font-weight: bold;
@@ -90,17 +83,13 @@
       max-width: 200px;
       transition: all 1s;
       min-width: 120px;
-
-      // border-radius: 0px 10px 10px 0px;
     }
   }
 
   &__angle {
     color: map-get($COLOR-PALETTE, font4);
     font-size: 3em;
-    // padding-top: 3px;
     padding-bottom: 3px;
-    // margin-right: 10px;
     padding: 0;
     border: none;
     font-weight: bold;

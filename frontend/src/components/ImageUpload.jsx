@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { fetchUploadFile } from "../api/fetchUploadFiles";
-import { ACCEPTED_MIME_TYPES } from "./../utils/mimeTypes";
+import { ACCEPTED_MIME_TYPES } from "../utils/mimeTypes";
 import { fetchUploadStatus } from "../api/fetchUploadStatus";
 
 export default class ImageUpload extends Component {

@@ -38,7 +38,6 @@
     border: 1px solid map-get($COLOR-PALETTE, prim);
     padding: 10px;
     line-height: 1.3em;
-    // max-width: 210px;
     border-radius: 10px;
     margin: 20px auto;
     margin-top: 0px;
@@ -53,15 +52,9 @@
   }
 
   &__button {
-    // width: 30px;
-    // height: 20px;
-    // position: absolute;
-    // right: -5%;
-    // top: 45%;
     background-color: map-get($COLOR_PALETTE, font4);
     color: map-get($COLOR_PALETTE, font);
 
-    // border-radius: 5px;
     border: none;
     border-radius: 10px;
     padding: 15px;
@@ -156,9 +149,7 @@
         background-color: map-get($COLOR-PALETTE, prim);
         border: 1px solid map-get($COLOR-PALETTE, sec);
         color: map-get($COLOR-PALETTE, font);
-        // margin-top: 10px;
         padding-left: 10px;
-        // height: 40px;
         border-radius: 10px 0px 0px 10px;
         font-size: 0.9em;
         height: 30px;
@@ -196,7 +187,6 @@
       color: map-get($COLOR-PALETTE, font);
       margin-top: 10px;
       padding-left: 10px;
-      // height: 40px;
       border-radius: 10px;
       font-size: 0.9em;
       height: 30px;
@@ -241,7 +231,6 @@
       color: map-get($COLOR-PALETTE, font);
       margin-top: 10px;
       padding-left: 10px;
-      // height: 40px;
       border-radius: 10px;
       font-size: 0.9em;
       height: 50px;
@@ -254,15 +243,7 @@
     border: 1px solid map-get($COLOR-PALETTE, prim);
 
     & button {
-      // width: 30px;
-      // height: 20px;
-      // position: absolute;
-      // right: -5%;
-      // top: 45%;
-      //   background-color: map-get($COLOR_PALETTE, font4);
       color: map-get($COLOR_PALETTE, font);
-
-      // border-radius: 5px;
       border: none;
       border-radius: 10px;
       padding: 15px;

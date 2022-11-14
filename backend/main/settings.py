@@ -170,8 +170,8 @@ AUTH_USER_MODEL = "user.CustomUser"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.develmail.com"
-EMAIL_HOST_USER = "MO5Q22TFAJ2P4X4INSFIG3BOVQ"
-EMAIL_HOST_PASSWORD = "DLRDUWNZM7ICSKEDEHWFMEG24Y"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
@@ -191,11 +191,10 @@ if not EMAIL_HOST_PASSWORD or not EMAIL_HOST_USER:
 
 MEDIA_HOST_URL = "http://localhost:8000"
 MEDIA_URL = ""
-# ARCHIVE_URL = MEDIA_URL + "archive/"
 INCOMING_URL = "incoming/"
 INCOMING_ROOT = str(BASE_DIR) + "/media/incoming/"
 MEDIA_ROOT = str(BASE_DIR) + MEDIA_URL
-# ARCHIVE_ROOT = MEDIA_ROOT + "archive/"
+
 IMAGE_THUMBNAIL_WIDTH = 200  # px for auto generated thumbnail (generic img, see utils/database_builder config for modify screenshot thumbnail)
 IMAGE_MAX_WIDTH = 1200  # px for all incoming images
 IMAGE_COMPRESSION_LEVEL = 60  # % for all incoming images
@@ -210,7 +209,7 @@ CORS_ALLOW_CREDENTIALS = False
 
 # Upload
 
-DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT = 5
+DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT = 5  # gb
 
 # Input
 

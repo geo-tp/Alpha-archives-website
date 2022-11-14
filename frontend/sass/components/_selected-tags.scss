@@ -1,11 +1,8 @@
 .selected-tags {
-  // width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
   display: flex;
   flex-wrap: nowrap;
-  // max-height: 20px;
-  // max-width: 70%;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   /* Hide scrollbar for Chrome, Safari and Opera */

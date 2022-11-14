@@ -1,36 +1,10 @@
 import wowIcon from "../assets/wow-icon-64.webp";
-// import banner from "../assets/banner.webp";
-// import banner2 from "../assets/banner2.webp";
-// import banner3 from "../assets/banner3.webp";
 import banner4 from "../assets/banner4.webp";
 
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useState } from "react";
-import { useEffect } from "react";
 
 export const HomeBanner = ({ screenshotNumber = null }) => {
-  // const backgrounds = [banner, banner2, banner3, banner4];
-  // const [backgroundIndex, setBackgroundIndex] = useState(0);
-  // const [actualBackground, setActualBackground] = useState(backgrounds[0]);
-
-  // useEffect(() => {
-  // setInterval(changeBackground, 6000);
-  // }, []);
-
-  // const changeBackground = async () => {
-  //   console.log("CHANGEBG");
-  //   let newIndex = backgroundIndex + 1;
-
-  //   if (newIndex >= backgrounds.length) {
-  //     newIndex = 0;
-  //   }
-
-  //   setBackgroundIndex(newIndex);
-  //   console.log(newIndex);
-  //   setActualBackground(backgrounds[newIndex]);
-  // };
-
   return (
     <div className="home-banner">
       <i className="home-banner__angle fa fa-angle-down"></i>
@@ -92,5 +66,5 @@ export const HomeBanner = ({ screenshotNumber = null }) => {
 };
 
 HomeBanner.propTypes = {
-  screenshotNumber: PropTypes.bool.isRequired,
+  screenshotNumber: PropTypes.bool,
 };

@@ -1,4 +1,5 @@
 import { LinkCard } from "./LinkCard";
+import PropTypes from "prop-types";
 
 export const HomeCards = ({ title, cards }) => {
   return (
@@ -16,4 +17,9 @@ export const HomeCards = ({ title, cards }) => {
       </div>
     </div>
   );
+};
+
+HomeCards.propTypes = {
+  title: PropTypes.string.isRequired,
+  cards: PropTypes.array.isRequired,
 };

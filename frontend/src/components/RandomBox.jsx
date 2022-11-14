@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const RandomBox = ({
   screenshot,
   getRandomScreenshot,
@@ -32,4 +34,10 @@ export const RandomBox = ({
       </div>
     </div>
   );
+};
+
+RandomBox.propTypes = {
+  screenshot: PropTypes.object.isRequired,
+  getRandomScreenshot: PropTypes.func.isRequired,
+  rollButtonIsDisabled: PropTypes.bool.isRequired,
 };

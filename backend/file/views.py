@@ -56,13 +56,16 @@ class FileViewSet(
         return imagehash.average_hash(Img.open(image_path))
 
     def create(self, request):
-
+        """
+        Upload a file
+        """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         image = request.FILES["image"]
         image_hash = self.generate_image_hash(image)
 
+        # image is already in archive
         if File.objects.filter(image_hash=image_hash).count():
             api_response = format_api_response(
                 status=status.HTTP_208_ALREADY_REPORTED,
@@ -75,6 +78,7 @@ class FileViewSet(
                 status=status.HTTP_208_ALREADY_REPORTED,
             )
 
+        # Image is new, we create file model and we store it
         formatted_data = {
             "image_raw": INCOMING_URL + str(image),
             "image_hash": image_hash,
@@ -93,6 +97,9 @@ class FileViewSet(
 
     @action(methods=["get"], detail=False)
     def random(self, request, *args, **kwargs):
+        """
+        Get a random file (used for random screenshot box)
+        """
         first_element_id = int(File.objects.first().id)
         last_element_id = int(File.objects.last().id)
 
@@ -119,18 +126,21 @@ class FileViewSet(
         detail=False,
     )
     def search_by_tags(self, request):
-
+        """
+        Find screenshots by filtering with multiple tags
+        """
         serializer = self.get_serializer(data=request.data, many=True)
         serializer.is_valid(raise_exception=True)
 
         tags_array = [data["name"] for data in serializer.data]
 
-        # We get applied tags from first submitted tag, an then filtering queryset with other tags
+        # we get applied tags from first submitted tag name,
+        # and then filtering queryset with other submitted tags
         applied_tags = AppliedTag.objects.filter(tag_id=tags_array[0])
         for i in range(1, len(tags_array) - 1):
             applied_tags = applied_tags.filter(tag_id=tags_array[i])
 
-        # we get image hash corresponding to applied tags
+        # we get image hash from applied tags
         images_hash = [data.file_hash for data in applied_tags]
 
         # we get files corresponding to image_hash
@@ -148,7 +158,10 @@ class FileViewSet(
         detail=False,
     )
     def upload_status(self, request):
-
+        """
+        Get the upload status
+        if hdd dont have enough free space upload status will return false
+        """
         hdd = disk_usage("/")
 
         if hdd.free / (2**30) < settings.DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT:

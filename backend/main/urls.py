@@ -11,8 +11,8 @@ import main.settings as settings
 from tag.views import TagViewSet, AppliedTagViewSet
 from file.views import FileViewSet
 
-admin.site.site_header = "API Administration"
-admin.site.site_title = "API Administration"
+admin.site.site_header = "Alpha Archive Administration"
+admin.site.site_title = "Alpha Archive Administration"
 admin.site.index_title = "Database models from API"
 
 api_router = routers.DefaultRouter()
@@ -35,5 +35,5 @@ urlpatterns = [
     ),
 ]
 
-# if settings.DEBUG is True:
+# if settings.DEBUG is True, django do that by defaut
 urlpatterns += static("media/", document_root=settings.MEDIA_ROOT)

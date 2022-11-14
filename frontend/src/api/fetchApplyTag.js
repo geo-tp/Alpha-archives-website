@@ -1,6 +1,6 @@
 import { fetchJson } from "./fetchJson";
 import { API_URL } from "./utils/config";
-import { API_APPLIED_TAGS, API_TAGS } from "./utils/endpoints";
+import { API_APPLIED_TAGS } from "./utils/endpoints";
 import { parametersFormater } from "./utils/parametersFormater";
 
 export const fetchApplyTag = (tagName, file_hash) => {

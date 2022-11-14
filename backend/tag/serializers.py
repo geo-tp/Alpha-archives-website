@@ -11,6 +11,7 @@ class TagSerializer(serializers.ModelSerializer):
 
     def validate_name(self, value):
 
+        # we dont want special char and html reserved char to be in tag name
         validated_value = ""
         for char in value:
             if char in FORBIDDEN_CHAR:

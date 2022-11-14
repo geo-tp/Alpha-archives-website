@@ -5,6 +5,10 @@ from rest_framework.response import Response
 
 
 class CustomLimitOffsetPagination(LimitOffsetPagination):
+    """
+    Custom paginated response with a formatted reponse
+    """
+
     def get_paginated_response(self, data):
 
         api_response = format_api_response(

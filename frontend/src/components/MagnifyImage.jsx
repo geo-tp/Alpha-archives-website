@@ -2,8 +2,6 @@ import { useState } from "react";
 
 function MagnifyImage({
   src,
-  width,
-  height,
   magnifierHeight = 250,
   magnifieWidth = 400,
   zoomLevel = 3,

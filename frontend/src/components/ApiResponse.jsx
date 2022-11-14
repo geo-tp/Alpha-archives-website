@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const ApiResponse = ({ message, isError = false }) => {
   return (
     <div className="api-response">
@@ -12,4 +14,9 @@ export const ApiResponse = ({ message, isError = false }) => {
       </p>
     </div>
   );
+};
+
+ApiResponse.propTypes = {
+  message: PropTypes.string.isRequired,
+  isError: PropTypes.bool,
 };

@@ -52,4 +52,7 @@ export const TagDropDown = ({
 TagDropDown.propTypes = {
   tags: PropTypes.array.isRequired,
   handleTagClick: PropTypes.func.isRequired,
+  tagSelected: PropTypes.object,
+  fileTags: PropTypes.array,
+  isLoading: PropTypes.bool,
 };

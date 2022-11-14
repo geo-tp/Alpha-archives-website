@@ -1,6 +1,4 @@
 .home-banner {
-  // margin-bottom: 40px;
-  // box-shadow: 100px 120px 100px 300px black;
   overflow: hidden;
   text-align: left;
   opacity: 0.9;
@@ -11,11 +9,8 @@
   background-color: white;
   padding-bottom: 30px;
   color: map-get($COLOR-PALETTE, font);
-  // border: 1px solid rgba(211, 211, 211, 0.637);
   background-color: map-get($COLOR-PALETTE, sec);
-  // background-blend-mode: hard-light;
   margin-top: 70px;
-  // height: 90vh;
   height: 95vh;
   display: flex;
   flex-direction: column;
@@ -23,7 +18,6 @@
 
   @include tablet-design {
     position: relative;
-    // margin-bottom: 5%;
   }
 
   &__close {
@@ -35,7 +29,6 @@
   &__version {
     display: flex;
     width: 280px;
-    // justify-content: center;
     align-items: center;
     font-size: 0.6em;
     font-weight: 600;
@@ -74,7 +67,6 @@
     object-position: left;
     opacity: 0.8;
     z-index: -1;
-    // filter: blur(1px);
     animation: moveBackground 14s ease-in-out alternate-reverse infinite;
     transition: all 800ms;
     overflow: hidden;
@@ -99,11 +91,7 @@
     }
   }
 
-  // @include small-shadow;
-
   & h1 {
-    //   color: map-get($COLOR-PALETTE, font3);
-    // background-color: map-get($COLOR_PALETTE, sec);
     width: 100%;
     border-radius: 10px 10px 0px 0px;
     margin-bottom: 30px;
@@ -111,7 +99,6 @@
     padding-top: 10px;
     padding-bottom: 20px;
     font-size: 3.5em;
-    // border-bottom: 1px solid map-get($COLOR-PALETTE, prim);
 
     @include tablet-design {
       font-size: 2.5em;
@@ -143,7 +130,6 @@
     font-size: 18px;
     font-weight: 500;
     max-width: 600px;
-    // padding-left: 30px;
     padding-right: 30px;
 
     @include mobile-design {

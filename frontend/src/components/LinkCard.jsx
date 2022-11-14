@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const LinkCard = ({ image, alt, name, link }) => {
   if (link) {
@@ -16,4 +17,11 @@ export const LinkCard = ({ image, alt, name, link }) => {
       <img src={image} alt={alt} />
     </Link>
   );
+};
+
+LinkCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };

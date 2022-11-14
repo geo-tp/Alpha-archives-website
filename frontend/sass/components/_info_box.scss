@@ -1,6 +1,5 @@
 .info-box {
   margin-bottom: 40px;
-  // box-shadow: 100px 120px 100px 300px black;
   text-align: left;
   opacity: 0.9;
   padding-left: 2%;
@@ -11,7 +10,6 @@
   background-color: white;
   padding-bottom: 30px;
   color: map-get($COLOR-PALETTE, font);
-  // border: 1px solid rgba(211, 211, 211, 0.637);
   background-color: map-get($COLOR-PALETTE, sec);
 
   @include tablet-design {
@@ -36,8 +34,6 @@
     }
   }
 
-  // @include small-shadow;
-
   & div {
     display: flex;
     justify-content: center;
@@ -54,7 +50,6 @@
   }
 
   & h1 {
-    //   color: map-get($COLOR-PALETTE, font3);
     background-color: map-get($COLOR_PALETTE, sec);
     width: 100%;
     border-radius: 10px 10px 0px 0px;

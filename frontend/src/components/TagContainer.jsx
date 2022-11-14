@@ -139,4 +139,5 @@ TagContainer.propTypes = {
   fileTags: PropTypes.array.isRequired,
   file: PropTypes.object.isRequired,
   createTagInState: PropTypes.func.isRequired,
+  updateTagInState: PropTypes.func.isRequired,
 };

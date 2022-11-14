@@ -36,6 +36,7 @@ class GenericImage(models.Model):
 
         image_width, image_height = image.size
 
+        # checking width for image
         if image_width > IMAGE_MAX_WIDTH:
             w_ratio = image_width / IMAGE_MAX_WIDTH
             h_ratio = image_height / desired_width
@@ -46,7 +47,7 @@ class GenericImage(models.Model):
         image_compressed = image.save(image_io, image.format, quality=60, optimize=True)
         self.image = File(image_io, name=self.image.name)
 
-        # checking the width
+        # checking the width for thumbnail
         if image_width > IMAGE_THUMBNAIL_WIDTH:
             # create the thumbnail
             image.thumbnail(

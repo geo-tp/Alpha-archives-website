@@ -6,14 +6,11 @@
   border-top: 2px solid map-get($COLOR-PALETTE, prim);
 
   &__title {
-    // font-size: 0.8em;
     color: map-get($COLOR-PALETTE, font);
     padding-top: 50px;
     margin-top: 0px;
   }
   &__cards {
-    //   background-color: rgba(0, 0, 0, 0.59);
-    //   height: 400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

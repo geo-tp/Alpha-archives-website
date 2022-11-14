@@ -12,4 +12,6 @@ class AppliedTag(models.Model):
         Tag,
         on_delete=models.CASCADE,
     )
+    # we use file_hash because database is rebuilt periodically
+    # file id will change if screenshots are deleted
     file_hash = models.CharField(max_length=256)

@@ -19,8 +19,6 @@ export const SelectedTags = ({ selectedTags, handleRemoveTagClick }) => {
 };
 
 SelectedTags.propTypes = {
-  tags: PropTypes.array.isRequired,
-  handleTagClick: PropTypes.func.isRequired,
   selected_tags: PropTypes.array.isRequired,
   handleRemoveTagClick: PropTypes.func.isRequired,
 };

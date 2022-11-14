@@ -77,8 +77,4 @@ class NavBar extends Component {
   }
 }
 
-NavBar.propTypes = {
-  auth: PropTypes.object.isRequired,
-};
-
 export default NavBar;

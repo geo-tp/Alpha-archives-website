@@ -1,7 +1,6 @@
 import { SelectedTags } from "./SelectedTags";
 import { TagSelector } from "./TagSelector";
 import PropTypes from "prop-types";
-import { useState } from "react";
 
 export const TagSearch = ({
   tags,

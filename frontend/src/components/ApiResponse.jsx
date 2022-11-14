@@ -17,6 +17,6 @@ export const ApiResponse = ({ message, isError = false }) => {
 };
 
 ApiResponse.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.array.isRequired,
   isError: PropTypes.bool,
 };

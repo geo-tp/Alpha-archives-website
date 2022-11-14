@@ -63,7 +63,7 @@ export const Profile = () => {
   }, [tagNewValue]);
 
   const handleTagCreate = async (tagName) => {
-    if (!tagNewValue) {
+    if (!tagName) {
       return;
     }
 

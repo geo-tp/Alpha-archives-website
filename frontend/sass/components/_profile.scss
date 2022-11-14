@@ -41,6 +41,11 @@
     border-radius: 10px;
     margin: 20px auto;
     margin-top: 0px;
+    @include medium-shadow;
+
+    & ul {
+      list-style: none;
+    }
 
     & a {
       text-decoration: none;
@@ -64,6 +69,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding-top: 20px;
   }
 
   &__button-box {
@@ -233,7 +239,7 @@
       padding-left: 10px;
       border-radius: 10px;
       font-size: 0.9em;
-      height: 50px;
+      height: 45px;
     }
   }
 

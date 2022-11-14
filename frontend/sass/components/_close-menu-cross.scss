@@ -10,4 +10,8 @@
   &:hover {
     opacity: 0.6;
   }
+
+  @include mobile-design {
+    top: 50px;
+  }
 }

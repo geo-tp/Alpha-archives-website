@@ -170,36 +170,35 @@ export const Profile = () => {
     setTagBoxIsLoading(false);
   };
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    dispatch(fetchLogout());
-  };
-
   return (
     <div className="profile">
-      <div className="profile__title">
-        <h1>
-          <i className="fa fa-user"></i> Profile
-          <form action="">
-            <button
-              onClick={handleLogout}
-              className="profile__disconnect"
-              type="submit"
-            >
-              Logout
-            </button>
-          </form>
-        </h1>
-      </div>
       <div className="profile__boxes">
         <div className="profile__box">
           <h2>
             User <i className="fa fa-bookmark"></i>
           </h2>
-          <p className="profile__infos">
-            You are connected as <b>contributor</b>, you can add, edit, and
-            remove tags.
-          </p>
+          {auth.isStaff && !auth.isAdmin && (
+            <p className="profile__infos">
+              You are connected as <b>Contributor</b>.
+              <ul>
+                <li>✓ Apply or remove tags on image</li>
+                <li>✓ Create new tags</li>
+                <li>✓ Edit or delete your own tags</li>
+              </ul>
+            </p>
+          )}
+
+          {auth.isAdmin && (
+            <p className="profile__infos">
+              You are connected as <b>Administrator</b>.
+              <ul>
+                <li>✓ Apply or remove tags on image</li>
+                <li>✓ Create new tags</li>
+                <li>✓ Edit or delete any tags</li>
+              </ul>
+            </p>
+          )}
+
           <div className="profile__input-box">
             <label htmlFor="username-user">Username</label>
 
@@ -384,20 +383,22 @@ export const Profile = () => {
           </h2>
           <p className="profile__infos">
             For questions, you can contact Geo or Grender on{" "}
-            <a href="https://discord.gg/RzBMAKU">Discord</a>.
+            <a href="https://discord.gg/RzBMAKU">Discord</a>. For bugs report,
+            please post your issue here :{" "}
+            <a href="https://github.com/geo-tp/Alpha-archives-website/issues">
+              Github project of this website
+            </a>
           </p>
           <p className="profile__infos">
-            You can send large amount of images or fork this collection of
-            screenshots at
-            <a href="https://github.com/The-Alpha-Project/Alpha-Project-Archive">
-              {" "}
-              Alpha Project Archive
-            </a>
-            .
+            You can only use alpha numeric characters for tag creation, specials
+            characters are not allowed. Here is the list of non alpha numeric
+            char accepted : space, underscore and minus.
           </p>
           <p className="profile__infos">
             <Link to="/upload">Upload page</Link> filters screenshots to avoid
-            100% exact duplicates. You can check in depth with software like
+            100% exact duplicates. A screenshot with a small difference
+            (watermark for example) will be accepted even if it's already into
+            archive. You can check in depth with software like
             <a href="https://www.digikam.org/"> DigiKam (Linux)</a> or{" "}
             <a href="https://github.com/ermig1979/AntiDupl">
               Antidupl (Windows)

@@ -19,7 +19,7 @@ export const HomeBanner = ({ screenshotNumber = null }) => {
       </div>
       <h1>Alpha Project Archive</h1>
       <h2>
-        Browse World of Warcraft Beta & Alpha screenshots from 2000 to 2004
+        Browse World of Warcraft Alpha & Beta screenshots from 2000 to 2004
       </h2>
 
       <img className="home-banner__cover" src={banner4} alt="home banner"></img>

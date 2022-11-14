@@ -11,6 +11,14 @@
   border: 1px solid map-get($COLOR-PALETTE, prim);
   border-radius: 0px 0px 10px 10px;
 
+  @include medium-height {
+    height: 75vh;
+  }
+
+  @include mobile-design {
+    height: 75vh;
+  }
+
   &__directory-path {
     display: flex;
     background-color: map-get($COLOR-PALETTE, ter);

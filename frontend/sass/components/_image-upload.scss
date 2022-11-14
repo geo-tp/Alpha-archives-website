@@ -8,7 +8,15 @@
 
 .main-image-upload {
   background-color: map-get($COLOR-PALETTE, ter);
-  height: 78vh;
+  height: calc(86vh - 70px);
+
+  @include mobile-design {
+    height: unset;
+  }
+
+  @include medium-height {
+    height: unset;
+  }
 
   &__previews {
     height: 45%;
@@ -21,6 +29,15 @@
     margin-top: 3%;
     overflow-y: scroll;
     border-radius: 30px;
+    @include medium-shadow;
+
+    @include medium-height {
+      height: 20vh;
+    }
+
+    @include mobile-design {
+      height: 20vh;
+    }
 
     &__title {
       font-size: 0.8em;
@@ -79,11 +96,11 @@
 
     @include mobile-design {
       font-size: 0.7em;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     &:hover {
-      transform: scale(1.02);
+      transform: scale(1.005);
       opacity: 0.8;
     }
 
@@ -100,7 +117,10 @@
       color: map-get($COLOR_PALETTE, font);
       border-radius: 30px;
       margin-top: 20px;
-
+      @include medium-shadow;
+      @include small-height {
+        height: 100px;
+      }
       & i {
         margin-right: 2%;
       }

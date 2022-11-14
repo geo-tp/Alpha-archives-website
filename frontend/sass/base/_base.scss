@@ -29,6 +29,10 @@ input[type]:focus,
   transition: background-color 500ms;
 }
 
+input {
+  @include big-shadow-inset;
+}
+
 button {
   cursor: pointer;
   transition: all 200ms;

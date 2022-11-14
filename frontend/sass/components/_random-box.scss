@@ -29,6 +29,7 @@
     top: 0;
     left: 0;
     transform: none;
+    @include big-shadow;
 
     @include tablet-design {
       height: 500px;

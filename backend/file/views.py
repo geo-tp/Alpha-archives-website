@@ -43,7 +43,6 @@ class FileViewSet(
     filterset_fields = ["parent", "filename"]
 
     def get_serializer(self, *args, **kwargs):
-        print(self.action)
         if self.action == "create":
             return UploadFileSerializer(*args, **kwargs)
 

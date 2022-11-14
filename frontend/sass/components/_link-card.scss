@@ -8,6 +8,7 @@
   box-sizing: border-box;
   margin: 10px;
   text-decoration: none;
+  @include big-shadow;
 
   @include mobile-design {
     flex-basis: 100%;

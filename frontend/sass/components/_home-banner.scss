@@ -16,6 +16,10 @@
   flex-direction: column;
   justify-content: center;
 
+  @include mobile-design {
+    margin-top: 50px;
+  }
+
   @include tablet-design {
     position: relative;
   }
@@ -41,6 +45,10 @@
       font-size: 0.55em;
       max-width: 60%;
     }
+
+    @include small-mobile-design {
+      margin-top: 20px;
+    }
   }
 
   &__icon {
@@ -51,9 +59,23 @@
   &__angle {
     position: absolute;
     bottom: 7%;
-    left: 48%;
+    left: 50%;
     font-size: 5em;
     animation: levitate 2s alternate-reverse infinite;
+    transform: translateX(-50%);
+
+    @include mobile-design {
+      font-size: 3.5em;
+      left: 45%;
+      bottom: 5%;
+    }
+
+    @include small-mobile-design {
+      font-size: 2.5em;
+      right: 2%;
+      left: unset;
+      bottom: 5%;
+    }
   }
 
   &__cover {

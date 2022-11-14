@@ -15,6 +15,7 @@
   animation: appear-slowly 200ms linear;
 
   @include tablet-design {
+    margin-top: 50px;
   }
 
   @include small-shadow;

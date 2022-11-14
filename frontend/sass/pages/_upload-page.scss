@@ -16,5 +16,9 @@
     border: 2px solid map-get($COLOR_PALETTE, sec);
     background-color: map-get($COLOR_PALETTE, font3);
     color: map-get($COLOR_PALETTE, font);
+
+    @include mobile-design {
+      font-size: 0.7em;
+    }
   }
 }

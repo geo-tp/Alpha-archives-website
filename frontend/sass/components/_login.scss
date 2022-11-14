@@ -40,6 +40,7 @@
     border-radius: 10px;
     margin: 20px auto;
     margin-top: 0px;
+    @include medium-shadow;
 
     & a {
       color: map-get($COLOR-PALETTE, font3);
@@ -138,7 +139,6 @@
         padding-left: 10px;
 
         height: 40px;
-        width: 100%;
         border-radius: 5px;
       }
     }

@@ -1,17 +1,20 @@
 .page-top-margin {
-    margin: 0 auto;
-    margin-top: 90px;
+  margin: 0 auto;
+  margin-top: 90px;
 
+  @include mobile-design {
+    margin-top: 75px;
+  }
 }
 
 .image-box-top-margin {
-    margin-top: 3vh;
+  margin-top: 3vh;
 
-    @include tablet-design {
-        margin-top: 12vh;
-    }
+  @include tablet-design {
+    margin-top: 12vh;
+  }
 }
 
 .nav-bar-height {
-    height: 10vh;
+  height: 10vh;
 }

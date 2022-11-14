@@ -13,6 +13,10 @@
   height: 70px;
   border-bottom: 2px solid map-get($COLOR-PALETTE, prim);
 
+  @include mobile-design {
+    height: 50px;
+  }
+
   @include wide-screen-design {
     left: 0;
     right: 0%;
@@ -39,7 +43,7 @@
   }
 
   &__button-box {
-    margin: 20px;
+    margin-right: 20px;
     display: flex;
     align-items: center;
   }

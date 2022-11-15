@@ -20,14 +20,14 @@ export function urlFormater(kwargs) {
     let fields = kwargs["filter_fields"];
 
     for (let i = 0; i < values.length; i++) {
-      if (i == 0) {
+      if (i === 0) {
         request += "?";
       }
 
       request += fields[i] + "=" + values[i];
       counter += 1;
 
-      if (i + 1 != values.length) {
+      if (i + 1 !== values.length) {
         request += "&";
       }
     }

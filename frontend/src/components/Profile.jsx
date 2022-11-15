@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCreateTag } from "../api/fetchCreateTag";
 import { fetchInvitation } from "../api/fetchInvitation";
-import { fetchLogout } from "../api/fetchLogout";
 import { fetchPasswordUpdate } from "../api/fetchPasswordUpdate";
 import { fetchProfile } from "../api/fetchProfile";
 import { fetchRemoveTag } from "../api/fetchRemoveTag";
@@ -21,7 +20,6 @@ export const Profile = () => {
   const [userTags, setUserTags] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
   const auth = useSelector(getAuth);
-  const dispatch = useDispatch();
   const editTagInputRef = useRef();
   const [newPasssword, setNewPassword] = useState("");
   const [newPasssword2, setNewPassword2] = useState("");

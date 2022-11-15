@@ -1,9 +1,5 @@
-import { fetchJson } from "./fetchJson";
 import { API_URL } from "./utils/config";
-import { API_FILES, API_FILES_UPLOAD } from "./utils/endpoints";
-import { HeadersManager } from "./utils/headers";
-import { parametersFormater } from "./utils/parametersFormater";
-import { urlFormater } from "./utils/urlFormater";
+import { API_FILES_UPLOAD } from "./utils/endpoints";
 
 export const fetchUploadFile = (file) => {
   const url = API_URL + API_FILES_UPLOAD;

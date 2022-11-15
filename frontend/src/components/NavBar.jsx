@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
-import PropTypes from "prop-types";
 
 class NavBar extends Component {
   constructor(props) {

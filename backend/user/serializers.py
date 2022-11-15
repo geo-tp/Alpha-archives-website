@@ -43,22 +43,22 @@ class ProfileSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ["username", "email"]
 
-    def to_representation(self, user):
-        """
-        Add profile image and thumbnail to representation
-        """
-        representation = super().to_representation(user)
-        profile_image_instance = UserProfileImage.objects.get(user=user)
-        generic_image_instance = profile_image_instance.image
+    # def to_representation(self, user):
+    #     """
+    #     Add profile image and thumbnail to representation
+    #     """
+    #     representation = super().to_representation(user)
+    #     profile_image_instance = UserProfileImage.objects.get(user=user)
+    #     generic_image_instance = profile_image_instance.image
 
-        generic_image_serializer = GenericImageSerializer(generic_image_instance)
-        profile_image = generic_image_serializer.data["image"]
-        profile_thumbnail = generic_image_serializer.data["image_thumbnail"]
+    #     generic_image_serializer = GenericImageSerializer(generic_image_instance)
+    #     profile_image = generic_image_serializer.data["image"]
+    #     profile_thumbnail = generic_image_serializer.data["image_thumbnail"]
 
-        representation["profile_image"] = profile_image
-        representation["profile_image_thumbnail"] = profile_thumbnail
+    #     representation["profile_image"] = profile_image
+    #     representation["profile_image_thumbnail"] = profile_thumbnail
 
-        return representation
+    #     return representation
 
     def validate_phone_number(self, value):
 

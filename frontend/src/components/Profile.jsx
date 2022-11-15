@@ -13,6 +13,7 @@ import { getAuth } from "../store/features/auth/selectors";
 import { ApiResponse } from "./ApiResponse";
 import { FormLoading } from "./FormLoading";
 import { TagSelector } from "./TagSelector";
+import { forbiddenInputChar } from "../utils/string";
 
 export const Profile = () => {
   const [tagSelected, setTagSelected] = useState(null);
@@ -74,6 +75,17 @@ export const Profile = () => {
       const newTag = response.body;
       setUserTags([newTag, ...userTags]);
     }
+  };
+
+  const handleEditTagInputChange = (e) => {
+    const value = e.target.value;
+    const lastChar = value[value.length - 1];
+
+    if (forbiddenInputChar.includes(lastChar)) {
+      return;
+    }
+
+    setTagNewValue(value);
   };
 
   const handlePasswordUpdate = async (e) => {
@@ -317,7 +329,7 @@ export const Profile = () => {
             <div className="profile__tag-box__edit">
               <input
                 value={tagNewValue || ""}
-                onChange={(e) => setTagNewValue(e.target.value)}
+                onChange={handleEditTagInputChange}
                 className="profile__tag-box__edit__bar"
                 type="text"
                 placeholder="Select tag to use me"

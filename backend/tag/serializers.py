@@ -20,9 +20,7 @@ class TagSerializer(serializers.ModelSerializer):
 
         tag_exists = Tag.objects.filter(name=validated_value).exists()
         if tag_exists:
-            raise serializers.ValidationError(
-                {"detail": "Tag already exists with this name"}
-            )
+            raise serializers.ValidationError("Tag already exists with this name")
 
         return validated_value
 

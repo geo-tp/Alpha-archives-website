@@ -189,7 +189,7 @@ if not EMAIL_HOST_PASSWORD or not EMAIL_HOST_USER:
 
 # Media config for images
 
-MEDIA_HOST_URL = "http://localhost:8000"
+MEDIA_HOST_URL = "https://localhost:8000"
 MEDIA_URL = ""
 INCOMING_URL = "incoming/"
 INCOMING_ROOT = str(BASE_DIR) + "/media/incoming/"

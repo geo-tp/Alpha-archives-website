@@ -1,25 +1,37 @@
+ALPHA ARCHIVE WEBSITE
+===================
+
+Website to browse and upload early WoW screenshots for  [The Alpha Project](https://github.com/The-Alpha-Project).
+
+![](presentation1.webp)
+![](presentation2.webp)
+![](presentation3.webp)
+
+
 INFORMATIONS
 -----------
 
-Website to browse and upload screenshots for Alpha Project.
 
-- Backend folder contains Django Rest API and scripts
-    - alpha-archives -> Main Django Project
-    - automated_update -> Script to automate git update and rebuild DB
-    - database_builder -> Script to build elements and create thumbnail from Alpha Project Archives
-    - element -> Django App
-    - media -> contains Alpha Project Archives, thumbnail and uploaded images
-    - security -> Django App
+Alpha Core is an experimental Python emulator for the 0.5.3.3368 version of World of Warcraft.
 
-- Frontend folder contains React App
+In order to build the contents of the emulator, hundreds of original alpha and beta screenshots have been found and archived.
+
+This website helps people interact with these screenshots that are stored on GitHub without the need to use it.
+
+
 
 INSTALLATION
 ------------
 
-BACKEND
+This project was created with React for the frontend part and Django Rest Framework for the backend part. 
+
+BACKEND 
+
+(Created with python 3.10.6)
 
 - Create Python virtual env and run ```pip install -r requirements.txt```
 - Create a mysql database named ```alpha_archives```
+- Modify `backend/main/settings.py` with database informations
 - Create database tables with ```python manage.py makemigrations``` and ```python manage.py migrate```
 - You need to clone Alpha-Project-Archives in ```/media/``` folder
 - Go to ```database_builder``` folder and run ```python main.py``` to build elements and create thumbnails
@@ -28,6 +40,8 @@ BACKEND
 
 FRONTEND
 
+(Created with node 17.9.1 and npm 8.11.0)
+
 - Run ```npm install``` to install dependencies
 - Change ```API_URL``` in ```/src/utils/APIConfig.js``` with your API url like ```http://localhost:8000/```
 - Run ```npm start```
@@ -35,8 +49,9 @@ FRONTEND
 
 DEPLOY
 
-- Serve Django API with gunicorn
+- Change Django secret key located in `backend/main/settings.py`
 - Dont forget to add your domain name in ```/backend/alpha_archives/settings.py```  ```ALLOWED_HOSTS=["yourDomain.com"]```
+- Serve Django API with gunicorn
 - Make react build with ```npm run build```
 - Configure Nginx like this : 
 

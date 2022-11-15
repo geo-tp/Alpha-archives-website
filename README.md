@@ -15,10 +15,6 @@ This website helps people interact with these screenshots that are stored on Git
 ![](presentation3.webp)
 
 
-
-
-
-
 INSTALLATION
 ------------
 
@@ -77,3 +73,9 @@ server {
 
 }
 ```
+
+DOCUMENTATION
+-----------
+
+You can find database schema and usecases for all actors in `docs` folder.
+Api endpoints documentation is avalaible at `http://localhost:8000/api/v1/endpoints` when the django dev server is launched.

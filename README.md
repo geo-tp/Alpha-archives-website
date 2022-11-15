@@ -1,22 +1,21 @@
 ALPHA ARCHIVE WEBSITE
 ===================
 
-Website to browse and upload early WoW screenshots for  [The Alpha Project](https://github.com/The-Alpha-Project).
+
+
+[Alpha Core](https://github.com/The-Alpha-Project) is an experimental Python emulator for the 0.5.3.3368 version of World of Warcraft.
+
+In order to build the contents of the emulator, hundreds of original alpha and beta screenshots have been found and archived.
+
+This website helps people interact with these screenshots that are stored on GitHub without the need to use it. You can see it live here : [Alpha Archive Website](https://archive.thealphaproject.eu/)
+
 
 ![](presentation1.webp)
 ![](presentation2.webp)
 ![](presentation3.webp)
 
 
-INFORMATIONS
------------
 
-
-Alpha Core is an experimental Python emulator for the 0.5.3.3368 version of World of Warcraft.
-
-In order to build the contents of the emulator, hundreds of original alpha and beta screenshots have been found and archived.
-
-This website helps people interact with these screenshots that are stored on GitHub without the need to use it.
 
 
 
@@ -33,7 +32,7 @@ BACKEND
 - Create a mysql database named ```alpha_archives```
 - Modify `backend/main/settings.py` with database informations
 - Create database tables with ```python manage.py makemigrations``` and ```python manage.py migrate```
-- You need to clone Alpha-Project-Archives in ```/media/``` folder
+- You need to clone [Alpha-Project-Archives](https://github.com/The-Alpha-Project/Alpha-Project-Archive) in ```/media/``` folder
 - Go to ```database_builder``` folder and run ```python main.py``` to build elements and create thumbnails
 - To run server ```python manage.py runserver```
 - Go to ```automated_update``` folder, you can automate cron job for updating Alpha-Project-Archive and rebuild database with ```python main.py```

@@ -7,16 +7,6 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
-// input {
-//   // border: none;
-//   // outline: none;
-//   :focus {
-//     border: 1px solid map-get($COLOR-PALETTE, white);
-
-//     outline-color: map-get($COLOR-PALETTE, white);
-//   }
-// }
-
 textarea:focus,
 input:focus,
 input[type]:focus,
@@ -31,6 +21,22 @@ input[type]:focus,
 
 input {
   @include big-shadow-inset;
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+  background: map-get($COLOR-PALETTE, prim);
+}
+
+::-webkit-scrollbar-thumb {
+  background: map-get($COLOR-PALETTE, bg);
+  -webkit-border-radius: 1ex;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.75);
+}
+
+::-webkit-scrollbar-corner {
+  background: map-get($COLOR-PALETTE, bg);
 }
 
 button {

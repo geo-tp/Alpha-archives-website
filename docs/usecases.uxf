@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.3">
-  <zoom_level>11</zoom_level>
+  <zoom_level>14</zoom_level>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>198</x>
-      <y>22</y>
-      <w>737</w>
-      <h>407</h>
+      <x>462</x>
+      <y>28</y>
+      <w>938</w>
+      <h>518</h>
     </coordinates>
     <panel_attributes>Alpha Archive Website
 --
@@ -17,21 +17,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>88</y>
-      <w>132</w>
-      <h>44</h>
-    </coordinates>
-    <panel_attributes>Register</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>352</x>
-      <y>154</y>
-      <w>132</w>
-      <h>44</h>
+      <x>658</x>
+      <y>196</y>
+      <w>168</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Login</panel_attributes>
     <additional_attributes/>
@@ -39,10 +28,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>330</y>
-      <w>187</w>
-      <h>44</h>
+      <x>658</x>
+      <y>420</y>
+      <w>238</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Upload Screenshots</panel_attributes>
     <additional_attributes/>
@@ -50,10 +39,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>264</y>
-      <w>187</w>
-      <h>44</h>
+      <x>658</x>
+      <y>336</y>
+      <w>238</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Browse Screenshots</panel_attributes>
     <additional_attributes/>
@@ -61,10 +50,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>605</x>
+      <x>980</x>
       <y>0</y>
-      <w>187</w>
-      <h>33</h>
+      <w>238</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Unauthenticated User</panel_attributes>
     <additional_attributes/>
@@ -72,10 +61,10 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>55</x>
-      <y>198</y>
-      <w>66</w>
-      <h>110</h>
+      <x>280</x>
+      <y>252</y>
+      <w>84</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>Guest</panel_attributes>
     <additional_attributes/>
@@ -83,21 +72,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>121</x>
-      <y>99</y>
-      <w>253</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;80.0;210.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>121</x>
-      <y>165</y>
-      <w>253</w>
-      <h>77</h>
+      <x>364</x>
+      <y>210</y>
+      <w>322</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;50.0;210.0;10.0</additional_attributes>
@@ -105,10 +83,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>121</x>
-      <y>253</y>
-      <w>253</w>
-      <h>55</h>
+      <x>364</x>
+      <y>322</y>
+      <w>322</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;210.0;30.0</additional_attributes>
@@ -116,10 +94,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>121</x>
-      <y>297</y>
-      <w>253</w>
-      <h>77</h>
+      <x>364</x>
+      <y>378</y>
+      <w>322</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;210.0;50.0</additional_attributes>
@@ -127,10 +105,10 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>198</x>
-      <y>1287</y>
-      <w>726</w>
-      <h>704</h>
+      <x>462</x>
+      <y>1638</y>
+      <w>924</w>
+      <h>896</h>
     </coordinates>
     <panel_attributes>Alpha Archive Website
 --
@@ -140,10 +118,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>319</x>
-      <y>1892</y>
-      <w>187</w>
-      <h>44</h>
+      <x>616</x>
+      <y>2408</y>
+      <w>238</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Upload Screenshots</panel_attributes>
     <additional_attributes/>
@@ -151,10 +129,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>1672</y>
-      <w>187</w>
-      <h>44</h>
+      <x>658</x>
+      <y>2128</y>
+      <w>238</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Browse Screenshots</panel_attributes>
     <additional_attributes/>
@@ -162,10 +140,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>616</x>
-      <y>1265</y>
-      <w>242</w>
-      <h>33</h>
+      <x>994</x>
+      <y>1610</y>
+      <w>308</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Authenticated Super User</panel_attributes>
     <additional_attributes/>
@@ -173,10 +151,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>110</x>
-      <y>1518</y>
-      <w>264</w>
-      <h>198</h>
+      <x>350</x>
+      <y>1932</y>
+      <w>336</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;220.0;160.0</additional_attributes>
@@ -184,10 +162,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>88</x>
-      <y>1551</y>
-      <w>308</w>
-      <h>363</h>
+      <x>322</x>
+      <y>1974</y>
+      <w>392</w>
+      <h>462</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;260.0;310.0</additional_attributes>
@@ -195,10 +173,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>1364</y>
-      <w>132</w>
-      <h>44</h>
+      <x>658</x>
+      <y>1736</y>
+      <w>168</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Logout</panel_attributes>
     <additional_attributes/>
@@ -206,10 +184,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>110</x>
-      <y>1375</y>
-      <w>264</w>
-      <h>99</h>
+      <x>350</x>
+      <y>1750</y>
+      <w>336</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;70.0;220.0;10.0</additional_attributes>
@@ -217,21 +195,21 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>539</x>
-      <y>1540</y>
-      <w>264</w>
-      <h>44</h>
+      <x>896</x>
+      <y>1960</y>
+      <w>336</w>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>Create search tag</panel_attributes>
+    <panel_attributes>Create tag</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>451</x>
-      <y>1551</y>
-      <w>143</w>
-      <h>143</h>
+      <x>784</x>
+      <y>1974</y>
+      <w>182</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -240,10 +218,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>616</x>
-      <y>1386</y>
-      <w>132</w>
-      <h>44</h>
+      <x>994</x>
+      <y>1764</y>
+      <w>168</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Update Profile</panel_attributes>
     <additional_attributes/>
@@ -251,10 +229,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>1430</y>
-      <w>132</w>
-      <h>44</h>
+      <x>658</x>
+      <y>1820</y>
+      <w>168</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>View Profile</panel_attributes>
     <additional_attributes/>
@@ -262,21 +240,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>616</x>
-      <y>1452</y>
-      <w>132</w>
-      <h>44</h>
-    </coordinates>
-    <panel_attributes>Close account</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>539</x>
-      <y>1782</y>
-      <w>319</w>
-      <h>44</h>
+      <x>896</x>
+      <y>2268</y>
+      <w>406</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Search screenshots by tags/keywords</panel_attributes>
     <additional_attributes/>
@@ -284,21 +251,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>605</x>
-      <y>1694</y>
-      <w>220</w>
-      <h>44</h>
-    </coordinates>
-    <panel_attributes>Select screenshot</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>594</x>
-      <y>220</y>
-      <w>319</w>
-      <h>44</h>
+      <x>966</x>
+      <y>280</y>
+      <w>406</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Search screenshots by tags/keywords</panel_attributes>
     <additional_attributes/>
@@ -306,10 +262,10 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>22</x>
-      <y>1452</y>
-      <w>110</w>
-      <h>110</h>
+      <x>238</x>
+      <y>1848</y>
+      <w>140</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>SuperUser</panel_attributes>
     <additional_attributes/>
@@ -317,22 +273,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>528</x>
-      <y>1683</y>
-      <w>99</w>
-      <h>55</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>70.0;30.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>484</x>
-      <y>1705</y>
-      <w>176</w>
-      <h>99</h>
+      <x>826</x>
+      <y>2170</y>
+      <w>224</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -341,34 +285,22 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>473</x>
-      <y>1375</y>
-      <w>165</w>
-      <h>55</h>
+      <x>798</x>
+      <y>1778</y>
+      <w>224</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>130.0;30.0;10.0;10.0</additional_attributes>
+    <additional_attributes>140.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>473</x>
-      <y>1441</y>
-      <w>165</w>
-      <h>55</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>130.0;30.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>517</x>
-      <y>253</y>
-      <w>187</w>
-      <h>55</h>
+      <x>868</x>
+      <y>322</y>
+      <w>238</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
@@ -377,10 +309,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>1067</y>
-      <w>187</w>
-      <h>44</h>
+      <x>658</x>
+      <y>1358</y>
+      <w>238</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Upload Screenshots</panel_attributes>
     <additional_attributes/>
@@ -388,10 +320,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>924</y>
-      <w>187</w>
-      <h>44</h>
+      <x>658</x>
+      <y>1176</y>
+      <w>238</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Browse Screenshots</panel_attributes>
     <additional_attributes/>
@@ -399,10 +331,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>616</x>
-      <y>517</y>
-      <w>198</w>
-      <h>33</h>
+      <x>994</x>
+      <y>658</y>
+      <w>252</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Authenticated User</panel_attributes>
     <additional_attributes/>
@@ -410,10 +342,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>110</x>
-      <y>770</y>
-      <w>264</w>
-      <h>198</h>
+      <x>350</x>
+      <y>980</y>
+      <w>336</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;220.0;160.0</additional_attributes>
@@ -421,10 +353,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>88</x>
-      <y>803</y>
-      <w>286</w>
-      <h>308</h>
+      <x>322</x>
+      <y>1022</y>
+      <w>364</w>
+      <h>392</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;240.0;260.0</additional_attributes>
@@ -432,10 +364,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>616</y>
-      <w>132</w>
-      <h>44</h>
+      <x>658</x>
+      <y>784</y>
+      <w>168</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Logout</panel_attributes>
     <additional_attributes/>
@@ -443,10 +375,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>110</x>
-      <y>627</y>
-      <w>264</w>
-      <h>99</h>
+      <x>350</x>
+      <y>798</y>
+      <w>336</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;70.0;220.0;10.0</additional_attributes>
@@ -454,10 +386,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>539</x>
-      <y>792</y>
-      <w>352</w>
-      <h>44</h>
+      <x>938</x>
+      <y>1316</y>
+      <w>448</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Search screenshots by tags/keywords</panel_attributes>
     <additional_attributes/>
@@ -465,22 +397,22 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>451</x>
-      <y>803</y>
-      <w>143</w>
-      <h>143</h>
+      <x>784</x>
+      <y>1050</y>
+      <w>266</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>170.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>616</x>
-      <y>638</y>
-      <w>132</w>
-      <h>44</h>
+      <x>994</x>
+      <y>812</y>
+      <w>168</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Update Profile</panel_attributes>
     <additional_attributes/>
@@ -488,43 +420,21 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>352</x>
-      <y>682</y>
-      <w>132</w>
-      <h>44</h>
+      <x>658</x>
+      <y>868</y>
+      <w>168</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>View Profile</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>616</x>
-      <y>704</y>
-      <w>132</w>
-      <h>44</h>
-    </coordinates>
-    <panel_attributes>Close account</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>539</x>
-      <y>1001</y>
-      <w>319</w>
-      <h>44</h>
-    </coordinates>
-    <panel_attributes>Add comment to a screenshot</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>55</x>
-      <y>704</y>
-      <w>66</w>
-      <h>110</h>
+      <x>280</x>
+      <y>896</y>
+      <w>84</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>User</panel_attributes>
     <additional_attributes/>
@@ -532,46 +442,22 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>484</x>
-      <y>957</y>
-      <w>176</w>
-      <h>66</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>140.0;40.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>451</x>
-      <y>649</y>
-      <w>187</w>
-      <h>55</h>
+      <x>784</x>
+      <y>826</y>
+      <w>238</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
     <additional_attributes>150.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>473</x>
-      <y>693</y>
-      <w>165</w>
-      <h>55</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>130.0;30.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>198</x>
-      <y>539</y>
-      <w>726</w>
-      <h>627</h>
+      <x>462</x>
+      <y>686</y>
+      <w>924</w>
+      <h>798</h>
     </coordinates>
     <panel_attributes>Alpha Archive Website
 --
@@ -581,44 +467,21 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>473</x>
-      <y>1848</y>
-      <w>319</w>
-      <h>44</h>
+      <x>952</x>
+      <y>2058</y>
+      <w>336</w>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>Add comment to a screenshot</panel_attributes>
+    <panel_attributes>Add tag to screenshot</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>407</x>
-      <y>1705</y>
-      <w>143</w>
-      <h>176</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-&lt;&lt;include&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;140.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>583</x>
-      <y>1617</y>
-      <w>264</w>
-      <h>44</h>
-    </coordinates>
-    <panel_attributes>Add search tag to screenshot</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>132</x>
-      <y>693</y>
-      <w>242</w>
-      <h>55</h>
+      <x>378</x>
+      <y>882</y>
+      <w>308</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;30.0;200.0;10.0</additional_attributes>
@@ -626,13 +489,174 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>484</x>
-      <y>1628</y>
-      <w>121</w>
-      <h>66</h>
+      <x>840</x>
+      <y>2086</y>
+      <w>154</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;include&gt;&gt;</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>994</x>
+      <y>1834</y>
+      <w>168</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Edit tags</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>994</x>
+      <y>1694</y>
+      <w>168</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Invite new user</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>1708</y>
+      <w>238</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>798</x>
+      <y>1820</y>
+      <w>224</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>140.0;30.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>798</x>
+      <y>882</y>
+      <w>224</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>140.0;30.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>994</x>
+      <y>896</y>
+      <w>168</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Edit own tags</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>994</x>
+      <y>1022</y>
+      <w>336</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Create tag</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1050</x>
+      <y>1120</y>
+      <w>336</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Add  tag to screenshot</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>1134</y>
+      <w>196</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>812</x>
+      <y>1218</y>
+      <w>168</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>100.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1036</x>
+      <y>1204</y>
+      <w>336</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Remove  tag to screenshot</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>1190</y>
+      <w>196</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>994</x>
+      <y>2156</y>
+      <w>336</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Remove  tag to screenshot</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>854</x>
+      <y>2142</y>
+      <w>168</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>100.0;30.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

@@ -187,7 +187,7 @@ name: String [PK]
       <w>189</w>
       <h>117</h>
     </coordinates>
-    <panel_attributes>Image
+    <panel_attributes>GenericImage
 --
 id: Long [PK]
 image_large : String
@@ -307,5 +307,28 @@ bg=blue</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>792</x>
+      <y>135</y>
+      <w>225</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Here is the table used for save screenshot as a file
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>765</x>
+      <y>144</y>
+      <w>45</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
   </element>
 </diagram>

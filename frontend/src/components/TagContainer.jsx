@@ -102,14 +102,17 @@ export const TagContainer = ({
         Tags
       </button>
       <div className="tag-container__tags">
-        {newFileTags?.map((tag) => (
-          <span
-            key={`tag-container-${tag.tag}-${getRandomInt(10000)}`}
-            className="tag-element"
-          >
-            {tag.tag}
-          </span>
-        ))}
+        {newFileTags?.map(
+          (tag) =>
+            tag && (
+              <span
+                key={`tag-container-${tag.tag}-${getRandomInt(10000)}`}
+                className="tag-element"
+              >
+                {tag.tag}
+              </span>
+            )
+        )}
       </div>
       {tagBoxIsOpen && (
         <div className="tag-container__box">

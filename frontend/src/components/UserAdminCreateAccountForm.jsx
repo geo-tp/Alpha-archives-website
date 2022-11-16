@@ -16,8 +16,8 @@ export const UserAdminCreateAccountForm = ({
       </h2>
 
       <p className="profile__infos">
-        You can generate an account for a new contributor, just enter a new
-        username and you will receive credentials of the new member.
+        You can generate an account for a new contributor, just fill username
+        and you will receive credentials of the new member.
       </p>
       <div className="profile__input-box">
         <label htmlFor="email-guest">New contributor username</label>

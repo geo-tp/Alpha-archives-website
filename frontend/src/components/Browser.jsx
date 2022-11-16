@@ -51,13 +51,15 @@ class Browser extends Component {
   };
 
   goHomeDirectory = () => {
-    this.getFiles("parent");
+    // this.getFiles("parent");
 
-    this.setState({
-      actualDirectory: [],
-      selectedTags: [],
-      displaySearchBar: false,
-    });
+    // this.setState({
+    //   actualDirectory: [],
+    //   selectedTags: [],
+    //   displaySearchBar: false,
+    // });
+
+    this.getFiles("parent");
   };
 
   goBackDirectory = () => {
@@ -138,8 +140,10 @@ class Browser extends Component {
         }
       }
 
-      if (files[0]) {
+      if (files[0] && filter_value !== "root") {
         directory.push(files[0].parent);
+      } else {
+        directory = ["root"];
       }
     }
 

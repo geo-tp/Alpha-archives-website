@@ -93,7 +93,7 @@ class HomePage extends Component {
       <main className="main-home-page main-container">
         <div className="main-home-informations">
           <HomeBanner screenshotNumber={this.state.screenshot?.total_number} />
-          <HomeCards cards={cityCards} title="Explore cities screenshots" />)
+          <HomeCards cards={cityCards} title="Explore cities screenshots" />
           <RandomBox
             screenshot={this.state.screenshot}
             getRandomScreenshot={this.getRandomScreenshot}

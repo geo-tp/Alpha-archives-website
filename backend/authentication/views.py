@@ -5,11 +5,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import permissions
 from rest_framework.authtoken.views import ObtainAuthToken
+from user.serializers import ProfileSerializer, GeneratedUserSerializer
 from .serializers import (
     RegisterSerializer,
     PasswordResetSerializer,
     PasswordForgetSerializer,
-    InvitationSerializer,
+    AdminAccountGenerationSerializer,
 )
 from authentication.models import AuthToken
 from rest_framework import status
@@ -39,7 +40,7 @@ from .messages import (
     TOKEN_ALREADY_USED,
     MISC_ERROR,
     ACCOUNT_DEACTIVATED,
-    INVITATION_SUCCESS,
+    ACCOUNT_GENERATION_SUCCESS,
 )
 
 
@@ -203,51 +204,6 @@ class PasswordForgetView(APIView):
 password_forget_view = PasswordForgetView.as_view()
 
 
-class InvitationView(APIView):
-    """
-    Invite a new user to join website, send credentials to email
-    """
-
-    serializer_class = InvitationSerializer
-    permission_classes = [IsAdminAuthenticated]
-
-    def get_serializer(self, *args, **kwargs):
-        return self.serializer_class(*args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        email = serializer.data["email"]
-
-        while 1:
-            user_random_num = str(random.randint(1, 10000))
-            username = email.split("@")[0] + str(user_random_num)
-
-            username_already_used = CustomUser.objects.filter(
-                username=username
-            ).exists()
-
-            if not username_already_used:
-                break
-
-        password = binascii.hexlify(os.urandom(10)).decode()
-
-        user = CustomUser.objects.create_user(
-            email=email,
-            username=username,
-            password=password,
-            email_validated=True,
-            is_staff=True,
-        )
-
-        send_invitation_email(email, username, password)
-        api_response = format_api_response(message=INVITATION_SUCCESS)
-        return Response(api_response, status=status.HTTP_200_OK)
-
-
-invitation_view = InvitationView.as_view()
-
-
 class PasswordResetView(APIView):
     """
     Reset user password with the one provided (requires password reset token)
@@ -305,3 +261,90 @@ class DeactivateAccountView(APIView):
 
 
 deactivate_account_view = DeactivateAccountView.as_view()
+
+
+class AdminGenerateAccountView(APIView):
+    """
+    Generate new contributor account when admin requests it
+    """
+
+    serializer_class = AdminAccountGenerationSerializer
+    permission_classes = [IsAdminAuthenticated]
+
+    def get_serializer(self, *args, **kwargs):
+        return self.serializer_class(*args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        print("SERIALIZER", serializer.data)
+        username = serializer.data["username"]
+        password = binascii.hexlify(os.urandom(10)).decode()
+        email = f"{username}@thealphaproject.eu"
+
+        user = CustomUser.objects.create_user(
+            email=email,
+            username=username,
+            password=password,
+            email_validated=True,
+            is_staff=True,
+        )
+
+        if user:
+            serialized_user = GeneratedUserSerializer(
+                data={"username": username, "password": password}
+            )
+            serialized_user.is_valid(raise_exception=True)
+
+        api_response = format_api_response(
+            message=ACCOUNT_GENERATION_SUCCESS, content=serialized_user.data
+        )
+        return Response(api_response, status=status.HTTP_200_OK)
+
+
+admin_generate_account_view = AdminGenerateAccountView.as_view()
+
+
+# class InvitationView(APIView):
+#     """
+#     Invite a new user to join website, send credentials to email
+#     """
+
+#     serializer_class = InvitationSerializer
+#     permission_classes = [IsAdminAuthenticated]
+
+#     def get_serializer(self, *args, **kwargs):
+#         return self.serializer_class(*args, **kwargs)
+
+#     def post(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         email = serializer.data["email"]
+
+#         while 1:
+#             user_random_num = str(random.randint(1, 10000))
+#             username = email.split("@")[0] + str(user_random_num)
+
+#             username_already_used = CustomUser.objects.filter(
+#                 username=username
+#             ).exists()
+
+#             if not username_already_used:
+#                 break
+
+#         password = binascii.hexlify(os.urandom(10)).decode()
+
+#         user = CustomUser.objects.create_user(
+#             email=email,
+#             username=username,
+#             password=password,
+#             email_validated=True,
+#             is_staff=True,
+#         )
+
+#         send_invitation_email(email, username, password)
+#         api_response = format_api_response(message=INVITATION_SUCCESS)
+#         return Response(api_response, status=status.HTTP_200_OK)
+
+
+# invitation_view = InvitationView.as_view()

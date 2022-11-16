@@ -18,6 +18,7 @@ import { UserPasswordForm } from "./UserPasswordForm";
 import { UserTagsForm } from "./UserTagsForm";
 import { UserHelpForm } from "./UserHelpForm";
 import { UserAdminCreateAccountForm } from "./UserAdminCreateAccountForm";
+import { fetchGenerateAccount } from "../api/fetchGenerateAccount";
 
 export const Profile = () => {
   const [tagSelected, setTagSelected] = useState(null);
@@ -32,8 +33,8 @@ export const Profile = () => {
   const [passwordUpdateResponse, setPasswordUpdateResponse] = useState(null);
   const [passwordUpdateIsLoading, setPasswordUpdateIsLoading] = useState(false);
 
-  const [createAccountResponse, setcreateAccountResponse] = useState(null);
-  const [createAccountIsLoading, setcreateAccountIsLoading] = useState(false);
+  const [createAccountResponse, setCreateAccountResponse] = useState(null);
+  const [createAccountIsLoading, setCreateAccountIsLoading] = useState(false);
 
   const [tagBoxIsLoading, setTagBoxIsLoading] = useState(false);
   const [tagApiResponse, SetTagApiResponse] = useState(false);
@@ -90,7 +91,16 @@ export const Profile = () => {
     setTagNewValue(value);
   };
 
-  const handleCreateAccount = async (e, username) => {};
+  const handleCreateAccount = async (e, username) => {
+    e.preventDefault();
+
+    setCreateAccountIsLoading(true);
+    setCreateAccountResponse(null);
+    const response = await fetchGenerateAccount(username);
+    console.log("CREATE ACCOUNT RES", response);
+    setCreateAccountResponse(response);
+    setCreateAccountIsLoading(false);
+  };
 
   const handlePasswordUpdate = async (
     e,

@@ -234,4 +234,18 @@
       padding: 15px;
     }
   }
+
+  &__account-creation {
+    margin: 0 auto;
+    $color: map-get($COLOR-PALETTE, font);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & input {
+      background-color: map-get($COLOR-PALETTE, prim);
+      border: none;
+      padding: 10px;
+    }
+  }
 }

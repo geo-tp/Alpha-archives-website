@@ -146,3 +146,12 @@ class PasswordUpdateSerializer(serializers.Serializer):
     def validate_new_password(self, value):
         validate_password(value, CustomUser)
         return value
+
+
+class GeneratedUserSerializer(serializers.Serializer):
+    username = serializers.CharField(max_length=128)
+    password = serializers.CharField(max_length=128)
+
+    def validate_password(self, value):
+        validate_password(value, CustomUser)
+        return value

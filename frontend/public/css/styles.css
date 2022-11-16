@@ -1749,6 +1749,17 @@ button:hover {
   border-radius: 10px;
   padding: 15px;
 }
+.profile__account-creation {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.profile__account-creation input {
+  background-color: #1c2327;
+  border: none;
+  padding: 10px;
+}
 
 .toaster {
   width: 200px;

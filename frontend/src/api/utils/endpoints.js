@@ -22,3 +22,5 @@ export const API_PASSWORD_UPDATE = API_BASE + API_MODEL_USER + "/password";
 export const API_PASSWORD_RESET =
   API_BASE + API_MODEL_AUTH + "/password-reset/";
 export const API_PROFILE = API_BASE + API_MODEL_USER + "/profile";
+export const API_ACCOUNT_GENERATION =
+  API_BASE + API_MODEL_AUTH + "/generate-account";

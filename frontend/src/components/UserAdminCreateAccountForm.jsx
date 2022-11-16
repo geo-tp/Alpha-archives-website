@@ -10,7 +10,10 @@ export const UserAdminCreateAccountForm = ({
   const [username, setUsername] = useState("");
 
   return (
-    <form className="profile__box" onSubmit={handleCreateAccount}>
+    <form
+      className="profile__box"
+      onSubmit={(e) => handleCreateAccount(e, username)}
+    >
       <h2>
         New contributor<i className="fa fa-user"></i>
       </h2>
@@ -46,6 +49,28 @@ export const UserAdminCreateAccountForm = ({
           message={createAccountResponse.message}
           isError={createAccountResponse.error}
         />
+      )}
+      {createAccountResponse?.error && createAccountResponse?.body && (
+        <ApiResponse
+          message={createAccountResponse.body.username}
+          isError={createAccountResponse.error}
+        />
+      )}
+      {!createAccountResponse?.error && createAccountResponse?.body && (
+        <div className="profile__account-creation">
+          <label htmlFor="account-creation-username">Username</label>
+          <input
+            value={createAccountResponse.body.username}
+            name="account-creation-username"
+            disabled={true}
+          />
+          <label htmlFor="account-creation-password">Password</label>
+          <input
+            value={createAccountResponse.body.password}
+            name="account-creation-password"
+            disabled={true}
+          />
+        </div>
       )}
     </form>
   );

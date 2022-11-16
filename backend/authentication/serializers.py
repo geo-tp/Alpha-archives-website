@@ -47,3 +47,9 @@ class InvitationSerializer(serializers.ModelSerializer):
         fields = [
             "email",
         ]
+
+
+class AdminAccountGenerationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ["username"]

@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from tag.models import Tag, AppliedTag
 from main.settings import FORBIDDEN_CHAR
+from django.db import IntegrityError
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -39,9 +40,7 @@ class AppliedTagSerializer(serializers.ModelSerializer):
             file_hash=file_hash, tag=tag_name
         ).exists()
         if applied_tag_exists:
-            raise serializers.ValidationError(
-                {"detail": "Tag already applied on this file"}
-            )
+            raise IntegrityError
 
         return attrs
 

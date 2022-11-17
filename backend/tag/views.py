@@ -10,6 +10,7 @@ from rest_framework.decorators import action
 from tag.serializers import CustomAppliedTagSerializer
 from user.models import CustomUser
 from generic.permissions import IsStaffAuthenticated
+from django.db import IntegrityError
 
 
 class TagViewSet(viewsets.ModelViewSet):
@@ -100,12 +101,30 @@ class AppliedTagViewSet(viewsets.ModelViewSet):
         return [permission() for permission in self.permission_classes]
 
     def create(self, request):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
 
-        api_response = format_api_response(
-            content=serializer.data, status=status.HTTP_200_OK
-        )
+        try:
+            serializer = self.get_serializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
 
-        return Response(api_response, status=status.HTTP_200_OK)
+            api_response = format_api_response(
+                content=serializer.data, status=status.HTTP_200_OK
+            )
+
+            return Response(api_response, status=status.HTTP_200_OK)
+
+        except IntegrityError as error:
+            # We return the already created tag in body in case applied tag already exists
+            tag = request.data["tag"]
+            file_hash = request.data["file_hash"]
+            tag = AppliedTag.objects.get(tag=tag, file_hash=file_hash)
+            serializer = AppliedTagSerializer(tag)
+
+            api_response = format_api_response(
+                content=serializer.data,
+                status=status.HTTP_400_BAD_REQUEST,
+                message="Tag is already created",
+                error=True,
+            )
+
+            return Response(api_response, status=status.HTTP_400_BAD_REQUEST)

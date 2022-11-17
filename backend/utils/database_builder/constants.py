@@ -4,15 +4,18 @@ from pathlib import Path
 VALID_EXT = [
     "jpg",
     "gif",
-    "png" "jpeg",
+    "png",
+    "jpeg",
     "bmp",
     "svg",
     "JPG",
     "GIF",
-    "PNG" "JPEG",
+    "PNG",
+    "JPEG",
     "BMP",
     "SVG",
 ]
+
 THUMBNAIL_WIDTH = 120
 MEDIA_FOLDER = "/media"
 THUMBNAIL_FOLDER = "/thumbnail/"

@@ -15,18 +15,18 @@ export const TagDropDown = ({
       <div className="tag-dropdown">
         {tags?.map((tag) => (
           <button
-            key={`tag-dropdown-button-${tag.name}`}
+            key={`tag-dropdown-button-${tag?.name}`}
             className={
-              fileTags.some((item) => item.tag === tag.name)
+              fileTags.some((item) => item?.tag === tag?.name)
                 ? selectedClass
                 : defaultClass
             }
             title={
-              fileTags.some((item) => item.tag === tag.name)
+              fileTags.some((item) => item?.tag === tag?.name)
                 ? "Click to remove"
                 : "Click to apply"
             }
-            onClick={() => handleTagClick(tag.name)}
+            onClick={() => handleTagClick(tag?.name)}
             disabled={isLoading ? true : false}
           >
             {tag.name}
@@ -39,12 +39,12 @@ export const TagDropDown = ({
     <div className="tag-dropdown">
       {tags?.map((tag) => (
         <button
-          key={`tag-dropdown-button2-${tag.name}`}
-          className={tag.name === tagSelected ? selectedClass : defaultClass}
-          onClick={() => handleTagClick(tag.name)}
+          key={`tag-dropdown-button2-${tag?.name}`}
+          className={tag?.name === tagSelected ? selectedClass : defaultClass}
+          onClick={() => handleTagClick(tag?.name)}
           disabled={isLoading ? true : false}
         >
-          {tag.name}
+          {tag?.name}
         </button>
       ))}
     </div>

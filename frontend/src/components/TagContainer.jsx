@@ -59,13 +59,13 @@ export const TagContainer = ({
 
   const handleTagClick = async (tag) => {
     setTagBoxIsLoading(true);
-    if (newFileTags.some((item) => item.tag === tag)) {
+    if (newFileTags.some((item) => item?.tag === tag)) {
       // const response = await fetchRemoveApplyTag(tag);
       const updatedFileTags = newFileTags;
 
       // Tag is already applied, we remove it
       for (let tagApplied of newFileTags) {
-        if (tagApplied.tag === tag) {
+        if (tagApplied?.tag === tag) {
           const response = await fetchRemoveApplyTag(tagApplied);
           const index = newFileTags.indexOf(tagApplied);
           updatedFileTags.splice(index, 1);
@@ -78,6 +78,7 @@ export const TagContainer = ({
 
     // We apply tag
     const response = await fetchApplyTag(tag, file.image_hash);
+
     const createdTag = response.body;
     const newTags = [createdTag, ...newFileTags];
     const updatedFile = { ...file, tags: newTags };

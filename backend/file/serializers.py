@@ -19,7 +19,10 @@ class FileSerializer(serializers.ModelSerializer):
         image_raw = response["image_raw"]
         if image_raw:
             response["image_raw"] = MEDIA_HOST_URL + image_raw
-            response["image_thumbnail"] = MEDIA_HOST_URL + image_raw
+
+        image_thumbnail = response["image_thumbnail"]
+        if image_thumbnail:
+            response["image_thumbnail"] = MEDIA_HOST_URL + image_thumbnail
 
         return response
 

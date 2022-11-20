@@ -55,6 +55,30 @@
       align-items: center;
     }
 
+    &__mention {
+      position: absolute;
+      z-index: 40;
+      color: map-get($COLOR-PALETTE, font);
+      text-align: left;
+      padding: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      font-size: 0.7em;
+      opacity: 0.8;
+      & span {
+      }
+
+      & i {
+        background-color: map-get($COLOR-PALETTE, font3);
+        padding: 4px 7px;
+        border-radius: 100%;
+      }
+    }
+
     & img {
       object-fit: contain;
       max-width: 100%;

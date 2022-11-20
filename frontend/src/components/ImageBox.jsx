@@ -1,8 +1,8 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
 import React from "react";
-import MagnifyImage from "./MagnifyImage";
 import { TagContainer } from "./TagContainer";
+import { Magnifier } from "./Magnifier";
 
 class ImageBox extends Component {
   constructor(props) {
@@ -112,23 +112,7 @@ class ImageBox extends Component {
           updateFileInState={this.props.updateFileInState}
         />
         <div className="main-image-box__image-container">
-          {this.state.magnify ? (
-            <MagnifyImage
-              src={this.state.images[this.state.index]}
-              width={this.state.imageScale}
-              height=""
-            />
-          ) : (
-            <img
-              src={this.state.images[this.state.index]}
-              alt="selected screenshot"
-              style={
-                this.state.imageScale
-                  ? { width: `${this.state.imageScale}%` }
-                  : null
-              }
-            />
-          )}
+          <Magnifier image={this.state.images[this.state.index]} />
         </div>
 
         <button
@@ -137,6 +121,10 @@ class ImageBox extends Component {
         >
           <i className="fa fa-3x fa-angle-right"></i>
         </button>
+        <button
+          onClick={() => this.props.handleImageBoxClick()}
+          className="fa fa-close fa-2x close-menu-cross"
+        ></button>
         <button
           onClick={() => this.props.handleImageBoxClick()}
           className="fa fa-close fa-2x close-menu-cross"

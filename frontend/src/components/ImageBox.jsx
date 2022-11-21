@@ -29,6 +29,8 @@ class ImageBox extends Component {
     const LEFT_ARROW = 37;
     const RIGHT_ARROW = 39;
 
+    console.log("KEY EVENT", e);
+
     if (e.keyCode === RIGHT_ARROW) {
       this.nextImage();
     } else if (e.keyCode === LEFT_ARROW) {
@@ -110,6 +112,7 @@ class ImageBox extends Component {
           fileTags={this.props.files[this.state.index].tags}
           createTagInState={this.props.createTagInState}
           updateFileInState={this.props.updateFileInState}
+          componentRef={this.componentRef}
         />
         <div className="main-image-box__image-container">
           <Magnifier image={this.state.images[this.state.index]} />

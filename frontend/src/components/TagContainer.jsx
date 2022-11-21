@@ -14,6 +14,7 @@ export const TagContainer = ({
   file,
   createTagInState,
   updateFileInState,
+  componentRef,
 }) => {
   const [tagBoxIsOpen, setTagBoxIsOpen] = useState(false);
   const [newFileTags, setNewFileTags] = useState(fileTags ? fileTags : []);
@@ -59,6 +60,8 @@ export const TagContainer = ({
 
   const handleTagClick = async (tag) => {
     setTagBoxIsLoading(true);
+    // we set the focus on imageBox to be able to use next/prev arrows after a tag click
+    componentRef.current.focus();
     if (newFileTags.some((item) => item?.tag === tag)) {
       // const response = await fetchRemoveApplyTag(tag);
       const updatedFileTags = newFileTags;
@@ -146,4 +149,5 @@ TagContainer.propTypes = {
   file: PropTypes.object.isRequired,
   createTagInState: PropTypes.func,
   updateTagInState: PropTypes.func,
+  componentRef: PropTypes.object,
 };

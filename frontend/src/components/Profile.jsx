@@ -92,7 +92,6 @@ export const Profile = () => {
     setCreateAccountIsLoading(true);
     setCreateAccountResponse(null);
     const response = await fetchGenerateAccount(username);
-    console.log("CREATE ACCOUNT RES", response);
     setCreateAccountResponse(response);
     setCreateAccountIsLoading(false);
   };

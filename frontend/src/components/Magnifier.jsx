@@ -8,6 +8,9 @@ export const Magnifier = ({ image }) => {
 
   const [imagePosX, setImagePosX] = useState("0px");
   const [imagePosY, setImagePosY] = useState("0px");
+  const [imageOriginalWidth, setImageOriginalWidth] = useState("0px");
+  const [imageOriginalHeight, setImageOriginalHeight] = useState("0px");
+
   const [imageWidth, setImageWidth] = useState(window.screen.width / 2);
   const [imageHeight, setImageHeight] = useState(window.screen.height / 2);
   const [magnification, setMagnification] = useState(1);
@@ -25,6 +28,8 @@ export const Magnifier = ({ image }) => {
     // Initialise image to be centered and use default rendered width
     setImageWidth(imageW);
     setImageHeight(imageH);
+    setImageOriginalWidth(imageW / magnification);
+    setImageOriginalHeight(imageH / magnification);
     setImagePosX(imageLeft);
     setImagePosY(imageTop - 20);
     setStarted(true);
@@ -49,7 +54,6 @@ export const Magnifier = ({ image }) => {
     var diffY = startDragY - offsetY + parseInt(imagePosY);
 
     // move it by the difference between where we started and where we are now
-    console.log(parseInt(imagePosX), diffX);
     setImagePosX(parseInt(imagePosX) - diffX + "px");
     setImagePosY(parseInt(imagePosY) - diffY + "px");
   }
@@ -95,13 +99,12 @@ export const Magnifier = ({ image }) => {
     newMagnification = Math.max(newMagnification, 1);
 
     // adjust image size
-    setImageWidth(900 * newMagnification + "px");
-    setImageHeight(900 * newMagnification + "px");
+    setImageWidth(imageOriginalWidth * newMagnification + "px");
+    setImageHeight(imageOriginalHeight * newMagnification + "px");
 
     // move image so that the place under the cursor is still under it
     setImagePosX(-mouseX * newMagnification + cursorX + "px");
     setImagePosY(-mouseY * newMagnification + cursorY + "px");
-    console.log(cursorX);
     setMagnification(newMagnification);
   }
 

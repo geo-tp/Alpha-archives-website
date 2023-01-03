@@ -802,7 +802,6 @@ button:hover {
   border: 1px solid #1c2327;
   margin: 0 auto;
   padding-left: 20px;
-  overflow-x: hidden;
 }
 .main-browser__directory-path span {
   white-space: nowrap;

@@ -272,7 +272,7 @@ button:hover {
 }
 @media screen and (max-width: 768px) {
   .page-top-margin {
-    margin-top: 75px;
+    margin-top: 55px;
   }
 }
 
@@ -287,6 +287,12 @@ button:hover {
 
 .nav-bar-height {
   height: 10vh;
+}
+
+@media screen and (max-width: 768px) {
+  .main-overflow {
+    overflow-y: hidden;
+  }
 }
 
 .page-title {
@@ -328,11 +334,6 @@ button:hover {
   justify-content: center;
   padding-bottom: 1px;
   width: 98%;
-}
-@media screen and (max-width: 1200px) {
-  .main-container {
-    width: 95%;
-  }
 }
 
 .sub-container {
@@ -788,6 +789,11 @@ button:hover {
   border: 1px solid #1c2327;
   border-radius: 0px 0px 10px 10px;
 }
+@media screen and (max-width: 768px) {
+  .main-browser {
+    height: calc(100vh - 132px);
+  }
+}
 .main-browser__directory-path {
   display: flex;
   background-color: #0d1117;
@@ -796,6 +802,12 @@ button:hover {
   border: 1px solid #1c2327;
   margin: 0 auto;
   padding-left: 20px;
+  overflow-x: hidden;
+}
+.main-browser__directory-path span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media screen and (max-width: 768px) {
   .main-browser__directory-path {
@@ -1130,7 +1142,8 @@ button:hover {
 }
 @media screen and (max-width: 768px) {
   .tag-container {
-    margin-top: 5px;
+    margin-top: 40px;
+    width: 80%;
   }
 }
 .tag-container__tags {
@@ -1183,6 +1196,11 @@ button:hover {
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #1c2327;
+}
+@media screen and (max-width: 768px) {
+  .tag-container__box {
+    max-width: 98%;
+  }
 }
 .tag-container__box--restricted {
   z-index: 100;

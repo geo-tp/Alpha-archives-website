@@ -3,7 +3,7 @@
   margin-top: 90px;
 
   @include mobile-design {
-    margin-top: 75px;
+    margin-top: 55px;
   }
 }
 
@@ -17,4 +17,10 @@
 
 .nav-bar-height {
   height: 10vh;
+}
+
+.main-overflow {
+  @include mobile-design {
+    overflow-y: hidden;
+  }
 }

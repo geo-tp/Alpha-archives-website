@@ -4,7 +4,7 @@ import bgScreen from "../assets/background.webp";
 const BrowserPage = () => {
   const { folder } = useParams();
   return (
-    <main className="footer-hidden">
+    <main className="footer-hidden main-overflow">
       <img
         src={bgScreen}
         alt="wow login screen"

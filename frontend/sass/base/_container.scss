@@ -13,10 +13,6 @@
   // overflow-y: scroll;
   // max-width: $max-screen-resolution;
   // transform: translate(-50%, -50%);
-
-  @include tablet-design {
-    width: 95%;
-  }
 }
 
 .sub-container {

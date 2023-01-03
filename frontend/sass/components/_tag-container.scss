@@ -19,7 +19,8 @@
   }
 
   @include mobile-design {
-    margin-top: 5px;
+    margin-top: 40px;
+    width: 80%;
   }
 
   &__tags {
@@ -75,6 +76,11 @@
     padding: 10px;
     border-radius: 10px;
     border: 1px solid map-get($COLOR-PALETTE, prim);
+
+    @include mobile-design {
+      // width: 90%;
+      max-width: 98%;
+    }
 
     &--restricted {
       z-index: 100;

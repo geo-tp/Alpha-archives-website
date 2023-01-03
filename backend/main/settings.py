@@ -214,3 +214,5 @@ DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT = 5  # gb
 # Input
 
 FORBIDDEN_CHAR = ".?/!%*µ$^)'(#\&@+²,;:<>}`+°¨{=[]|ø¹^" + '"'
+
+

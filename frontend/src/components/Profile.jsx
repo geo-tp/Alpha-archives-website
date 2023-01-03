@@ -183,7 +183,7 @@ export const Profile = () => {
     }
     setTagBoxIsLoading(true);
 
-    const response = await fetchRemoveTag(tagSelected);
+    await fetchRemoveTag(tagSelected);
     const updatedTags = userTags;
     const indexToDelete = userTags.findIndex((tag) => tag.name === tagSelected);
     updatedTags.splice(indexToDelete, 1);

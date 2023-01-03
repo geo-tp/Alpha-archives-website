@@ -7,7 +7,7 @@
 
   margin: 0 auto;
   margin-bottom: 20px;
-  max-width: 1400px;
+  max-width: 1600px;
   background-color: map-get($COLOR_PALETTE, ter);
 
   &__title {
@@ -19,7 +19,7 @@
   }
 
   &__image {
-    width: 95%;
+    max-width: 95%;
     height: 85vh;
     margin: 0 auto;
     margin-bottom: 80px;

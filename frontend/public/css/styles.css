@@ -539,7 +539,7 @@ button:hover {
 
 .main-image-upload {
   background-color: #0d1117;
-  height: calc(86vh - 70px);
+  height: calc(100vh - 200px);
 }
 @media screen and (max-width: 768px) {
   .main-image-upload {
@@ -778,7 +778,7 @@ button:hover {
 .main-browser {
   position: relative;
   display: flex;
-  height: 82vh;
+  height: calc(100vh - 170px);
   background-color: #0d1117;
   margin: 0 auto;
   align-items: center;
@@ -787,16 +787,6 @@ button:hover {
   flex-wrap: wrap;
   border: 1px solid #1c2327;
   border-radius: 0px 0px 10px 10px;
-}
-@media screen and (max-height: 900px) {
-  .main-browser {
-    height: 75vh;
-  }
-}
-@media screen and (max-width: 768px) {
-  .main-browser {
-    height: 75vh;
-  }
 }
 .main-browser__directory-path {
   display: flex;
@@ -959,7 +949,7 @@ button:hover {
   position: relative;
   margin: 0 auto;
   margin-bottom: 20px;
-  max-width: 1400px;
+  max-width: 1600px;
   background-color: #0d1117;
 }
 .random-box__title {
@@ -970,7 +960,7 @@ button:hover {
   margin-bottom: 30px;
 }
 .random-box__image {
-  width: 95%;
+  max-width: 95%;
   height: 85vh;
   margin: 0 auto;
   margin-bottom: 80px;

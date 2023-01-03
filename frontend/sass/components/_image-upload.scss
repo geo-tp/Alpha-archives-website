@@ -8,7 +8,7 @@
 
 .main-image-upload {
   background-color: map-get($COLOR-PALETTE, ter);
-  height: calc(86vh - 70px);
+  height: calc(100vh - 200px);
 
   @include mobile-design {
     height: unset;

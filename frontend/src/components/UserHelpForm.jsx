@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const UserHelpForm = ({}) => {
+export const UserHelpForm = () => {
   return (
     <div className="profile__box">
       <h2>

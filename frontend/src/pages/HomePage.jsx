@@ -14,6 +14,7 @@ import alphacore from "../assets/alphacore.webp";
 import db from "../assets/database.webp";
 import discord from "../assets/discord.jpeg";
 import geo from "../assets/napoleon.webp";
+import crawler from "../assets/crawler.webp";
 import { HomeBanner } from "../components/HomeBanner";
 import { RandomBox } from "../components/RandomBox";
 
@@ -44,6 +45,12 @@ const usefullCards = [
     image: db,
     alt: "Wow Database 0.5.3",
     link: "https://db.thealphaproject.eu/",
+  },
+  {
+    name: "Text Crawler",
+    image: crawler,
+    alt: "WoW Text Crawler",
+    link: "https://crawler.thealphaproject.eu/",
   },
   {
     name: "Geo GitHub",

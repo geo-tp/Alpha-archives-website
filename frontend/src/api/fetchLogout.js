@@ -3,7 +3,6 @@ import {
   getDisconnectedError,
   getDisconnectedSuccess,
 } from "../store/features/auth/actions";
-import { fetchJson } from "./fetchJson";
 import { fetchJsonForRedux } from "./fetchJsonForRedux";
 import { API_LOGOUT } from "./utils/endpoints";
 import { API_URL } from "./utils/config";

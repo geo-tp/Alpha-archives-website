@@ -69,7 +69,7 @@ export const TagContainer = ({
       // Tag is already applied, we remove it
       for (let tagApplied of newFileTags) {
         if (tagApplied?.tag === tag) {
-          const response = await fetchRemoveApplyTag(tagApplied);
+          await fetchRemoveApplyTag(tagApplied);
           const index = newFileTags.indexOf(tagApplied);
           updatedFileTags.splice(index, 1);
           setNewFileTags([...updatedFileTags]);

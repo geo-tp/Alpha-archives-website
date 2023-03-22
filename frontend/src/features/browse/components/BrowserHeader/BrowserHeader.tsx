@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectBrowser } from "../../store/selectors";
-import {
-  setCurrentPath,
-  setTagDropdownIsOpen,
-  setTagSearchIsOpen,
-} from "../../store/actions";
+import { setTagDropdownIsOpen, setTagSearchIsOpen } from "../../store/actions";
 import { TagSearch } from "../TagSearch";
 import { TagType } from "../../../../types";
 

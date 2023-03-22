@@ -9,7 +9,6 @@ export const getLoggedOut = async () => {
   const params = { method: "POST", headers };
 
   const res = await fetch(API_URL + LOGOUT_ROUTE, params);
-  console.log("LOGOUT RES", res);
   store.dispatch(getDisconnectedSuccess());
   store.dispatch(resetUserProfile());
 

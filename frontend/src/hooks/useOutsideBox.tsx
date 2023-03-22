@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 export function useOutsideBox(ref: any, setState: Function) {
+  /**
+   * Close element if mouse click outside
+   */
   useEffect(() => {
-    /**
-     * if clicked on outside of element
-     */
     function handleClickOutside(event: any) {
       if (!ref?.current) {
         return;

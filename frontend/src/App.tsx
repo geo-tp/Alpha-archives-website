@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     restoreSavedAuth(dispatch);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -25,12 +25,12 @@ function App() {
         <MainHeader />
         <Routes>
           <Route path="/upload" element={<Upload />} />
-          {/* <Route path="/browse/:folder" element={<BrowserPage />} /> */}
+          <Route path="/browse/:folder" element={<Browser />} />
           <Route path="/browse/" element={<Browser />} />
           <Route path={"/"} element={<Home />} />
           <Route path={"/login"} element={<Login />} />
           {/* <Route
-            path={"/password-reset/:key"}
+            path={"/password-reset/:key"}       
             element={<PasswordResetPage />}
           /> */}
           <Route

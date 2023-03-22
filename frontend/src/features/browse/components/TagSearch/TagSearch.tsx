@@ -35,9 +35,7 @@ export const TagSearch = () => {
       filesByTags.mutate(selectedTags);
     } else {
       const currentPath = [...browserState.currentPath];
-      console.log(currentPath);
       const last = currentPath.pop();
-      console.log("LAST", last);
 
       filesByFolder.mutate(last);
     }

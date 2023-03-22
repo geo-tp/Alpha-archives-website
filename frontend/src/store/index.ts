@@ -5,9 +5,9 @@ import { userReducer } from "./slices/user/reducer";
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
-    user: userReducer,
-    browser: browserReducer,
+    auth: authReducer, // for token and permissions
+    user: userReducer, // for user profile
+    browser: browserReducer, // for browser state with lightbox, search, selected tags...
   },
 });
 

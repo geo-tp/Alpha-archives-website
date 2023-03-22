@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { TagApplicator } from "../TagApplicator/TagApplicator";
 import { ButtonTag } from "../ButtonTag";
 import { Magnifier } from "../Magnifier";
@@ -16,8 +16,14 @@ export const Lightbox = () => {
   const dispatch = useDispatch();
   const browserState = useSelector(selectBrowser);
 
+  const focusRef = useRef<HTMLDivElement>(null);
   const tagApplicatorRef = useRef(null);
+
   useOutsideBox(tagApplicatorRef, () => dispatch(setTagAplicatorIsOpen(false)));
+
+  useEffect(() => {
+    focusRef?.current?.focus();
+  }, []);
 
   const nextImage = () => {
     let newIndex: number;
@@ -61,7 +67,12 @@ export const Lightbox = () => {
   };
 
   return (
-    <div className="light-box" onKeyDown={(e) => handleKeyDown(e)} tabIndex={0}>
+    <div
+      ref={focusRef}
+      className="light-box"
+      onKeyDown={(e) => handleKeyDown(e)}
+      tabIndex={0}
+    >
       <span className="light-box__images-count">
         {browserState.media.indexOf(browserState.selectedMedia) + 1}/
         {browserState.media.length}

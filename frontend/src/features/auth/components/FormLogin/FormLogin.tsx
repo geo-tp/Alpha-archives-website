@@ -7,7 +7,7 @@ export const FormLogin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { data, isLoading, isError, isSuccess, mutate } = useMutation(
+  const { data, isLoading, mutate } = useMutation(
     (variables: { username: string; password: string }) =>
       getLoggedIn(variables)
   );

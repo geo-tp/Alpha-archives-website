@@ -38,7 +38,7 @@ FRONTEND
 (Created with node 17.9.1 and npm 8.11.0)
 
 - Run ```npm install``` to install dependencies
-- Change ```API_URL``` in ```/src/utils/APIConfig.js``` with your API url like ```http://localhost:8000/```
+- Change ```API_URL``` in ```frontend/config/api.js`` with API url like ```http://localhost:8000/```
 - Run ```npm start```
 
 

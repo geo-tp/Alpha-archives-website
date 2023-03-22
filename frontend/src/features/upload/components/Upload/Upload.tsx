@@ -8,7 +8,6 @@ import { DISABLE_UPLOAD } from "../../../../config/upload";
 export const Upload = () => {
   // Upload status query, data is a boolean
   const { data } = useQuery("upload-status", getUploadStatus);
-  console.log("data", data);
   return (
     <main className="upload">
       <ImageBackground />

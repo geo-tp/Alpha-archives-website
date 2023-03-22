@@ -5,7 +5,6 @@ export const RandomScreenshot = (props: {
   isLoading: boolean;
   changeScreenshot: Function;
 }) => {
-  console.log("SS", props.screenshot);
   return (
     <div className="random-screenshot">
       <div className="random-screenshot__title">

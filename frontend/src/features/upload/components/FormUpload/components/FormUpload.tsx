@@ -3,7 +3,6 @@ import { useMutation } from "react-query";
 import { ACCEPTED_MIME_TYPES } from "../../../../../config/upload";
 import { uploadFile } from "../../../api/uploadFile";
 import { ImagesPreview } from "./ImagesPreview";
-import { Modal } from "./Modal";
 
 export const FormUpload = () => {
   const [files, setFiles] = useState<string[]>([]);
@@ -42,9 +41,6 @@ export const FormUpload = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("IN SUBMIT", isLoading);
-    // await uploadStatus();
-    console.log("FILEOBJ", filesObj);
 
     // setIsLoading(true);
     if (isLoading || !filesObj.length) {
@@ -54,7 +50,6 @@ export const FormUpload = () => {
     const results = [];
     for (let file of filesObj) {
       const status: number = await mutateAsync(file);
-      console.log("STATUS", status);
       results.push(status);
       setLoadingCount(loadingCount + 1);
     }

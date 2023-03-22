@@ -6,7 +6,6 @@ export const uploadFile = async (file: File | null) => {
     fdata.append("image", file, file.name);
     const params = { method: "POST", body: fdata };
     const res = await fetch(API_URL + FILE_ROUTE, params);
-    console.log("JSON", res);
     return res.status;
   }
 

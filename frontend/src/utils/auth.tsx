@@ -1,4 +1,5 @@
 import { Navigate } from "react-router-dom";
+import { getLoggedOut } from "../api/getLoggedOut";
 import { getProfile } from "../api/getProfile";
 import {
   getConnectedError,
@@ -13,7 +14,7 @@ export const restoreSavedAuth = async (dispatch: Function) => {
   if (authData) {
     if (authData.expired) {
       // We send a logout request (it will delete cookie and auth)
-      // dispatch(fetchLogout());
+      dispatch(getLoggedOut());
     } else {
       const token = authData.token;
       const isStaff = authData.isStaff;

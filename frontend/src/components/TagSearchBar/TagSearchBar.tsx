@@ -1,8 +1,7 @@
 import { FormEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { forbiddenInputChar } from "../../config/input";
 import { setTagDropdownIsOpen } from "../../features/browse/store/actions";
-import { selectBrowser } from "../../features/browse/store/selectors";
 
 type TagSearchBarType = {
   isDisabled: boolean;
@@ -16,7 +15,6 @@ export const TagSearchBar = (props: TagSearchBarType) => {
   const [buzzForForbiddenChar, setBuzzForForbiddenChar] = useState(false);
 
   const dispatch = useDispatch();
-  const browserState = useSelector(selectBrowser);
 
   const handleInputChange = (e: FormEvent) => {
     const target = e.target as HTMLFormElement;

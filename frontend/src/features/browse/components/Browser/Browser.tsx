@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { getTags } from "../../../../api/getTags";
 import { ImageBackground } from "../../../../components/ImageBackground";
 import { MediaType } from "../../../../types";
@@ -19,15 +20,18 @@ export const Browser = () => {
   const dispatch = useDispatch();
   const browserState = useSelector(selectBrowser);
 
+  const { folder } = useParams();
+
   const tags = useQuery("tags", getTags);
   const filesMutation = useMutation((folderName: string) =>
     getFiles(folderName)
   );
 
+  // Fetch files at first render
   useEffect(() => {
-    filesMutation.mutate("root");
-    dispatch(setCurrentPath(["root"]));
-  }, []);
+    filesMutation.mutate(folder ? folder : "root");
+    dispatch(setCurrentPath(folder ? [folder] : ["root"]));
+  }, [dispatch]);
 
   const goHomeDirectory = () => {
     filesMutation.mutate("root");

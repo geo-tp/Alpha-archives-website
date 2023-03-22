@@ -1,0 +1,240 @@
+.error {
+  color: map-get($COLOR_PALETTE, error);
+}
+
+.success {
+  color: map-get($COLOR_PALETTE, success);
+}
+
+.upload-modal {
+  position: fixed;
+  z-index: 1;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: map-get($COLOR-PALETTE, bg);
+  opacity: 0.9;
+  backdrop-filter: blur(10px);
+  z-index: 1000; /* Sit on top */
+  margin-top: $nav-bar-size;
+
+  &__frame {
+    position: fixed; /* Stay in place */
+    left: 50%;
+    top: 50%;
+    width: 60%; /* Full width */
+    // height: 45%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: map-get($COLOR-PALETTE, prim); /* Black w/ opacity */
+    opacity: 1;
+    color: map-get($COLOR-PALETTE, font);
+    transform: translate(-50%, -50%);
+    border: 7px solid map-get($COLOR-PALETTE, error);
+    box-shadow: 5px 5px 15px 5px black;
+  }
+}
+
+.form-upload {
+  background-color: map-get($COLOR-PALETTE, ter);
+  height: calc(100vh - 200px);
+
+  @include mobile-design {
+    height: unset;
+  }
+
+  @include medium-height {
+    height: unset;
+  }
+
+  &__submit {
+    position: relative;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: map-get($COLOR_PALETTE, font4);
+    color: white;
+    min-width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    border: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    @include mobile-design {
+      font-size: 1em;
+      width: 25%;
+      height: 50px;
+    }
+  }
+
+  &__previews {
+    height: 45%;
+    background-color: map-get($COLOR_PALETTE, prim);
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    margin-top: 3%;
+    overflow-y: scroll;
+    border-radius: 30px;
+    @include medium-shadow;
+
+    @include medium-height {
+      height: 20vh;
+    }
+
+    @include mobile-design {
+      height: 20vh;
+    }
+
+    &__reset {
+      width: 5%;
+      height: 30px;
+      position: absolute;
+      right: 1%;
+      top: 1%;
+      color: map-get($COLOR-PALETTE, font);
+      background-color: transparent;
+      border-radius: 15px;
+      z-index: 50;
+      font-size: 0.9em;
+
+      transform: scale(1);
+      transition-property: transform;
+      transition-duration: 200ms;
+      cursor: pointer;
+      border: 0;
+
+      &:hover {
+        transform: scale(1.01);
+        opacity: 0.9;
+      }
+
+      @include tablet-design {
+        right: 3%;
+      }
+      @include mobile-design {
+        right: 7%;
+        top: 0%;
+      }
+    }
+
+    &__title {
+      font-size: 0.8em;
+      color: map-get($COLOR_PALETTE, font);
+    }
+
+    &__box {
+      margin: 1%;
+      padding: 1%;
+      display: flex;
+      flex-wrap: wrap;
+
+      &__element {
+        flex-basis: 20%;
+        overflow-y: hidden;
+        position: relative;
+
+        &__response {
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 2%;
+          width: 50px; /* Need a specific value to work */
+        }
+
+        & img {
+          width: 50%;
+          max-height: 100px;
+          cursor: pointer;
+
+          @include tablet-design {
+            width: 90%;
+          }
+
+          &:hover {
+            transform: scale(1.01);
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
+
+  &__form-group {
+    padding: 2%;
+    width: 80%;
+    position: relative;
+    font-size: 18px;
+    margin: 0 auto;
+
+    transform: scale(1);
+    transition-property: transform;
+    transition-duration: 300ms;
+
+    @include mobile-design {
+      font-size: 0.7em;
+      margin-bottom: 20px;
+    }
+
+    &:hover {
+      transform: scale(1.005);
+      opacity: 0.8;
+    }
+
+    & label {
+      border: 3px dashed map-get($COLOR_PALETTE, font);
+      background-color: map-get($COLOR_PALETTE, prim);
+      width: 100%;
+      height: 20vh;
+      display: block;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: map-get($COLOR_PALETTE, font);
+      border-radius: 30px;
+      margin-top: 20px;
+      @include medium-shadow;
+      @include small-height {
+        height: 100px;
+      }
+      & i {
+        margin-right: 2%;
+      }
+    }
+
+    &__form-control {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  &__feedback {
+    margin: 0;
+    padding: 0;
+
+    & span {
+      font-size: 0.8em;
+
+      &:first-child {
+        margin-right: 30px;
+      }
+
+      & i {
+        font-size: 1em;
+      }
+    }
+  }
+}

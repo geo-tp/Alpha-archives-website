@@ -1,0 +1,99 @@
+.card-form {
+  border: 1px solid map-get($COLOR-PALETTE, prim);
+  background-color: map-get($COLOR-PALETTE, ter);
+  color: map-get($COLOR-PALETTE, font);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  max-width: 400px;
+  flex-basis: 30%;
+  position: relative;
+  @include medium-shadow;
+
+  @include tablet-design {
+    flex-basis: 80%;
+    padding: 20px;
+    margin: 5px;
+    margin-bottom: 20px;
+  }
+
+  @include mobile-design {
+    flex-basis: 100%;
+  }
+
+  & h2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-top: 0px;
+
+    & i {
+      background-color: map-get($COLOR_PALETTE, prim);
+      border: 1px solid map-get($COLOR-PALETTE, ter);
+      padding: 7px;
+      width: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+  }
+
+  &__button-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__infos {
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+    padding: 10px;
+    line-height: 1.3em;
+    border-radius: 10px;
+    margin: 20px auto;
+    margin-top: 0px;
+    @include medium-shadow;
+
+    & ul {
+      list-style: none;
+    }
+
+    & a {
+      text-decoration: none;
+      color: map-get($COLOR_PALETTE, font3);
+    }
+  }
+
+  &__input-box {
+    display: flex;
+    flex-direction: column;
+    color: map-get($COLOR-PALETTE, font);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    position: relative;
+
+    &__input {
+      background-color: map-get($COLOR-PALETTE, prim);
+      border: 1px solid map-get($COLOR-PALETTE, sec);
+      color: map-get($COLOR-PALETTE, font);
+      margin-top: 10px;
+      padding-left: 10px;
+      border-radius: 10px;
+      font-size: 0.9em;
+      height: 45px;
+    }
+  }
+
+  &__account-creation {
+    margin: 0 auto;
+    $color: map-get($COLOR-PALETTE, font);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & input {
+      background-color: map-get($COLOR-PALETTE, prim);
+      border: none;
+      padding: 10px;
+    }
+  }
+}

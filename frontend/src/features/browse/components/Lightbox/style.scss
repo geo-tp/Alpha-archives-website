@@ -1,0 +1,132 @@
+.light-box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 70px;
+  min-height: 80%;
+  height: 100vh;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  background-color: rgba(0, 0, 0, 0.885);
+  align-items: center;
+  animation: appear-slowly 200ms linear;
+
+  @include tablet-design {
+    // margin-top: 50px;
+  }
+
+  @include small-shadow;
+
+  &__images-count {
+    position: fixed;
+    background-color: map-get($COLOR_PALETTE, prim);
+    color: map-get($COLOR-PALETTE, font);
+    left: 10px;
+    bottom: 9%;
+    border-radius: 5px;
+    z-index: 10;
+    padding: 5px;
+    font-weight: bold;
+  }
+
+  &__filename {
+    position: absolute;
+    right: 10px;
+    bottom: 7%;
+    height: 20px;
+    z-index: 50;
+    border: 1px solid map-get($COLOR-PALETTE, ter);
+    background-color: map-get($COLOR-PALETTE, prim);
+    color: map-get($COLOR-PALETTE, font);
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  &__close {
+    color: #c9d1d9;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    z-index: 50;
+    transition: all 300ms;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    color: map-get($COLOR_PALETTE, font);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    z-index: 50;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &--left {
+      left: 1%;
+    }
+
+    &--right {
+      right: 1%;
+    }
+  }
+
+  &__image-container {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+
+    @include tablet-design {
+      align-items: center;
+    }
+
+    &__mention {
+      position: absolute;
+      z-index: 40;
+      color: map-get($COLOR-PALETTE, font);
+      text-align: left;
+      padding: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      font-size: 0.7em;
+      opacity: 0.8;
+      & span {
+      }
+
+      & i {
+        background-color: map-get($COLOR-PALETTE, font3);
+        padding: 4px 7px;
+        border-radius: 100%;
+      }
+    }
+
+    & img {
+      object-fit: contain;
+      max-width: 100%;
+      max-height: 96%;
+
+      transition: transform 0.5s;
+      z-index: 0;
+
+      @include tablet-design {
+        max-width: 94%;
+      }
+    }
+  }
+}

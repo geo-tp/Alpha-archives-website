@@ -1,0 +1,26 @@
+.cards-link {
+  width: 100%;
+  background-color: map-get($COLOR-PALETTE, sec);
+  right: 5%;
+  border-bottom: 2px solid map-get($COLOR-PALETTE, prim);
+  border-top: 2px solid map-get($COLOR-PALETTE, prim);
+  text-align: center;
+
+  &--alternative-color {
+    background-color: map-get($COLOR-PALETTE, ter);
+  }
+
+  &__title {
+    color: map-get($COLOR-PALETTE, font);
+    padding-top: 50px;
+    text-align: center;
+    margin-top: 0px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 50px;
+  }
+}

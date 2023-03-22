@@ -1,0 +1,65 @@
+.card-description {
+  background-color: map-get($COLOR-PALETTE, ter);
+  flex-basis: 25%;
+  margin: 20px;
+  padding: 20px;
+  padding-top: 10px;
+  border: 2px solid map-get($COLOR-PALETTE, prim);
+  border-radius: 10px;
+  box-sizing: border-box;
+  max-width: 320px;
+  min-width: 280px;
+  position: relative;
+  padding-bottom: 50px;
+  text-align: left;
+  @include big-shadow;
+
+  & p:first-child {
+    display: flex;
+    align-items: center;
+
+    & img {
+      margin-right: 10px;
+      width: 30px;
+      border-radius: 10px;
+    }
+  }
+
+  &--large {
+    flex-basis: 40%;
+    max-width: 480px;
+    min-width: 480px;
+  }
+
+  & h4 {
+    color: map-get($COLOR-PALETTE, font4);
+  }
+
+  & img {
+    max-width: 95%;
+  }
+
+  &__versions {
+    position: absolute;
+    bottom: 2%;
+    // left: 2%;
+  }
+
+  @include tablet-design {
+    flex-basis: 45%;
+
+    &--large {
+      flex-basis: 45%;
+    }
+  }
+
+  @include mobile-design {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin: 10px;
+    &--large {
+      flex-basis: 100%;
+    }
+  }
+}

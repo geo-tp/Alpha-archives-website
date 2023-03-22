@@ -1,0 +1,14 @@
+.browser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1px;
+  width: 98%;
+  margin: 0 auto;
+  margin-top: 90px;
+
+  &__frame {
+    width: 100%;
+    overflow-x: hidden;
+  }
+}

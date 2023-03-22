@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-v_ht3xb(xk$dq@p&=h*no-zj+#rgk-z__pd=cwxj^wt-=u43u-"
+SECRET_KEY = "4^^prl9x#qe*0gu2!_r_v7$*kx83$)i2^9a*7qw%86^t0#z)go"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -184,9 +184,6 @@ if not EMAIL_HOST_PASSWORD or not EMAIL_HOST_USER:
         "SMTP NOT CONFIGURED : Please fill EMAIL_HOST_PASSWORD & EMAIL_HOST_USER located in main/settings.py"
     )
 
-    if not DEBUG:
-        exit()
-
 # Media config for images
 
 MEDIA_HOST_URL = "https://localhost:8000"
@@ -209,10 +206,9 @@ CORS_ALLOW_CREDENTIALS = False
 
 # Upload
 
+DISABLE_UPLOAD = True
 DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT = 5  # gb
 
 # Input
 
 FORBIDDEN_CHAR = ".?/!%*µ$^)'(#\&@+²,;:<>}`+°¨{=[]|ø¹^" + '"'
-
-

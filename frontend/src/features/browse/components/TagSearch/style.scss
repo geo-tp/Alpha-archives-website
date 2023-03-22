@@ -1,0 +1,14 @@
+.tag-search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+
+  .tag-dropdown {
+    position: absolute;
+    width: 240px;
+    height: 260px;
+    bottom: -285px;
+  }
+}

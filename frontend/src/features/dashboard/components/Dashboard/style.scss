@@ -1,0 +1,49 @@
+.dashboard {
+  margin-top: 90px;
+
+  &__title {
+    & button {
+      margin-bottom: 10px;
+      margin-left: 20px;
+      border-radius: 10px;
+      padding: 2px 15px;
+      border: 1px solid map-get($COLOR-PALETTE, error);
+      color: map-get($COLOR-PALETTE, error);
+      background-color: transparent;
+      font-size: 0.5em;
+      cursor: pointer;
+    }
+
+    & h1 {
+      text-align: center;
+      background-color: map-get($COLOR_PALETTE, sec);
+      border: 1px solid map-get($COLOR-PALETTE, sec);
+      width: 50%;
+      border-radius: 20px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: map-get($COLOR-PALETTE, font);
+
+      @include mobile-design {
+        width: 95%;
+        font-size: 1.5em;
+      }
+
+      & i {
+        margin-right: 10px;
+        padding: 20px 0px;
+      }
+    }
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}

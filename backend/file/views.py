@@ -64,6 +64,13 @@ class FileViewSet(
         """
         Upload a file
         """
+
+        if setting.DISABLE_UPLOAD:
+            return Response(
+                {"detail": "Upload is disabled"},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 

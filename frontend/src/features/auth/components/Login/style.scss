@@ -1,0 +1,93 @@
+.login {
+  padding-top: 70px;
+  color: map-get($COLOR-PALETTE, font);
+  height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  &__frame {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    background-color: map-get($COLOR-PALETTE, ter);
+    border-radius: 10px;
+    border: 1px solid map-get($COLOR-PALETTE, prim);
+    position: relative;
+
+    @include mobile-design {
+      padding: 20px;
+    }
+
+    &__password-loader {
+      .lds-ring {
+        width: 20px;
+        position: absolute;
+      }
+    }
+
+    &__error {
+      border: 1px solid map-get($COLOR-PALETTE, error);
+      color: map-get($COLOR-PALETTE, error);
+      margin: 0px;
+      padding: 0px;
+      font-size: 0.7em;
+      max-width: 200px;
+      padding: 4px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin: 20px auto;
+      margin-bottom: 0px;
+    }
+
+    &__mention {
+      border: 1px solid map-get($COLOR-PALETTE, prim);
+      padding: 10px;
+      line-height: 1.3em;
+      max-width: 210px;
+      border-radius: 10px;
+      margin: 20px auto;
+      margin-top: 0px;
+      @include medium-shadow;
+
+      & a {
+        color: map-get($COLOR-PALETTE, font3);
+      }
+    }
+
+    &__forget {
+      position: relative;
+      margin: 0 auto;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.7em;
+
+      & button {
+        margin-left: 10px;
+        border: 1px solid map-get($COLOR-PALETTE, font3);
+        color: map-get($COLOR-PALETTE, font3);
+        background-color: transparent;
+        border-radius: 10px;
+        padding: 3px;
+        cursor: pointer;
+      }
+    }
+
+    & a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    & h1 {
+      margin: 0px;
+      margin-bottom: 20px;
+
+      & i {
+        padding-right: 15px;
+      }
+    }
+  }
+}

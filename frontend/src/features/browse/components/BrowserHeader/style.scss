@@ -1,0 +1,54 @@
+.browser-header {
+  display: flex;
+  background-color: map-get($COLOR-PALETTE, ter);
+  color: map-get($COLOR-PALETTE, font);
+  border-radius: 7px 7px 0px 0px;
+  border: 1px solid map-get($COLOR-PALETTE, prim);
+  margin: 0 auto;
+  padding-left: 20px;
+
+  & span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 10px;
+    background-color: #1c2327;
+    padding: 10px;
+    padding-left: 10px;
+    padding-left: 10px;
+    min-height: 20px;
+    border-radius: 10px;
+    max-height: 30px;
+    animation: 300ms appear-slowly normal;
+    width: 70%;
+    text-align: left;
+    overflow: hidden;
+  }
+
+  @include mobile-design {
+    padding-left: 5px;
+  }
+
+  &__button {
+    margin: 0px;
+    margin-right: 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: transparent;
+
+    & i {
+      font-size: 1.5em;
+      color: map-get($COLOR-PALETTE, font);
+    }
+
+    @include mobile-design {
+      margin-right: 5px;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.tag-editor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+
+  & input {
+    background-color: map-get($COLOR-PALETTE, prim);
+    border: 1px solid map-get($COLOR-PALETTE, sec);
+    color: map-get($COLOR-PALETTE, font);
+    padding-left: 10px;
+    border-radius: 10px 0px 0px 10px;
+    font-size: 0.9em;
+    height: 30px;
+    width: 40%;
+
+    @include mobile-design {
+      width: 80%;
+      height: 40px;
+    }
+  }
+
+  &__button {
+    color: map-get($COLOR-PALETTE, font);
+    border: 0px;
+    height: 30px;
+    width: 30px;
+
+    &--valid {
+      background-color: map-get($COLOR-PALETTE, font4);
+    }
+
+    &--erase {
+      border-radius: 0px 10px 10px 0px;
+      background-color: map-get($COLOR-PALETTE, error);
+    }
+
+    @include mobile-design {
+      height: 40px;
+    }
+  }
+}

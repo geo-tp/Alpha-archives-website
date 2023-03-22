@@ -1,0 +1,44 @@
+.button-nav {
+  border: none;
+  text-decoration: none;
+  // color: darken(map-get($COLOR_PALETTE, font3), 10%);
+  background-color: transparent;
+  font-weight: bold;
+  border-radius: 15px;
+  margin-left: 20px;
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  z-index: 10;
+  color: map-get($COLOR-PALETTE, font);
+  border: 2px solid map-get($COLOR-PALETTE, prim);
+  @include medium-shadow;
+  @include mobile-design {
+    font-size: 0.7em;
+    margin-left: 10px;
+    padding: 5px;
+  }
+
+  & i {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  &--home {
+    margin-left: 0;
+    border-radius: 7px;
+    padding: 5%;
+  }
+
+  &--colored {
+    background-color: map-get($COLOR-PALETTE, font4);
+    box-shadow: none;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    & i {
+      margin: 0px;
+      font-size: 1.2em;
+    }
+  }
+}

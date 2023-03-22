@@ -1,0 +1,36 @@
+.form-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+
+  & label {
+    text-align: left;
+    font-size: 0.7em;
+  }
+
+  & div {
+    max-width: 250px;
+    margin-bottom: 20px;
+
+    & input {
+      background-color: map-get($COLOR-PALETTE, prim);
+      border: 1px solid map-get($COLOR-PALETTE, sec);
+      color: map-get($COLOR-PALETTE, font);
+      margin-top: 10px;
+      padding-left: 10px;
+
+      height: 40px;
+      border-radius: 5px;
+    }
+  }
+
+  & button {
+    margin-top: 10px;
+    margin-right: 0px;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: map-get($COLOR-PALETTE, font4);
+  }
+}

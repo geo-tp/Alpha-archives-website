@@ -88,9 +88,7 @@ export const Lightbox = () => {
         <TagsApplied tags={browserState.selectedMedia?.tags || []} />
         {browserState.isTagApplicatorOpen && <TagApplicator />}
       </div>
-      <div className="light-box__image-container">
-        <Magnifier image={browserState.selectedMedia?.image_raw} />
-      </div>
+      <Magnifier image={browserState.selectedMedia?.image_raw} />
 
       <button
         className="light-box__arrow  light-box__arrow--right"

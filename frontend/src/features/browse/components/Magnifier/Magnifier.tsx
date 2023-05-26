@@ -117,7 +117,7 @@ export const Magnifier = (props: { image: string }) => {
 
   return (
     <div
-      className="main-image-box__image-container"
+      className="magnifier"
       onMouseDown={(e) => onMouseDown(e)}
       onMouseUp={(e) => onMouseUp(e)}
       onMouseMove={(e) => onMouseMove(e)}

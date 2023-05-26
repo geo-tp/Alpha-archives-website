@@ -1,12 +1,9 @@
 import { API_URL, APPLIED_TAG_ROUTE } from "../config/api";
-import { HeadersManager } from "../utils/headers";
+import { fetchJson } from "./fetchJson";
 
 export const deleteAppliedTag = async (tagId: number) => {
-  const headers = HeadersManager.getHeaders();
-  const params = { method: "DELETE", headers };
   const url = API_URL + APPLIED_TAG_ROUTE + tagId;
-
-  const res = await fetch(url, params);
+  const res = await fetchJson(url, "DELETE");
 
   return res;
 };

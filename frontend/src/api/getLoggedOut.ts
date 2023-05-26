@@ -2,13 +2,10 @@ import { resetUserProfile } from "../store/slices/user/actions";
 import { getDisconnectedSuccess } from "../store/slices/auth/actions";
 import { store } from "../store/index";
 import { API_URL, LOGOUT_ROUTE } from "../config/api";
-import { HeadersManager } from "../utils/headers";
+import { fetchJson } from "./fetchJson";
 
 export const getLoggedOut = async () => {
-  const headers = HeadersManager.getHeaders();
-  const params = { method: "POST", headers };
-
-  const res = await fetch(API_URL + LOGOUT_ROUTE, params);
+  const res = await fetchJson(API_URL + LOGOUT_ROUTE, "POST");
   store.dispatch(getDisconnectedSuccess());
   store.dispatch(resetUserProfile());
 

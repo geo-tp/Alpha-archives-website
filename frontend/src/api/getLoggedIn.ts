@@ -2,12 +2,10 @@ import {
   getConnected,
   getConnectedSuccess,
   getConnectedError,
-  getDisconnectedSuccess,
 } from "../store/slices/auth/actions";
 import { API_URL, LOGIN_ROUTE } from "../config/api";
-import { HeadersManager } from "../utils/headers";
-import { CookieManager } from "../utils/cookie";
 import { store } from "../store";
+import { fetchJson } from "./fetchJson";
 
 export const getLoggedIn = async (variables: {
   username: string;
@@ -16,23 +14,13 @@ export const getLoggedIn = async (variables: {
   const username = variables.username;
   const password = variables.password;
 
-  const headers = HeadersManager.getHeaders();
-  const params = {
-    headers,
-    method: "POST",
-    body: JSON.stringify({ username, password }),
-  };
-
   try {
     store.dispatch(getConnected(username, password));
 
-    const res = await fetch(API_URL + LOGIN_ROUTE, params);
-
-    if (res.status === 401) {
-      CookieManager.deleteAuthData();
-      HeadersManager.removeAuthorization();
-      store.dispatch(getDisconnectedSuccess());
-    }
+    const res = await fetchJson(API_URL + LOGIN_ROUTE, "POST", {
+      username,
+      password,
+    });
 
     if (res.status === 200) {
       const json_res = await res.json();

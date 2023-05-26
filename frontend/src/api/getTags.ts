@@ -1,13 +1,10 @@
 import { setBrowserTags } from "./../features/browse/store/actions";
 import { API_URL, TAG_ROUTE } from "../config/api";
 import { store } from "../store";
-import { HeadersManager } from "../utils/headers";
+import { fetchJson } from "./fetchJson";
 
 export const getTags = async () => {
-  const headers = HeadersManager.getHeaders();
-  const params = { headers, method: "GET" };
-
-  const res = await fetch(API_URL + TAG_ROUTE, params);
+  const res = await fetchJson(API_URL + TAG_ROUTE, "GET");
 
   if (res.status === 200) {
     const jsonRes = await res.json();

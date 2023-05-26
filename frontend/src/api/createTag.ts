@@ -1,15 +1,7 @@
 import { API_URL, TAG_ROUTE } from "../config/api";
-import { HeadersManager } from "../utils/headers";
+import { fetchJson } from "./fetchJson";
 
 export const createTag = async (tagName: string) => {
-  const headers = HeadersManager.getHeaders();
-  const params = {
-    headers,
-    method: "POST",
-    body: JSON.stringify({ name: tagName }),
-  };
-
-  const res = await fetch(API_URL + TAG_ROUTE, params);
-
+  const res = await fetchJson(API_URL + TAG_ROUTE, "POST", { name: tagName });
   return res.json();
 };

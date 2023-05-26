@@ -11,10 +11,13 @@ export const getFilesByTags = async (tags: TagType[]) => {
 
   if (res.status === 200) {
     const files = await res.json();
-    store.dispatch(setBrowserFiles(files.body));
+
+    store.dispatch(setBrowserFiles(files.body ? files.body : []));
     store.dispatch(
       setBrowserMedia(
-        files.body.filter((file: MediaType) => file.is_folder === false)
+        files.body
+          ? files.body.filter((file: MediaType) => file.is_folder === false)
+          : []
       )
     );
 

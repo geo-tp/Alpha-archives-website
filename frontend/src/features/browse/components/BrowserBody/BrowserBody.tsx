@@ -22,6 +22,9 @@ export const BrowserBody = (props: BrowserBodyProps) => {
             handleMediaClick={props.handleMediaClick}
           />
         ))}
+      {browserState.files?.length === 0 && (
+        <p className="browser-body__no-results"> "¯\_(ツ)_/¯" No results</p>
+      )}
       {props.isLoading && <Loader />}
     </div>
   );

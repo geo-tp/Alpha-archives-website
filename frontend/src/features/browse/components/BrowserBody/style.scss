@@ -11,6 +11,10 @@
   border: 1px solid map-get($COLOR-PALETTE, prim);
   border-radius: 0px 0px 10px 10px;
 
+  &__no-results {
+    font-size: 1.6em;
+    color: map-get($COLOR-PALETTE, font);
+  }
   @include mobile-design {
     height: calc(100vh - 132px);
   }

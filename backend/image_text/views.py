@@ -7,9 +7,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
 
-# OCR ENDOINTS - IMAGE TO TEXT
-# THIS IS ONLY USED TO PARSE IMAGE VIA GOOGLE COLAB AND SAVE RESULTS WITH THIS ENDPOINT
-# You can send : {image_hash: string, content: string} with the permission token below
+# OCR ENDOINT - IMAGE TO TEXT
+# THIS IS ONLY USED TO PARSE IMAGE VIA GOOGLE COLAB AND SAVE RESULTS
+# You can send on this endpoint : {image_hash: string, content: string, token: string} with the permission token below
 TOKEN = "9x3l2jHJfJ0efSzk3lf4zhaA"
 
 

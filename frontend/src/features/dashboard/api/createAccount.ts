@@ -1,15 +1,8 @@
 import { API_URL, GENERATE_ACCOUNT } from "./../../../config/api";
-import { HeadersManager } from "../../../utils/headers";
+import { fetchJson } from "../../../api/fetchJson";
 
 export const createAccount = async (username: string) => {
-  const headers = HeadersManager.getHeaders();
-  const params = {
-    headers,
-    method: "POST",
-    body: JSON.stringify({ username }),
-  };
-
-  const res = await fetch(API_URL + GENERATE_ACCOUNT, params);
+  const res = await fetchJson(API_URL + GENERATE_ACCOUNT, "POST", { username });
 
   return res.json();
 };

@@ -1,10 +1,8 @@
+import { fetchJson } from "../../../api/fetchJson";
 import { API_URL, RANDOM_SCREENSHOT_ROUTE } from "../../../config/api";
-import { HeadersManager } from "../../../utils/headers";
 
 export const fetchRandomScreenshot = async () => {
-  const headers = HeadersManager.getHeaders();
-  const params = { headers, method: "GET" };
-  const res = await fetch(API_URL + RANDOM_SCREENSHOT_ROUTE, params);
+  const res = await fetchJson(API_URL + RANDOM_SCREENSHOT_ROUTE, "GET");
 
   return res.json();
 };

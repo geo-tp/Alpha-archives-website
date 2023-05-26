@@ -7,6 +7,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
 
+# OCR ENDOINTS - IMAGE TO TEXT
+# THIS IS ONLY USED TO PARSE IMAGE VIA GOOGLE COLAB AND SAVE RESULTS WITH THIS ENDPOINT
+# You can send : {image_hash: string, content: string} with the permission token below
+TOKEN = "9x3l2jHJfJ0efSzk3lf4zhaA"
+
 
 class ImageTextViewSet(viewsets.ModelViewSet):
     queryset = ImageText.objects.all()
@@ -15,7 +20,7 @@ class ImageTextViewSet(viewsets.ModelViewSet):
     serializer_class = ImageTextSerializer
 
     def create(self, request, *args, **kwargs):
-        if request.data.get("token") != "1232HJJefzklfzhLH":
+        if request.data.get("token") != TOKEN:
             return Response({"status": 403}, status=403)
 
         serializer = self.get_serializer(data=request.data)

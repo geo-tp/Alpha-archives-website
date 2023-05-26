@@ -1,7 +1,7 @@
-from ParserManager import ParserManager
+from Parser import Parser
 
 if __name__ == "__main__":
-    parser = ParserManager()
+    parser = Parser()
 
     print("STARTING DATABASE BUILD")
     parser.build_archives_database()

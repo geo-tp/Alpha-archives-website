@@ -10,7 +10,7 @@ from shutil import rmtree
 from os import mkdir
 
 
-class ImageManager:
+class Img:
     counter = 1
 
     @classmethod

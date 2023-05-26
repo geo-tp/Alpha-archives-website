@@ -2,7 +2,7 @@ import mysql.connector
 import constants
 
 
-class DatabaseManager:
+class Database:
     def __init__(self):
         self.database = mysql.connector.connect(
             host="localhost", user="root", password="pwd"

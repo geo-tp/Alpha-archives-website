@@ -3,13 +3,13 @@ import os
 import glob
 from PIL import Image
 import imagehash
-from DatabaseManager import DatabaseManager
-from ImageManager import ImageManager
+from Database import Database
+from Img import Img
 import constants
 
 
-class ParserManager:
-    DATABASE = DatabaseManager()
+class Parser:
+    DATABASE = Database()
     elements_count = 0
 
     def count_elements(self):
@@ -70,8 +70,8 @@ class ParserManager:
                     parent = self.extract_parent_folder_from_path(path)
                     is_folder = False
                     image_id = self.DATABASE.get_last_inserted_id()
-                    thumbnail = ImageManager.make_thumbnail(path)
-                    thumbnail_path = ImageManager.save_thumbnail(thumbnail)
+                    thumbnail = Img.make_thumbnail(path)
+                    thumbnail_path = Img.save_thumbnail(thumbnail)
 
                     # image file is saved to database
                     self.save_element_to_database(
@@ -107,9 +107,6 @@ class ParserManager:
     def get_image_hash(self, image_path):
         return str(imagehash.average_hash(Image.open(image_path)))
 
-    # def save_image_hash(self, image_path, image_hash):
-    #     self.DATABASE.add_image_and_hash(image_path, str(image_hash))
-
     def save_element_to_database(
         self,
         filename,
@@ -125,7 +122,7 @@ class ParserManager:
 
     def build_archives_database(self):
         self.DATABASE.remove_table_rows(constants.ELEMENT_TABLE_NAME)
-        ImageManager.delete_all_thumbnail_files()
+        Img.delete_all_thumbnail_files()
         parents_and_directories = self.find_all_directories(constants.FULL_PATH)
         items_count = self.count_elements() + len(parents_and_directories)
 

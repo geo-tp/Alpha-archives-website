@@ -7,7 +7,7 @@ import { HeadersManager } from "../../../utils/headers";
 export const getFiles = async (folderName: string) => {
   const headers = HeadersManager.getHeaders();
   const params = { method: "GET", headers };
-  const url = `${API_URL}${FILE_ROUTE}?parent=${folderName}&ordering=name`;
+  const url = `${API_URL}${FILE_ROUTE}?parent=${folderName}&ordering=filename`;
 
   const res = await fetch(url, params);
 

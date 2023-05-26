@@ -7,7 +7,6 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.core.files.storage import default_storage
 from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
 from django.core.files.base import ContentFile
 import django_filters.rest_framework
 from rest_framework import viewsets
@@ -57,7 +56,6 @@ class FileViewSet(
     def generate_image_hash(self, image_path):
         return imagehash.average_hash(Img.open(image_path))
 
-    @method_decorator(cache_page(60 * 60 * 24))  # 24hours cache
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 

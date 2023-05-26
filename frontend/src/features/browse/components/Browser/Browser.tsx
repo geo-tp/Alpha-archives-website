@@ -42,14 +42,15 @@ export const Browser = () => {
     const dir = browserState.currentPath;
 
     var parent: string | undefined = "";
-    parent = dir.pop();
+    parent = dir[dir.length - 2];
+    var newPath = dir.slice(0, -1);
 
     if (parent === undefined) {
       parent = "root";
     }
 
     filesMutation.mutate(parent);
-    dispatch(setCurrentPath([...dir, parent]));
+    dispatch(setCurrentPath(newPath.length ? newPath : [parent]));
   };
   const handleTagClick = () => {};
   const handleRemoveTagClick = () => {};

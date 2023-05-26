@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
+    "django_filters",
     "generic",
     "user",
     "authentication",
     "tag",
     "file",
+    "image_text",
 ]
 
 REST_FRAMEWORK = {
@@ -186,10 +188,10 @@ if not EMAIL_HOST_PASSWORD or not EMAIL_HOST_USER:
 
 # Media config for images
 
-MEDIA_HOST_URL = "https://localhost:8000"
-MEDIA_URL = ""
+MEDIA_HOST_URL = "https://archive.thelphaproject.eu/"
+MEDIA_URL = "media/"
 INCOMING_URL = "incoming/"
-INCOMING_ROOT = str(BASE_DIR) + "/media/incoming/"
+INCOMING_ROOT = str(BASE_DIR) + MEDIA_URL + INCOMING_URL
 MEDIA_ROOT = str(BASE_DIR) + MEDIA_URL
 
 IMAGE_THUMBNAIL_WIDTH = 200  # px for auto generated thumbnail (generic img, see utils/database_builder config for modify screenshot thumbnail)

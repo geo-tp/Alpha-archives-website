@@ -9,7 +9,6 @@ import constants
 
 
 class ParserManager:
-
     DATABASE = DatabaseManager()
     elements_count = 0
 
@@ -22,11 +21,10 @@ class ParserManager:
         return count
 
     def truncate_path(self, path):
-
         list_path = path.split("/")
-        index = list_path.index(constants.MEDIA_FOLDER[1:])
+        index = list_path.index(constants.MEDIA_FOLDER[:-1])
 
-        return "/" + "/".join(list_path[index:])
+        return "/" + "/".join(list_path[index + 1 :])
 
     def extract_filename_from_path(self, path):
         return path.split("/")[-1]
@@ -38,7 +36,6 @@ class ParserManager:
         return filename.replace(" ", "_")
 
     def find_all_directories(self, path):
-
         root_directories = [
             [directory, self.truncate_path(path), "root", 0]
             for directory in os.listdir(path[0:-1])
@@ -51,7 +48,6 @@ class ParserManager:
         return root_directories + subdirectories
 
     def find_all_subdirectories(self, path, tab):
-
         for item in os.listdir(path):
             full_dir_path = path + item
             if os.path.isdir(full_dir_path):
@@ -75,9 +71,7 @@ class ParserManager:
                     is_folder = False
                     image_id = self.DATABASE.get_last_inserted_id()
                     thumbnail = ImageManager.make_thumbnail(path)
-                    thumbnail_path = (
-                        constants.MEDIA_FOLDER + ImageManager.save_thumbnail(thumbnail)
-                    )
+                    thumbnail_path = ImageManager.save_thumbnail(thumbnail)
 
                     # image file is saved to database
                     self.save_element_to_database(

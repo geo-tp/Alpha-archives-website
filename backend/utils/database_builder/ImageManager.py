@@ -11,7 +11,6 @@ from os import mkdir
 
 
 class ImageManager:
-
     counter = 1
 
     @classmethod

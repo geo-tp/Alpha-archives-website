@@ -16,12 +16,12 @@ VALID_EXT = [
     "SVG",
 ]
 
-THUMBNAIL_WIDTH = 120
-MEDIA_FOLDER = "/media"
-THUMBNAIL_FOLDER = "/thumbnail/"
-ICONS_FOLDER = "/icons/"
-ARCHIVE_FOLDER = "/Alpha-Project-Archive/"
-ROOT_PATH = str(Path(sys.path[0]).parent.parent)
+THUMBNAIL_WIDTH = 180
+MEDIA_FOLDER = "media/"  # Django auto add media/ to url
+THUMBNAIL_FOLDER = "thumbnail/"
+ICONS_FOLDER = "icons/"
+ARCHIVE_FOLDER = "Alpha-Project-Archive/"
+ROOT_PATH = str(Path(sys.path[0]).parent.parent) + "/"
 THUMBNAIL_PATH = ROOT_PATH + MEDIA_FOLDER + THUMBNAIL_FOLDER
 ICONS_PATH = ROOT_PATH + MEDIA_FOLDER + ICONS_FOLDER
 FULL_PATH = ROOT_PATH + MEDIA_FOLDER + ARCHIVE_FOLDER

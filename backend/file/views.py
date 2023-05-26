@@ -24,6 +24,8 @@ from rest_framework.decorators import action
 from tag.serializers import CustomAppliedTagSerializer
 from tag.models import AppliedTag, Tag
 from file.serializers import FileSerializer
+from image_text.serializers import ImageTextSerializer
+from image_text.models import ImageText
 from django.conf import settings
 
 
@@ -33,7 +35,6 @@ class FileViewSet(
     mixins.ListModelMixin,
     viewsets.GenericViewSet,
 ):
-
     queryset = File.objects.all()
     pagination_class = None
     serializer_class = FileSerializer
@@ -55,8 +56,8 @@ class FileViewSet(
 
     def generate_image_hash(self, image_path):
         return imagehash.average_hash(Img.open(image_path))
-    
-    @method_decorator(cache_page(60*60*24)) # 24hours cache
+
+    @method_decorator(cache_page(60 * 60 * 24))  # 24hours cache
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
@@ -132,6 +133,44 @@ class FileViewSet(
         api_response = format_api_response(status=status.HTTP_200_OK, content=data)
 
         return Response(status=status.HTTP_200_OK, data=data)
+
+    @action(
+        methods=["get"],
+        detail=False,
+    )
+    def search_by_keywords(self, request):
+        """
+        Find screenshots by filtering with screen rendered text
+        """
+        keywords = request.query_params.get("k", None)
+        splitted_keywords = []
+        texts = []
+
+        if keywords:
+            texts = ImageText.objects.filter(content__icontains=keywords)
+
+        # If nothing found, we will spit keywords if possible
+        if not texts and " " in keywords:
+            splitted_keywords = keywords.split(" ")
+            texts = ImageText.objects.filter(content__icontains=splitted_keywords[0])
+            splitted_keywords = splitted_keywords[1:]
+
+            for word in splitted_keywords:
+                texts = texts.filter(content__icontains=word)
+
+        found_hashes = []
+        for text in texts:
+            found_hashes.append(text.image_hash)
+
+        files = self.queryset.filter(image_hash__in=found_hashes)
+        serializer = self.get_serializer(files, many=True)
+
+        api_response = format_api_response(
+            status=status.HTTP_200_OK,
+            content=serializer.data[:500],
+        )
+
+        return Response(api_response, status=status.HTTP_200_OK)
 
     @action(
         methods=["post"],

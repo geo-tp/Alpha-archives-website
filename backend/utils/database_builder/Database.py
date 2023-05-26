@@ -1,11 +1,13 @@
 import mysql.connector
-import constants
+import config
 
 
 class Database:
     def __init__(self):
         self.database = mysql.connector.connect(
-            host="localhost", user="root", password="pwd"
+            host=config.DATABASE_HOST,
+            user=config.DATABASE_USER,
+            password=config.DATABASE_PASSWORD,
         )
 
         self.cursor = self.database.cursor()
@@ -14,14 +16,14 @@ class Database:
         return self.cursor.lastrowid
 
     def remove_table_rows(self, table_name):
-        sql = f"DELETE from {constants.DATABASE_NAME}.{table_name};"
+        sql = f"DELETE from {config.DATABASE_NAME}.{table_name};"
 
         self.cursor.execute(sql)
 
     def add_element(
         self, filename, parent, is_folder, image_path, thumbnail_path, image_hash
     ):
-        sql = f"INSERT INTO {constants.DATABASE_NAME}.{constants.ELEMENT_TABLE_NAME} ( parent, filename, is_folder, image_raw, image_thumbnail, image_hash) VALUES(%s, %s, %s, %s, %s, %s)"
+        sql = f"INSERT INTO {config.DATABASE_NAME}.{config.ELEMENT_TABLE_NAME} ( parent, filename, is_folder, image_raw, image_thumbnail, image_hash) VALUES(%s, %s, %s, %s, %s, %s)"
         val = (parent, filename, is_folder, image_path, thumbnail_path, image_hash)
 
         self.cursor.execute(sql, val)

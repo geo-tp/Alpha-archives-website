@@ -5,7 +5,7 @@ from PIL import Image
 import imagehash
 from Database import Database
 from Img import Img
-import constants
+import config
 
 
 class Parser:
@@ -14,15 +14,15 @@ class Parser:
 
     def count_elements(self):
         count = 0
-        for ext in constants.VALID_EXT:
-            for path in glob.iglob(constants.FULL_PATH + f"**/*.{ext}", recursive=True):
+        for ext in config.VALID_EXT:
+            for path in glob.iglob(config.FULL_PATH + f"**/*.{ext}", recursive=True):
                 count += 1
 
         return count
 
     def truncate_path(self, path):
         list_path = path.split("/")
-        index = list_path.index(constants.MEDIA_FOLDER[:-1])
+        index = list_path.index(config.MEDIA_FOLDER[:-1])
 
         return "/" + "/".join(list_path[index + 1 :])
 
@@ -40,7 +40,7 @@ class Parser:
             [directory, self.truncate_path(path), "root", 0]
             for directory in os.listdir(path[0:-1])
             if os.path.isdir(path + directory)
-            and directory not in constants.IGNORED_DIRECTORIES
+            and directory not in config.IGNORED_DIRECTORIES
         ]
 
         subdirectories = self.find_all_subdirectories(path, [])
@@ -61,8 +61,8 @@ class Parser:
 
     def create_elements(self, items_count):
         # # CREATE ELEMENT FILES
-        for ext in constants.VALID_EXT:
-            for path in glob.iglob(constants.FULL_PATH + f"**/*.{ext}", recursive=True):
+        for ext in config.VALID_EXT:
+            for path in glob.iglob(config.FULL_PATH + f"**/*.{ext}", recursive=True):
                 try:
                     image_path = self.truncate_path(path)
                     image_hash = self.get_image_hash(path)
@@ -121,9 +121,9 @@ class Parser:
         )
 
     def build_archives_database(self):
-        self.DATABASE.remove_table_rows(constants.ELEMENT_TABLE_NAME)
+        self.DATABASE.remove_table_rows(config.ELEMENT_TABLE_NAME)
         Img.delete_all_thumbnail_files()
-        parents_and_directories = self.find_all_directories(constants.FULL_PATH)
+        parents_and_directories = self.find_all_directories(config.FULL_PATH)
         items_count = self.count_elements() + len(parents_and_directories)
 
         self.create_elements(items_count)

@@ -4,7 +4,7 @@ from PIL import Image
 from rest_framework.response import Response
 from django.http import HttpResponse
 import sys
-from constants import THUMBNAIL_PATH, THUMBNAIL_FOLDER, THUMBNAIL_WIDTH
+from config import THUMBNAIL_PATH, THUMBNAIL_FOLDER, THUMBNAIL_WIDTH
 from random import choice
 from shutil import rmtree
 from os import mkdir

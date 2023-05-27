@@ -18,7 +18,7 @@ VALID_EXT = [
 
 THUMBNAIL_WIDTH = 180
 
-MEDIA_FOLDER = "media/"  # Django auto add media/ to url
+MEDIA_FOLDER = "media/"
 THUMBNAIL_FOLDER = "thumbnail/"
 ICONS_FOLDER = "icons/"
 ARCHIVE_FOLDER = "Alpha-Project-Archive/"

@@ -4,4 +4,4 @@ export const ACCEPTED_MIME_TYPES = [
   "image/png",
   "image/gif",
 ];
-export const DISABLE_UPLOAD = false;
+export const DISABLE_UPLOAD = true;

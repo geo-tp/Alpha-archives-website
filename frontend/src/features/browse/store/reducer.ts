@@ -24,7 +24,6 @@ export const browserReducer = (
   var newMediaFiles = [] as MediaType[];
   var newFiles = [] as MediaType[];
   var newSelectedMedia = {} as MediaType;
-  var fileToAdd = {} as MediaType;
 
   switch (action.type) {
     case SET_FILES:

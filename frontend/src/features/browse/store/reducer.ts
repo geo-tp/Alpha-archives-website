@@ -23,6 +23,7 @@ export const browserReducer = (
   var newMediaFiles = [] as MediaType[];
   var newFiles = [] as MediaType[];
   var newSelectedMedia = {} as MediaType;
+  var fileToAdd = {} as MediaType;
 
   switch (action.type) {
     case SET_FILES:
@@ -58,16 +59,27 @@ export const browserReducer = (
       );
 
       newSelectedMedia = { ...state.selectedMedia, tags: filteredTags };
-      newMediaFiles = state.media.filter(
-        (media) => media.id !== newSelectedMedia.id
-      );
-      newFiles = state.files.filter((file) => file.id !== newSelectedMedia.id);
+      newMediaFiles = [];
+      newFiles = [];
+
+      for (let file of state.files) {
+        fileToAdd = file;
+
+        if (file.id === newSelectedMedia.id) {
+          fileToAdd = newSelectedMedia;
+        } else {
+          fileToAdd = file;
+        }
+
+        newFiles.push(fileToAdd);
+        if (!fileToAdd.is_folder) newMediaFiles.push(fileToAdd);
+      }
 
       return {
         ...state,
         selectedMedia: newSelectedMedia,
-        media: [...newMediaFiles, newSelectedMedia],
-        files: [...newFiles, newSelectedMedia],
+        media: newMediaFiles,
+        files: newFiles,
       };
 
     case ADD_FILE_TAG:
@@ -77,15 +89,27 @@ export const browserReducer = (
 
       const tags = [...state.selectedMedia.tags, action.payload];
       newSelectedMedia = { ...state.selectedMedia, tags: tags };
-      newMediaFiles = state.media.filter(
-        (media) => media.id !== state.selectedMedia?.id
-      );
-      newFiles = state.files.filter((file) => file.id !== newSelectedMedia.id);
+      newMediaFiles = [];
+      newFiles = [];
+
+      for (let file of state.files) {
+        fileToAdd = file;
+
+        if (file.id === newSelectedMedia.id) {
+          fileToAdd = newSelectedMedia;
+        } else {
+          fileToAdd = file;
+        }
+
+        newFiles.push(fileToAdd);
+        if (!fileToAdd.is_folder) newMediaFiles.push(fileToAdd);
+      }
 
       return {
         ...state,
         selectedMedia: newSelectedMedia,
-        media: [...newMediaFiles, newSelectedMedia],
+        media: newMediaFiles,
+        files: newFiles,
       };
 
     default:

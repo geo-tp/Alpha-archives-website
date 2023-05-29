@@ -22,7 +22,7 @@ export const BrowserBody = (props: BrowserBodyProps) => {
             handleMediaClick={props.handleMediaClick}
           />
         ))}
-      {browserState.files?.length === 0 && (
+      {browserState.files?.length === 0 && !props.isLoading && (
         <p className="browser-body__no-results"> "¯\_(ツ)_/¯" No results</p>
       )}
       {props.isLoading && <Loader />}

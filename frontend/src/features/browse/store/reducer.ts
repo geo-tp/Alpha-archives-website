@@ -1,3 +1,4 @@
+import { MediaType } from "./../../../types/index";
 import {
   ADD_FILE_TAG,
   REMOVE_FILE_TAG,
@@ -19,6 +20,10 @@ export const browserReducer = (
   state = browserDefaultState,
   action: AnyAction
 ) => {
+  var newMediaFiles = [] as MediaType[];
+  var newFiles = [] as MediaType[];
+  var newSelectedMedia = {} as MediaType;
+
   switch (action.type) {
     case SET_FILES:
       return { ...state, files: action.payload };
@@ -42,22 +47,46 @@ export const browserReducer = (
       return { ...state, searchKeywords: action.payload };
 
     case REMOVE_FILE_TAG:
-      const currentMedia = state.selectedMedia;
-      const mediaTags = currentMedia?.tags || [];
+      if (!state.selectedMedia) {
+        return { ...state };
+      }
+
+      const mediaTags = state.selectedMedia?.tags || [];
       const tagToRemove = action.payload;
       const filteredTags = mediaTags.filter(
         (applyedTag) => applyedTag.id !== tagToRemove.id
       );
 
-      const updatedMedia = { ...currentMedia, tags: filteredTags };
+      newSelectedMedia = { ...state.selectedMedia, tags: filteredTags };
+      newMediaFiles = state.media.filter(
+        (media) => media.id !== newSelectedMedia.id
+      );
+      newFiles = state.files.filter((file) => file.id !== newSelectedMedia.id);
 
-      return { ...state, selectedMedia: updatedMedia };
+      return {
+        ...state,
+        selectedMedia: newSelectedMedia,
+        media: [...newMediaFiles, newSelectedMedia],
+        files: [...newFiles, newSelectedMedia],
+      };
 
     case ADD_FILE_TAG:
-      const media = state.selectedMedia;
-      const tags = [...(media?.tags || []), action.payload];
+      if (!state.selectedMedia) {
+        return { ...state };
+      }
 
-      return { ...state, selectedMedia: { ...media, tags: tags } };
+      const tags = [...state.selectedMedia.tags, action.payload];
+      newSelectedMedia = { ...state.selectedMedia, tags: tags };
+      newMediaFiles = state.media.filter(
+        (media) => media.id !== state.selectedMedia?.id
+      );
+      newFiles = state.files.filter((file) => file.id !== newSelectedMedia.id);
+
+      return {
+        ...state,
+        selectedMedia: newSelectedMedia,
+        media: [...newMediaFiles, newSelectedMedia],
+      };
 
     default:
       return state;

@@ -44,7 +44,7 @@ FRONTEND
 
 DEPLOY
 
-- Change Django secret key located in `backend/main/settings.py`
+- Change Django secret key located in `backend/config/settings.py`
 - Dont forget to add your domain name in ```/backend/alpha_archives/settings.py```  ```ALLOWED_HOSTS=["yourDomain.com"]```
 - Serve Django API with gunicorn
 - Make react build with ```npm run build```

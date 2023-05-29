@@ -1,11 +1,11 @@
-import { MediaType, TagType } from "./../../../types/index";
+import { FileType, TagType } from "./../../../types/index";
 
 type browserDefaultStateType = {
-  files: MediaType[];
-  media: MediaType[];
+  files: FileType[];
+  media: FileType[];
   tags: TagType[];
   searchTags: TagType[];
-  selectedMedia: MediaType | null;
+  selectedMedia: FileType | null;
   currentPath: string[];
   isLightboxOpen: boolean;
   isTagApplicatorOpen: boolean;

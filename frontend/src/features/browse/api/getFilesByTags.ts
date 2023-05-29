@@ -1,6 +1,6 @@
 import { setBrowserFiles, setBrowserMedia } from "./../store/actions";
 import { API_URL, SEARCH_BY_TAGS } from "./../../../config/api";
-import { TagType, MediaType } from "./../../../types/index";
+import { TagType, FileType } from "./../../../types/index";
 import { store } from "../../../store";
 import { fetchJson } from "../../../api/fetchJson";
 
@@ -16,7 +16,7 @@ export const getFilesByTags = async (tags: TagType[]) => {
     store.dispatch(
       setBrowserMedia(
         files.body
-          ? files.body.filter((file: MediaType) => file.is_folder === false)
+          ? files.body.filter((file: FileType) => file.is_folder === false)
           : []
       )
     );

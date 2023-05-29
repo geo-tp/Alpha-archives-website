@@ -13,14 +13,14 @@ import {
   SET_TAG_DROPDOWN_IS_OPEN,
   SET_TAG_SEARCH_IS_OPEN,
 } from "./constants";
-import { MediaType } from "../../../types";
+import { FileType } from "../../../types";
 
-export const setBrowserFiles = (files: MediaType[]) => ({
+export const setBrowserFiles = (files: FileType[]) => ({
   type: SET_FILES,
   payload: files,
 });
 
-export const setBrowserMedia = (media: MediaType[]) => ({
+export const setBrowserMedia = (media: FileType[]) => ({
   type: SET_MEDIA,
   payload: media,
 });
@@ -30,7 +30,7 @@ export const setBrowserTags = (tags: TagType[]) => ({
   payload: tags,
 });
 
-export const setSelectedMedia = (media: MediaType) => ({
+export const setSelectedMedia = (media: FileType) => ({
   type: SET_SELECTED_MEDIA,
   payload: media,
 });

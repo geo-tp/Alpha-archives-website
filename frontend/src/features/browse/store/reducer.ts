@@ -1,4 +1,4 @@
-import { MediaType } from "./../../../types/index";
+import { FileType } from "./../../../types/index";
 import {
   ADD_FILE_TAG,
   REMOVE_FILE_TAG,
@@ -21,9 +21,9 @@ export const browserReducer = (
   state = browserDefaultState,
   action: AnyAction
 ) => {
-  var newMediaFiles = [] as MediaType[];
-  var newFiles = [] as MediaType[];
-  var newSelectedMedia = {} as MediaType;
+  var newMediaFiles = [] as FileType[];
+  var newFiles = [] as FileType[];
+  var newSelectedMedia = {} as FileType;
 
   switch (action.type) {
     case SET_FILES:

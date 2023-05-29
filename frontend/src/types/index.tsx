@@ -53,7 +53,7 @@ export type AuthType = {
   expired: boolean;
 };
 
-export type MediaType = {
+export type FileType = {
   id: number;
   parent: string;
   filename: string;

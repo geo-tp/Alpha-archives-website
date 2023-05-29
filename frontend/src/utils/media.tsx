@@ -1,6 +1,6 @@
-import { MediaType } from "../types";
+import { FileType } from "../types";
 
-export const updateFiles = (updatedFile: MediaType, files: MediaType[]) => {
+export const updateFiles = (updatedFile: FileType, files: FileType[]) => {
   const newMedia = [];
   const newFiles = [];
 

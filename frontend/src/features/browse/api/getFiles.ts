@@ -1,4 +1,4 @@
-import { MediaType } from "./../../../types/index";
+import { FileType } from "./../../../types/index";
 import { setBrowserFiles, setBrowserMedia } from "./../store/actions";
 import { API_URL, FILE_ROUTE } from "../../../config/api";
 import { store } from "../../../store";
@@ -14,7 +14,7 @@ export const getFiles = async (folderName: string) => {
     store.dispatch(setBrowserFiles(files));
     store.dispatch(
       setBrowserMedia(
-        files.filter((file: MediaType) => file.is_folder === false)
+        files.filter((file: FileType) => file.is_folder === false)
       )
     );
 

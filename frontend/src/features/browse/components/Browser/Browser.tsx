@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getTags } from "../../../../api/getTags";
 import { ImageBackground } from "../../../../components/ImageBackground";
-import { MediaType } from "../../../../types";
+import { FileType } from "../../../../types";
 import { getFiles } from "../../api/getFiles";
 import {
   setCurrentPath,
@@ -53,7 +53,7 @@ export const Browser = () => {
     dispatch(setCurrentPath(newPath.length ? newPath : [parent]));
   };
 
-  const handleMediaClick = (file: MediaType) => {
+  const handleMediaClick = (file: FileType) => {
     if (file.is_folder) {
       filesMutation.mutate(file.filename);
       dispatch(setCurrentPath([...browserState.currentPath, file.filename]));

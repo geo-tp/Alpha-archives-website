@@ -1,11 +1,11 @@
-import { MediaType } from "../../../../types";
+import { FileType } from "../../../../types";
 
 // Icon for file with no thumbnails
 import divers from "./assets/divers.png";
 import folder from "./assets/folder.png";
 
 type BrowserFileProps = {
-  file: MediaType;
+  file: FileType;
   handleMediaClick: Function;
 };
 

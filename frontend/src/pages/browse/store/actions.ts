@@ -1,4 +1,4 @@
-import { AppliedTagType, TagType } from "./../../../types/index";
+import { AppliedTagType, TagType } from "../../../types/index";
 import {
   ADD_FILE_TAG,
   REMOVE_FILE_TAG,

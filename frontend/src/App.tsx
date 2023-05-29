@@ -1,14 +1,14 @@
-import { Home } from "./features/home";
+import { Home } from "./pages/home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { MainHeader } from "./components/MainHeader";
 import { MainFooter } from "./components/MainFooter";
-import { Upload } from "./features/upload";
-import { Login } from "./features/auth";
+import { Upload } from "./pages/upload";
+import { Login } from "./pages/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "./store/slices/auth/selectors";
-import { Dashboard } from "./features/dashboard";
+import { Dashboard } from "./pages/dashboard";
 import { useEffect } from "react";
-import { Browser } from "./features/browse";
+import { Browser } from "./pages/browse";
 import { RequireAuth, restoreSavedAuth } from "./utils/auth";
 
 function App() {

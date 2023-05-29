@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { forbiddenInputChar } from "../../config/input";
-import { setTagDropdownIsOpen } from "../../features/browse/store/actions";
+import { setTagDropdownIsOpen } from "../../pages/browse/store/actions";
 
 type TagSearchBarType = {
   isDisabled: boolean;

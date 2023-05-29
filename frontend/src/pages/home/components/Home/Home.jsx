@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { fetchRandomScreenshot } from "../../api/getRandomScreenshot";
 import { HomeBanner } from "../HomeBanner";
 import { CardsLink } from "../../../../components/CardsLink";
-import { RandomScreenshot } from "../RandomScreenshot/";
+import { RandomScreenshot } from "../RandomScreenshot";
 import { ScreenshotArticle } from "../ScreenshotArticle";
 
 import sw from "./assets/sw.webp";

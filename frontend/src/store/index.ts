@@ -1,4 +1,4 @@
-import { browserReducer } from "./../features/browse/store/reducer";
+import { browserReducer } from "../pages/browse/store/reducer";
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { authReducer } from "./slices/auth/reducer";
 import { userReducer } from "./slices/user/reducer";

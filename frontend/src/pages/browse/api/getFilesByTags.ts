@@ -1,6 +1,6 @@
-import { setBrowserFiles, setBrowserMedia } from "./../store/actions";
-import { API_URL, SEARCH_BY_TAGS } from "./../../../config/api";
-import { TagType, FileType } from "./../../../types/index";
+import { setBrowserFiles, setBrowserMedia } from "../store/actions";
+import { API_URL, SEARCH_BY_TAGS } from "../../../config/api";
+import { TagType, FileType } from "../../../types/index";
 import { store } from "../../../store";
 import { fetchJson } from "../../../api/fetchJson";
 

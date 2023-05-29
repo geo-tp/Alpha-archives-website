@@ -1,4 +1,4 @@
-import { FileType } from "./../../../types/index";
+import { FileType } from "../../../types/index";
 import {
   ADD_FILE_TAG,
   REMOVE_FILE_TAG,

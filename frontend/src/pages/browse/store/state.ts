@@ -1,4 +1,4 @@
-import { FileType, TagType } from "./../../../types/index";
+import { FileType, TagType } from "../../../types/index";
 
 type browserDefaultStateType = {
   files: FileType[];

@@ -1,4 +1,4 @@
-import { setBrowserTags } from "./../features/browse/store/actions";
+import { setBrowserTags } from "../pages/browse/store/actions";
 import { API_URL, TAG_ROUTE } from "../config/api";
 import { store } from "../store";
 import { fetchJson } from "./fetchJson";

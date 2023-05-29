@@ -1,5 +1,5 @@
-import { FileType } from "./../../../types/index";
-import { setBrowserFiles, setBrowserMedia } from "./../store/actions";
+import { FileType } from "../../../types/index";
+import { setBrowserFiles, setBrowserMedia } from "../store/actions";
 import { API_URL, FILE_ROUTE } from "../../../config/api";
 import { store } from "../../../store";
 import { fetchJson } from "../../../api/fetchJson";

@@ -1,7 +1,7 @@
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-from main.settings import (
+from config.settings import (
     EMAIL_VALIDATION_URL,
     PASSWORD_RESET_URL,
     DEFAULT_FROM_EMAIL,
@@ -15,7 +15,6 @@ TEMPLATES_PATH = path[0] + "/authentication/templates/"
 
 
 def send_register_confirmation_email(email, username, token):
-
     confirmation_link = f"{EMAIL_VALIDATION_URL}{token}"
 
     html_template = TEMPLATES_PATH + "register_email.html"
@@ -39,7 +38,6 @@ def send_register_confirmation_email(email, username, token):
 
 
 def send_password_reset_email(email, username, token):
-
     reset_link = f"{PASSWORD_RESET_URL}{token}"
 
     html_template = TEMPLATES_PATH + "password_reset_email.html"
@@ -59,7 +57,6 @@ def send_password_reset_email(email, username, token):
 
 
 def send_invitation_email(email, username, password):
-
     link = reverse("api_login")
     html_template = TEMPLATES_PATH + "invitation_email.html"
     html_message = render_to_string(

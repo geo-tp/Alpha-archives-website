@@ -2,7 +2,7 @@ from rest_framework import serializers
 from file.models import File
 from tag.serializers import AppliedTagSerializer
 from tag.models import AppliedTag
-from main.settings import MEDIA_HOST_URL
+from config.settings import MEDIA_HOST_URL
 
 
 class FileSerializer(serializers.ModelSerializer):

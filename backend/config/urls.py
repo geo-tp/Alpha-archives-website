@@ -6,7 +6,7 @@ from rest_framework import routers
 from rest_framework.documentation import include_docs_urls
 from rest_framework import permissions
 from django.conf.urls.static import static
-import main.settings as settings
+import config.settings as settings
 
 from tag.views import TagViewSet, AppliedTagViewSet
 from image_text.views import ImageTextViewSet

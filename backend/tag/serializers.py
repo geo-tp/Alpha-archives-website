@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from tag.models import Tag, AppliedTag
-from main.settings import FORBIDDEN_CHAR
+from config.settings import FORBIDDEN_CHAR
 from django.db import IntegrityError
 
 
@@ -11,7 +11,6 @@ class TagSerializer(serializers.ModelSerializer):
         read_only_fields = ["user"]
 
     def validate_name(self, value):
-
         # we dont want special char and html reserved char to be in tag name
         validated_value = ""
         for char in value:
@@ -32,7 +31,6 @@ class AppliedTagSerializer(serializers.ModelSerializer):
         fields = ["id", "tag", "file_hash"]
 
     def validate(self, attrs):
-
         file_hash = attrs["file_hash"]
         tag_name = attrs["tag"]
 

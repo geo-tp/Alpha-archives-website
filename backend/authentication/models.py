@@ -4,7 +4,7 @@ import os
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from user.models import CustomUser
-from main import settings
+from config import settings
 
 
 class AbstractCustomToken(models.Model):

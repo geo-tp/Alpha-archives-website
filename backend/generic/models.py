@@ -4,7 +4,7 @@ from io import BytesIO
 import sys
 from PIL import Image
 from django.core.files import File
-from main.settings import (
+from config.settings import (
     IMAGE_COMPRESSION_LEVEL,
     IMAGE_MAX_WIDTH,
     IMAGE_THUMBNAIL_WIDTH,
@@ -23,7 +23,6 @@ class GenericImage(models.Model):
     )
 
     def save(self, *args, **kwargs):
-
         if not self.image.readable():
             return super().save(*args, **kwargs)
 

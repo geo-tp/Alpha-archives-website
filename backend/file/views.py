@@ -15,7 +15,7 @@ from file.models import File
 from file.serializers import FileSerializer, UploadFileSerializer
 from rest_framework.response import Response
 from rest_framework import status
-from main.settings import INCOMING_ROOT, INCOMING_URL
+from config.settings import INCOMING_ROOT, INCOMING_URL
 from generic.response import format_api_response
 from file.messages import ALREADY_IN_ARCHIVE, UPLOAD_SUCCESS
 from rest_framework import filters, status, viewsets, mixins

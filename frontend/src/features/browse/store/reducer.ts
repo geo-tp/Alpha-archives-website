@@ -15,7 +15,7 @@ import {
 } from "./constants";
 import { AnyAction } from "@reduxjs/toolkit";
 import { browserDefaultState } from "./state";
-import { updateFiles } from "../../../utils/media";
+import { updateFiles } from "../../../utils/files";
 
 export const browserReducer = (
   state = browserDefaultState,

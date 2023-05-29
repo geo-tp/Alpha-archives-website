@@ -191,8 +191,8 @@ if not EMAIL_HOST_PASSWORD or not EMAIL_HOST_USER:
 MEDIA_HOST_URL = "http://localhost:8000"
 MEDIA_URL = "media/"
 INCOMING_URL = "incoming/"
-INCOMING_ROOT = str(BASE_DIR) + MEDIA_URL + INCOMING_URL
-MEDIA_ROOT = str(BASE_DIR) + MEDIA_URL
+INCOMING_ROOT = str(BASE_DIR) + "/" + MEDIA_URL + INCOMING_URL
+MEDIA_ROOT = str(BASE_DIR) + "/" + MEDIA_URL
 
 IMAGE_THUMBNAIL_WIDTH = 200  # px for auto generated thumbnail (generic img, see utils/database_builder config for modify screenshot thumbnail)
 IMAGE_MAX_WIDTH = 1200  # px for all incoming images
@@ -208,7 +208,7 @@ CORS_ALLOW_CREDENTIALS = False
 
 # Upload
 
-DISABLE_UPLOAD = True
+DISABLE_UPLOAD = False
 DISABLE_UPLOAD_SERVER_HDD_SPACE_LEFT = 5  # gb
 
 # Input

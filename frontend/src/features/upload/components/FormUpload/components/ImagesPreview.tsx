@@ -27,7 +27,7 @@ export const ImagesPreview = (props: ImagesPreviewProps) => {
           >
             <img src={url} alt="uploaded screenshot" />
             {props.isUploaded ? (
-              props.filesApiResponse[index] === 200 ? (
+              props.filesApiResponse[index] === 201 ? (
                 <label className="form-upload__previews__box__element__response success">
                   <i className="fa fa-2x fa-check-circle"></i>
                 </label>

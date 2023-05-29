@@ -52,8 +52,6 @@ export const Browser = () => {
     filesMutation.mutate(parent);
     dispatch(setCurrentPath(newPath.length ? newPath : [parent]));
   };
-  const handleTagClick = () => {};
-  const handleRemoveTagClick = () => {};
 
   const handleMediaClick = (file: MediaType) => {
     if (file.is_folder) {
@@ -72,8 +70,6 @@ export const Browser = () => {
         <BrowserHeader
           goBackDirectory={goBackDirectory}
           goHomeDirectory={goHomeDirectory}
-          handleTagClick={handleTagClick}
-          handleRemoveTagClick={handleRemoveTagClick}
           tags={tags.data?.body}
         />
         <BrowserBody

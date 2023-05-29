@@ -7,8 +7,6 @@ import { TagType } from "../../../../types";
 type BrowserHeaderType = {
   goBackDirectory: Function;
   goHomeDirectory: Function;
-  handleTagClick: Function;
-  handleRemoveTagClick: Function;
   tags: TagType[];
 };
 

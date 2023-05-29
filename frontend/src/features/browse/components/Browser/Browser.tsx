@@ -31,6 +31,7 @@ export const Browser = () => {
   useEffect(() => {
     filesMutation.mutate(folder ? folder : "root");
     dispatch(setCurrentPath(folder ? [folder] : ["root"]));
+    dispatch(setLightboxIsOpen(false));
   }, [dispatch]);
 
   const goHomeDirectory = () => {

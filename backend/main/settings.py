@@ -188,7 +188,7 @@ if not EMAIL_HOST_PASSWORD or not EMAIL_HOST_USER:
 
 # Media config for images
 
-MEDIA_HOST_URL = "https://archive.thealphaproject.eu"
+MEDIA_HOST_URL = "http://localhost:8000"
 MEDIA_URL = "media/"
 INCOMING_URL = "incoming/"
 INCOMING_ROOT = str(BASE_DIR) + MEDIA_URL + INCOMING_URL

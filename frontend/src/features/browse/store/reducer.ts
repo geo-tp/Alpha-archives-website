@@ -15,6 +15,7 @@ import {
 } from "./constants";
 import { AnyAction } from "@reduxjs/toolkit";
 import { browserDefaultState } from "./state";
+import { updateFiles } from "../../../utils/media";
 
 export const browserReducer = (
   state = browserDefaultState,
@@ -59,21 +60,7 @@ export const browserReducer = (
       );
 
       newSelectedMedia = { ...state.selectedMedia, tags: filteredTags };
-      newMediaFiles = [];
-      newFiles = [];
-
-      for (let file of state.files) {
-        fileToAdd = file;
-
-        if (file.id === newSelectedMedia.id) {
-          fileToAdd = newSelectedMedia;
-        } else {
-          fileToAdd = file;
-        }
-
-        newFiles.push(fileToAdd);
-        if (!fileToAdd.is_folder) newMediaFiles.push(fileToAdd);
-      }
+      [newFiles, newMediaFiles] = updateFiles(newSelectedMedia, state.files);
 
       return {
         ...state,
@@ -89,21 +76,8 @@ export const browserReducer = (
 
       const tags = [...state.selectedMedia.tags, action.payload];
       newSelectedMedia = { ...state.selectedMedia, tags: tags };
-      newMediaFiles = [];
-      newFiles = [];
 
-      for (let file of state.files) {
-        fileToAdd = file;
-
-        if (file.id === newSelectedMedia.id) {
-          fileToAdd = newSelectedMedia;
-        } else {
-          fileToAdd = file;
-        }
-
-        newFiles.push(fileToAdd);
-        if (!fileToAdd.is_folder) newMediaFiles.push(fileToAdd);
-      }
+      [newFiles, newMediaFiles] = updateFiles(newSelectedMedia, state.files);
 
       return {
         ...state,

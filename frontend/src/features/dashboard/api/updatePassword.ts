@@ -15,7 +15,7 @@ export const updatePassword = async (variables: {
     const json_res = await res.json();
 
     if (res.status === 200) {
-      return json_res.body;
+      return json_res;
     }
 
     return json_res;

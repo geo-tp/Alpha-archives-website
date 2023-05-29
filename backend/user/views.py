@@ -45,6 +45,7 @@ class PasswordView(APIView):
                 content={"old_password": [OLD_PASSWORD_INCORRECT]},
                 status=status.HTTP_400_BAD_REQUEST,
                 error=True,
+                message=OLD_PASSWORD_INCORRECT,
             )
             return Response(api_response, status=status.HTTP_400_BAD_REQUEST)
 
@@ -59,7 +60,6 @@ password_view = PasswordView.as_view()
 
 
 class ProfileView(APIView):
-
     queryset = CustomUser.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -94,7 +94,6 @@ profile_view = ProfileView.as_view()
 
 
 class ProfileImageView(APIView):
-
     queryset = UserProfileImage.objects.all()
     serializer_class = GenericImageSerializer
     permission_classes = [permissions.AllowAny]

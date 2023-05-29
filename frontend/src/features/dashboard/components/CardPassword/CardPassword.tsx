@@ -16,8 +16,21 @@ export const CardPassword = () => {
       updatePassword(variables)
   );
 
+  const [passwordValidation, setPasswordValidation] = useState({
+    message: "",
+    error: false,
+  });
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (newPassword !== newPassword2) {
+      setPasswordValidation({
+        error: true,
+        message: "New passwords are not equals",
+      });
+      return;
+    }
 
     mutate({ newPassword, oldPassword });
   };
@@ -67,8 +80,11 @@ export const CardPassword = () => {
           <ButtonBase label="Change" isLoading={isLoading} color="primary" />
           {isLoading && <Loader />}
         </div>
-        {data?.message && (
-          <ApiResponse message={data.message} isError={data.error} />
+        {(data?.message || passwordValidation.message) && (
+          <ApiResponse
+            message={data?.message || passwordValidation.message}
+            isError={data?.error || passwordValidation.error}
+          />
         )}
       </form>
     </CardForm>

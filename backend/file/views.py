@@ -64,7 +64,7 @@ class FileViewSet(
         Upload a file
         """
 
-        if setting.DISABLE_UPLOAD:
+        if settings.DISABLE_UPLOAD:
             return Response(
                 {"detail": "Upload is disabled"},
                 status=status.HTTP_403_FORBIDDEN,

@@ -145,16 +145,18 @@ class FileViewSet(
         texts = []
 
         if keywords:
-            texts = ImageText.objects.filter(content__icontains=keywords)
+            texts = ImageText.objects.filter(combined_content__icontains=keywords)
 
         # If nothing found, we will spit keywords if possible
         if not texts and " " in keywords:
             splitted_keywords = keywords.split(" ")
-            texts = ImageText.objects.filter(content__icontains=splitted_keywords[0])
+            texts = ImageText.objects.filter(
+                combined_content__icontains=splitted_keywords[0]
+            )
             splitted_keywords = splitted_keywords[1:]
 
             for word in splitted_keywords:
-                texts = texts.filter(content__icontains=word)
+                texts = texts.filter(combined_content__icontains=word)
 
         found_hashes = []
         for text in texts:

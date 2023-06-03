@@ -5,4 +5,4 @@ from .models import ImageText
 class ImageTextSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageText
-        fields = ["image_hash", "content"]
+        fields = ["image_hash", "combined_content"]

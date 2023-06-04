@@ -26,6 +26,7 @@ from file.serializers import FileSerializer
 from image_text.serializers import ImageTextSerializer
 from image_text.models import ImageText
 from django.conf import settings
+from django.db.models import Q
 
 
 class FileViewSet(
@@ -145,18 +146,11 @@ class FileViewSet(
         texts = []
 
         if keywords:
-            texts = ImageText.objects.filter(combined_content__icontains=keywords)
-
-        # If nothing found, we will spit keywords if possible
-        if not texts and " " in keywords:
-            splitted_keywords = keywords.split(" ")
-            texts = ImageText.objects.filter(
-                combined_content__icontains=splitted_keywords[0]
+            lookups = Q(wow_ocr_content__icontains=keywords) | Q(
+                easy_ocr_content__icontains=keywords
             )
-            splitted_keywords = splitted_keywords[1:]
 
-            for word in splitted_keywords:
-                texts = texts.filter(combined_content__icontains=word)
+            texts = ImageText.objects.filter(lookups).distinct()
 
         found_hashes = []
         for text in texts:

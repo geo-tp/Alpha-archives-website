@@ -21,7 +21,7 @@ api_router.register(r"tags", TagViewSet)
 api_router.register(r"files", FileViewSet)
 api_router.register(r"applied-tags", AppliedTagViewSet)
 
-if not settings.DEACTIVATE_OCR_ENDPOINT:
+if settings.ACTIVATE_OCR_ENDPOINT:
     api_router.register(r"image-text", ImageTextViewSet)
 
 

@@ -217,4 +217,4 @@ FORBIDDEN_CHAR = ".?/!%*µ$^)'(#\&@+²,;:<>}`+°¨{=[]|ø¹^" + '"'
 
 # OCR endpoint
 
-DEACTIVATE_OCR_ENDPOINT = True
+ACTIVATE_OCR_ENDPOINT = True

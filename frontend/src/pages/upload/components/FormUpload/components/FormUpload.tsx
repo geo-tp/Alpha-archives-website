@@ -48,10 +48,13 @@ export const FormUpload = () => {
     }
 
     const results = [];
+    var counter = 0;
     for (let file of filesObj) {
       const status: number = await mutateAsync(file);
       results.push(status);
-      setLoadingCount(loadingCount + 1);
+
+      counter++;
+      setLoadingCount(counter);
     }
 
     setFilesApiResponse(results);

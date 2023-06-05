@@ -218,3 +218,4 @@ FORBIDDEN_CHAR = ".?/!%*µ$^)'(#\&@+²,;:<>}`+°¨{=[]|ø¹^" + '"'
 # OCR endpoint
 
 ACTIVATE_OCR_ENDPOINT = True
+OCR_TOKEN = "9x3l2jHJfJ0efSzk3lf4zhaA"  # special token only used for saving OCR results

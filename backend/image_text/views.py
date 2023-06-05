@@ -6,10 +6,10 @@ from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
+from config.settings import OCR_TOKEN
 
 # OCR ENDOINT - IMAGE TO TEXT
 # THIS IS ONLY USED TO PARSE IMAGE VIA GOOGLE COLAB AND SAVE RESULTS
-TOKEN = "9x3l2jHJfJ0efSzk3lf4zhaA"
 
 
 class ImageTextViewSet(viewsets.ModelViewSet):
@@ -27,7 +27,7 @@ class ImageTextViewSet(viewsets.ModelViewSet):
             token: string
         }
         """
-        if request.data.get("token") != TOKEN:
+        if request.data.get("token") != OCR_TOKEN:
             return Response({"status": 403}, status=403)
 
         serializer = self.get_serializer(data=request.data)
@@ -38,19 +38,19 @@ class ImageTextViewSet(viewsets.ModelViewSet):
         return Response({"status": 200}, status=status.HTTP_200_OK)
 
     def update(self, request, *args, **kwargs):
-        if request.data.get("token") != TOKEN:
+        if request.data.get("token") != OCR_TOKEN:
             return Response({"status": 403}, status=403)
 
         return super().update(request, *args, **kwargs)
 
     def partial_update(self, request, *args, **kwargs):
-        if request.data.get("token") != TOKEN:
+        if request.data.get("token") != OCR_TOKEN:
             return Response({"status": 403}, status=403)
 
         return super().partial_update(request, *args, **kwargs)
 
     def destroy(self, request, *args, **kwargs):
-        if request.data.get("token") != TOKEN:
+        if request.data.get("token") != OCR_TOKEN:
             return Response({"status": 403}, status=403)
 
         return super().destroy(request, *args, **kwargs)

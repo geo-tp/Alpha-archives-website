@@ -6,16 +6,16 @@ It build the database for alpha archive website from [Alpha Project Archive](htt
 Installation
 -----------
 
-it was created with `pyton 3.10.6`
+Created with `pyton 3.10.6`
 Dependencies are stored into the general `requirement.txt` from `backend/`
 
 How to use
 -----------
 
-Set path and other informations to `constants.py` if needed.
+Set path and other informations to `config.py`.
 run `python main.py`
 
-It will generate hash, thumbnail, filepath, filetype, parent and save it into File model
+It will generate hash, thumbnail, filepath, filetype, parent and save it into File table
 
 backend/file/models.py
 ```
@@ -23,11 +23,7 @@ class File(models.Model):
     parent = models.CharField(max_length=1024)
     filename = models.CharField(max_length=1024)
     is_folder = models.BooleanField(default=False)
-
-    # we use CharField, we dont want django to deal with file
-    image_raw = models.CharField(max_length=1024, blank=True, null=True)
-
+    image_raw = models.ImageField(blank=True, null=True, max_length=4096)
     image_thumbnail = models.ImageField(blank=True, null=True)
     image_hash = models.CharField(max_length=256, blank=True, null=True)
-
 ```

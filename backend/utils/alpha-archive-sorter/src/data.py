@@ -15,12 +15,14 @@ class ScreenshotTexts:
             easy_ocr_content = self._format_content(easy_ocr_content)
             wow_ocr_content = self._format_content(wow_ocr_content)
 
-            return {
-                "easy_ocr_content": easy_ocr_content,
-                "wow_ocr_content": wow_ocr_content,
-            }
         except:
-            return {"easy_ocr_content": "", "wow_ocr_content": ""}
+            easy_ocr_content = ""
+            wow_ocr_content = ""
+
+        return {
+            "easy_ocr_content": easy_ocr_content,
+            "wow_ocr_content": wow_ocr_content,
+        }
 
     def _format_content(self, content):
         content = str(content)

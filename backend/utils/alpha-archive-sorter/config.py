@@ -14,7 +14,6 @@ UNSORTED_ARCHIVE_PATH = "/home/user/UNSORTED/"
 # Location of sort results
 RESULTS_PATH = os.path.join(CURRENT_PATH, "results/")
 
-print(RESULTS_PATH)
 
 VALID_EXT = [
     "jpg",

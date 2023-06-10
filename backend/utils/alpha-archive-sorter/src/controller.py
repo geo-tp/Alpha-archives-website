@@ -104,6 +104,7 @@ class SortController:
                 else:
                     weird_sized += 1
 
+                ss.unload()
         return {
             "Screenshots : ": screenshot,
             "Weird sized : ": weird_sized,

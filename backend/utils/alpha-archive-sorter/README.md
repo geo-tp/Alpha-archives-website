@@ -14,4 +14,4 @@ Dependencies are stored in the general `requirements.txt`
 Using
 -----
 
-Set informations into `config.py` and run `python main.py`
+Set informations in `config.py` and run `python main.py`

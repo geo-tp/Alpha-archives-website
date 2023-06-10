@@ -9,7 +9,7 @@ SCREENSHOT_TEXTS_PATH = os.path.join(CURRENT_PATH, "screenshot_texts.csv")
 ZONES_SUBZONES_PATH = os.path.join("ocr_zones.json")
 
 # Location of UNSORTED folder
-UNSORTED_ARCHIVE_PATH = "/home/user/Bureau/Ashenvale/"
+UNSORTED_ARCHIVE_PATH = "/home/user/UNSORTED/"
 
 # Location of sort results
 RESULTS_PATH = os.path.join(CURRENT_PATH, "results/")

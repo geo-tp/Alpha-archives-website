@@ -145,11 +145,12 @@ class SortController:
         found_zones = []
 
         for zone in self.zones:
-            for subzone in zone.subzones:
+            for subzone in zone.get_subzones():
                 if keywords in subzone:
+                    subzone_name = zone.get_name()
                     found_zones.append(
-                        zone.name
-                    ) if zone.name not in found_zones else None
+                        subzone_name
+                    ) if subzone_name not in found_zones else None
 
         return found_zones
 

@@ -77,12 +77,3 @@ class Zone:
 
     def get_name(self):
         return self.name
-
-    def search_subzones(self, keywords):
-        found_zones = []
-
-        for subzone in subzones:
-            if keywords in subzone:
-                found_zones.append(zone) if zone not in found_zones else None
-
-        return found_zones

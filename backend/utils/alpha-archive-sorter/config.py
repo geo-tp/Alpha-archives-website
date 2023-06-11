@@ -6,7 +6,7 @@ CURRENT_PATH = os.getcwd()
 SCREENSHOT_TEXTS_PATH = os.path.join(CURRENT_PATH, "screenshot_texts.csv")
 
 # Zone and subzones json file
-ZONES_SUBZONES_PATH = os.path.join("ocr_zones.json")
+ZONES_SUBZONES_PATH = os.path.join(CURRENT_PATH, "ocr_zones.json")
 
 # Location of UNSORTED folder
 UNSORTED_ARCHIVE_PATH = "/home/user/UNSORTED/"

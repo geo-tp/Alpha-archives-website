@@ -139,20 +139,26 @@ class FileViewSet(
     )
     def search_by_keywords(self, request):
         """
-        Find screenshots by filtering with screen rendered text
+        Find screenshots by filtering with screen rendered text or hash
         """
         keywords = request.query_params.get("k", None)
         splitted_keywords = []
         texts = []
+        found_hashes = []
 
         if keywords:
-            lookups = Q(wow_ocr_content__icontains=keywords) | Q(
-                easy_ocr_content__icontains=keywords
-            )
+            # if keywords is an hash
+            if self.queryset.filter(image_hash__in=keywords):
+                found_hashes.append(keywords)
 
-            texts = ImageText.objects.filter(lookups).distinct()
+            # else we search into texts
+            else:
+                lookups = Q(wow_ocr_content__icontains=keywords) | Q(
+                    easy_ocr_content__icontains=keywords
+                )
 
-        found_hashes = []
+                texts = ImageText.objects.filter(lookups).distinct()
+
         for text in texts:
             found_hashes.append(text.image_hash)
 

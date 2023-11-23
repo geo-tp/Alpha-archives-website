@@ -38,9 +38,8 @@ class Screenshot:
 
     def copy(self, zone_folder, dest):
         filename = self.get_name()
-        path_copy = os.path.join(dest, zone_folder)
-        path_copy = os.path.join(path_copy, filename)
-        os.makedirs(dest + zone_folder, exist_ok=True)
+        path_copy = os.path.join(dest, zone_folder, filename)
+        os.makedirs(os.path.join(dest, zone_folder), exist_ok=True)
         shutil.copy(self.filepath, path_copy)
 
 

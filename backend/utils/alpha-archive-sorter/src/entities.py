@@ -34,7 +34,7 @@ class Screenshot:
         return [self.image.width, self.image.height]
 
     def get_name(self):
-        return self.filepath.split("/")[-1]
+        return os.path.basename(self.filepath)
 
     def copy(self, zone_folder, dest):
         filename = self.get_name()
